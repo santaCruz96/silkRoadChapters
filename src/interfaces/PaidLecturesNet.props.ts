@@ -1,8 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface PaidLectureCardProps 
+export interface PaidLecturesNetProps 
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-        isActive: boolean,
-        isCarousel?: boolean
-        isBought?: boolean
+        page: 'catalog' | 'account'
 }

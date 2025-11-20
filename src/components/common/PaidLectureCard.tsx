@@ -3,14 +3,19 @@ import Icon from "@/icons/Icon";
 import { PaidLectureCardProps } from "@/interfaces/PaidLectureCard.props";
 import Button from "./Button";
 
-export default function PaidLectureCard({isActive, ...props}: PaidLectureCardProps ): JSX.Element {
+export default function PaidLectureCard({
+    isActive, 
+    isCarousel, 
+    isBought, 
+    ...props
+}: PaidLectureCardProps ): JSX.Element {
 
     return (
         <div 
             className="flex-[0_0_auto]" 
             {...props}
         >
-            <div className={`card__selector flex flex-col rounded-[20px] p-4 bg-light w-148 mr-4
+            <div className={`card__selector flex flex-col rounded-[20px] p-4 bg-light w-148 ${isCarousel && 'mr-4'}
                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] cursor-pointer 
                 transition duration-180 ease-out-[0.2,0.8,0.2,1]
                 hover:bg-[#F7F7F7] hover:shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]`}
@@ -33,16 +38,28 @@ export default function PaidLectureCard({isActive, ...props}: PaidLectureCardPro
                 <div className={`flex w-full justify-between items-center
                     transition-all duration-300 ease-in-out
                     ${isActive ? 'h-14 opacity-100 mt-8' : 'h-0 opacity-0 mt-4 overflow-hidden'}`}
-                >
-                    <Button 
-                        color="dark" 
-                        size="xl"
-                        form="round"
-                        icon='cart'
-                        hover="primary"
-                    >
-                        Buy
-                    </Button>
+                >   
+                    {isBought ? 
+                        <Button 
+                            color="stroke" 
+                            size="xl"
+                            form="round"
+                            icon='verifiedCheck'
+                        >
+                            Purchased
+                        </Button>
+                    :
+                        <Button 
+                            color="dark" 
+                            size="xl"
+                            form="round"
+                            icon='cart'
+                            hover="primary"
+                        >
+                            Buy
+                        </Button>
+                    }
+                    
                     <div className="flex gap-2">
                         <Icon className="fill-dark" name="eye"/>
                         <p className="font-normal text-[16px] uppercase text-dark">

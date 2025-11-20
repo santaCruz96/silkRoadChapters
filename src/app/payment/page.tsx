@@ -1,4 +1,5 @@
 import GeneralContainer from "@/layouts/GeneralContainer";
+import CurrencyConverter from "@/components/modules/CurrencyConverter";
 import Square from "@/components/common/Square";
 import Icon from "@/icons/Icon";
 import Input from "@/components/common/Input";
@@ -23,10 +24,10 @@ export default function Payment() {
                     >   
                         <div className="flex gap-3">
                             <Square>
-                                <Icon className="fill-dark w-8 h-8" name="earth"/>
+                                <Icon className="fill-dark w-8 h-8" name="visa"/>
                             </Square>
                             <Square>
-                                <Icon className="fill-dark w-8 h-8" name="earth"/>
+                                <Icon className="fill-dark w-8 h-8" name="mastercard"/>
                             </Square>
                         </div>
                         <div className="flex flex-col gap-[7px] mt-16">
@@ -43,7 +44,7 @@ export default function Payment() {
                             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
                     >
                         <Square>
-                            <Icon className="fill-dark w-8 h-8" name="earth"/>
+                            <Icon className="fill-dark w-8 h-8" name="shieldCheck"/>
                         </Square>
                         <div className="flex flex-col gap-[7px] mt-16">
                             <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
@@ -54,36 +55,7 @@ export default function Payment() {
                             </p>
                         </div>
                     </div>
-                    <div 
-                        className="col-span-2 rounded-[30px] py-8 px-4 pt-4 bg-light
-                            shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
-                    >
-                        <div className="flex flex-col gap-[7px]">
-                            <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
-                                Exchange rate
-                            </h3>
-                            <p className="font-normal text-[14px] leading-[160%] text-grey">
-                                October 20, 2025.                           
-                            </p>
-                        </div>
-                        <div className="relative flex flex-col mt-13.5 gap-4">
-                            <Input
-                                className="px-3 py-[19px] border border-stroke font-extrabold text-[18px] 
-                                    text-dark rounded-xl w-[231px] h-[60px] bg-background"
-                                name="exchange"
-                                type="text"
-                                value="0.00 USD"
-                            />
-                            <Input
-                                className="px-3 py-[19px] border border-stroke font-extrabold text-[18px] 
-                                    text-dark rounded-xl w-[231px] h-[60px] bg-background"
-                                name="exchange"
-                                type="text"
-                                value="0.00 UZS"
-                            />
-                            <Icon className="absolute fill-dark right-4 bottom-[60px]" name="equals"/>
-                        </div>
-                    </div>
+                    <CurrencyConverter/>
                     <div className="col-span-5 rounded-[30px] p-4 pt-4 bg-light flex gap-4
                         shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
                     >
@@ -105,7 +77,7 @@ export default function Payment() {
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Icon className="fill-dark" name="eye"/>
+                                    <Icon className="fill-dark" name="like"/>
                                     <p className="font-normal text-[16px] uppercase text-dark">
                                         454
                                     </p>
@@ -126,7 +98,7 @@ export default function Payment() {
                             color="light"
                             size="full"
                             form="round"
-                            icon="eye"
+                            icon="card"
                         >
                             Purchase
                         </Button>

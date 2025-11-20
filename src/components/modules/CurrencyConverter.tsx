@@ -1,0 +1,40 @@
+import { JSX } from "react";
+import Input from "../common/Input";
+import Icon from "@/icons/Icon";
+
+export default function CurrencyConverter():JSX.Element {
+    return (
+        <div 
+            className="col-span-2 rounded-[30px] py-8 px-4 pt-4 bg-light
+                shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
+        >
+            <div className="flex flex-col gap-[7px]">
+                <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
+                    Exchange rate
+                </h3>
+                <p className="font-normal text-[14px] leading-[160%] text-grey">
+                    October 20, 2025.                           
+                </p>
+            </div>
+            <div className="relative flex flex-col mt-13.5 gap-4">
+                <Input
+                    className="px-3 py-[19px] border border-stroke font-extrabold text-[18px] 
+                        text-dark rounded-xl w-[231px] h-[60px] bg-background focus:outline-none"
+                    name="exchange"
+                    type="text"
+                    value="0.00 USD"
+                    readOnly
+                />
+                <Input
+                    className="px-3 py-[19px] border border-stroke font-extrabold text-[18px] 
+                        text-dark rounded-xl w-[231px] h-[60px] bg-background focus:outline-none"
+                    name="exchange"
+                    type="text"
+                    value="0.00 UZS"
+                    readOnly
+                />
+                <Icon className="absolute fill-dark right-4 bottom-[60px]" name="equals"/>
+            </div>
+        </div>
+    )
+}

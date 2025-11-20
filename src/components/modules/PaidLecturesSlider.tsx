@@ -43,6 +43,7 @@ export default function PaidLecturesSlider(): JSX.Element {
                             key={index} 
                             isActive={isActive(index)}
                             onClick={() => scrollToSlide(index)}
+                            isCarousel
                         />
                     ))}
                 </div>

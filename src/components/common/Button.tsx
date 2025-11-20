@@ -30,6 +30,7 @@ export default function Button({
         dark: 'bg-dark text-light',
         stroke: 'bg-stroke text-dark',
         light: 'bg-light text-dark',
+        red: 'bg-light text-accent-alert',
         empty: 'bg-transparent text-dark'
     }
 
@@ -53,12 +54,14 @@ export default function Button({
         secondary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F7F7F7] hover:text-black hover:scale-102 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.04)]',
         headerPrimary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#393939]',
         headerSecondary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#CFCFCF]',
-        smallSquare: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]'
+        smallSquare: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
+        delete: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F28B82] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]'
     }
 
     const iconColor: Record<string, string> = {
         dark: 'fill-light',
-        light: `transition ${isHovered ? 'fill-black' : 'fill-dark'}`
+        light: `transition ${isHovered ? 'fill-black' : 'fill-dark'}`,
+        red: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`
     }
 
     return (
