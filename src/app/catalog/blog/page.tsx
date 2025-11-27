@@ -1,17 +1,17 @@
 import { JSX } from "react";
 import GeneralContainer from "@/layouts/GeneralContainer";
-import FreeLecturesNet from "@/components/modules/FreeLecturesNet";
+import BlogNet from "@/components/modules/BlogNet";
 
-export default function PaidLectures():JSX.Element {
+export default function FreeLectures():JSX.Element {
     return (
         <GeneralContainer>
             <div className="flex flex-col gap-16 w-full">
                 <h1 className="leading-[77px] font-bold text-[64px] tracking-[-0.01em] text-center text-dark">
-                    Study, Explore... Repeat!
+                    Adding New Layers
                 </h1>
-                <FreeLecturesNet
-                    page="freeLectures"
-                    cardsPerPage={14}
+                <BlogNet
+                    page="blog"
+                    cardsPerPage={8}
                 />
             </div>
         </GeneralContainer>

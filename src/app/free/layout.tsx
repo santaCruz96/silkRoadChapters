@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Payment",
-    description: "Payment",
+    title: "Account",
+    description: "Account",
 };
 
-export default function PaymentLayout({
+export default function AboutLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

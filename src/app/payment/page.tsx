@@ -2,7 +2,6 @@ import GeneralContainer from "@/layouts/GeneralContainer";
 import CurrencyConverter from "@/components/modules/CurrencyConverter";
 import Square from "@/components/common/Square";
 import Icon from "@/icons/Icon";
-import Input from "@/components/common/Input";
 import Button from "@/components/common/Button";
 
 export default function Payment() {

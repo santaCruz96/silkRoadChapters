@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import LectureCard from "../common/FreeLectureCard";
+import FreeLectureCard from "../common/FreeLectureCard";
 import { LectureSliderProps } from "@/interfaces/LectureSlider.props";
 
 export default function LectureSlider({ref}: LectureSliderProps): JSX.Element {
@@ -7,7 +7,7 @@ export default function LectureSlider({ref}: LectureSliderProps): JSX.Element {
         <div ref={ref}> 
             <div className="flex select-none touch-pan-y touch-pinch-zoom">
                 {Array.from({ length: 6 }).map((_, index) => (
-                    <LectureCard key={index} size="small"/>
+                    <FreeLectureCard key={index} isCarousel/>
                 ))}
             </div>
         </div>

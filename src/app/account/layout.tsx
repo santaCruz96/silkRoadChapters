@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     description: "Account",
 };
 
-export default function AboutLayout({
+export default function AccountLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

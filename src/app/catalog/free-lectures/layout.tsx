@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     description: "Free Lectures",
 };
 
-export default function AboutLayout({
+export default function CatalogFreeLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

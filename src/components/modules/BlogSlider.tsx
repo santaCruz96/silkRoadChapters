@@ -108,6 +108,7 @@ export default function BlogSlider(): JSX.Element {
                             key={index} 
                             isActive={isActive(index)} 
                             onClick={() => scrollToSlide(index)}
+                            isCarousel
                         />
                     ))}
                 </div>

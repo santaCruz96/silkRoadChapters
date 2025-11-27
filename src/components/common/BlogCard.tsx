@@ -2,24 +2,39 @@ import { JSX } from "react";
 import { BlogCardProps } from "@/interfaces/BlogCard.props";
 import Icon from "@/icons/Icon";
 
-export default function BlogCard({isActive, ...props}: BlogCardProps):JSX.Element {
+export default function BlogCard({isActive, isCarousel, grid, ...props}: BlogCardProps):JSX.Element {
+
+    const size = () => {
+        if (isCarousel) {
+            return 'h-[505px] w-4xl rounded-[30px] -mx-7'
+        } else {
+            return 'w-full h-full rounded-[20px]'
+        }
+    }
+
+    const fontSize = () => {
+        if (isCarousel) {
+            return 'text-[32px]'
+        } else {
+            return 'text-[24px]'
+        }
+    }
 
     return (
         <div 
-            className="flex-[0_0_auto]" 
+            className={`flex-[0_0_auto] ${grid}`} 
             {...props}
         >
             <div 
-                className="relative card__selector bg-image rounded-[30px] h-[505px] w-4xl
-                    flex flex-col select-none -mx-7 p-8 cursor-pointer overflow-hidden" 
+                className={`relative card__selector bg-image min-h-[333px] ${size()}
+                    flex flex-col select-none p-8 cursor-pointer overflow-hidden`}
             >   
-                
                 <div className="absolute top-0 left-0 w-full h-full transition 
                     duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[rgba(0,0,0,0.1)]"
                 ></div>
                 {isActive && 
                     <div className="flex flex-col justify-between h-full">
-                        <p className="font-semibold text-[32px] text-light">Card_Title_Big</p>
+                        <p className={`font-semibold ${fontSize()} text-light`}>Card_Title_Big</p>
                         <div className="flex justify-between">
                             <div className="flex items-center gap-2">
                                 <Icon name="mapPoint" className="fill-light"/>

@@ -1,7 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface PaidLecturesNetProps 
+export interface CatalogHeaderProps 
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
         page: string,
-        cardsPerPage: number
 }

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     description: "FAQ",
 };
 
-export default function AboutLayout({
+export default function FAQLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

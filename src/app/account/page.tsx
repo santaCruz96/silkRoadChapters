@@ -7,7 +7,10 @@ export default function Account() {
     return (
         <GeneralContainer>
             <UserSettings/>
-            <PaidLecturesNet page="account"/>
+            <PaidLecturesNet 
+                page="account"
+                cardsPerPage={4}
+            />
             <SavedLectures/>
         </GeneralContainer>
     )
