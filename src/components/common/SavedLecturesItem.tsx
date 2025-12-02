@@ -1,8 +1,7 @@
-import { JSX } from "react";
 import Icon from "@/icons/Icon";
 import Button from "./Button";
 
-export default function SavedLecturesItem():JSX.Element {
+export default function SavedLecturesItem() {
     return (
         <div
             className="flex items-start justify-between w-full border-t border-grey 
@@ -40,6 +39,7 @@ export default function SavedLecturesItem():JSX.Element {
                 size="xs"
                 form="square"
                 icon="trashBin"
+                iconSize="big"
                 shadow
                 hover="delete"
             />

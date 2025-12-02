@@ -1,7 +1,6 @@
-import { JSX } from "react";
 import ReviewsCarousel from "../modules/ReviewsCarousel";
 
-export default function Reviews(): JSX.Element {
+export default function Reviews()  {
     return (
         <section className="flex flex-col gap-16 items-center">
             <div className="flex flex-col w-148 items-center">

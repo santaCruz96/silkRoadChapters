@@ -1,7 +1,6 @@
-import { JSX } from "react"
 import { LogoProps } from "@/interfaces/Logo.props";
 
-export default function Logo({color}: LogoProps): JSX.Element {
+export default function Logo({color}: LogoProps) {
 
     const logoColor: Record<string, string> = {
         dark: 'text-dark',

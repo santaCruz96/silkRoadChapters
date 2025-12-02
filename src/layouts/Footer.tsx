@@ -1,9 +1,8 @@
-import { JSX } from "react";
 import Link from "next/link"
 import Logo from "../components/common/Logo";
 import Icon from "@/icons/Icon";
 
-export default function Footer(): JSX.Element {
+export default function Footer() {
     return (
         <footer className="max-w-300 mx-auto flex flex-col">
             <div 

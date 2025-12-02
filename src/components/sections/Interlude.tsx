@@ -1,9 +1,9 @@
 "use client";
 
-import { JSX, useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function Interlude(): JSX.Element {
+export default function Interlude() {
     const ref = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({

@@ -1,10 +1,9 @@
-import { JSX } from "react";
 import { CatalogHeaderProps } from "@/interfaces/CatalogHeader.props";
 import Button from "./Button";
 
 export default function CatalogHeader({
     page,
-}: CatalogHeaderProps): JSX.Element {
+}: CatalogHeaderProps) {
 
     const title: Record<string, string> = {
         freeLectures: 'Learn for Free',

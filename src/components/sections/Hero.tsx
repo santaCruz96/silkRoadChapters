@@ -1,10 +1,9 @@
 "use client"
 
-import { JSX } from "react";
 import { useEffect, useRef } from 'react';
 import Button from '../common/Button';
 
-export default function Hero(): JSX.Element {
+export default function Hero() {
   const interBubbleRef = useRef<HTMLDivElement>(null);
   const curXRef = useRef<number>(0);
   const curYRef = useRef<number>(0);

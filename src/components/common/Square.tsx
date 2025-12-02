@@ -1,7 +1,6 @@
-import { JSX } from "react";
 import { SquareProps } from "@/interfaces/Square.props";
 
-export default function Square({children, ...props}: SquareProps): JSX.Element {
+export default function Square({children, ...props}: SquareProps) {
     return (
         <div 
             className="flex items-center justify-center border 

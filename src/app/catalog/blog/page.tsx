@@ -1,8 +1,7 @@
-import { JSX } from "react";
 import GeneralContainer from "@/layouts/GeneralContainer";
 import BlogNet from "@/components/modules/BlogNet";
 
-export default function FreeLectures():JSX.Element {
+export default function BlogCatalog() {
     return (
         <GeneralContainer>
             <div className="flex flex-col gap-16 w-full">

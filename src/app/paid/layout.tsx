@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Free lecture",
-    description: "Free lecture",
+    title: "Paid lecture",
+    description: "Paid lecture",
 };
 
-export default function FreeLectureLayout({
+export default function PaidLectureLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

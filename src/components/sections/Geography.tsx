@@ -1,7 +1,6 @@
-import { JSX } from "react";
 import GeographyCarousel from "../modules/GeographyCarousel";
 
-export default function Geogarphy(): JSX.Element {
+export default function Geogarphy() {
     return (
         <section className="flex flex-col gap-16 items-center">
             <div className="flex flex-col gap-4">

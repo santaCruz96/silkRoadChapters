@@ -1,6 +1,6 @@
 "use client"
 
-import { JSX, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import BlogCard from "../common/BlogCard";
 import { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -10,7 +10,7 @@ const TWEEN_FACTOR_BASE = 0.17
 const numberWithinRange = (number: number, min: number, max: number): number =>
     Math.min(Math.max(number, min), max)
 
-export default function BlogSlider(): JSX.Element {
+export default function BlogSlider() {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
     const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
     const tweenFactor = useRef(0)
@@ -106,6 +106,7 @@ export default function BlogSlider(): JSX.Element {
                     {Array.from({ length: 6 }).map((_, index) => (
                         <BlogCard 
                             key={index} 
+                            cardId={index}
                             isActive={isActive(index)} 
                             onClick={() => scrollToSlide(index)}
                             isCarousel

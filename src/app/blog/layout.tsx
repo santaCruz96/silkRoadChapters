@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Free lecture",
-    description: "Free lecture",
+    title: "Blog",
+    description: "Blog",
 };
 
-export default function FreeLectureLayout({
+export default function BlogLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

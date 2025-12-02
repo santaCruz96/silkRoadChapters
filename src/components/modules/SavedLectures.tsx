@@ -1,7 +1,6 @@
-import { JSX } from "react";
 import SavedLecturesItem from "../common/SavedLecturesItem";
 
-export default function SavedLectures(): JSX.Element {
+export default function SavedLectures(){
     return (
         <section className="flex flex-col items-center gap-16 w-full">
             <div className="flex flex-col gap-4 w-148">

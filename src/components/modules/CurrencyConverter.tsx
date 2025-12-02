@@ -1,8 +1,7 @@
-import { JSX } from "react";
 import Input from "../common/Input";
 import Icon from "@/icons/Icon";
 
-export default function CurrencyConverter():JSX.Element {
+export default function CurrencyConverter() {
     return (
         <div 
             className="col-span-2 rounded-[30px] py-8 px-4 pt-4 bg-light

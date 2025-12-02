@@ -1,10 +1,10 @@
 "use client"
 
-import { JSX, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import PaidLectureCard from "../common/PaidLectureCard";
 import useEmblaCarousel from "embla-carousel-react";
 
-export default function PaidLecturesSlider(): JSX.Element {
+export default function PaidLecturesSlider() {
 
     const [emblaRef, emblaApi] = useEmblaCarousel({
         align: 'center',
@@ -41,6 +41,7 @@ export default function PaidLecturesSlider(): JSX.Element {
                     {Array.from({ length: 6 }).map((_, index) => (
                         <PaidLectureCard 
                             key={index} 
+                            cardId={index}
                             isActive={isActive(index)}
                             onClick={() => scrollToSlide(index)}
                             isCarousel

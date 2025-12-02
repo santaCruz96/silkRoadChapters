@@ -1,10 +1,9 @@
-import { JSX } from "react";
 import { GeneralContainerProps } from "@/interfaces/GeneralContainer.props";
 
 export default function GeneralContainer({
     children, 
     indentTop = 'big'
-}: GeneralContainerProps): JSX.Element {
+}: GeneralContainerProps) {
     
     const containerIndentTop: Record<string, string> = {
         big: 'mt-64',

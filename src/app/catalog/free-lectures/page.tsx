@@ -1,8 +1,7 @@
-import { JSX } from "react";
 import GeneralContainer from "@/layouts/GeneralContainer";
 import FreeLecturesNet from "@/components/modules/FreeLecturesNet";
 
-export default function PaidLectures():JSX.Element {
+export default function FreeLecturesCatalog() {
     return (
         <GeneralContainer>
             <div className="flex flex-col gap-16 w-full">

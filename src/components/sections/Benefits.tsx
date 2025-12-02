@@ -1,9 +1,8 @@
-import { JSX } from "react";
 import InfoCard from "../common/InfoCard";
 
 import { benefitsData } from "@/data/benefitsData"
 
-export default function Benefits(): JSX.Element {
+export default function Benefits() {
 
     return (
         <section className="flex flex-col gap-16">

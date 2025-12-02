@@ -1,8 +1,8 @@
-import { JSX } from "react";
 import Icon from "@/icons/Icon";
 import { FreeLectureCardProps } from "@/interfaces/FreeLectureCard.props";
+import Link from "next/link";
 
-export default function FreeLectureCard({isCarousel, grid}: FreeLectureCardProps ): JSX.Element {
+export default function FreeLectureCard({cardId, isCarousel, grid}: FreeLectureCardProps ) {
 
     const margin = () => {
         if (isCarousel) {
@@ -11,7 +11,8 @@ export default function FreeLectureCard({isCarousel, grid}: FreeLectureCardProps
     }
 
     return (
-        <div 
+        <Link 
+            href={`/free/${cardId}`}
             className={`card__selector flex flex-col rounded-[20px] p-4 bg-light min-w-72 ${margin()}
                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] cursor-pointer
                 transition duration-180 ease-out-[0.2,0.8,0.2,1] ${grid}
@@ -40,6 +41,6 @@ export default function FreeLectureCard({isCarousel, grid}: FreeLectureCardProps
                     </p>
                 </div>
             </div> 
-        </div>
+        </Link>
     )
 }

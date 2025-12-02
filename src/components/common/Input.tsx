@@ -1,4 +1,3 @@
-import { JSX } from "react";
 import { InputProps } from "@/interfaces/Input.props";
 
 export default function Input({
@@ -7,7 +6,7 @@ export default function Input({
     name, 
     type, 
     ...props
-}:InputProps): JSX.Element {
+}:InputProps) {
     return (
         <input 
             className={className} 

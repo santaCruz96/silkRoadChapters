@@ -1,13 +1,13 @@
 "use client";
 
-import { JSX, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import Logo from "@/components/common/Logo";
 import Search from "@/components/modules/Search";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 
-export default function Header(): JSX.Element {
+export default function Header() {
     const [isExpanded, setIsExpanded] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 

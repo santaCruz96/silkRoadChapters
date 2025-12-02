@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo, useRef, useCallback } from 'react';
-import { JSX } from "react";
 import { PaidLecturesNetProps } from "@/interfaces/PaidLecturesNet.props";
 import CatalogHeader from '../common/CatalogHeader';
 import PaidLectureCard from "../common/PaidLectureCard";
@@ -9,7 +8,7 @@ import Pagination from '../common/Pagination';
 
 const MOCK_LECTURES = Array.from({ length: 100 }, (_, i) => ({ id: i }));
 
-export default function PaidLecturesNet({page, cardsPerPage}: PaidLecturesNetProps ): JSX.Element {
+export default function PaidLecturesNet({page, cardsPerPage}: PaidLecturesNetProps ) {
     const [currentPage, setCurrentPage] = useState<number>(0);
     const targetRef = useRef<HTMLDivElement>(null);
 
@@ -34,6 +33,7 @@ export default function PaidLecturesNet({page, cardsPerPage}: PaidLecturesNetPro
                 {currentCards.map((card) => (
                     <PaidLectureCard
                         key={card.id}
+                        cardId={card.id}
                         isActive
                         isBought={page === 'account'}
                     />

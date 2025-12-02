@@ -1,7 +1,6 @@
-import { JSX } from "react";
 import Square from "./Square";
 
-export default function ReviewCard(): JSX.Element {
+export default function ReviewCard() {
     return (
         <div className="flex flex-col rounded-[20px] p-4 bg-light gap-4 w-110
             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"

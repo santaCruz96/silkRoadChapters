@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo, useRef, useCallback } from 'react';
-import { JSX } from "react";
 import { PaidLecturesNetProps } from "@/interfaces/PaidLecturesNet.props";
 import CatalogHeader from '../common/CatalogHeader';
 import BlogCard from '../common/BlogCard';
@@ -9,7 +8,7 @@ import Pagination from '../common/Pagination';
 
 const MOCK_LECTURES = Array.from({ length: 100 }, (_, i) => ({ id: i }));
 
-export default function BlogNet({page, cardsPerPage}: PaidLecturesNetProps ): JSX.Element {
+export default function BlogNet({page, cardsPerPage}: PaidLecturesNetProps ) {
     const [currentPage, setCurrentPage] = useState<number>(0);
     const targetRef = useRef<HTMLDivElement>(null);
 
@@ -41,6 +40,7 @@ export default function BlogNet({page, cardsPerPage}: PaidLecturesNetProps ): JS
                     return (
                         <BlogCard
                             key={card.id}
+                            cardId={card.id}
                             grid={gridClass}
                             isActive
                         />

@@ -1,10 +1,9 @@
 "use client";
 
-import { JSX } from "react";
 import Button from "../common/Button";
 import { usePathname } from 'next/navigation';
 
-export default function AboutAuthor(): JSX.Element {
+export default function AboutAuthor() {
     const pathname = usePathname();
 
     const isAboutPage = pathname.includes('/about')

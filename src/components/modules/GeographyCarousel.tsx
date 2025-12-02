@@ -1,11 +1,10 @@
 "use client";
 
-import { JSX } from "react";
 import { useState } from "react";
 
 import { countriesData } from "@/data/countriesData";
 
-export default function GeographyCarousel(): JSX.Element {
+export default function GeographyCarousel() {
 
     const [currentId, setCurrentId] = useState<number | null>(null);
     const [isHovered, setIsHovered] = useState<boolean>(false);

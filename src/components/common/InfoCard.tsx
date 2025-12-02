@@ -1,4 +1,3 @@
-import { JSX } from "react";
 import { InfoCardProps } from "@/interfaces/InfoCard.props";
 import Square from "./Square";
 import Icon from "@/icons/Icon";
@@ -9,7 +8,7 @@ export default function InfoCard({
     title, 
     text,
     ...props
-}: InfoCardProps): JSX.Element {
+}: InfoCardProps) {
 
     return (
         <div 

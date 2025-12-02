@@ -1,11 +1,10 @@
 "use client";
 
-import { JSX } from "react";
 import ReviewCard from "../common/ReviewCard";
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function ReviewsCarousel():JSX.Element {
+export default function ReviewsCarousel() {
     const containerRef = useRef<HTMLDivElement>(null);
     
     const { scrollYProgress } = useScroll({

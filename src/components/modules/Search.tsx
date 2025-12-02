@@ -1,11 +1,10 @@
 "use client"
 
-import { JSX } from "react";
 import { useState } from "react"
 import Icon from "@/icons/Icon"
 import Input from "../common/Input"
 
-export default function Search(): JSX.Element {
+export default function Search() {
     const [focused, setFocused] = useState<boolean>(false)
 
     const handleFocus = () => {

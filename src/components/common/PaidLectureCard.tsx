@@ -1,17 +1,19 @@
-import { JSX } from "react";
 import Icon from "@/icons/Icon";
 import { PaidLectureCardProps } from "@/interfaces/PaidLectureCard.props";
 import Button from "./Button";
+import Link from "next/link";
 
 export default function PaidLectureCard({
+    cardId,
     isActive, 
     isCarousel, 
     isBought, 
     ...props
-}: PaidLectureCardProps ): JSX.Element {
+}: PaidLectureCardProps ) {
 
     return (
-        <div 
+        <Link 
+            href={isActive ? `/paid/${cardId}` : '#'}
             className="flex-[0_0_auto]" 
             {...props}
         >
@@ -68,6 +70,6 @@ export default function PaidLectureCard({
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }

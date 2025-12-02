@@ -1,4 +1,3 @@
-import { JSX } from "react";
 import ReactPaginate from 'react-paginate';
 import { PaginationProps } from "@/interfaces/Pagination.props";
 
@@ -6,7 +5,7 @@ export default function Pagination({
     pageCount,
     currentPage,
     onPageChange,
-}: PaginationProps): JSX.Element {
+}: PaginationProps) {
     
     const handlePageClick = ({ selected }: { selected: number }) => {
         onPageChange(selected);

@@ -1,6 +1,6 @@
 "use client";
 
-import { JSX, useState } from "react"
+import { useState } from "react"
 import { ButtonProps } from "../../interfaces/Button.props";
 import Icon from "@/icons/Icon";
 
@@ -9,12 +9,13 @@ export default function Button({
     size = 'sm', 
     form,
     icon,
+    iconSize = 'small',
     shadow,
     isDisabled,
     hover,
     children, 
     ...props
-}: ButtonProps): JSX.Element {
+}: ButtonProps) {
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -31,7 +32,8 @@ export default function Button({
         stroke: 'bg-stroke text-dark',
         light: 'bg-light text-dark',
         red: 'bg-light text-accent-alert',
-        empty: 'bg-transparent text-dark'
+        empty: 'bg-transparent text-dark',
+        lightGrey: 'bg-background text-dark border border-stroke'
     }
 
     const buttonSize: Record<string, string> = {
@@ -55,13 +57,19 @@ export default function Button({
         headerPrimary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#393939]',
         headerSecondary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#CFCFCF]',
         smallSquare: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
-        delete: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F28B82] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]'
+        delete: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F28B82] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
+        contentButton: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#E6E6E6]'
     }
 
     const iconColor: Record<string, string> = {
         dark: 'fill-light',
         light: `transition ${isHovered ? 'fill-black' : 'fill-dark'}`,
         red: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`
+    }
+
+    const sizeIcon: Record<string, string> = {
+        small: 'w-6 h-6',
+        big: 'w-8 h-8'
     }
 
     return (
@@ -75,7 +83,7 @@ export default function Button({
         >
             {icon ? 
                 <div className="flex items-center justify-center gap-2">
-                    <Icon name={icon} className={`${iconColor[color]}`}/>
+                    <Icon name={icon} className={`${iconColor[color]} ${sizeIcon[iconSize]}`}/>
                     {children}
                 </div>
             :

@@ -1,7 +1,6 @@
-import { JSX } from "react";
 import Button from "../common/Button";
 
-export default function UserSettings(): JSX.Element {
+export default function UserSettings() {
     return (
         <div className="flex flex-col gap-16">
             <h1 className="font-bold text-[64px] tracking-[-0.01em] text-center text-dark">
@@ -14,6 +13,7 @@ export default function UserSettings(): JSX.Element {
                         size="xs"
                         form="square"
                         icon="squareInfo"
+                        iconSize="big"
                         shadow
                         hover="smallSquare"
                     />
@@ -22,6 +22,7 @@ export default function UserSettings(): JSX.Element {
                         size="xs"
                         form="square"
                         icon="trashBin"
+                        iconSize="big"
                         shadow
                         hover="delete"
                     />

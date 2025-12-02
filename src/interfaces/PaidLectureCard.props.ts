@@ -1,7 +1,8 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { DetailedHTMLProps, AnchorHTMLAttributes } from "react";
 
 export interface PaidLectureCardProps 
-    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+        cardId: number,
         isActive: boolean,
         isCarousel?: boolean
         isBought?: boolean

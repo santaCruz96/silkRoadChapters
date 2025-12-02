@@ -1,13 +1,17 @@
 "use client"
 
-import { JSX } from "react";
 import Button from "../common/Button";
 import Icon from "@/icons/Icon";
 import FreeLectureSlider from "../modules/FreeLecturesSlider";
 import { usePrevNextButtons } from "@/hooks/usePrevNextButtons";
 import useEmblaCarousel from 'embla-carousel-react';
+import { usePathname } from 'next/navigation';
 
-export default function FreeLectures(): JSX.Element {
+export default function FreeLectures() {
+
+    const pathname = usePathname();
+
+    const isContentPage = pathname.includes('/free');
 
     const [emblaRef, emblaApi] = useEmblaCarousel({align: 'start', dragFree: true })
 
@@ -21,12 +25,21 @@ export default function FreeLectures(): JSX.Element {
     return (
         <section className="flex flex-col gap-16 w-full" id="free-lectures">
             <div className="flex justify-between">
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 w-148">
                     <h3 className="font-bold text-[36px] text-dark">
-                        Learn for Free
+                        {isContentPage ? 
+                            'More Chapters to Explore' 
+                        : 
+                            'Learn for Free'
+                        }
+                        
                     </h3>
                     <p className="font-medium text-[16px] leading-[160%] text-grey">
-                        Discover the Silk Road through free talks by an experienced guide.
+                        {isContentPage ? 
+                            'Dive into more stories and insights that deepen your understanding of Central Asia and Silk Road.' 
+                        : 
+                            'Discover the Silk Road through free talks by an experienced guide.'
+                        }
                     </p>
                 </div>
                 <div className="flex gap-4">
