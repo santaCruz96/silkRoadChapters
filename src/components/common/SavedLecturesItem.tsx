@@ -36,7 +36,7 @@ export default function SavedLecturesItem() {
             </div>
             <Button
                 color="red"
-                size="xs"
+                size="sm"
                 form="square"
                 icon="trashBin"
                 iconSize="big"

@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import { IconName } from "@/icons/iconMap";
 
-type ButtonColor = 'dark' | 'stroke' | 'light' | 'red' | 'lightGrey'
+type ButtonColor = 'dark' | 'stroke' | 'light' | 'red' | 'empty' | 'lightGrey'
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full'
 
 export interface ButtonProps 

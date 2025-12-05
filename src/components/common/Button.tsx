@@ -37,8 +37,8 @@ export default function Button({
     }
 
     const buttonSize: Record<string, string> = {
-        xs: 'w-[60px] h-[60px] text-[18px]',
-        sm: 'w-31 py-3 text-[12px]',
+        xs: 'w-6 h-6',
+        sm: 'w-15 h-15 text-[18px]',
         md: 'w-31 py-3 text-[12px]',
         lg: 'w-34 py-3 text-[12px]',
         xl: 'w-68 py-4 text-[16px]',

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/layouts/Header";
 import Footer from "@/layouts/Footer";
+import Modal from "@/components/common/modal/Modal";
+import Push from "@/components/common/Push";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,6 +27,8 @@ export default function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <Header />
+        <Modal/>
+        <Push/>
         {children}
         <Footer/>
       </body>

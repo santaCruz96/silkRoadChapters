@@ -10,7 +10,7 @@ export default function UserSettings() {
                 <div className="flex flex-col gap-3">
                     <Button
                         color="light"
-                        size="xs"
+                        size="sm"
                         form="square"
                         icon="squareInfo"
                         iconSize="big"
@@ -19,7 +19,7 @@ export default function UserSettings() {
                     />
                     <Button
                         color="red"
-                        size="xs"
+                        size="sm"
                         form="square"
                         icon="trashBin"
                         iconSize="big"

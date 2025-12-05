@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Icon from "@/icons/Icon"
 import Input from "../common/Input"
+import useScrollLock from '@/hooks/useScrollLock';
 
 export default function Search() {
     const [focused, setFocused] = useState<boolean>(false)
@@ -14,6 +15,8 @@ export default function Search() {
     const handleBlur = () => {
         setFocused(false); 
     };
+
+    useScrollLock(focused);
 
     return (
         <div className="relative ">

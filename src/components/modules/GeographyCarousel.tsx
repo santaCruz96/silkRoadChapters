@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { countriesData } from "@/data/countriesData";
+import { countriesData } from "@/data/countries.data";
 
 export default function GeographyCarousel() {
 

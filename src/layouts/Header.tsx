@@ -6,10 +6,15 @@ import Logo from "@/components/common/Logo";
 import Search from "@/components/modules/Search";
 import Link from "next/link";
 import { motion } from 'framer-motion';
+import { useModal } from "@/store/useModalStore";
+import useScrollLock from '@/hooks/useScrollLock';
 
 export default function Header() {
     const [isExpanded, setIsExpanded] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+
+    const isOpen = useModal((state) => state.isOpen);
+    const toggle = useModal((state) => state.toggle);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,6 +33,8 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
 
+    useScrollLock(isOpen);
+
     const handleClick = () => {
         if (!isExpanded) {
             setIsExpanded(!isExpanded)
@@ -38,9 +45,11 @@ export default function Header() {
     return (
         <motion.header 
             className="fixed top-8 left-1/2 -translate-x-1/2 max-w-300 w-full mx-auto bg-light rounded-[20px]
-                shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] z-50"
+                shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] z-15"
             animate={{ maxWidth: isExpanded ? '1200px' : '288px' }}
-            transition={{ type: 'spring', damping: 22, stiffness: 200 }}
+            transition={
+                { type: 'spring', damping: 22, stiffness: 200 }
+            }
             onClick={() => handleClick()}
         >
             <div className="container relative mx-auto p-3 flex justify-between items-center">
@@ -57,6 +66,7 @@ export default function Header() {
                         size="md"
                         form="square"
                         hover="headerPrimary"
+                        onClick={() => toggle('menu')}
                     >
                         Menu
                     </Button>
@@ -80,6 +90,7 @@ export default function Header() {
                         size="lg"
                         form="square"
                         hover="headerSecondary"
+                        onClick={() => toggle('login')}
                     >
                         Join Us
                     </Button>

@@ -1,6 +1,6 @@
 import InfoCard from "../common/InfoCard";
 
-import { benefitsData } from "@/data/benefitsData"
+import { benefitsData } from "@/data/benefits.data"
 
 export default function Benefits() {
 

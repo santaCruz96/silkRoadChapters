@@ -45,7 +45,7 @@ export default function FreeLectures() {
                 <div className="flex gap-4">
                     <Button 
                         color="light" 
-                        size="xs" 
+                        size="sm" 
                         form="square" 
                         onClick={onPrevButtonClick} 
                         shadow={prevBtnDisabled ? false : true}
@@ -57,7 +57,7 @@ export default function FreeLectures() {
                     </Button>
                     <Button 
                         color="light" 
-                        size="xs" 
+                        size="sm" 
                         form="square" 
                         onClick={onNextButtonClick} 
                         shadow={nextBtnDisabled ? false : true}

@@ -11,7 +11,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                 <div className="flex gap-3">
                     <Button
                         color="lightGrey"
-                        size="xs"
+                        size="sm"
                         form="square"
                         icon="like"
                         iconSize="big"
@@ -19,7 +19,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                     />
                     <Button
                         color="lightGrey"
-                        size="xs"
+                        size="sm"
                         form="square"
                         icon="bookmark"
                         iconSize="big"
