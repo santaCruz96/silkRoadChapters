@@ -11,7 +11,7 @@ export default function BlogLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="flex justify-center bg-background">
+        <div className="flex justify-center bg-background overflow-x-clip">
             {children}
         </div>
     );

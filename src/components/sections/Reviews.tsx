@@ -2,8 +2,8 @@ import ReviewsCarousel from "../modules/ReviewsCarousel";
 
 export default function Reviews()  {
     return (
-        <section className="flex flex-col gap-16 items-center">
-            <div className="flex flex-col w-148 items-center">
+        <section className="flex flex-col gap-12 sm:gap-16 items-center w-full">
+            <div className="flex flex-col max-w-148 items-center">
                 <h3 className="font-bold text-[36px] text-center text-dark mb-4">
                     What Travelers Say
                 </h3>

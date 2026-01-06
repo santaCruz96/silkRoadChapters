@@ -1,15 +1,20 @@
+"use client";
+
 import Icon from "@/icons/Icon";
 import Button from "./Button";
+import { useResponsiveStore } from "@/store/useResponsiveStore";
 
 export default function SavedLecturesItem() {
+    const isMobile = useResponsiveStore(state => state.isMobile);
+
     return (
         <div
-            className="flex items-start justify-between w-full border-t border-grey 
+            className="relative flex items-start justify-between w-82 sm:w-full border-t border-grey 
                 py-8 last:border-b"
         >
-            <div className="flex gap-4 h-full">
-                <div className="w-72 h-40.5 bg-image rounded-xl"></div>
-                <div className="flex h-full flex-col justify-between">
+            <div className="flex w-full sm:w-auto sm:h-full flex-col sm:flex-row gap-4">
+                <div className="w-full h-[185px] sm:w-72 sm:h-40.5 bg-image rounded-xl"></div>
+                <div className="flex sm:h-full flex-col-reverse sm:flex-col gap-4 sm:gap-0 justify-between">
                     <div className="flex flex-col gap-2.5">
                         <p className="font-semibold text-[18px] leading-[21px] text-dark">
                             Card_Title_Small
@@ -34,15 +39,17 @@ export default function SavedLecturesItem() {
                     </div>
                 </div>
             </div>
-            <Button
-                color="red"
-                size="sm"
-                form="square"
-                icon="trashBin"
-                iconSize="big"
-                shadow
-                hover="delete"
-            />
+            <div className="absolute top-12 right-4 sm:static">
+                <Button
+                    color={isMobile ? "lightGreyDelete" : "red"}
+                    size="sm"
+                    form="square"
+                    icon="trashBin"
+                    iconSize="big"
+                    shadow={!isMobile}
+                    hover="delete"
+                />
+            </div>
         </div>
     )
 }

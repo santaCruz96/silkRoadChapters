@@ -2,8 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 import Button from '../common/Button';
+import { useResponsiveStore } from "@/store/useResponsiveStore";
 
 export default function Hero() {
+  const isMobile = useResponsiveStore(state => state.isMobile);
+
   const interBubbleRef = useRef<HTMLDivElement>(null);
   const curXRef = useRef<number>(0);
   const curYRef = useRef<number>(0);
@@ -44,16 +47,18 @@ export default function Hero() {
 
   return (
     <div className="relative flex justify-center items-center overflow-hidden h-[calc(100vh+80px)] -mb-20 bg-linear-to-r from-[#dff9fb] to-[#ffffff] top-0 left-0">
-      <section className="flex flex-col items-center z-1">
-        <h1 className="font-bold leading-[77px] text-[64px] tracking-[-0.01em] text-center text-dark">
-          Chronicles of the Silk Road — <br />History Made Simple
+      <section className="flex flex-col w-[calc(100%-32px)] md:w-[calc(100%-64px)] items-center z-1">
+        <h1 
+          className="font-bold text-[40px] max-w-275 leading-12 md:text-[64px] md:leading-[77px] tracking-[-0.01em] text-center text-dark"
+        >
+          Chronicles of the Silk Road — History Made Simple
         </h1>
-        <p className="mt-4 mb-16 font-semibold leading-[160%] texr-[16px] text-center text-grey">
+        <p className="mt-4 mb-16 font-semibold leading-[160%] text-[16px] text-center text-grey">
           An educational journey through time — from past to present.
         </p>
         <Button 
           color="dark"
-          size="xl"
+          size={isMobile ? "full" : "xl"}
           form="round"
           icon="fallingStar"
           onClick={() => scrollToSection('free-lectures')}

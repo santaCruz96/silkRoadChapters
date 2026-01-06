@@ -4,8 +4,9 @@ import Icon from "@/icons/Icon";
 export default function CurrencyConverter() {
     return (
         <div 
-            className="col-span-2 rounded-[30px] py-8 px-4 pt-4 bg-light
-                shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
+            className="col-span-1 sm:col-span-4 lg:col-span-2 rounded-[20px] sm:rounded-[30px] py-8 px-4 pt-4 bg-light
+                shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] 
+                flex flex-col sm:justify-between lg:justify-start"
         >
             <div className="flex flex-col gap-[7px]">
                 <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
@@ -15,10 +16,10 @@ export default function CurrencyConverter() {
                     October 20, 2025.                           
                 </p>
             </div>
-            <div className="relative flex flex-col mt-13.5 gap-4">
+            <div className="relative flex pr-6 flex-col mt-13.5 gap-4">
                 <Input
                     className="px-3 py-[19px] border border-stroke font-extrabold text-[18px] 
-                        text-dark rounded-xl w-[231px] h-[60px] bg-background focus:outline-none"
+                        text-dark rounded-xl h-[60px] bg-background focus:outline-none"
                     name="exchange"
                     type="text"
                     value="0.00 USD"
@@ -26,7 +27,7 @@ export default function CurrencyConverter() {
                 />
                 <Input
                     className="px-3 py-[19px] border border-stroke font-extrabold text-[18px] 
-                        text-dark rounded-xl w-[231px] h-[60px] bg-background focus:outline-none"
+                        text-dark rounded-xl h-[60px] bg-background focus:outline-none"
                     name="exchange"
                     type="text"
                     value="0.00 UZS"

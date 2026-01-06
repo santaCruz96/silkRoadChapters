@@ -3,13 +3,16 @@
 import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import Logo from "@/components/common/Logo";
-import Search from "@/components/modules/Search";
+import Search from "@/components/modules/Search/Search";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 import { useModal } from "@/store/useModalStore";
 import useScrollLock from '@/hooks/useScrollLock';
+import { useResponsiveStore } from "@/store/useResponsiveStore";
 
 export default function Header() {
+    const isMobile = useResponsiveStore(state => state.isMobile);
+
     const [isExpanded, setIsExpanded] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -44,15 +47,20 @@ export default function Header() {
 
     return (
         <motion.header 
-            className="fixed top-8 left-1/2 -translate-x-1/2 max-w-300 w-full mx-auto bg-light rounded-[20px]
+            className="fixed top-4 sm:top-8 left-1/2 w-[calc(100%-32px)] md:w-[calc(100%-64px)] 
+                -translate-x-1/2 max-w-full sm:max-w-300 bg-light rounded-[20px]
                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] z-15"
-            animate={{ maxWidth: isExpanded ? '1200px' : '288px' }}
+            animate={isMobile ?
+                { maxWidth: isExpanded ? '590px' : '64px' }
+            :
+                { maxWidth: isExpanded ? '1200px' : '288px' } 
+            }
             transition={
                 { type: 'spring', damping: 22, stiffness: 200 }
             }
             onClick={() => handleClick()}
         >
-            <div className="container relative mx-auto p-3 flex justify-between items-center">
+            <div className="relative p-3 flex justify-between items-center">
                 <motion.div
                     className="flex items-center gap-4"
                     animate={{ 
@@ -63,7 +71,7 @@ export default function Header() {
                 >
                     <Button 
                         color="dark" 
-                        size="md"
+                        size={isMobile ? 'mobileHeader' : 'md'}
                         form="square"
                         hover="headerPrimary"
                         onClick={() => toggle('menu')}
@@ -73,7 +81,7 @@ export default function Header() {
                     <Search/>
                 </motion.div>
                 <Link
-                    className="absolute w-[203px] left-1/2 -translate-x-1/2"
+                    className="absolute w-7 lg:w-[203px] left-1/2 -translate-x-1/2"
                     href={'/'}
                 >
                     <Logo color="dark"/>
@@ -87,7 +95,7 @@ export default function Header() {
                 >
                     <Button 
                         color="stroke" 
-                        size="lg"
+                        size={isMobile ? 'mobileHeader' : 'lg'}
                         form="square"
                         hover="headerSecondary"
                         onClick={() => toggle('login')}
@@ -99,6 +107,7 @@ export default function Header() {
                         size="md"
                         form="square"
                         hover="headerSecondary"
+                        hideOnMobile
                     >
                         English
                     </Button>

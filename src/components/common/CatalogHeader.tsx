@@ -1,9 +1,12 @@
 import { CatalogHeaderProps } from "@/interfaces/CatalogHeader.props";
 import Button from "./Button";
+import { useResponsiveStore } from "@/store/useResponsiveStore";
 
 export default function CatalogHeader({
     page,
 }: CatalogHeaderProps) {
+
+    const isMobile = useResponsiveStore(state => state.isMobile);
 
     const title: Record<string, string> = {
         freeLectures: 'Learn for Free',
@@ -20,29 +23,32 @@ export default function CatalogHeader({
     } 
 
     return (
-        <div className={`${page !== 'account' && 'flex items-start justify-between'}`}>
+        <div 
+            className={`${page !== 'account' && 
+                'flex flex-col justify-center items-center lg:flex-row lg:items-start lg:justify-between gap-12 lg:gap-0'
+            }`}>
             <div 
-                className={`flex flex-col gap-4
-                    ${page !== 'account' && 'w-148'}`}
+                className={`flex flex-col gap-4 items-center lg:items-start
+                    ${page !== 'account' && 'w-full sm:w-148'}`}
             >
                 <h3 
                     className={`font-bold text-[36px] text-dark
-                        ${page !== 'account' ? 'text-left' : 'text-center'}`}
+                        ${page !== 'account' ? 'text-center lg:text-left' : 'text-center'}`}
                 >
                     {title[page]}
                 </h3>
                 <p 
                     className={`font-medium text-[16px] leading-[160%] text-grey
-                        ${page !== 'account' ? 'text-left' : 'text-center'}`}
+                        ${page !== 'account' ? 'text-center lg:text-left' : 'text-center'}`}
                 >
                     {text[page]}
                 </p>
             </div>
             {page !== 'account' &&
-                <div className="flex gap-4">
+                <div className="flex gap-4 w-full sm:w-auto">
                     <Button
                         color="dark"
-                        size="lg"
+                        size={isMobile ? "full" : "lg"}
                         form="round"
                         hover="primary"
                     >
@@ -50,7 +56,7 @@ export default function CatalogHeader({
                     </Button>
                     <Button
                         color="light"
-                        size="lg"
+                        size={isMobile ? "full" : "lg"}
                         form="round"
                         hover="secondary"
                         shadow

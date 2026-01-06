@@ -1,4 +1,5 @@
 export interface ICountries {
     id: number,
-    country: string
+    country: string,
+    imageCoords: string[]
 }

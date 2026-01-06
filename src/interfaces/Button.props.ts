@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import { IconName } from "@/icons/iconMap";
 
-type ButtonColor = 'dark' | 'stroke' | 'light' | 'red' | 'empty' | 'lightGrey'
-type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full'
+type ButtonColor = 'dark' | 'stroke' | 'light' | 'red' | 'empty' | 'lightGrey' | 'lightGreyDelete'
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full' | 'mobileHeader'
 
 export interface ButtonProps 
     extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
@@ -14,5 +14,6 @@ export interface ButtonProps
         shadow?: boolean,
         isDisabled?: boolean, 
         hover?: string,
+        hideOnMobile?: boolean,
         children?: ReactNode
 }

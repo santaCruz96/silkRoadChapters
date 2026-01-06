@@ -27,7 +27,7 @@ export default function TextArea ({
     };
 
     return (
-        <div className="relative w-4xl h-36">
+        <div className="relative w-full h-55 lg:w-4xl lg:h-36">
             <textarea
                 value={currentValue}
                 onChange={handleChange}

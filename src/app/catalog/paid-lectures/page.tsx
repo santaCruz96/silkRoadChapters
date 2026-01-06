@@ -5,7 +5,7 @@ export default function PaidLecturesCatalog() {
     return (
         <GeneralContainer>
             <div className="flex flex-col gap-16 w-full">
-                <h1 className="leading-[77px] font-bold text-[64px] tracking-[-0.01em] text-center text-dark">
+                <h1 className="leading-12 sm:leading-[77px] font-bold text-[40px] sm:text-[64px] tracking-[-0.01em] text-center text-dark">
                     Enter the Heart of the Silk Road
                 </h1>
                 <PaidLecturesNet

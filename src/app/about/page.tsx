@@ -6,13 +6,13 @@ export default function About() {
     return (
         <GeneralContainer>
             <div className="flex flex-col gap-16 w-full">
-                <h1 className="leading-[77px] font-bold text-[64px] tracking-[-0.01em] text-center text-dark">
+                <h1 className="leading-12 sm:leading-[77px] font-bold text-[40px] sm:text-[64px] tracking-[-0.01em] text-center text-dark">
                     Author’s Welcome
                 </h1>
                 <AboutAuthor/>
             </div>
-            <div className="flex flex-col gap-16 items-center">
-                <div className="flex flex-col w-148 items-center">
+            <div className="flex flex-col gap-16 items-center w-full">
+                <div className="flex flex-col sm:w-148 items-center">
                     <h3 className="font-bold text-[36px] text-center text-dark mb-4">
                         In Focus
                     </h3>

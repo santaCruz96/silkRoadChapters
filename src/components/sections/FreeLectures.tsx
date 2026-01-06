@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Button from "../common/Button";
 import Icon from "@/icons/Icon";
@@ -23,18 +23,17 @@ export default function FreeLectures() {
     } = usePrevNextButtons(emblaApi)
 
     return (
-        <section className="flex flex-col gap-16 w-full" id="free-lectures">
-            <div className="flex justify-between">
+        <section className="flex flex-col gap-12 sm:gap-16 w-full" id="free-lectures">
+            <div className="flex justify-center lg:justify-between">
                 <div className="flex flex-col gap-4 w-148">
-                    <h3 className="font-bold text-[36px] text-dark">
+                    <h3 className="font-bold text-center lg:text-start text-[36px] text-dark">
                         {isContentPage ? 
                             'More Chapters to Explore' 
                         : 
                             'Learn for Free'
                         }
-                        
                     </h3>
-                    <p className="font-medium text-[16px] leading-[160%] text-grey">
+                    <p className="font-medium text-center lg:text-start text-[16px] leading-[160%] text-grey">
                         {isContentPage ? 
                             'Dive into more stories and insights that deepen your understanding of Central Asia and Silk Road.' 
                         : 
@@ -42,7 +41,7 @@ export default function FreeLectures() {
                         }
                     </p>
                 </div>
-                <div className="flex gap-4">
+                <div className="hidden lg:flex gap-4">
                     <Button 
                         color="light" 
                         size="sm" 

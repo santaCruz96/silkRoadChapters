@@ -9,16 +9,19 @@ export default function Payment() {
         <GeneralContainer>
             <div className="flex flex-col gap-16">
                 <div className="flex flex-col gap-4">
-                    <h1 className="font-bold text-[64px] leading-[76px] tracking-[-0.01em] text-center text-dark">
+                    <h1 
+                        className="font-bold text-[40px] sm:text-[64px] leading-12 sm:leading-[76px]
+                            tracking-[-0.01em] text-center text-dark"
+                    >
                         Unlock Your Lecture
                     </h1>
                     <p className="font-medium text-[16px] leading-[160%] text-center text-grey">
                         Complete your purchase safely through our verified payment partner.
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-8 gap-y-8 gap-x-4">
+                <div className="grid grid-cols-1 sm:grid-cols-8 gap-y-8 gap-x-4">
                     <div 
-                        className="col-span-3 rounded-[30px] py-8 px-4 pt-4 bg-light
+                        className="col-span-1 sm:col-span-4 lg:col-span-3 rounded-[20px] sm:rounded-[30px] py-8 px-4 pt-4 bg-light
                             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
                     >   
                         <div className="flex gap-3">
@@ -39,7 +42,7 @@ export default function Payment() {
                         </div>
                     </div> 
                     <div 
-                        className="col-span-3 rounded-[30px] py-8 px-4 pt-4 bg-light
+                        className="col-span-1 sm:col-span-4 lg:col-span-3 rounded-[20px] sm:rounded-[30px] py-8 px-4 pt-4 bg-light
                             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
                     >
                         <Square>
@@ -55,16 +58,16 @@ export default function Payment() {
                         </div>
                     </div>
                     <CurrencyConverter/>
-                    <div className="col-span-5 rounded-[30px] p-4 pt-4 bg-light flex gap-4
+                    <div className="col-span-1 sm:col-span-4 lg:col-span-5 rounded-[20px] sm:rounded-[30px] p-4 pt-4 bg-light flex flex-col lg:flex-row gap-4
                         shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
                     >
-                        <div className="rounded-[20px] w-[424px] h-[239px] bg-image"></div>
-                        <div className="flex flex-col justify-between">
+                        <div className="rounded-[20px] w-full h-[296px] lg:w-[424px] lg:h-[239px] bg-image"></div>
+                        <div className="flex flex-col gap-8 lg:gap-0 sm:justify-between">
                             <div className="flex flex-col gap-[7px]">
                                 <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
                                     Card_Title_Small
                                 </h3>
-                                <p className="font-normal text-[14px] leading-[160%] text-grey">
+                                <p className="font-normal text-[14px] leading-[160%] text-grey h-[65px] lg:h-auto">
                                     Card_Body                    
                                 </p>
                             </div>
@@ -84,7 +87,7 @@ export default function Payment() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-span-3 rounded-[30px] p-4 bg-accent-success flex flex-col gap-10.5 
+                    <div className="col-span-1 sm:col-span-8 lg:col-span-3 rounded-[20px] sm:rounded-[30px] p-4 bg-accent-success flex flex-col gap-10.5 
                         shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
                     >
                         <Square>

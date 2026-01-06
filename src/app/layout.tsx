@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/layouts/Header";
+import SearchOverlay from "@/components/modules/Search/SearchOverlay";
 import Footer from "@/layouts/Footer";
 import Modal from "@/components/common/modal/Modal";
 import Push from "@/components/common/Push";
@@ -27,6 +28,7 @@ export default function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <Header />
+        <SearchOverlay/>
         <Modal/>
         <Push/>
         {children}

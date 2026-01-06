@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import BlogCard from "../common/BlogCard";
 import { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useResponsiveStore } from "@/store/useResponsiveStore";
 
 const TWEEN_FACTOR_BASE = 0.17
 
@@ -11,7 +12,12 @@ const numberWithinRange = (number: number, min: number, max: number): number =>
     Math.min(Math.max(number, min), max)
 
 export default function BlogSlider() {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+    const isTablet = useResponsiveStore(state => state.isTablet);
+    const [emblaRef, emblaApi] = useEmblaCarousel({ 
+        align: isTablet ? 'start' : 'center',
+        loop: true,
+        dragFree: isTablet ? true : false, 
+    })
     const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
     const tweenFactor = useRef(0)
     const tweenNodes = useRef<HTMLElement[]>([])
@@ -27,17 +33,17 @@ export default function BlogSlider() {
     }, [])
 
     const onSelect = useCallback(() => {
-        if (emblaApi) {
+        if (emblaApi && !isTablet) {
             const activeIndex = emblaApi.selectedScrollSnap();
             setActiveCardIndex(activeIndex);
         }
-    }, [emblaApi]);
+    }, [emblaApi, isTablet]);
 
     const scrollToSlide = useCallback((index: number) => {
-        if (emblaApi) {
+        if (emblaApi && !isTablet) {
             emblaApi.scrollTo(index);
         }
-    }, [emblaApi]);
+    }, [emblaApi, isTablet]);
 
     const tweenScale = useCallback((emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
             const engine = emblaApi.internalEngine()
@@ -80,7 +86,7 @@ export default function BlogSlider() {
     )
 
     useEffect(() => {
-        if (!emblaApi) return
+        if (!emblaApi || isTablet) return
 
         setTweenNodes(emblaApi)
         setTweenFactor(emblaApi)
@@ -93,16 +99,28 @@ export default function BlogSlider() {
         .on('scroll', tweenScale)
         .on('slideFocus', tweenScale)
         .on('select', onSelect);
-    }, [emblaApi, tweenScale, setTweenNodes, setTweenFactor, onSelect])
+    }, [emblaApi, tweenScale, setTweenNodes, setTweenFactor, onSelect, isTablet])
+
 
     const isActive = (index: number) => {
+        if (isTablet) return true
         return activeCardIndex === index
     }
 
     return (
-        <div className="relative overflow-hidden h-[530px] w-480">
+        <div className="relative w-full h-[459px] lg:overflow-hidden lg:h-[530px] lg:w-480">
+            {!isTablet &&
+                <div className="absolute inset-y-0 left-0 w-30 bg-linear-to-r 
+                    from-[#f2f2f2] to-transparent z-10 pointer-events-none"
+                />
+            }
+            {!isTablet &&
+                <div className="absolute inset-y-0 right-0 w-30 bg-linear-to-l 
+                    from-[#f2f2f2] to-transparent z-10 pointer-events-none"
+                />
+            }
             <div ref={emblaRef}>
-                <div  className="flex touch-pan-y touch-pinch-zoom">
+                <div className="flex touch-pan-y touch-pinch-zoom">
                     {Array.from({ length: 6 }).map((_, index) => (
                         <BlogCard 
                             key={index} 

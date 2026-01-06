@@ -1,12 +1,20 @@
+"use client";
+
 import TextArea from "../common/TextArea"
 import Button from "../common/Button"
 import ContentReview from "../common/ContentReview"
+import { useResponsiveStore } from "@/store/useResponsiveStore";
+import useEmblaCarousel from "embla-carousel-react";
 
 export default function Comments() {
+    const isMobile = useResponsiveStore((state) => state.isMobile);
+    const isTablet = useResponsiveStore((state) => state.isTablet);
+    const [emblaRef] = useEmblaCarousel({ align: "start", dragFree: true });
+
     return (
-        <section className="flex flex-col gap-16 items-center">
+        <section className="flex flex-col gap-12 sm:gap-16 items-center w-full">
             <div className="flex flex-col gap-8 items-center">
-                <div className="flex flex-col gap-4 max-w-148">
+                <div className="flex flex-col gap-4 w-full lg:max-w-148">
                     <h3 className="font-bold text-[36px] leading-11 text-center text-dark">
                         What do you think?
                     </h3>
@@ -17,7 +25,7 @@ export default function Comments() {
                 <TextArea/>
                 <Button
                     color="dark"
-                    size="xxl"
+                    size={isMobile ? 'full' : 'xxl'}
                     form="round"
                     icon="multipleForward"
                     hover="primary"
@@ -25,12 +33,24 @@ export default function Comments() {
                     Post
                 </Button>
             </div>
-            <div className="flex flex-wrap gap-y-8 gap-x-4">
-                <ContentReview/>
-                <ContentReview/>
-                <ContentReview/>
-                <ContentReview/>
-            </div>
+            {isTablet ? 
+                <div className="w-full">
+                    <div ref={emblaRef}>
+                        <div className="flex gap-4">
+                            {Array.from({ length: 4 }).map((_, index) => (
+                                <ContentReview key={index}/>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            :
+                <div className="flex flex-wrap gap-y-8 gap-x-4">
+                    {Array.from({ length: 4 }).map((_, index) => (
+                        <ContentReview key={index}/>
+                    ))}
+                </div>
+            }
+            
         </section>
     )
 }

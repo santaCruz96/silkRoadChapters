@@ -3,7 +3,7 @@ import SavedLecturesItem from "../common/SavedLecturesItem";
 export default function SavedLectures(){
     return (
         <section className="flex flex-col items-center gap-16 w-full">
-            <div className="flex flex-col gap-4 w-148">
+            <div className="flex flex-col gap-4 w-full sm:w-148">
                 <h3 className="font-bold text-[36px] text-center text-dark">
                     Saved for Later
                 </h3>
@@ -11,7 +11,7 @@ export default function SavedLectures(){
                     A collection of lectures, stories, and materials you’ve marked to return to — your own Silk Road of inspiration.
                 </p>
             </div>
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col items-center w-full">
                 {Array.from({ length: 4 }).map((_, index) => (
                     <SavedLecturesItem key={index}/>
                 ))}

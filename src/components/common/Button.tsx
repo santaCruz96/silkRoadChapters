@@ -13,6 +13,7 @@ export default function Button({
     shadow,
     isDisabled,
     hover,
+    hideOnMobile,
     children, 
     ...props
 }: ButtonProps) {
@@ -33,7 +34,8 @@ export default function Button({
         light: 'bg-light text-dark',
         red: 'bg-light text-accent-alert',
         empty: 'bg-transparent text-dark',
-        lightGrey: 'bg-background text-dark border border-stroke'
+        lightGrey: 'bg-background text-dark border border-stroke',
+        lightGreyDelete: 'bg-background border border-stroke',
     }
 
     const buttonSize: Record<string, string> = {
@@ -43,7 +45,8 @@ export default function Button({
         lg: 'w-34 py-3 text-[12px]',
         xl: 'w-68 py-4 text-[16px]',
         xxl: 'w-72 py-4 text-[16px]',
-        full: 'w-full py-4 text-[16px]'
+        full: 'w-full py-4 text-[16px]',
+        mobileHeader: 'w-20 py-3 text-[12px]'
     }
 
     const buttonForm: Record<string, string> = {
@@ -64,7 +67,8 @@ export default function Button({
     const iconColor: Record<string, string> = {
         dark: 'fill-light',
         light: `transition ${isHovered ? 'fill-black' : 'fill-dark'}`,
-        red: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`
+        red: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`,
+        lightGreyDelete: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`
     }
 
     const sizeIcon: Record<string, string> = {
@@ -76,7 +80,7 @@ export default function Button({
         <button 
             className={`cursor-pointer ${buttonForm[form]} ${buttonSize[size]} ${buttonColor[color]} font-bold flex items-center justify-center 
                 ${isDisabled && 'opacity-30'} ${shadow && 'shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)]'}
-                ${hover ? hoverOptions[hover] : ''}`} 
+                ${hover ? hoverOptions[hover] : ''} ${hideOnMobile && 'hidden sm:block'}`} 
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             {...props}

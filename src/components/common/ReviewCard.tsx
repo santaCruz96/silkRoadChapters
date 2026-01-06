@@ -2,10 +2,10 @@ import Square from "./Square";
 
 export default function ReviewCard() {
     return (
-        <div className="flex flex-col rounded-[20px] p-4 bg-light gap-4 w-110
+        <div className="flex flex-col rounded-[20px] p-4 bg-light gap-4 min-w-72 lg:w-110
             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
         >
-            <p className="italic font-normal text-[16px] leading-[150%] text-grey h-[252px]">
+            <p className="italic font-normal text-[16px] leading-[150%] text-grey h-[412px] lg:h-[252px]">
                 Review_Text
             </p>
             <div className="flex justify-between">

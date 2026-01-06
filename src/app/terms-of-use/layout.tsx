@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Legal",
-    description: "Legal",
+    title: "Terms of use",
+    description: "Terms of use",
 };
 
-export default function LegalLayout({
+export default function TermsOfUseLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

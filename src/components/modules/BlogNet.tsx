@@ -5,10 +5,13 @@ import { PaidLecturesNetProps } from "@/interfaces/PaidLecturesNet.props";
 import CatalogHeader from '../common/CatalogHeader';
 import BlogCard from '../common/BlogCard';
 import Pagination from '../common/Pagination';
+import { useResponsiveStore } from "@/store/useResponsiveStore";
 
 const MOCK_LECTURES = Array.from({ length: 100 }, (_, i) => ({ id: i }));
 
 export default function BlogNet({page, cardsPerPage}: PaidLecturesNetProps ) {
+    const isMobile = useResponsiveStore(state => state.isMobile);
+    const isTablet = useResponsiveStore(state => state.isTablet);
     const [currentPage, setCurrentPage] = useState<number>(0);
     const targetRef = useRef<HTMLDivElement>(null);
 
@@ -29,7 +32,7 @@ export default function BlogNet({page, cardsPerPage}: PaidLecturesNetProps ) {
     return (
         <section className="flex flex-col gap-16 w-full">
             <CatalogHeader page={page}/>
-            <div ref={targetRef} className="grid grid-cols-2 gap-x-4 gap-y-8 scroll-mt-30">
+            <div ref={targetRef} className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-8 scroll-mt-30">
                 {currentCards.map((card, index) => {
                     const isTallCard = 
                     (currentCards.length >= 5 && currentCards.length <= 7 && index === 2) ||
@@ -41,7 +44,7 @@ export default function BlogNet({page, cardsPerPage}: PaidLecturesNetProps ) {
                         <BlogCard
                             key={card.id}
                             cardId={card.id}
-                            grid={gridClass}
+                            grid={isMobile || isTablet ? 'col-span-1' : gridClass}
                             isActive
                         />
                     )

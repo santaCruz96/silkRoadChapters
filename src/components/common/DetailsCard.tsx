@@ -4,7 +4,7 @@ import { DetailsCardProps } from "@/interfaces/DetailsCard.props";
 
 export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
     return (
-        <div className="flex flex-col rounded-[20px] p-4 bg-light w-72 self-start
+        <div className="flex flex-col rounded-[20px] p-4 bg-light w-full lg:w-72 self-start
             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
         >
             <div className="flex w-full justify-between">

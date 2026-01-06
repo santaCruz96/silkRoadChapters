@@ -5,25 +5,30 @@ export const socialLinks: ISocialLinks = {
         {
             id: 1,
             route: '#',
-            iconName: 'telegram',
+            iconName: 'facebook',
         },
         {
             id: 2,
             route: '#',
-            iconName: 'youtube',
+            iconName: 'telegram',
         },
         {
             id: 3,
             route: '#',
-            iconName: 'instagram',
+            iconName: 'youtube',
         },
         {
             id: 4,
             route: '#',
-            iconName: 'whatsapp',
+            iconName: 'instagram',
         },
         {
             id: 5,
+            route: '#',
+            iconName: 'whatsapp',
+        },
+        {
+            id: 6,
             route: '#',
             iconName: 'mail',
         },
@@ -32,15 +37,20 @@ export const socialLinks: ISocialLinks = {
         {
             id: 1,
             route: '#',
-            iconName: 'telegram',
+            iconName: 'facebook',
         },
         {
             id: 2,
             route: '#',
-            iconName: 'youtube',
+            iconName: 'telegram',
         },
         {
             id: 3,
+            route: '#',
+            iconName: 'youtube',
+        },
+        {
+            id: 4,
             route: '#',
             iconName: 'instagram',
         },

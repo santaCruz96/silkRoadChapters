@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "About",
-    description: "About",
+    title: "Public offer",
+    description: "Public offer",
 };
 
-export default function AboutLayout({
+export default function PublicOfferLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <div className="flex justify-center bg-background overflow-x-clip">
+        <div className="flex justify-center bg-background">
             {children}
         </div>
     );
