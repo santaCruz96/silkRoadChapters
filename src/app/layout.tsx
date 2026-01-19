@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {NextIntlClientProvider} from 'next-intl';
+import {getMessages, getLocale} from 'next-intl/server';
 import { Inter } from "next/font/google";
 import Header from "@/layouts/Header";
 import SearchOverlay from "@/components/modules/Search/SearchOverlay";
@@ -18,17 +19,20 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`${inter.variable} antialiased`}
       >
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
           <Header />
           <SearchOverlay/>
           <Modal/>

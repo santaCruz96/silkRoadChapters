@@ -23,7 +23,7 @@ export default function NotFoundPage() {
             <GeneralContainer>
                 <div className="flex flex-col items-center justify-center">
                     <h1 className="mb-4 font-bold text-[40px] sm:text-[64px] leading-12 
-                            sm:leading-[76px] tracking-[-0.01em] text-center text-dark"
+                            sm:leading-19 tracking-[-0.01em] text-center text-dark"
                     >
                         {t('title')}
                     </h1>
@@ -36,7 +36,7 @@ export default function NotFoundPage() {
                         play
                         direction={direction}
                         onComplete={handleComplete}
-                        className="w-[227px] md:w-[291px]"
+                        className="w-56.75 md:w-72.75"
                     />
                     <Link
                         href={'/'}
