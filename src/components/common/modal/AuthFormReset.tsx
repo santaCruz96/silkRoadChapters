@@ -1,32 +1,45 @@
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
+import { useModal } from '@/store/useModalStore';
 import Button from "../Button";
+import {useTranslations} from 'next-intl';
 
 export default function AuthFormReset() {
+    const t = useTranslations('Modal.reset');
+    const router = useRouter();
+
+    const { open, close } = useModal();
     const [isSended, setIsSended] = useState<boolean>(false);
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); 
         setIsSended(true);    
+        open('newPassword');
     };
+
+    const goToAccount = () => {
+        close();
+        router.push('/account');
+    }
 
     if (isSended) {
         return (
             <div className="flex flex-col gap-[121px]">
-                <form action="#" className="flex flex-col gap-8">
+                <form action={goToAccount} className="flex flex-col gap-8">
                     <div className="flex flex-col gap-4">
                         <input
                             type="password"
                             className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                                 shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                                 placeholder:font-medium placeholder:text-image focus:outline-none"
-                            placeholder="New Password"
+                            placeholder={t('newPassword')}
                         />
                         <input
                             type="password"
                             className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                                 shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                                 placeholder:font-medium placeholder:text-image focus:outline-none"
-                            placeholder="Repeat your password"
+                            placeholder={t('repeatPassword')}
                         />
                     </div>
                     <Button
@@ -37,11 +50,11 @@ export default function AuthFormReset() {
                         icon="squareArrowRight"
                         hover="primary"    
                     >
-                        Sign In
+                        {t('signIn')}
                     </Button>
                 </form>
                 <p className="font-normal text-[14px] leading-[160%] text-grey">
-                    Enter your new password and confirm it below. Once submitted, you’ll be automatically signed in.
+                    {t('bottomText2')}
                 </p>
             </div>
         )
@@ -54,7 +67,7 @@ export default function AuthFormReset() {
                         className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                             shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                             placeholder:font-medium placeholder:text-image focus:outline-none"
-                        placeholder="Email"
+                        placeholder={t('email')}
                     />
                     <Button
                         type="submit"
@@ -64,11 +77,11 @@ export default function AuthFormReset() {
                         icon="multipleForward"
                         hover="primary"    
                     >
-                        Send
+                        {t('send')}
                     </Button>
                 </form>
                 <p className="font-normal text-[14px] leading-[160%] text-grey">
-                    We’ll send a recovery link to your email. Check your inbox and follow the instructions to reset your password.
+                    {t('bottomText1')}
                 </p>
             </div>
         )

@@ -6,15 +6,22 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import useEmblaCarousel from "embla-carousel-react";
 
+import { useReviewsData } from "@/data/reviews.data";
+
 function ReviewsCarouselMobile() {
+    const reviewsData = useReviewsData();
     const [emblaRef] = useEmblaCarousel({ align: "start", dragFree: true, loop: true });
+    const allReiviews = reviewsData[0].concat(reviewsData[1])
 
     return (
         <div className="w-full">
             <div ref={emblaRef}>
                 <div className="flex gap-4">
-                    {Array.from({ length: 15 }).map((_, index) => (
-                        <ReviewCard key={index}/>
+                    {allReiviews.map((review) => (
+                        <ReviewCard 
+                            key={review.id}
+                            review={review}
+                        />
                     ))}
                 </div>
             </div>
@@ -24,6 +31,7 @@ function ReviewsCarouselMobile() {
 
 function ReviewsCarouselDesktop() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const reviewsData = useReviewsData();
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -36,13 +44,19 @@ function ReviewsCarouselDesktop() {
     return (
         <div ref={containerRef} className="flex flex-col gap-4">
             <motion.div className="flex gap-4" style={{ x: upperX }}>
-                {Array.from({ length: 15 }).map((_, index) => (
-                    <ReviewCard key={index}/>
+                {reviewsData[0].map((review) => (
+                    <ReviewCard 
+                        key={review.id}
+                        review={review}
+                    />
                 ))}
             </motion.div>
             <motion.div className="flex gap-4" style={{ x: lowerX }}>
-                {Array.from({ length: 15 }).map((_, index) => (
-                    <ReviewCard key={index}/>
+                {reviewsData[1].map((review) => (
+                    <ReviewCard 
+                        key={review.id}
+                        review={review}
+                    />
                 ))}
             </motion.div>
         </div>

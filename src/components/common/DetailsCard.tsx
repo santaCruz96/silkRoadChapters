@@ -1,8 +1,11 @@
 import Button from "./Button";
 import Icon from "@/icons/Icon";
-import { DetailsCardProps } from "@/interfaces/DetailsCard.props";
+import { DetailsCardProps } from "@/types/props/DetailsCard.props";
+import {useTranslations} from 'next-intl';
 
 export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
+    const t = useTranslations('DeatailsCard');
+
     return (
         <div className="flex flex-col rounded-[20px] p-4 bg-light w-full lg:w-72 self-start
             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
@@ -45,7 +48,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                 {isPaid && 
                     <div className="flex flex-col gap-[7px] py-4 border-b border-stroke">
                         <p className="font-normal text-[14px] leading-[160%] text-grey">
-                            Price
+                            {t('price')}
                         </p>
                         <p className="font-semibold text-[32px] leading-[38px] text-dark">
                             $0.00
@@ -54,7 +57,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                 }
                 <div className="flex flex-col gap-[7px] py-4 border-b border-stroke">
                     <p className="font-semibold text-[18px] leading-[22px] text-dark">
-                        Location
+                        {t('location')}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey">
                         Details_Card_Text
@@ -62,7 +65,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                 </div>
                 <div className="flex flex-col gap-[7px] py-4 border-b border-stroke">
                     <p className="font-semibold text-[18px] leading-[22px] text-dark">
-                        Travel Point
+                        {t('travelPoint')}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey">
                         Details_Card_Text
@@ -70,7 +73,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                 </div>
                 <div className="flex flex-col gap-[7px] py-4">
                     <p className="font-semibold text-[18px] leading-[22px] text-dark">
-                        Year
+                        {t('year')}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey">
                         Details_Card_Text
@@ -84,7 +87,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                 icon="squareForward"
                 hover="headerPrimary"
             >
-                Share
+                {t('shareButton')}
             </Button>
         </div>
     )

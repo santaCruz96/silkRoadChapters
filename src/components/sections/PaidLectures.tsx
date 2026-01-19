@@ -5,8 +5,11 @@ import PaidLecturesSlider from "../modules/PaidLecturesSlider";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import { useTranslations } from 'next-intl';
 
 export default function PaidLectures() {
+    const t = useTranslations('PaidLectures');
+
     const isMobile = useResponsiveStore(state => state.isMobile);
     
     const pathname = usePathname();
@@ -16,23 +19,18 @@ export default function PaidLectures() {
     return (
         <section className="flex flex-col gap-12 sm:gap-16 items-center w-full">
             <div className="flex flex-col sm:w-148 items-center">
-                <h3 className="font-bold text-[36px] text-center text-dark mb-4">
+                <h3 className="font-bold text-[36px] leading-11 text-center text-dark mb-4">
                     {isContentPage ?
-                        'Next Steps in Your Journey'
+                        <>{t('contentPage_title_1')} <br />{t('contentPage_title_2')} </>
                     :
-                        'Journey Deeper into History'
+                        t('homePage_title')
                     }
                 </h3>
                 <p className="font-medium text-[16px] leading-[160%] text-center text-grey">
                     {isContentPage ? (
-                        <>
-                            Explore more advanced lectures to deepen your connection  
-                            <br />with the Silk Road’s heritage.
-                        </>
+                        <> {t('contentPage_text_1')} <br />{t('contentPage_text_2')}</>
                     ) : (
-                        <>
-                            Go beyond the basics — delve into detailed lectures and specialized courses created for those who want to deepen their knowledge of the Silk Road.
-                        </>
+                        t('homePage_text')
                     )
                     }
                 </p>
@@ -45,7 +43,7 @@ export default function PaidLectures() {
                             icon="arrowRightUp"
                             hover="primary"
                         >
-                            See all
+                            {t('more_button')} 
                         </Button>
                     </Link>
                 }

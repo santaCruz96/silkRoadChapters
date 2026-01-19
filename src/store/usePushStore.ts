@@ -3,15 +3,15 @@ import { create } from 'zustand';
 type PushType = 'info' | 'success' | 'error' | 'cookie';
 
 interface IPush {
-    id: string;
-    type: PushType;
-    message: string;
+    id: string,
+    type: PushType,
+    message: string
 }
 
 interface IPushStore {
-    pushes: IPush[];
-    addPush: (type: PushType, message: string) => void;
-    removePush: (id: string) => void;
+    pushes: IPush[],
+    addPush: (type: PushType, message: string) => void,
+    removePush: (id: string) => void
 }
 
 export const usePush = create<IPushStore>((set) => ({

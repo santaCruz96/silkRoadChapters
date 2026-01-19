@@ -1,0 +1,19 @@
+import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
+import { IconName } from "@/icons/iconMap";
+
+type ButtonColor = 'dark' | 'stroke' | 'light' | 'red' | 'empty' | 'lightGrey' | 'lightGreyDelete'
+type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full' | 'mobileHeader'
+
+export interface ButtonProps 
+    extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+        color: ButtonColor,
+        size: ButtonSize,
+        form: 'square' | 'round',
+        icon?: IconName,
+        iconSize?: 'small' | 'big',
+        shadow?: boolean,
+        isDisabled?: boolean, 
+        hover?: string,
+        hideOnMobile?: boolean,
+        children?: ReactNode
+}

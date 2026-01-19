@@ -1,4 +1,4 @@
-import { LogoProps } from "@/interfaces/Logo.props";
+import { LogoProps } from "@/types/props/Logo.props";
 
 export default function Logo({color}: LogoProps) {
 

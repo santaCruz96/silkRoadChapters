@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react"
-import { ButtonProps } from "../../interfaces/Button.props";
+import { ButtonProps } from "../../types/props/Button.props";
 import Icon from "@/icons/Icon";
 
 export default function Button({

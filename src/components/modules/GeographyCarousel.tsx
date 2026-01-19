@@ -3,9 +3,10 @@
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { useChoseCountry } from "@/store/useCountriesStore";
 
-import { countriesData } from "@/data/countries.data";
+import { useCountriesData } from "@/data/countries.data";
 
 export default function GeographyCarousel() {
+    const countriesData = useCountriesData();
     const isMobile = useResponsiveStore(state => state.isMobile);
     const { 
         isHovered, 

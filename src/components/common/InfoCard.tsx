@@ -1,4 +1,4 @@
-import { InfoCardProps } from "@/interfaces/InfoCard.props";
+import { InfoCardProps } from "@/types/props/InfoCard.props";
 import Square from "./Square";
 import Icon from "@/icons/Icon";
 

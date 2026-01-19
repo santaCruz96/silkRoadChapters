@@ -6,12 +6,15 @@ import { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 
+import { useBlogData } from "@/data/blog.data";
+
 const TWEEN_FACTOR_BASE = 0.17
 
 const numberWithinRange = (number: number, min: number, max: number): number =>
     Math.min(Math.max(number, min), max)
 
 export default function BlogSlider() {
+    const blogData = useBlogData();
     const isTablet = useResponsiveStore(state => state.isTablet);
     const [emblaRef, emblaApi] = useEmblaCarousel({ 
         align: isTablet ? 'start' : 'center',
@@ -121,10 +124,10 @@ export default function BlogSlider() {
             }
             <div ref={emblaRef}>
                 <div className="flex touch-pan-y touch-pinch-zoom">
-                    {Array.from({ length: 6 }).map((_, index) => (
+                    {blogData.map((lecture, index) => (
                         <BlogCard 
-                            key={index} 
-                            cardId={index}
+                            key={lecture.id} 
+                            lecture={lecture}
                             isActive={isActive(index)} 
                             onClick={() => scrollToSlide(index)}
                             isCarousel

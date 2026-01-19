@@ -1,4 +1,4 @@
-import { HomeLayoutProps } from "@/interfaces/HomeLayout.props";
+import { HomeLayoutProps } from "@/types/props/HomeLayout.props";
 
 export default function HomeLayout({children}: HomeLayoutProps) {
     return (

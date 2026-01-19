@@ -1,4 +1,4 @@
-import { GeneralContainerProps } from "@/interfaces/GeneralContainer.props";
+import { GeneralContainerProps } from "@/types/props/GeneralContainer.props";
 
 export default function GeneralContainer({
     children, 

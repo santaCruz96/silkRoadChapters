@@ -6,8 +6,10 @@ import FreeLectureSlider from "../modules/FreeLecturesSlider";
 import { usePrevNextButtons } from "@/hooks/usePrevNextButtons";
 import useEmblaCarousel from 'embla-carousel-react';
 import { usePathname } from 'next/navigation';
+import {useTranslations} from 'next-intl';
 
 export default function FreeLectures() {
+    const t = useTranslations('FreeLectures');
 
     const pathname = usePathname();
 
@@ -26,18 +28,18 @@ export default function FreeLectures() {
         <section className="flex flex-col gap-12 sm:gap-16 w-full" id="free-lectures">
             <div className="flex justify-center lg:justify-between">
                 <div className="flex flex-col gap-4 w-148">
-                    <h3 className="font-bold text-center lg:text-start text-[36px] text-dark">
+                    <h3 className="font-bold text-center leading-11 lg:text-start text-[36px] text-dark">
                         {isContentPage ? 
-                            'More Chapters to Explore' 
+                            t('contentPage_title')
                         : 
-                            'Learn for Free'
+                            t('homePage_title')
                         }
                     </h3>
                     <p className="font-medium text-center lg:text-start text-[16px] leading-[160%] text-grey">
                         {isContentPage ? 
-                            'Dive into more stories and insights that deepen your understanding of Central Asia and Silk Road.' 
+                            t('contentPage_text')
                         : 
-                            'Discover the Silk Road through free talks by an experienced guide.'
+                            t('homePage_text')
                         }
                     </p>
                 </div>

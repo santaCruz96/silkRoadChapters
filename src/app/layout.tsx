@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import {NextIntlClientProvider} from 'next-intl';
 import { Inter } from "next/font/google";
 import Header from "@/layouts/Header";
 import SearchOverlay from "@/components/modules/Search/SearchOverlay";
@@ -27,12 +28,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
-        <Header />
-        <SearchOverlay/>
-        <Modal/>
-        <Push/>
-        {children}
-        <Footer/>
+        <NextIntlClientProvider>
+          <Header />
+          <SearchOverlay/>
+          <Modal/>
+          <Push/>
+          {children}
+          <Footer/>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

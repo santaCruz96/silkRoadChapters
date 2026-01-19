@@ -1,25 +1,27 @@
-import { CatalogHeaderProps } from "@/interfaces/CatalogHeader.props";
+import { CatalogHeaderProps } from "@/types/props/CatalogHeader.props";
 import Button from "./Button";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import {useTranslations} from 'next-intl';
 
 export default function CatalogHeader({
     page,
 }: CatalogHeaderProps) {
+    const t = useTranslations('Catalog');
 
     const isMobile = useResponsiveStore(state => state.isMobile);
 
     const title: Record<string, string> = {
-        freeLectures: 'Learn for Free',
-        paidLectures: 'Stories from the Silk Road',
-        blog: 'Stories from the Silk Road',
-        account: 'Your Exploration Path'
+        freeLectures: t('freeLectures.title'),
+        paidLectures: t('paidLectures.title'),
+        blog: t('blog.title'),
+        account: t('account.title'),
     } 
 
     const text: Record<string, string> = {
-        freeLectures: 'Discover the Silk Road through free talks by a researcher and traveler.',
-        paidLectures: 'Explore reflections on the ancient routes — their history, culture, and the connections that bridge past and present.',
-        blog: 'Explore reflections on the ancient routes — their history, culture, and the connections that bridge past and present.',
-        account: 'All lectures you’ve unlocked — ready to revisit anytime, from any device.'
+        freeLectures: t('freeLectures.text'),
+        paidLectures: t('paidLectures.text'),
+        blog: t('blog.text'),
+        account: t('account.text'),
     } 
 
     return (
@@ -52,7 +54,7 @@ export default function CatalogHeader({
                         form="round"
                         hover="primary"
                     >
-                        Newest
+                        {t('newButton')}
                     </Button>
                     <Button
                         color="light"
@@ -61,7 +63,7 @@ export default function CatalogHeader({
                         hover="secondary"
                         shadow
                     >
-                        Popular
+                        {t('popularButton')}
                     </Button>
                 </div>
             }

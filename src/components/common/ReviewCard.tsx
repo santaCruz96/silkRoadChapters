@@ -1,18 +1,22 @@
-import Square from "./Square";
+import { ReviewProps } from "@/types/props/Review.props";
 
-export default function ReviewCard() {
+export default function ReviewCard({review}: ReviewProps) {
     return (
         <div className="flex flex-col rounded-[20px] p-4 bg-light gap-4 min-w-72 lg:w-110
             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
         >
             <p className="italic font-normal text-[16px] leading-[150%] text-grey h-[412px] lg:h-[252px]">
-                Review_Text
+                {review.text}
             </p>
             <div className="flex justify-between">
-                <p className="font-semibold text-[18px] leading-[150%] text-dark">
-                    Review_Name
+                <p className="w-46 font-semibold text-[18px] leading-[150%] text-dark">
+                    {review.name}
                 </p>
-                <Square/>
+                <div 
+                    className="flex items-center justify-center rounded-xl 
+                        w-[60px] h-[60px] bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${review.avatar})`}}
+                />
             </div>
         </div>
     )

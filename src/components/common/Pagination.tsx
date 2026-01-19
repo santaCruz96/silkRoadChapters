@@ -1,5 +1,5 @@
 import ReactPaginate from 'react-paginate';
-import { PaginationProps } from "@/interfaces/Pagination.props";
+import { PaginationProps } from "@/types/props/Pagination.props";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import Icon from '@/icons/Icon';
 

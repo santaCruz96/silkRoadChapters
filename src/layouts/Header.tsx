@@ -9,15 +9,22 @@ import { motion } from 'framer-motion';
 import { useModal } from "@/store/useModalStore";
 import useScrollLock from '@/hooks/useScrollLock';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import { useLocaleStore } from '@/store/useLocaleStore';
+import {useTranslations} from 'next-intl';
 
 export default function Header() {
+    const t = useTranslations('Header');
     const isMobile = useResponsiveStore(state => state.isMobile);
-
+    const {locale, setLocale} = useLocaleStore();
     const [isExpanded, setIsExpanded] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
     const isOpen = useModal((state) => state.isOpen);
     const toggle = useModal((state) => state.toggle);
+
+    const toggleLanguage = () => {
+        setLocale(locale === 'en' ? 'ru' : 'en');
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -76,7 +83,7 @@ export default function Header() {
                         hover="headerPrimary"
                         onClick={() => toggle('menu')}
                     >
-                        Menu
+                        {t('menu')}
                     </Button>
                     <Search/>
                 </motion.div>
@@ -100,7 +107,7 @@ export default function Header() {
                         hover="headerSecondary"
                         onClick={() => toggle('login')}
                     >
-                        Join Us
+                        {t('joinUs')}
                     </Button>
                     <Button 
                         color="stroke" 
@@ -108,8 +115,9 @@ export default function Header() {
                         form="square"
                         hover="headerSecondary"
                         hideOnMobile
+                        onClick={toggleLanguage}
                     >
-                        English
+                        {t('language')}
                     </Button>
                 </motion.div>
             </div>

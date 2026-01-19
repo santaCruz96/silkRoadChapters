@@ -3,8 +3,11 @@ import CurrencyConverter from "@/components/modules/CurrencyConverter";
 import Square from "@/components/common/Square";
 import Icon from "@/icons/Icon";
 import Button from "@/components/common/Button";
+import {useTranslations} from 'next-intl';
 
 export default function Payment() {
+    const t = useTranslations('Payment');
+
     return (
         <GeneralContainer>
             <div className="flex flex-col gap-16">
@@ -13,10 +16,10 @@ export default function Payment() {
                         className="font-bold text-[40px] sm:text-[64px] leading-12 sm:leading-[76px]
                             tracking-[-0.01em] text-center text-dark"
                     >
-                        Unlock Your Lecture
+                        {t('title')}
                     </h1>
                     <p className="font-medium text-[16px] leading-[160%] text-center text-grey">
-                        Complete your purchase safely through our verified payment partner.
+                        {t('text')}
                     </p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-8 gap-y-8 gap-x-4">
@@ -34,10 +37,10 @@ export default function Payment() {
                         </div>
                         <div className="flex flex-col gap-[7px] mt-16">
                             <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
-                                Currency & Conversion
+                                {t('currencyConversion.title')}
                             </h3>
                             <p className="font-normal text-[14px] leading-[160%] text-grey">
-                                Payments are processed in UZS (Uzbek Soum) at the current exchange rate. <br />Conversion happens automatically — the final amount will be shown on the payment page.
+                                {t('currencyConversion.text1')} <br />{t('currencyConversion.text2')}
                             </p>
                         </div>
                     </div> 
@@ -50,10 +53,10 @@ export default function Payment() {
                         </Square>
                         <div className="flex flex-col gap-[7px] mt-16">
                             <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
-                                Payment Security
+                                {t('paymentSecurity.title')}
                             </h3>
                             <p className="font-normal text-[14px] leading-[160%] text-grey">
-                                All payments are processed securely through Octobank, our official acquiring partner. <br />Your transaction and card details are fully protected and encrypted according to international PCI DSS standards.                            
+                                {t('paymentSecurity.text1')} <br />{t('paymentSecurity.text2')}                        
                             </p>
                         </div>
                     </div>
@@ -102,7 +105,7 @@ export default function Payment() {
                             form="round"
                             icon="card"
                         >
-                            Purchase
+                            {t('purchaseButton')}
                         </Button>
                     </div>
                 </div>

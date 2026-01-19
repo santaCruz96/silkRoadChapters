@@ -5,8 +5,10 @@ import Button from "../common/Button"
 import ContentReview from "../common/ContentReview"
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import useEmblaCarousel from "embla-carousel-react";
+import {useTranslations} from 'next-intl';
 
 export default function Comments() {
+    const t = useTranslations('Comments');
     const isMobile = useResponsiveStore((state) => state.isMobile);
     const isTablet = useResponsiveStore((state) => state.isTablet);
     const [emblaRef] = useEmblaCarousel({ align: "start", dragFree: true });
@@ -16,10 +18,10 @@ export default function Comments() {
             <div className="flex flex-col gap-8 items-center">
                 <div className="flex flex-col gap-4 w-full lg:max-w-148">
                     <h3 className="font-bold text-[36px] leading-11 text-center text-dark">
-                        What do you think?
+                        {t('title')}
                     </h3>
                     <p className="font-medium text-[16px] leading-[160%] text-center text-grey">
-                        Leave a comment, start a discussion, or simply share what inspired you — every story grows through dialogue.
+                        {t('text')}
                     </p>
                 </div>
                 <TextArea/>

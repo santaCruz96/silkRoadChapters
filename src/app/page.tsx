@@ -3,7 +3,7 @@ import HomeLayout from "@/layouts/HomeLayout";
 import AboutAuthor from "@/components/sections/AboutAuthor";
 import Benefits from "@/components/sections/Benefits";
 import FreeLectures from "@/components/sections/FreeLectures";
-import Geogarphy from "@/components/sections/Geography";
+import Geography from "@/components/sections/Geography";
 import PaidLectures from "@/components/sections/PaidLectures";
 import Interlude from "@/components/sections/Interlude";
 import Blog from "@/components/sections/Blog";
@@ -18,7 +18,7 @@ export default function Home() {
         <AboutAuthor/>
         <Benefits/>
         <FreeLectures/>
-        <Geogarphy/>
+        <Geography/>
         <PaidLectures/>
         <Interlude/>
         <Blog/>

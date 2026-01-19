@@ -1,4 +1,4 @@
-import { ISocialLinks } from "@/interfaces/SocialLinks.interface";
+import { ISocialLinks } from "@/types/interfaces/SocialLinks.interface";
 
 export const socialLinks: ISocialLinks = {
     menu: [

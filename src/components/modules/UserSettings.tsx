@@ -2,8 +2,10 @@
 
 import Button from "../common/Button";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import {useTranslations} from 'next-intl';
 
 export default function UserSettings() {
+    const t = useTranslations('UserSettings');
     const isMobile = useResponsiveStore((state) => state.isMobile);
 
     return (
@@ -12,7 +14,7 @@ export default function UserSettings() {
                 className="leading-12 sm:leading-[77px] font-bold text-[40px] sm:text-[64px] 
                     tracking-[-0.01em] text-center text-dark"
             >
-                Greetings!
+                {t('title')}
             </h1>
             <div className="relative flex flex-col sm:flex-row gap-12 sm:gap-4">
                 <div className="absolute left-4 top-4 sm:static flex flex-col gap-3">
@@ -48,7 +50,7 @@ export default function UserSettings() {
                     <div className="flex flex-col gap-4">
                         <div className="flex flex-col">
                             <label htmlFor="birthday" className="font-semibold text-[18px] text-dark mb-3 leading-[22px]">
-                                Date of birth
+                                {t('birthday')}
                             </label>
                             <input
                                 type="text"

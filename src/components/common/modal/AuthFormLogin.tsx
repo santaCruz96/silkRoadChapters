@@ -1,32 +1,41 @@
+import { useRouter } from 'next/navigation';
 import { useModal } from '@/store/useModalStore';
 import Button from '../Button';
+import {useTranslations} from 'next-intl';
 
 export default function AuthFormLogin() {
+    const t = useTranslations('Modal.login');
+    const router = useRouter();
     
-    const {open} =useModal();
+    const {open, close} = useModal();
 
     const handleForgotPassword = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        open('reset');
+        open('resetPassword');
+    }
+
+    const goToAccount = () => {
+        close();
+        router.push('/account');
     }
 
     return (
         <div className="flex flex-col gap-[55px]">
-            <form action="#" className="flex flex-col gap-8">
+            <form action={goToAccount} className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
                     <input
                         type="email"
                         className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                             shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                             placeholder:font-medium placeholder:text-image focus:outline-none"
-                        placeholder="Email"
+                        placeholder={t('email')}
                     />
                     <input
                         type="password"
                         className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                             shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                             placeholder:font-medium placeholder:text-image focus:outline-none"
-                        placeholder="Password"
+                        placeholder={t('password')}
                     />
                 </div>
                 <a  
@@ -35,7 +44,7 @@ export default function AuthFormLogin() {
                     className="cursor-pointer font-normal text-[14px] leading-[160%] underline 
                         decoration-grey underline-offset-auto text-grey text-start"
                 >
-                    Forgot your password?
+                    {t('forgotPassword')}
                 </a>
                 <Button
                     type="submit"
@@ -45,12 +54,12 @@ export default function AuthFormLogin() {
                     icon="squareArrowRight"
                     hover="primary"
                 >
-                    Sign In
+                    {t('signIn')}
                 </Button>
             </form>
             <div className='flex flex-col gap-4'>
                 <p className='font-normal text-[14px] leading-[160%] text-grey'>
-                    Don’t have an account?
+                    {t('noAccount')}
                 </p>
                 <Button
                     color="light"
@@ -61,7 +70,7 @@ export default function AuthFormLogin() {
                     hover="secondary"
                     onClick={() => open('register')}
                 >
-                    Sign Up
+                    {t('signUp')}
                 </Button>
             </div>
         </div>

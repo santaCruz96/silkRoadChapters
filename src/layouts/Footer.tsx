@@ -4,11 +4,13 @@ import Link from "next/link"
 import Logo from "../components/common/Logo";
 import SocialLink from "@/components/common/SocialLink";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import {useTranslations} from 'next-intl';
 
 import { socialLinks } from "@/data/socialLinks.data";
 
 export default function Footer() {
     const isMobile = useResponsiveStore(state => state.isMobile);
+    const t = useTranslations('Footer');
 
     return (
         <footer className="w-[calc(100%-32px)] md:w-[calc(100%-64px)] max-w-300 mx-auto flex flex-col">
@@ -21,9 +23,9 @@ export default function Footer() {
                         className="flex w-full md:w-auto items-center justify-between md:justify-start 
                             sm:gap-[37px] font-bold text-[12px] text-light"
                     >
-                        <Link href={'/terms-of-use'}>Terms of Use</Link>
-                        <Link href={'/user-agreement'}>Agreement</Link>
-                        <Link href={'/public-offer'}>Public Offer</Link>
+                        <Link href={'/terms-of-use'}>{t('termsOfUse')}</Link>
+                        <Link href={'/user-agreement'}>{t('agreement')}</Link>
+                        <Link href={'/public-offer'}>{t('publicOffer')}</Link>
                     </div>
                     <Link
                         className="hidden md:block absolute left-1/2 -translate-x-1/2"
@@ -47,9 +49,9 @@ export default function Footer() {
             </div>
             <p className="my-4 sm:my-8 font-medium text-[16px] leading-[150%] text-center text-grey">
                 {isMobile ? (
-                    <>© 2025 Silk Road Chapters. <br />All rights reserved.</>
+                    <>© 2025 Silk Road Chapters. <br />{t('rights')}</>
                 ) : (
-                    <>© 2025 Silk Road Chapters. All rights reserved.</>
+                    <>© 2025 Silk Road Chapters. {t('rights')}</>
                 )}
             </p>
         </footer>

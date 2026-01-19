@@ -8,8 +8,10 @@ import Menu from './Menu';
 import AuthFormLogin from './AuthFormLogin';
 import AuthFormRegister from './AuthFormRegister';
 import AuthFormReset from './AuthFormReset';
+import {useTranslations} from 'next-intl';
 
 export default function Modal() {
+    const t = useTranslations('Modal');
 
     const { isOpen, mode, close } = useModal();
 
@@ -18,22 +20,27 @@ export default function Modal() {
 
     if (mode === 'menu') {
         content = <Menu/>;
-        headerText = 'Menu'
+        headerText = t('menu.headerText')
     }
 
     if (mode === 'login') {
         content = <AuthFormLogin/>;
-        headerText = 'Join Us'
+        headerText = t('login.headerText')
     }
 
     if (mode === 'register') {
         content = <AuthFormRegister/>;
-        headerText = 'Sign Up'
+        headerText = t('register.headerText')
     }
 
-    if (mode === 'reset') {
+    if (mode === 'resetPassword') {
         content = <AuthFormReset/>;
-        headerText = 'Reset Password'
+        headerText = t('reset.headerText1')
+    }
+
+    if (mode === 'newPassword') {
+        content = <AuthFormReset/>;
+        headerText = t('reset.headerText2')
     }
 
     useEffect(() => {
@@ -57,18 +64,18 @@ export default function Modal() {
         <AnimatePresence>
             {isOpen && (
                 <motion.div 
-                    className={`fixed flex w-full h-screen z-14 bg-[rgba(0,0,0,0.3)]`}
+                    className={`fixed flex w-full h-screen z-15 sm:z-14 bg-[rgba(0,0,0,0.3)]`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onClick={close}
                 >
-                    <div className="absolute top-28 sm:top-32 left-1/2 -translate-x-1/2 max-w-300
-                        w-[calc(100%-32px)] md:w-[calc(100%-64px)] h-full mx-auto z-15"
+                    <div className="absolute top-4 sm:top-32 left-1/2 -translate-x-1/2 max-w-300
+                        w-full sm:w-[calc(100%-32px)] md:w-[calc(100%-64px)] h-full mx-auto z-15"
                     >
                         <motion.div 
                             className="flex flex-col absolute top-0 right-4 sm:right-0 rounded-[20px] px-4 pt-4 
-                                pb-8 w-[288px] bg-background overflow-hidden
+                                pb-8 w-[calc(100%-32px)] sm:w-72 bg-background overflow-hidden
                                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
                             onClick={(e) => e.stopPropagation()}
                         >

@@ -4,10 +4,13 @@ import { useState, useCallback } from "react";
 import PaidLectureCard from "../common/PaidLectureCard";
 import useEmblaCarousel from "embla-carousel-react";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
-import { PaidLecturesSliderProps } from "@/interfaces/PaidLecturesSlider.props";
+import { PaidLecturesSliderProps } from "@/types/props/PaidLecturesSlider.props";
+
+import { usePaidLectures } from "@/data/paidLectures.data";
 
 export default function PaidLecturesSlider({page}: PaidLecturesSliderProps) {
     const isTablet = useResponsiveStore(state => state.isTablet);
+    const paidLectures = usePaidLectures();
 
     const [emblaRef, emblaApi] = useEmblaCarousel({
         align: isTablet ? 'start' : 'center',
@@ -53,10 +56,10 @@ export default function PaidLecturesSlider({page}: PaidLecturesSliderProps) {
             }
             <div ref={emblaRef}> 
                 <div className="flex sm:items-center select-none touch-pan-y touch-pinch-zoom">
-                    {Array.from({ length: 6 }).map((_, index) => (
+                    {paidLectures.map((lecture, index) => (
                         <PaidLectureCard 
-                            key={index} 
-                            cardId={index}
+                            key={lecture.id} 
+                            lecture={lecture}
                             isActive={isActive(index)}
                             onClick={() => scrollToSlide(index)}
                             isCarousel

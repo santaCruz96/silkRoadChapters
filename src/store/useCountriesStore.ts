@@ -1,12 +1,12 @@
 import { create } from 'zustand';
-import { ICountries } from '@/interfaces/Countries.interface';
+import { ICountries } from '@/types/interfaces/Countries.interface';
 
 interface IChoseCountry {
     isHovered: boolean,
     currentId: number | null,
     selectedCountry: ICountries | null,
-    setHovered: (id: number, countries: ICountries[]) => void;
-    unsetHovered: () => void;
+    setHovered: (id: number, countries: ICountries[]) => void,
+    unsetHovered: () => void
 }
 
 export const useChoseCountry = create<IChoseCountry>((set) => ({

@@ -1,4 +1,4 @@
-import { SquareProps } from "@/interfaces/Square.props";
+import { SquareProps } from "@/types/props/Square.props";
 
 export default function Square({children, ...props}: SquareProps) {
     return (

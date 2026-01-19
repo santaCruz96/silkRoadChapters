@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent } from 'react';
+import {useTranslations} from 'next-intl';
 
 interface TextAreaProps {
     maxLength?: number;
@@ -13,6 +14,7 @@ export default function TextArea ({
     value: controlledValue,
     onChange,
 }: TextAreaProps) {
+    const t = useTranslations('Comments');
     const isControlled = onChange !== undefined;
     const [internalValue, setInternalValue] = useState('');
 
@@ -31,7 +33,7 @@ export default function TextArea ({
             <textarea
                 value={currentValue}
                 onChange={handleChange}
-                placeholder="This lecture was a wonderful blend of storytelling and knowledge — I felt like I was traveling while learning."
+                placeholder={t('placeholder')}
                 maxLength={maxLength}
                 className={`absolute inset-0 w-full h-full resize-none border border-image
                     rounded-xl p-4 pb-8 bg-stroke text-dark placeholder:italic placeholder:font-normal

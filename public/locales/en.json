@@ -1,0 +1,740 @@
+{
+    "Header": {
+        "menu": "Menu",
+        "search": "Search",
+        "joinUs": "Join Us",
+        "language": "English"
+    },
+
+    "Modal": {
+        "menu": {
+            "headerText": "Menu",
+            "language": "English",
+            "author": "Author",
+            "freeLectures": "Free Lectures",
+            "paidLectures": "Paid Lectures",
+            "blog": "Blog",
+            "faq": "FAQ",
+            "followUs": "Follow us:"
+        },
+        "login": {
+            "headerText": "Join Us",
+            "email": "Email",
+            "password": "Password",
+            "forgotPassword": "Forgot your password?",
+            "signIn": "Sign In",
+            "noAccount": "Don’t have an account?",
+            "signUp": "Sign Up",
+            "error": "*Something doesn’t look right"
+        },
+        "register": {
+            "headerText": "Sign Up",
+            "name": "Name",
+            "birthday": "Date of Birth",
+            "email": "Email",
+            "password": "Password",
+            "repeatPassword": "Repeat your password",
+            "agree": "I agree with the",
+            "privacyPolicy": "Privacy Policy",
+            "signUp": "Sign Up",
+            "error": "*Something doesn’t look right"
+        },
+        "reset": {
+            "headerText1": "Reset Password",
+            "headerText2": "New Password",
+            "email": "Email",
+            "send": "Send",
+            "bottomText1": "We’ll send a recovery link to your email. Check your inbox and follow the instructions to reset your password.",
+            "newPassword": "New Password",
+            "repeatPassword": "Repeat your password",
+            "signIn": "Sign In",
+            "bottomText2": "Enter your new password and confirm it below. Once submitted, you’ll be automatically signed in."
+        }
+    },
+
+    "Push": {
+        "info": "Please check your inbox and confirm your email.",
+        "success": "The lecture is now available in your Library.",
+        "error": "The payment was canceled or couldn’t be processed.",
+        "cookie": "We use cookies to improve your experience on the site."
+    },
+
+    "Footer": {
+        "termsOfUse": "Terms of Use",
+        "agreement": "Agreement",
+        "publicOffer": "Public Offer",
+        "rights": "All rights reserved."
+    },
+
+    "Hero": {
+        "title": "Chronicles of the Silk Road — History Made Simple",
+        "text": "An educational journey through time — from past to present.",
+        "button": "Discover"
+    },
+
+    "AboutAuthor": {
+        "greetings": "Author’s Welcome",
+        "title1": "Hello, I’m Yuliya!",
+        "title2": "Welcome to Silk Road Chapters",
+        "title3": "",
+        "homePage_p1": "Hello, I’m Yuliya! Welcome to Silk Road Chapters",
+        "homePage_p2": "For the past 18 years, I have been guiding travelers through the diverse landscapes and cultures of Central Asia and Silk Road. From the ancient cities of Uzbekistan to the archeological sites of Turkmenistan, each journey has been a story worth sharing. With Silk Road Chapters, I want to open these stories to a wider audience and make the Silk Road more accessible to curious minds.",
+        "homePage_p3": "This project is not only about history — it is about discovery, cultural exchange, and deeper understanding. It reminds us that the stories of the past are still alive in the way we learn, travel, and connect today.",
+        "aboutPage_p1": "My path into history began almost by accident. At 18, I started working as a guide — a simple job at first, but one that opened a world I never expected. Nearly twenty years later, I’m still on that path, exploring the history, culture, and traditions of Central Asia and Silk Road and sharing them with anyone curious enough to listen.",
+        "aboutPage_p2": "Over the years, guiding became more than work; it became my passion. I love telling people about the stories behind the ancient cities, the meaning woven into architecture, the flavors of our food, and the spirit of the Silk Road that still lives in everyday life here. There is nothing more rewarding than watching someone discover this region for the first time — and fall in love with it the way I once did.",
+        "aboutPage_p3": "Silk Road Chapters was born from that feeling. It’s my way of helping more people learn about the fascinating history of the Silk Road, beyond tours and beyond borders — through stories, reflections, and accessible knowledge.",
+        "aboutPage_p4": "So come along with me.",
+        "aboutPage_p5": "Join me in this adventure, and let’s explore the Silk Road together — one chapter at a time.",
+        "slider_title": "In Focus",
+        "slider_text": "Portraits, travels, and fleeting moments that tell my story."
+    },
+    
+    "Benefits": {
+        "title": "The Value We Bring",
+        "text": "Experience, insight, and authenticity — the core of everything we do.",
+        "original": {
+            "title": "Original Content",
+            "text": "Every post and story come from real journeys, real research, and real voices — told the way they truly are."
+        },
+        "experience": {
+            "title": "18 Years of Experience",
+            "text": "Nearly two decades of exploring Central Asia — turning lived experience into stories that bring history to life."
+        },
+        "learning": {
+            "title": "Learning Through Stories",
+            "text": "We make history simple, relatable, and exciting — because learning should feel like discovery, not homework."
+        },
+        "personal": {
+            "title": "Personal Touch",
+            "text": "Every chapter reflects genuine curiosity and connection — we share what moves us, not what trends."
+        },
+        "crossCultural": {
+            "title": "Cross-Cultural Lens",
+            "text": "We see the Silk Road as a bridge — linking East and West, past and present, people and ideas."
+        },
+        "curiosity": {
+            "title": "Curiosity First",
+            "text": "Above all, we inspire curiosity — to learn, to travel, and to see the world with open eyes."
+        }
+    },
+
+    "FreeLectures": {
+        "homePage_title": "Learn for Free",
+        "homePage_text": "Discover the Silk Road through free talks by an experienced guide.",
+        "contentPage_title": "More Chapters to Explore",
+        "contentPage_text": "Dive into more stories and insights that deepen your understanding of Central Asia and Silk Road.",
+        "elechek": {
+            "title": "ELECHEK - a beauty of Kyrgyz traditional outfit",
+            "text": "Among the many symbols of Kyrgyz traditional culture, the elechek stands out as one of the most striking and meaningful. This elaborate women’s headdress, made from long, carefully wrapped lengths of white cloth, has been part of Kyrgyz identity for centuries."
+        },
+        "kurutob": {
+            "title": "KURUTOB - a signature dish of Tajikistan",
+            "text": "Among the many dishes that define the culinary identity of Tajikistan, kurotob holds a special and beloved place. At its heart, kurutob is a dish made from kurut — dried balls of fermented yogurt. These tangy, salty spheres are an essential ingredient in many Central Asian kitchens, but in Tajikistan they form the foundation of one of the country’s most iconic national foods."
+        },
+        "chor_minor": {
+            "title": "CHOR MINOR: Old Bukhara’s Gem",
+            "text": "Hidden among the winding mahallas of old Bukhara stands one of the city’s most unusual and charming architectural monuments — Chor Minor, meaning “Four Minarets.” Despite its name, Chor Minor is not a mosque with multiple minarets, but rather a small and architecturally unique gatehouse built in the early 19th century."
+        },
+        "khiva": {
+            "title": "Up the Highest Minaret of Khiva",
+            "text": "The Islam Khodja Minaret is one of Khiva’s most striking architectural landmarks — an elegant tower that has become a defining feature of the city’s skyline. Rising within the UNESCO-listed inner town of Itchan Kala, this minaret represents the culmination of centuries of architectural tradition in Khiva, blending classical oasis craftsmanship with the aesthetic vision of the early 20th century."
+        },
+        "laukh": {
+            "title": "LAUKH – An Exquisite Book Stand",
+            "text": "The laukh — a traditional wooden stand for the Qur’an and other manuscripts — is one of the most elegant and meaningful objects found throughout the Islamic world, including Central Asia. Known under different names across regions (such as rihal in the Middle East and North Africa), in Central Asia the term laukh is widely used. This simple yet ingenious object has served scholars, students, calligraphers, and travelers for centuries, symbolizing both reverence for the written word and the craftsmanship of local artisans."
+        },
+        "bread_of_samarkand": {
+            "title": "BREAD OF SAMARKAND - taste full of legends",
+            "text": "Samarkand bread is one of the most treasured symbols of Uzbek cuisine. Recognized for its round shape, golden crust, dense texture, and distinctive stamped patterns in the center, this bread has become an emblem of the ancient Silk Road city that gave it its name. For centuries, it has been praised not only for its flavor and beauty but also for its cultural meaning — hospitality, abundance, and the deep-rooted culinary traditions of Central Asia."
+        },
+        "huge_buddha": {
+            "title": "Huge Buddha from the Past of Tajikistan",
+            "text": "The monumental Buddha from Ajina Tepe is one of the most remarkable Buddhist artworks ever discovered in Central Asia, and today it is the star exhibit of the National Museum of Antiquities in Dushanbe, Tajikistan."
+        }
+    },
+
+    "PaidLectures": {
+        "homePage_title": "Journey Deeper into History",
+        "homePage_text": "Go beyond the basics — delve into detailed lectures and specialized courses created for those who want to deepen their knowledge of the Silk Road.",
+        "contentPage_title_1": "Next Steps in Your Journey",
+        "contentPage_title_2": "",
+        "contentPage_text_1": "Explore more advanced lectures to deepen your connection",
+        "contentPage_text_2": "with the Silk Road’s heritage.",
+        "more_button": "See all",
+        "pakhlavan": {
+            "title": "Where is Pakhlavan Makhmud buried?",
+            "text": "Pahlavan Mahmud who lived between 1247 and 1325, stands as one of the most revered historical figures of Khiva. Known simultaneously as a poet, philosopher, wrestler, and Sufi master, he embodies a rare combination of physical strength and spiritual depth. Over the centuries, he became the patron saint of Khiva, and his mausoleum—later transformed into the dynastic necropolis of the Khivan khans—remains one of the city’s most sacred sites."
+        },
+        "plov": {
+            "title": "PLOV must try in Uzbekistan",
+            "text": "Plov – or palov, as it is often called in Uzbekistan – is far more than a rice dish. It is widely regarded as the national dish of Uzbekistan and is closely tied to everyday life, hospitality, and celebration."
+        },
+        "chugurma": {
+            "title": "CHUGURMA - a traditional hat of the west of Central Asia",
+            "text": "Chugurma (Uzbek: choʻgirma) is a tall men’s fur hat closely associated with the Khorezm oasis in the west of Central Asia – today straddling north-western Uzbekistan and parts of Turkmenistan. More than just winter headgear, it became one of the most recognizable symbols of Khorezmian identity, worn in city bazaars, desert caravans and, today, at festivals and in tourist photos from Khiva’s old town."
+        },
+        "nonpar": {
+            "title": "NONPAR - a special bread stamp",
+            "text": "A nonpar (also called chekich in Uzbek and tukhumbar in Tajik) is a handheld stamp used to imprint patterns at the center of bread before baking. Its primary purpose is both artistic and functional: the stamped design prevents the middle of the bread from rising too much, while adding an instantly recognizable visual identity to each loaf. The patterns—radiating dots, stars, crescents, sunbursts, rosettes, or tight geometric grids—can be read almost like a signature of the baker’s skill and regional heritage."
+        },
+        "khovuz": {
+            "title": "KHOVUZ - a source of water in Ancient Bukhara",
+            "text": "In the old city of Bukhara, khovuz (also written hauz or howuz) were more than just decorative ponds. For centuries they formed a clever – and sometimes dangerous – water system that kept life going in this desert oasis. Medieval Bukhara was laced with canals bringing water from the Zarafshan River into the city, where it was stored in stone-lined basins. By some accounts, there were once more than 200 such pools scattered through the neighborhoods."
+        },
+        "manti_dumplimgs": {
+            "title": "MANTI DUMPLIMGS - one of the main dishes of Central Asia",
+            "text": "Manti dumplings are one of the most iconic dishes of Central Asia. Found in Uzbekistan, Kazakhstan, Kyrgyzstan, and parts of western China, manti represent far more than just steamed dough with meat."
+        },
+        "arba": {
+            "title": "Arba, or Arava - the main vehicle of the old Central Asia",
+            "text": "For centuries, long before motor roads and railways reshaped Central Asia, everyday life moved on the slow, steady rhythm of the arba — also known as arava in Tajik and Uzbek. This traditional two-wheeled wooden cart was one of the most recognizable and enduring vehicles of the region. Whether crossing the steppe or navigating the tight lanes of ancient cities like Bukhara and Samarkand, the arba served as a reliable companion for merchants, farmers, craftsmen, and caravan workers alike."
+        },
+        "tea_of_bukhara": {
+            "title": "Famous tea of Bukhara",
+            "text": "Among the many sensory treasures of Central Asia, few are as intriguing as the famous spiced tea of Bukhara — a drink that has survived centuries without changing its essence. Unlike most teas of the Silk Road, which traveled in caravans from China or India, this Bukharan brew is remarkable for what it doesn’t contain: there are no black or green tea leaves in its classical form."
+        }
+    },
+
+    "PaidLectureCard": {
+        "buy_button": "Buy",
+        "purchased_button": "Purchased"
+    },
+
+    "Blog": {
+        "homePage_title": "Stories from the Silk Road",
+        "homePage_text": "Explore reflections on the ancient routes — their history, culture, and the connections that bridge past and present.",
+        "contentPage_title": "More Stories to Read",
+        "contentPage_text_1": "Continue exploring reflections and insights",
+        "contentPage_text_2": "from across the Silk Road.",
+        "ten_things": {
+            "title": "10 Things to Buy in Uzbekistan",
+            "location": "Uzbekistan"
+        },
+        "yurt_tells": {
+            "title": "Every Yurt Tells a Story",
+            "location": "Kyrgyzstan"
+        },
+        "kokpar": {
+            "title": "Kokpar: a Thrilling Horse game of Central Asia",
+            "location": "Astana, Kazakhstan"
+        },
+        "packing_guide": {
+            "title": "A Packing Guide to Central Asia",
+            "location": "Central Asia"
+        },
+        "the_rhytons_of_nisa": {
+            "title": "The Rhytons of Nisa - the Heritage of Ancient Parthia",
+            "location": "Ashgabat, Turkmenistan"
+        },
+        "top_dishes": {
+            "title": "Top Dishes of Central Asia",
+            "location": "Central Asia"
+        },
+        "domes_are_blue": {
+            "title": "Why the Domes are Blue?",
+            "location": "Samarkand, Uzbekistan"
+        }
+    },
+
+    "Geography": {
+        "title": "The Geography of the Silk Road",
+        "text": "From China to Turkey, learn the cultures, histories, and landscapes of the countries that shaped the Silk Road.",
+        "Kazakhstan": "Kazakhstan",
+        "Tajikistan": "Tajikistan",
+        "Turkmenistan": "Turkmenistan",
+        "Uzbekistan": "Uzbekistan",
+        "Kyrgyzstan": "Kyrgyzstan",
+        "Iran": "Iran",
+        "Turkey": "Turkey",
+        "Afghanistan": "Afghanistan",
+        "Pakistan": "Pakistan",
+        "India": "India",
+        "China": "China"
+    },
+
+    "Interlude": {
+        "title": "The road to knowledge begins here",
+        "text": "Discover the Silk Road in motion."
+    },
+
+    "Reviews": {
+        "title": "What Travelers Say",
+        "text": "Real stories and impressions from those who’ve already explored Central Asia with Yuliya — journeys told through authentic voices. ",
+        "cheryl": {
+            "name": "Cheryl Claiborne",
+            "text": "Oh what an adventure! Traveling in Central Asia with an incredibly knowledgeable guide Yuliya was never something I imagined doing. The history, the architecture and the beauty of the 5 countries are beyond belief and should be on every travelers list. Explore & absorb!!"
+        },
+        "david": {
+            "name": "David Ginn",
+            "text": "I was very fortunate to have Yuliya as my tour director for the Five Stans tour of Central Asia. Her deep knowledge of the history, customs, and cuisine of these countries combined with outstanding descriptions of the architectural wonders brought this region to life.  She has a fantastic personality, great sense of humor, and was always positive and upbeat."
+        },
+        "mimi_howard": {
+            "name": "Mimi and Howard Simon",
+            "text": "We traveled with Yulia throughout the Stans and she is a wealth of knowledge. History, geography, culture, cuisine and current world affairs. Yulia was able to pull all the information together seamlessly and presenting it to us in a manner that was culturally and temporally appropriate. We have a much broader understanding of that region of the world and its history."
+        },
+        "roger_annie": {
+            "name": "Roger and Annie Cook",
+            "text": "Yuliya was an absolutely wonderful guide for our travels. Her knowledge of the culture and history of the cities and places we visited was extensive and conveyed to us in the most articulate and appropriate way. She was able to convey her enthusiasm and love for the people and architecture in a warm and friendly manner that we left thinking we would very much like to return. She is the very model of a guide and we have recommended her to our friends who plan to explore the Silk Road."
+        },
+        "edward": {
+            "name": "Edward Beall",
+            "text": "On my trip to the five Stans Yuliya was our expedition leader. She was by far one of the best if not the best leader I’ve ever had in my many trips around the world. She was exceedingly knowledgeable, reliable, helpful, honest, pleasant and funny. I would highly recommend her and most in a capacity in the tourist world. I hope she’s one of my expedition leaders and my future travels."
+        },
+        "kathryn": {
+            "name": "Kathryn Keller",
+            "text": "Our guide, Yuliya, brought each country to life with her deep knowledge, humor, and effortless organization. She was efficient, organized, and endlessly resourceful — and she made every day feel effortless. From hidden corners to bustling markets, she revealed the true spirit of Central Asia."
+        },
+        "margaret": {
+            "name": "Margaret Schuler",
+            "text": "Yulia added so much to my enjoyment of visiting Uzbeckistan and Kyrgyzstan. I really couldnt find much information about this region in English. Yulia was entertaining and knowledgeable about the rich history and marvelous handicrafts."
+        },
+        "susan": {
+            "name": "Susan Bassow",
+            "text": "Yuliya is an outstanding guide: knowledgeable, professional, personable, and caring. Her command of English is incredible. She made our trip to Uzbekistan and Kyrgyzstan an unforgettable experience. Strongly recommend!"
+        },
+        "anjali": {
+            "name": "Anjali Ahooja",
+            "text": "One of my most favorite trips was the one to The Five Stans. The scenery, the museums all beautiful but thanks to our wonderful guide and tour leader Yulia who made the trip fun and exciting... Julia’s knowledge is vast, her personality caring and she is very patient and I hope to return to this magical land and have Julia show me around again. She is indeed the BEST!!"
+        },
+        "bill": {
+            "name": "Bill Keller",
+            "text": "Yuliya truly brought the history and culture to life with her personal touch and deep knowledge of the region. Everything was exceptionally well organized — from the delicious local food to the comfortable accommodations. I would wholeheartedly recommend Yuliya’s expertise to anyone planning to visit this beautiful area. She made our trip unforgettable!"
+        },
+        "guiseppe": {
+            "name": "Guiseppe Ventura",
+            "text": "I had the opportunity to travel with Yuliya to 5 countries in Central Asia, across difficult borders and different social and political settings. She was the perfect organizer and everything went smoothly, so that I really enjoyed the trip."
+        },
+        "mehrdad": {
+            "name": "Mehrdad Mobasher",
+            "text": "Traveling through Central Asia with Yulia was one of the most enriching experiences I’ve had anywhere. Her deep knowledge of history, culture, and local life brings every site and story vividly to life — she’s not just a guide but a gifted storyteller and lecturer. I left with not only a deeper understanding of this fascinating region, but also great admiration for her professionalism and warmth."
+        },
+        "karin": {
+            "name": "Karin Bebee",
+            "text": "Yuliya was a fantastic guide. Her explanations were clear, her English was excellent, and she were funny! She made sure everyone was happy all the time. Guiding seems to be a passion for her, not just a job."
+        },
+        "heather": {
+            "name": "Heather Wood",
+            "text": "Yuliya was an excellent guide! Her breadth of knowledge was amazing and the organization of the trip was flawless.  Let her pick your food and you will get to enjoy all of the delicious local specialties. You can’t go wrong working with Yuliya. I highly recommend her and would definitely use her again in the future."
+        }
+    },
+
+    "Instagram": {
+        "title": "Follow Us Along the Silk Road",
+        "text": "Discover how the Silk Road looks through the lenses of our community — follow us on Instagram"
+    },
+
+    "Catalog": {
+        "newButton": "Newest",
+        "popularButton": "Popular",
+        "freeLectures": {
+            "headTitle": "Study, Explore... Repeat!",
+            "title": "Learn for Free",
+            "text": "Discover the Silk Road through free talks by a researcher and traveler."
+        },
+        "paidLectures": {
+            "headTitle": "Enter the Heart of the Silk Road",
+            "title": "Journey Deeper into History",
+            "text": "Go beyond the basics — delve into detailed lectures and specialized courses created for those who want to deepen their knowledge of the Silk Road."
+        },
+        "blog": {
+            "headTitle": "Adding New Layers",
+            "title": "Stories from the Silk Road",
+            "text": "Explore reflections on the ancient routes — their history, culture, and the connections that bridge past and present."
+        },
+        "account": {
+            "title": "Your Exploration Path",
+            "text": "All lectures you’ve unlocked — ready to revisit anytime, from any device."
+        }
+    },
+
+    "Comments": {
+        "title": "What do you think?",
+        "text": "Leave a comment, start a discussion, or simply share what inspired you — every story grows through dialogue.",
+        "placeholder": "This lecture was a wonderful blend of storytelling and knowledge — I felt like I was traveling while learning."
+    },
+
+    "DeatailsCard": {
+        "price": "Price",
+        "location": "Location",
+        "travelPoint": "Travel Point",
+        "year": "Year",
+        "shareButton": "Share"
+    },
+
+    "FAQ": {
+        "headTitle": "Let’s Clear the Path",
+        "1": {
+            "title": "How can I pay for the lectures?",
+            "text": "You can pay with Visa or Mastercard in any currency. All transactions are processed securely through our trusted payment system."
+        },
+        "2": {
+            "title": "Do you create original content?",
+            "text": "Yes. All materials, texts, and visuals are authored by our team and local experts. Each lecture reflects authentic voices and real stories from Central Asia."
+        },
+        "3": {
+            "title": "A Buddha in logo? Why?",
+            "text": "The Buddha sits on books — a reminder that learning is also a spiritual journey."
+        },
+        "4": {
+            "title": "Do I need to create an account to buy the lectures?",
+            "text": "You don't need account to watch the free lectures, but only creating a personal account allows you to purchase materials and get access to them anytime"
+        },
+        "5": {
+            "title": "Are your lectures suitable for beginners?",
+            "text": "Absolutely. Whether you’re a student, traveler, or researcher — each lecture is designed to be accessible, inspiring, and easy to follow, even without prior background."
+        },
+        "6": {
+            "title": "Will new content appear regularly?",
+            "text": "Yes. We update our library with new free and paid lectures, stories, and insights every month — so there’s always a new chapter waiting."
+        },
+        "7": {
+            "title": "Which countries do you cover?",
+            "text": "Our content spans the historical Silk Road — from China to Turkey, with a special focus on Uzbekistan, Kyrgyzstan, Tajikistan, Kazakhstan, Turkmenistan, and Iran."
+        },
+        "8": {
+            "title": "Can I contribute to the project?",
+            "text": "We’re always open to collaboration with writers, historians, and travelers. If you’d like to share your knowledge or experience — just reach out via info@silkroadchapters.com."
+        },
+        "9": {
+            "title": "Can I access the lectures after purchase?",
+            "text": "Yes. Once you’ve purchased a lecture, you’ll have unlimited access to it in your personal account — you can revisit the materials anytime, from any device."
+        }
+    },
+
+    "UserSettings": {
+        "title": "Greetings!",
+        "birthday": "Date of birth"
+    },
+
+    "SavedLectures": {
+        "title": "Saved for Later",
+        "text": "A collection of lectures, stories, and materials you’ve marked to return to — your own Silk Road of inspiration."
+    },
+
+    "Payment": {
+        "title": "Unlock Your Lecture",
+        "text": "Complete your purchase safely through our verified payment partner.",
+        "currencyConversion": {
+            "title": "Currency & Conversion",
+            "text1": "Payments are processed in UZS (Uzbek Soum) at the current exchange rate.",
+            "text2": "Conversion happens automatically — the final amount will be shown on the payment page."
+        },
+        "paymentSecurity": {
+            "title": "Payment Security",
+            "text1": "All payments are processed securely through Octobank, our official acquiring partner.",
+            "text2": "Your transaction and card details are fully protected and encrypted according to international PCI DSS standards."
+        },
+        "converterTitle": "Exchange rate",
+        "purchaseButton": "Purchase"
+    },
+
+    "TermsOfUse": {
+        "title": "Terms of Use of the Website",
+        "date_bold": "Effective Date:",
+        "date": "25 December 2025",
+        "website_bold": "Website:",
+        "company_bold": "Company:",
+        "company": "Individual Entrepreneur “Silk Road Chapters”, owner Aukhadeeva Yuliya Olegovna",
+        "section1": {
+            "title": "1. Acceptance of Terms",
+            "p1": "By using this website (hereinafter — the “Website”), you agree to these Terms of Use and the Public Offer. Access to and use of this Website imply the User’s full and unconditional acceptance of these Terms of Use and the Public Offer. In the event of disagreement with any provisions of the said documents, the User must refrain from using the Website."
+        },
+        "section2": {
+            "title": "2. Services Provided",
+            "p1": "The Company provides access to educational and informational materials about Central Asia and the Silk Road, including:",
+            "li1": "articles, publications, photographs, and graphic materials;",
+            "li2": "interactive educational materials and courses;",
+            "li3": "mailings and notifications (only with the User’s consent).",
+            "p2": "The Company reserves the right to modify, temporarily restrict, or terminate access to the Website materials in cases of violation by the User of these Terms, the Public Offer, legal requirements, as well as for technical or legal reasons. Any modification of access does not violate the User’s rights granted under these Terms and the Public Offer."
+        },
+        "section3": {
+            "title": "3. User Account",
+            "li1": "Registration may be required to access certain materials.",
+            "li2": "The User is obliged to provide accurate information during registration and to maintain the confidentiality of login credentials.",
+            "li3": "Creation of multiple accounts for the purpose of circumventing restrictions is prohibited.",
+            "li4": "The User is responsible for all actions performed using their account."
+        },
+        "section4": {
+            "title": "4. Personal Data",
+            "li1": "Processing of personal data is carried out in accordance with the Privacy Policy and the Public Offer.",
+            "li2": "Payment information is processed exclusively by third-party payment services; the Company does not store bank card data.",
+            "li3": "The User has the right to withdraw consent to the processing of personal data, which may limit access to services."
+        },
+        "section5": {
+            "title": "5. Intellectual Property",
+            "li1": "All Website materials are the property of the Company and are protected by copyright law.",
+            "li2": "The User is granted a non-exclusive license for personal and non-commercial use of the materials.",
+            "li3": "Any copying, distribution, or use of materials for commercial purposes without the Company’s written permission is prohibited.",
+            "li4": "Any copyright infringement, including illegal copying, distribution, or use of materials, may result in civil, administrative, or criminal liability in accordance with the legislation of the Republic of Uzbekistan.",
+            "li5": "The User undertakes to respect the intellectual property rights of the Company and third parties and to refrain from any actions that violate such rights."
+        },
+        "section6": {
+            "title": "6. Restrictions",
+            "p1": "The User undertakes not to:",
+            "li1": "use automated tools (bots, scrapers) to interact with the Website;",
+            "li2": "disrupt the operation of the Website or the access of other users;",
+            "li3": "violate the law or the rights of third parties;",
+            "li4": "use materials for the purpose of causing harm to the Company or third parties.",
+            "p2": "The Company has the right to restrict or block access in case of violation of these terms."
+        },
+        "section8": {
+            "title": "8. Limitation of Liability",
+            "li1": "The Company makes every effort to ensure the proper functioning of the Website and the relevance of its materials.",
+            "li2": "However, the Website and materials are provided “as is”, and the Company does not guarantee absolute accuracy, completeness, or uninterrupted access to services.",
+            "li3": "The Company shall not be liable for:",
+            "li3_1": "technical failures or temporary unavailability of the Website;",
+            "li3_2": "actions of third parties affecting the operation of the Website;",
+            "li3_3": "content of third-party websites linked on the Website.",
+            "li4": "The User is solely responsible for compliance with legislation, rules of Website use, and copyright when working with materials.",
+            "li5": "Any losses incurred by the User as a result of using the Website or materials shall be borne by the User, except in cases expressly provided for by the legislation of the Republic of Uzbekistan."
+        },
+        "section7": {
+            "title": "7. Paid Services and Subscription",
+            "li1": "The cost and conditions of paid materials and subscriptions are indicated on the Website.",
+            "li2": "Subscription may be renewed automatically only if this is expressly stated on the Website when ordering the relevant service.",
+            "li3": "Refunds are governed by the Public Offer."
+        },
+        "section9": {
+            "title": "9. Changes to the Terms",
+            "p1": "The Company has the right to amend these Terms unilaterally. Amendments shall enter into force from the moment of publication on the Website. Continued use of the Website constitutes acceptance of the updated terms."
+        },
+        "section10": {
+            "title": "10. Dispute Resolution",
+            "p1": "All disputes, disagreements, or claims arising out of or in connection with these Terms shall be resolved through negotiations between the Parties. If the Parties fail to reach an agreement, the dispute shall be resolved in accordance with the legislation of the Republic of Uzbekistan."
+        },
+        "section11": {
+            "title": "11. Contact Information",
+            "company": "Individual Entrepreneur «Silk Road Chapters»",
+            "address_bold": "Address:",
+            "address": "Republic of Uzbekistan, Tashkent city, Mirzo-Ulugbek district, Akhmad Yugnakiy residential area, building 28, apartment 50",
+            "tin_bold": "TIN:",
+            "email_bold": "Email:",
+            "phone_bold": "Telephone:"
+        }
+    },
+
+    "UserAgreement": {
+        "title": "User Agreement",
+        "intro": {
+            "date": "Tashkent, December 25, 2025",
+            "p1_1": "This User Agreement (hereinafter — the “Agreement”) governs the procedure for using the website",
+            "p1_link": "http://silkroadchapters.uz/",
+            "p1_2": "(hereinafter — the “Website”) and constitutes a legally binding agreement between the Individual Entrepreneur “Silk Road Chapters”, represented by the owner",
+            "p1_bold": "Aukhadeeva Yuliya Olegovna",
+            "p1_3": "(hereinafter — the “Company”), and any person using the Website (hereinafter — the “User”).",
+            "p2": "By using the Website, viewing materials, registering, subscribing, or interacting with the Company’s services, the User confirms that they have read, understood, and accepted the terms of this Agreement and the Public Offer."
+        },
+        "section1": {
+            "title": "1. General Provisions",
+            "p1": "1.1. This Agreement is a public document defining the rules for using the Website.",
+            "p2": "1.2. The Agreement is developed on the basis of the Public Offer and serves as a supplement thereto with respect to rules of conduct, limitation of liability, and the procedure for using materials.",
+            "p3": "1.3. In the event of any inconsistency between this Agreement and the Public Offer, the provisions of the Public Offer shall prevail."
+        },
+        "section2": {
+            "title": "2. Terms and Definitions",
+            "p1_bold": "Company —",
+            "p1": "Individual Entrepreneur “Silk Road Chapters”, the owner of the Website and the intellectual property rights to the materials published thereon.",
+            "p2_bold": "User —",
+            "p2": "any individual using the Website in any manner.",
+            "p3_bold": "Materials —",
+            "p3": "any texts, articles, photographs, images, courses, educational and informational materials available on the Website.",
+            "p4_bold": "Account —",
+            "p4": "a personal user account created by the User on the Website."
+        },
+        "section3": {
+            "title": "3. Conditions of Access and Use",
+            "p1": "3.1. Access to the Website functionality is provided to the User free of charge, except for materials and services offered on a paid basis in accordance with the Public Offer.",
+            "p2": "3.2. The User undertakes to use the Website exclusively for lawful purposes and to comply with the legislation of the Republic of Uzbekistan.",
+            "p3": "3.3. The following actions are prohibited:",
+            "li1": "distribution, copying, or modification of materials without the Company’s permission;",
+            "li2": "use of automated tools (bots, scrapers) to obtain data;",
+            "li3": "attempts to gain unauthorized access to other users’ accounts or internal sections of the Website;",
+            "li4": "publication of information that violates the law or the rights of third parties.",
+            "p4": "3.4. The Company has the right to restrict or block the User’s access in the event of violation of the terms of this Agreement or the Public Offer."
+        },
+        "section4": {
+            "title": "4. Registration and User Account",
+            "p1": "4.1. To obtain full access to the materials, the User is required to register.",
+            "p2": "4.2. During registration, the User shall provide accurate and truthful information.",
+            "p3": "4.3. The User is responsible for safeguarding their password and for all actions performed on behalf of their account.",
+            "p4": "4.4. The User agrees not to create more than one account unless otherwise permitted by the Company."
+        },
+        "section5": {
+            "title": "5. Personal Data",
+            "p1": "5.1. Processing of personal data is carried out in accordance with the Privacy Policy and the Public Offer.",
+            "p2": "5.2. The User consents to the processing of their data necessary for the provision of services.",
+            "p3": "5.3. The Company does not store or process bank card data — such processing is carried out by payment service providers.",
+            "p4": "5.4. The User has the right to withdraw consent to data processing, which may result in restricted access to services."
+        },
+        "section6": {
+            "title": "6. Paid Services and Subscription",
+            "p1": "6.1. The cost and conditions of paid services are specified on the Website.",
+            "p2": "6.2. Access to paid materials is provided after payment has been completed.",
+            "p3": "6.3. The refund policy is determined by the Public Offer.",
+            "p4": "6.4. When subscribing, automatic renewal is possible only if this is expressly stated on the Website at the time of ordering the relevant service."
+        },
+        "section7": {
+            "title": "7. Intellectual Property",
+            "p1": "7.1. All rights to the Website materials belong to the Company.",
+            "p2": "7.2. The User is granted a non-exclusive license for personal, non-commercial use of the materials.",
+            "p3": "7.3. Any other use of the materials (including copying, publication, transfer to third parties, translation, or sale) is prohibited without the Company’s prior written consent."
+        },
+        "section8": {
+            "title": "8. Limitation of Liability",
+            "p1": "8.1. All Website materials are provided “as is”, without any guarantees of accuracy or relevance.",
+            "p2": "8.2. The Company does not guarantee uninterrupted or error-free operation of the Website.",
+            "p3": "8.3. The Company shall not be liable for equipment failures, actions of third parties, communication failures, or the operation of payment services.",
+            "p4": "8.4. The Company is not responsible for the content of third-party websites, links to which may be present on the Website."
+        },
+        "section9": {
+            "title": "9. Amendments to the Agreement",
+            "p1": "9.1. The Company has the right to amend the terms of this Agreement unilaterally.",
+            "p2": "9.2. Amendments shall enter into force from the moment the updated version is published on the Website.",
+            "p3": "9.3. Continued use of the Website constitutes acceptance of the new terms."
+        },
+        "section10": {
+            "title": "10. Termination of Use",
+            "p1": "10.1. The User may discontinue use of the Website at any time.",
+            "p2": "10.2. The Company has the right to delete the User’s account or restrict access in the event of violation of the terms of this Agreement or the Public Offer.",
+            "p3": "10.3. Deletion of an account does not release the User from obligations incurred prior to such deletion."
+        },
+        "section11": {
+            "title": "11. Dispute Resolution",
+            "p1": "11.1. All disputes, disagreements, or claims arising out of or in connection with this Agreement shall be resolved through negotiations between the Parties. If an agreement cannot be reached, the dispute shall be resolved in accordance with the procedure established by the current legislation of the Republic of Uzbekistan."
+        },
+        "section12": {
+            "title": "12. Contact Information",
+            "company": "Individual Entrepreneur «Silk Road Chapters»",
+            "address_bold": "Address:",
+            "address": "Republic of Uzbekistan, Tashkent city, Mirzo-Ulugbek district, Akhmad Yugnakiy residential area, building 28, apartment 50",
+            "tin_bold": "TIN:",
+            "email_bold": "Email:",
+            "phone_bold": "Telephone:"
+        }
+    },
+    
+    "PublicOffer": {
+        "title": "Public offer",
+        "date": "Tashkent \"25\" December 2025",
+        "section1": {
+            "title": "1. General Provisions",
+            "p1_1": "1.1. This Public Offer (hereinafter — the \"Offer\") constitutes an official proposal of the individual entrepreneur",
+            "p1_bold": "Aukhadeeva Yuliya Olegovna,",
+            "p1_2": "operating under the commercial name IE \"Silk Road Chapters\", Tax Identification Number (TIN) 42411880270111, registered in the Republic of Uzbekistan (hereinafter — the \"Company\"), to enter into an agreement for the provision of information and educational services with any legally capable individual or legal entity (hereinafter — the \"User\").",
+            "p2_1": "1.2. The Offer is published on the website",
+            "p2_link": "http://silkroadchapters.uz/",
+            "p2_2": "(hereinafter — the “Website”) and is valid in accordance with the legislation of the Republic of Uzbekistan.",
+            "p3": "1.3. Acceptance of this Offer shall be deemed any of the following actions performed by the User:",
+            "li1": "registration on the Website;",
+            "li2": "ordering and payment for services;",
+            "li3": "use of the Website materials.",
+            "p4": "Performance of any of the above actions constitutes full and unconditional acceptance of the terms of this Offer."
+        },
+        "section2": {
+            "title": "2. Subject of the Offer",
+            "p1": "2.1. The Company provides the User with paid access to educational and informational materials devoted to Central Asia and the Silk Road, including:",
+            "li1": "articles, publications, photographs, and graphic materials;",
+            "li2": "interactive educational materials and online courses;",
+            "li3": "informational mailings and notifications (subject to the User’s consent).",
+            "p2": "2.2. Services are provided exclusively in electronic (digital) format by granting online access through the Website.",
+            "p3": "2.3. The period of access to the materials is determined by the description of the specific service published on the Website."
+        },
+        "section3": {
+            "title": "3. Rights and Obligations of the Parties",
+            "p1": "3.1. Obligations of the Company:",
+            "li1": "to provide services in accordance with the terms of this Offer;",
+            "li2": "to ensure the operability of the Website, except during periods of technical maintenance;",
+            "li3": "to ensure protection of the User’s personal data in accordance with the Privacy Policy.",
+            "p2": "3.2. Obligations of the User:",
+            "li4": "to provide accurate and truthful information;",
+            "li5": "to use the Website materials exclusively for personal and lawful purposes;",
+            "li6": "not to violate the Company’s copyright and intellectual property rights.",
+            "p3": "3.3. Rights of the User:",
+            "li7": "to receive the paid services in the agreed scope;",
+            "li8": "to refuse the processing of personal data in cases provided for by law."
+        },
+        "section4": {
+            "title": "4. Personal Data",
+            "p1": "4.1. Processing of personal data is carried out in accordance with the Privacy Policy published on the Website.",
+            "p2": "4.2. Personal data are used exclusively for:",
+            "li1": "provision of services;",
+            "li2": "communication with the User;",
+            "li3": "compliance with legal requirements."
+        },
+        "section5": {
+            "title": "5. Cost of Services and Payment Procedure",
+            "p1": "5.1. The cost of services is indicated on the Website in the national currency of the Republic of Uzbekistan — Uzbek soums (UZS).",
+            "p2": "5.2. The indicated prices are final and include all applicable taxes.",
+            "p3": "5.3. Payment for services is made using bank cards of the Visa, Mastercard, Uzcard, and Humo payment systems via a secure payment gateway.",
+            "p4": "5.4. Users’ bank card data are not stored or processed by the Company and are transmitted in encrypted form directly to the payment provider.",
+            "p5": "5.5. A service shall be deemed rendered from the moment access to the materials is granted to the User."
+        },
+        "section6": {
+            "title": "6. Order Placement Process",
+            "p1": "6.1. Order placement includes the following stages:",
+            "li1": "selection of a service on the Website;",
+            "li2": "completion of registration details;",
+            "li3": "order confirmation;",
+            "li4": "payment for the selected service.",
+            "p2": "6.2. After successful payment, the User is granted access to the purchased materials."
+        },
+        "section7": {
+            "title": "7. Refund of Services and Funds",
+            "p1": "7.1. As the services are provided in digital format, return of goods as a tangible object does not apply.",
+            "p2": "7.2. A refund is possible within 10 (ten) calendar days from the date of payment only on the condition that the User has not been granted access to the materials.",
+            "p3": "7.3. If access has been granted, the service is deemed rendered and no refund shall be made."
+        },
+        "section8": {
+            "title": "8. Order and Subscription Cancellation",
+            "p1": "8.1. The User has the right to cancel an order prior to its payment.",
+            "p2": "8.2. After access to the materials has been granted, cancellation of the order is not possible.",
+            "p3": "8.3. Subscription services are provided only if explicitly specified on the Website."
+        },
+        "section9": {
+            "title": "9. Promotions and Special Offers",
+            "p1": "9.1. The Company has the right to conduct promotions and provide discounts.",
+            "p2": "9.2. The terms of promotions, their duration, and limitations are published on the Website."
+        },
+        "section10": {
+            "title": "10. Intellectual Property",
+            "p1": "10.1. All materials on the Website are objects of the Company’s intellectual property.",
+            "p2": "10.2. Any copying, distribution, or use of the materials without the Company’s written permission is prohibited."
+        },
+        "section11": {
+            "title": "11. Security",
+            "p1": "11.1. The Website uses a secure SSL connection.",
+            "p2": "11.2. All payment transactions are carried out using modern encryption and security standards."
+        },
+        "section12": {
+            "title": "12. Term of the Offer",
+            "p1": "12.1. This Offer is valid from the moment of its publication on the Website and until its withdrawal by the Company.",
+            "p2": "12.2. The Company has the right to amend the terms of the Offer.",
+            "p3": "12.3. Continued use of the Website constitutes the User’s consent to the new terms."
+        },
+        "section13": {
+            "title": "13. Miscellaneous Provisions",
+            "p1": "13.1. A free trial period is not provided unless expressly stated on the Website.",
+            "p2": "13.2. All disputes shall be resolved through negotiations, and if not possible — in accordance with the legislation of the Republic of Uzbekistan."
+        },
+        "section14": {
+            "title": "14. Website Owner",
+            "p1": "14.1. The domain name and the Website are administered and owned by IE “Silk Road Chapters”, represented by the owner Aukhadeeva Yuliya Olegovna."
+        },
+        "section15": {
+            "title": "15. Contact Information",
+            "company_bold": "Individual Entrepreneur:",
+            "company": "Aukhadeeva Yuliya Olegovna",
+            "tin_bold": "TIN:",
+            "address_bold": "Legal Address:",
+            "address": "Republic of Uzbekistan, Tashkent city, Mirzo-Ulugbek district, Akhmad Yugnakiy residential area, building 28, apartment 50",
+            "phone_bold": "Telephone:",
+            "email_bold": "Email:"
+        }
+    },
+
+    "NotFound": {
+        "title": "Oops... Lost your way?",
+        "text": "Don’t worry — let’s get you back on the right path.",
+        "returnButton": "Return"
+    }
+}

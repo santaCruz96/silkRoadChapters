@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useModal } from '@/store/useModalStore';
 import { motion } from 'framer-motion';
-import { MenuItemProps } from '@/interfaces/MenuItem.props';
+import { MenuItemProps } from '@/types/props/MenuItem.props';
 
 export default function MenuItem({route, label}: MenuItemProps) {
     const [isHovered, setIsHovered] = useState<boolean>(false);

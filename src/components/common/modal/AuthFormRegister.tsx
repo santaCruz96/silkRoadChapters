@@ -1,6 +1,9 @@
 import Button from "../Button"
+import {useTranslations} from 'next-intl';
 
 export default function AuthFormRegister() {
+    const t = useTranslations('Modal.register');
+
     return (
         <form action="#" className="flex flex-col gap-4">
             <input
@@ -8,35 +11,35 @@ export default function AuthFormRegister() {
                 className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
-                placeholder="Name"
+                placeholder={t('name')}
             />
             <input
-                type="date"
+                type="text"
                 className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
-                placeholder="Date of Birth"
+                placeholder={t('birthday')}
             />
             <input
                 type="email"
                 className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
-                placeholder="Email"
+                placeholder={t('email')}
             />
             <input
                 type="password"
                 className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
-                placeholder="Password"
+                placeholder={t('password')}
             />
             <input
                 type="password"
                 className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
-                placeholder="Repeat your password"
+                placeholder={t('repeatPassword')}
             />
             <div className="flex items-center gap-3 mb-4">
                 <input 
@@ -47,12 +50,12 @@ export default function AuthFormRegister() {
                         checked:bg-accent-success"
                 />
                 <label htmlFor="privacy-checkbox" className="italic font-medium text-[12px] leading-[160%] text-grey">
-                    I agree with the{' '}
+                    {t('agree')}{' '}
                     <a 
                         href="/privacy-policy" 
                         className="underline decoration-underline underline-offset-auto"
                     >
-                    Privacy Policy
+                        {t('privacyPolicy')}
                     </a>
                 </label>
             </div>
@@ -64,7 +67,7 @@ export default function AuthFormRegister() {
                 icon="user"
                 hover="primary"
             >
-                Sign Up
+                {t('signUp')}
             </Button>
         </form>
     )

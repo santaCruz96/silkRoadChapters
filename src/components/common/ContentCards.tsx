@@ -1,4 +1,4 @@
-import { ContentCardsProps } from "@/interfaces/ContentCards.props";
+import { ContentCardsProps } from "@/types/props/ContentCards.props";
 
 export default function ContentCards({numberOfCards}: ContentCardsProps) {
 

@@ -3,9 +3,11 @@
 import { useEffect, useRef } from 'react';
 import Button from '../common/Button';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import {useTranslations} from 'next-intl';
 
 export default function Hero() {
   const isMobile = useResponsiveStore(state => state.isMobile);
+  const t = useTranslations('Hero');
 
   const interBubbleRef = useRef<HTMLDivElement>(null);
   const curXRef = useRef<number>(0);
@@ -51,10 +53,10 @@ export default function Hero() {
         <h1 
           className="font-bold text-[40px] max-w-275 leading-12 md:text-[64px] md:leading-[77px] tracking-[-0.01em] text-center text-dark"
         >
-          Chronicles of the Silk Road — History Made Simple
+          {t('title')}
         </h1>
         <p className="mt-4 mb-16 font-semibold leading-[160%] text-[16px] text-center text-grey">
-          An educational journey through time — from past to present.
+          {t('text')}
         </p>
         <Button 
           color="dark"
@@ -64,7 +66,7 @@ export default function Hero() {
           onClick={() => scrollToSection('free-lectures')}
           hover="primary"
         > 
-          Discover
+          {t('button')}
         </Button>
       </section>
       <svg className="hidden" xmlns="http://www.w3.org/2000/svg">

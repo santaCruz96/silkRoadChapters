@@ -1,7 +1,10 @@
 import Input from "../common/Input";
 import Icon from "@/icons/Icon";
+import {useTranslations} from 'next-intl';
 
 export default function CurrencyConverter() {
+    const t = useTranslations('Payment');
+
     return (
         <div 
             className="col-span-1 sm:col-span-4 lg:col-span-2 rounded-[20px] sm:rounded-[30px] py-8 px-4 pt-4 bg-light
@@ -10,7 +13,7 @@ export default function CurrencyConverter() {
         >
             <div className="flex flex-col gap-[7px]">
                 <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
-                    Exchange rate
+                    {t('converterTitle')}
                 </h3>
                 <p className="font-normal text-[14px] leading-[160%] text-grey">
                     October 20, 2025.                           

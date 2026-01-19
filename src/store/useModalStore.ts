@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 
-export type ModalMode = 'menu' | 'login' | 'register' | 'reset';
+export type ModalMode = 'menu' | 'login' | 'register' | 'resetPassword' | 'newPassword';
 
-type ModalState = {
-    isOpen: boolean;
-    mode: ModalMode;
-    open: (mode?: ModalMode) => void;
-    close: () => void;
-    toggle: (mode?: ModalMode) => void;
+interface IModalState {
+    isOpen: boolean,
+    mode: ModalMode,
+    open: (mode?: ModalMode) => void,
+    close: () => void,
+    toggle: (mode?: ModalMode) => void
 };
 
-export const useModal = create<ModalState>((set) => ({
+export const useModal = create<IModalState>((set) => ({
     isOpen: false,
     mode: 'menu',
 

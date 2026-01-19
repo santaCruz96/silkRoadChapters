@@ -1,5 +1,5 @@
 import Icon from "@/icons/Icon"
-import { SocialLinkProps } from "@/interfaces/SocialLink.props"
+import { SocialLinkProps } from "@/types/props/SocialLink.props"
 
 export default function SocialLink({location, route, iconName}: SocialLinkProps) {
 

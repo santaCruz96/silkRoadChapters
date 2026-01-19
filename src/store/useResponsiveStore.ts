@@ -1,15 +1,15 @@
 import { create } from 'zustand';
 
-interface ResponsiveState {
-    isMobile: boolean;
-    isTablet: boolean;
-    isMiniDesktop: boolean;
-    isDesktop: boolean;
+interface IResponsiveState {
+    isMobile: boolean,
+    isTablet: boolean,
+    isMiniDesktop: boolean,
+    isDesktop: boolean
 }
 
 let initialized = false;
 
-export const useResponsiveStore = create<ResponsiveState>((set) => {
+export const useResponsiveStore = create<IResponsiveState>((set) => {
     if (!initialized && typeof window !== 'undefined') {
         initialized = true;
 

@@ -15,7 +15,7 @@ export default function Content() {
     return (
         <section className="flex flex-col gap-16 w-full">
             <h1 className="font-bold text-[40px] leading-12 sm:text-[64px] sm:leading-[77px] tracking-[-0.01em] text-center text-dark">
-                Stories from the Silk Road
+                Title
             </h1>
             {!isBlog && <div className="rounded-[30px] w-full h-82 lg:h-[677px] bg-image"></div>}
             <div className="flex gap-4 w-full">

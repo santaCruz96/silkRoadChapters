@@ -1,13 +1,22 @@
 "use client";
 
+import { useState } from 'react';
 import Button from "@/components/common/Button";
 import GeneralContainer from "@/layouts/GeneralContainer";
-import Image from "next/image";
+import Lottie from 'react-lottie-player';
+import animationData from '@/animation/silk_road_chapters.json';
 import Link from "next/link";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import {useTranslations} from 'next-intl';
 
 export default function NotFoundPage() {
+    const t = useTranslations('NotFound');
     const isMobile = useResponsiveStore(state => state.isMobile);
+    const [direction, setDirection] = useState<1 | -1>(1);
+
+    const handleComplete = () => {
+        setDirection(prev => prev === 1 ? -1 : 1);
+    };
 
     return (
         <div className="flex justify-center bg-background">
@@ -16,18 +25,18 @@ export default function NotFoundPage() {
                     <h1 className="mb-4 font-bold text-[40px] sm:text-[64px] leading-12 
                             sm:leading-[76px] tracking-[-0.01em] text-center text-dark"
                     >
-                        Oops... Lost your way?
+                        {t('title')}
                     </h1>
-                    <p className="mb-16 font-medium text-[16px] leading-[160%] text-center text-grey">
-                        Don’t worry — let’s get you back on the right path.
+                    <p className="font-medium text-[16px] leading-[160%] text-center text-grey">
+                        {t('text')}
                     </p>
-                    <Image
-                        src="/notFoundPic.png"
-                        alt="Not Found"
-                        width={291}
-                        height={410}
-                        loading="eager"
-                        className="mb-16 w-[291px] h-[410px]"
+                    <Lottie
+                        animationData={animationData}
+                        loop={false}
+                        play
+                        direction={direction}
+                        onComplete={handleComplete}
+                        className="w-[227px] md:w-[291px]"
                     />
                     <Link
                         href={'/'}
@@ -40,7 +49,7 @@ export default function NotFoundPage() {
                             icon="squareArrowLeft"
                             hover="primary"
                         >
-                            Return
+                            {t('returnButton')}
                         </Button>
                     </Link>
                 </div>

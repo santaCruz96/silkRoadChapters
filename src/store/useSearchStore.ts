@@ -1,15 +1,15 @@
 import { create } from 'zustand';
 
-type SearchState = {
-    isOpen: boolean;
-    open: () => void;
-    close: () => void;
+interface ISearchState {
+    isActive: boolean,
+    open: () => void,
+    close: () => void
 };
 
-export const useSearch = create<SearchState>((set) => ({
-    isOpen: false,
+export const useSearch = create<ISearchState>((set) => ({
+    isActive: false,
 
-    open: () => set({ isOpen: true }),
+    open: () => set({ isActive: true }),
 
-    close: () => set({ isOpen: false })
+    close: () => set({ isActive: false })
 }));
