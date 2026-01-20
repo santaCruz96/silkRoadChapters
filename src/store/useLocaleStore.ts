@@ -1,7 +1,8 @@
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 import Cookies from 'js-cookie';
-import type { Locale } from '@/i18n/request';
+
+type Locale = 'en' | 'ru'
 
 interface LanguageStore {
     locale: Locale,

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import {useTranslations} from 'next-intl';
 
-export default function NotFoundPage() {
+export default function NotFoundClient() {
     const t = useTranslations('NotFound');
     const isMobile = useResponsiveStore(state => state.isMobile);
     const [direction, setDirection] = useState<1 | -1>(1);
