@@ -1,24 +1,37 @@
+import { useCallback } from "react";
 import Icon from "@/icons/Icon";
 import { PaidLectureCardProps } from "@/types/props/PaidLectureCard.props";
 import Button from "./Button";
-import Link from "next/link";
 import {useTranslations} from 'next-intl';
+import useActiveLectureStore from '@/store/useActiveLectureStore';
+import { useRouter } from 'next/navigation';
+
+import { IPaidLecture } from '@/types/interfaces/PaidLecture.interface';
 
 export default function PaidLectureCard({
     lecture,
     isActive, 
     isCarousel, 
     isBought, 
-    ...props
+    onClick
 }: PaidLectureCardProps ) {
+
+    const setCurrentLecture = useActiveLectureStore((state) => state.setCurrentLecture);
+    const router = useRouter();
 
     const t = useTranslations('PaidLectureCard');
 
+    const handleLectureClick = useCallback((lecture: IPaidLecture) => {
+        if (!isActive) return; 
+
+        setCurrentLecture(lecture.id, lecture.type);
+        router.push(`/paid/${lecture.id}`);
+    }, [setCurrentLecture, router, isActive]);
+
     return (
-        <Link 
-            href={isActive ? `/paid/${lecture.id}` : '#'}
+        <div
             className={`${isCarousel ? 'flex-[0_0_auto]' : 'grid-cols-1'}`} 
-            {...props}
+            onClick={isActive ? () => handleLectureClick(lecture) : onClick}
         >
             <div className={`card__selector flex flex-col rounded-[20px] p-4 bg-light 
                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] cursor-pointer 
@@ -41,7 +54,7 @@ export default function PaidLectureCard({
                         {lecture.title}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey line-clamp-2">
-                        {lecture.text[0]}
+                        {lecture.texts[0]}
                     </p>
                 </div>
                 <div className={`flex w-full justify-between items-center
@@ -77,6 +90,6 @@ export default function PaidLectureCard({
                     </div>
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }

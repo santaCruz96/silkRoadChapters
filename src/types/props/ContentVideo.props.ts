@@ -1,7 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface ContentCardsProps 
+export interface ContentVideoProps 
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-        numberOfCards: number,
-        images?: [string, string, [string, string]]
+        image?: string,
 }

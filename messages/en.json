@@ -53,7 +53,8 @@
     },
 
     "Push": {
-        "info": "Please check your inbox and confirm your email.",
+        "video": "Complete your purchase to access the paid lecture.",
+        "email": "Please check your inbox and confirm your email.",
         "success": "The lecture is now available in your Library.",
         "error": "The payment was canceled or couldn’t be processed.",
         "cookie": "We use cookies to improve your experience on the site."
@@ -63,7 +64,8 @@
         "termsOfUse": "Terms of Use",
         "agreement": "Agreement",
         "publicOffer": "Public Offer",
-        "rights": "All rights reserved."
+        "rights": "All rights reserved.",
+        "payments": "We accept:"
     },
 
     "Hero": {
@@ -163,35 +165,115 @@
         "more_button": "See all",
         "pakhlavan": {
             "title": "Where is Pakhlavan Makhmud buried?",
-            "text": "Pahlavan Mahmud who lived between 1247 and 1325, stands as one of the most revered historical figures of Khiva. Known simultaneously as a poet, philosopher, wrestler, and Sufi master, he embodies a rare combination of physical strength and spiritual depth. Over the centuries, he became the patron saint of Khiva, and his mausoleum—later transformed into the dynastic necropolis of the Khivan khans—remains one of the city’s most sacred sites."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "Pahlavan Mahmud who lived between 1247 and 1325, stands as one of the most revered historical figures of Khiva. Known simultaneously as a poet, philosopher, wrestler, and Sufi master, he embodies a rare combination of physical strength and spiritual depth. Over the centuries, he became the patron saint of Khiva, and his mausoleum—later transformed into the dynastic necropolis of the Khivan khans—remains one of the city’s most sacred sites.",
+                "text2": "Mahmud was born in Khorezm, in Khiva or its immediate surroundings, during a time when the region was still recovering from the destruction brought by the Mongol invasions. Historical chronicles describe him as a furrier by trade, which earned him the honorific Pahlavan, meaning “hero” or “champion,” since furriers in Persianate tradition were associated with physical endurance and wrestling guilds.",
+                "text3": "Plus from a young age, Mahmud trained in traditional form of wrestling practiced widely across Central Asia, Iran, and the Caucasus. His athletic achievements — some sources attribute dozens of competitive victories to him — became legendary. But unlike many folk heroes defined purely by physical feats, Mahmud combined his athletic reputation with a growing interest in Sufi ethics, ascetic discipline, and mystical literature.",
+                "text4": "While respected as a powerful wrestler, Pahlavan Mahmud’s intellectual and spiritual influence is what ultimately secured his place in Khiva’s cultural memory.",
+                "text5": "His poetry, written primarily in Persian, reflects themes common to Sufi literature of the time: the temporary nature of worldly life, the need for self-knowledge, and the pursuit of moral purity."
+            }
         },
         "plov": {
             "title": "PLOV must try in Uzbekistan",
-            "text": "Plov – or palov, as it is often called in Uzbekistan – is far more than a rice dish. It is widely regarded as the national dish of Uzbekistan and is closely tied to everyday life, hospitality, and celebration."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "Plov – or palov, as it is often called in Uzbekistan – is far more than a rice dish. It is widely regarded as the national dish of Uzbekistan and is closely tied to everyday life, hospitality, and celebration.",
+                "text2": "",
+                "text3": "",
+                "text4": "",
+                "text5": ""
+            }
         },
         "chugurma": {
             "title": "CHUGURMA - a traditional hat of the west of Central Asia",
-            "text": "Chugurma (Uzbek: choʻgirma) is a tall men’s fur hat closely associated with the Khorezm oasis in the west of Central Asia – today straddling north-western Uzbekistan and parts of Turkmenistan. More than just winter headgear, it became one of the most recognizable symbols of Khorezmian identity, worn in city bazaars, desert caravans and, today, at festivals and in tourist photos from Khiva’s old town."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "Chugurma (Uzbek: choʻgirma) is a tall men’s fur hat closely associated with the Khorezm oasis in the west of Central Asia – today straddling north-western Uzbekistan and parts of Turkmenistan. More than just winter headgear, it became one of the most recognizable symbols of Khorezmian identity, worn in city bazaars, desert caravans and, today, at festivals and in tourist photos from Khiva’s old town.",
+                "text2": "",
+                "text3": "",
+                "text4": "",
+                "text5": ""
+            }
         },
         "nonpar": {
             "title": "NONPAR - a special bread stamp",
-            "text": "A nonpar (also called chekich in Uzbek and tukhumbar in Tajik) is a handheld stamp used to imprint patterns at the center of bread before baking. Its primary purpose is both artistic and functional: the stamped design prevents the middle of the bread from rising too much, while adding an instantly recognizable visual identity to each loaf. The patterns—radiating dots, stars, crescents, sunbursts, rosettes, or tight geometric grids—can be read almost like a signature of the baker’s skill and regional heritage."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "A nonpar (also called chekich in Uzbek and tukhumbar in Tajik) is a handheld stamp used to imprint patterns at the center of bread before baking. Its primary purpose is both artistic and functional: the stamped design prevents the middle of the bread from rising too much, while adding an instantly recognizable visual identity to each loaf. The patterns—radiating dots, stars, crescents, sunbursts, rosettes, or tight geometric grids—can be read almost like a signature of the baker’s skill and regional heritage.",
+                "text2": "",
+                "text3": "",
+                "text4": "",
+                "text5": ""
+            }
         },
         "khovuz": {
             "title": "KHOVUZ - a source of water in Ancient Bukhara",
-            "text": "In the old city of Bukhara, khovuz (also written hauz or howuz) were more than just decorative ponds. For centuries they formed a clever – and sometimes dangerous – water system that kept life going in this desert oasis. Medieval Bukhara was laced with canals bringing water from the Zarafshan River into the city, where it was stored in stone-lined basins. By some accounts, there were once more than 200 such pools scattered through the neighborhoods."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "In the old city of Bukhara, khovuz (also written hauz or howuz) were more than just decorative ponds. For centuries they formed a clever – and sometimes dangerous – water system that kept life going in this desert oasis. Medieval Bukhara was laced with canals bringing water from the Zarafshan River into the city, where it was stored in stone-lined basins. By some accounts, there were once more than 200 such pools scattered through the neighborhoods.",
+                "text2": "",
+                "text3": "",
+                "text4": "",
+                "text5": ""
+            }
         },
         "manti_dumplimgs": {
             "title": "MANTI DUMPLIMGS - one of the main dishes of Central Asia",
-            "text": "Manti dumplings are one of the most iconic dishes of Central Asia. Found in Uzbekistan, Kazakhstan, Kyrgyzstan, and parts of western China, manti represent far more than just steamed dough with meat."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "Manti dumplings are one of the most iconic dishes of Central Asia. Found in Uzbekistan, Kazakhstan, Kyrgyzstan, and parts of western China, manti represent far more than just steamed dough with meat.",
+                "text2": "",
+                "text3": "",
+                "text4": "",
+                "text5": ""
+            }
         },
         "arba": {
             "title": "Arba, or Arava - the main vehicle of the old Central Asia",
-            "text": "For centuries, long before motor roads and railways reshaped Central Asia, everyday life moved on the slow, steady rhythm of the arba — also known as arava in Tajik and Uzbek. This traditional two-wheeled wooden cart was one of the most recognizable and enduring vehicles of the region. Whether crossing the steppe or navigating the tight lanes of ancient cities like Bukhara and Samarkand, the arba served as a reliable companion for merchants, farmers, craftsmen, and caravan workers alike."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "For centuries, long before motor roads and railways reshaped Central Asia, everyday life moved on the slow, steady rhythm of the arba — also known as arava in Tajik and Uzbek. This traditional two-wheeled wooden cart was one of the most recognizable and enduring vehicles of the region. Whether crossing the steppe or navigating the tight lanes of ancient cities like Bukhara and Samarkand, the arba served as a reliable companion for merchants, farmers, craftsmen, and caravan workers alike.",
+                "text2": "",
+                "text3": "",
+                "text4": "",
+                "text5": ""
+            }
         },
         "tea_of_bukhara": {
             "title": "Famous tea of Bukhara",
-            "text": "Among the many sensory treasures of Central Asia, few are as intriguing as the famous spiced tea of Bukhara — a drink that has survived centuries without changing its essence. Unlike most teas of the Silk Road, which traveled in caravans from China or India, this Bukharan brew is remarkable for what it doesn’t contain: there are no black or green tea leaves in its classical form."
+            "details": {
+                "location": "Uzbekistan",
+                "travelPoint": "Khiva"
+            },
+            "texts": {
+                "text1": "Among the many sensory treasures of Central Asia, few are as intriguing as the famous spiced tea of Bukhara — a drink that has survived centuries without changing its essence. Unlike most teas of the Silk Road, which traveled in caravans from China or India, this Bukharan brew is remarkable for what it doesn’t contain: there are no black or green tea leaves in its classical form.",
+                "text2": "",
+                "text3": "",
+                "text4": "",
+                "text5": ""
+            }
         }
     },
 
@@ -358,6 +440,7 @@
         "location": "Location",
         "travelPoint": "Travel Point",
         "year": "Year",
+        "buyButton": "Buy",
         "shareButton": "Share"
     },
 
@@ -425,7 +508,9 @@
             "text2": "Your transaction and card details are fully protected and encrypted according to international PCI DSS standards."
         },
         "converterTitle": "Exchange rate",
-        "purchaseButton": "Purchase"
+        "purchaseButton": "Purchase",
+        "agree": "I agree with the",
+        "privacyPolicy": "Public Offer"
     },
 
     "TermsOfUse": {

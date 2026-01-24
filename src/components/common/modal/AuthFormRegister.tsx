@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Button from "../Button"
 import {useTranslations} from 'next-intl';
 
@@ -51,12 +52,12 @@ export default function AuthFormRegister() {
                 />
                 <label htmlFor="privacy-checkbox" className="italic font-medium text-[12px] leading-[160%] text-grey">
                     {t('agree')}{' '}
-                    <a 
+                    <Link 
                         href="/privacy-policy" 
                         className="underline decoration-underline underline-offset-auto"
                     >
                         {t('privacyPolicy')}
-                    </a>
+                    </Link>
                 </label>
             </div>
             <Button

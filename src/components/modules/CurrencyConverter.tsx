@@ -25,7 +25,7 @@ export default function CurrencyConverter() {
                         text-dark rounded-xl h-[60px] bg-background focus:outline-none"
                     name="exchange"
                     type="text"
-                    value="0.00 USD"
+                    value="1.00 USD"
                     readOnly
                 />
                 <Input
@@ -33,7 +33,7 @@ export default function CurrencyConverter() {
                         text-dark rounded-xl h-[60px] bg-background focus:outline-none"
                     name="exchange"
                     type="text"
-                    value="0.00 UZS"
+                    value="12 133.03 UZS"
                     readOnly
                 />
                 <Icon className="absolute fill-dark right-4 bottom-[60px]" name="equals"/>

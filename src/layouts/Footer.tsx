@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Logo from "../components/common/Logo";
 import SocialLink from "@/components/common/SocialLink";
+import Icon from "@/icons/Icon";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import {useTranslations} from 'next-intl';
 
@@ -21,7 +22,7 @@ export default function Footer() {
                 <div className="relative mx-auto p-4 md:p-8 flex justify-between items-center">
                     <div 
                         className="flex w-full md:w-auto items-center justify-between md:justify-start 
-                            sm:gap-[37px] font-bold text-[12px] text-light"
+                            sm:gap-9.25 font-bold text-[12px] text-light"
                     >
                         <Link href={'/terms-of-use'}>{t('termsOfUse')}</Link>
                         <Link href={'/user-agreement'}>{t('agreement')}</Link>
@@ -47,13 +48,22 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <p className="my-4 sm:my-8 font-medium text-[16px] leading-[150%] text-center text-grey">
-                {isMobile ? (
-                    <>© 2025 Silk Road Chapters. <br />{t('rights')}</>
-                ) : (
-                    <>© 2025 Silk Road Chapters. {t('rights')}</>
-                )}
-            </p>
+            <div className="flex flex-col md:flex-row justify-between items-center">
+                <p className="my-4 md:my-8 font-medium text-[16px] leading-[150%] text-center text-grey">
+                    {isMobile ? (
+                        <>© 2025 Silk Road Chapters. <br />{t('rights')}</>
+                    ) : (
+                        <>© 2025 Silk Road Chapters. {t('rights')}</>
+                    )}
+                </p>
+                <div className="flex gap-4 mb-4 md:my-8 ">
+                    <p className="font-medium text-[16px] leading-[150%] text-center text-grey">{t('payments')}</p>
+                    <Icon className="fill-grey w-6 h-6" name="visa"/>
+                    <Icon className="fill-grey w-6 h-6" name="mastercard"/>
+                    <Icon className="fill-grey w-6 h-6" name="uzcard"/>
+                    <Icon className="fill-grey w-6 h-6" name="humo"/>
+                </div>
+            </div>
         </footer>
     )
 }

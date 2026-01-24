@@ -1,18 +1,28 @@
 import { ContentCardsProps } from "@/types/props/ContentCards.props";
 
-export default function ContentCards({numberOfCards}: ContentCardsProps) {
+export default function ContentCards({numberOfCards, images}: ContentCardsProps) {
+
+    if (!images) return null;
 
     if (numberOfCards === 1) {
         return (
-            <div className="rounded-[20px] sm:rounded-[30px] w-full h-[185px] sm:h-[505px] bg-image"></div>
+            <div 
+                className="rounded-[20px] sm:rounded-[30px] w-full h-[185px] sm:h-[505px] bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${images[1]})`}}
+            />
         )
     }
 
     if (numberOfCards === 2) {
         return (
             <div className="flex gap-4">
-                <div className="rounded-xl sm:rounded-[30px] w-full h-55 sm:h-[505px] bg-image"></div>
-                <div className="rounded-xl sm:rounded-[30px] w-full h-55 sm:h-[505px] bg-image"></div>
+                {images[2].map((image, index) => (
+                    <div 
+                        key={index}
+                        className="rounded-[20px] sm:rounded-[30px] w-full h-[185px] sm:h-[505px] bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(${image})`}}
+                    />
+                ))}
             </div>
         )
     }

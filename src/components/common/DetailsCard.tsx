@@ -2,8 +2,9 @@ import Button from "./Button";
 import Icon from "@/icons/Icon";
 import { DetailsCardProps } from "@/types/props/DetailsCard.props";
 import {useTranslations} from 'next-intl';
+import Link from "next/link";
 
-export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
+export default function DeatailsCard({isPaid = false, details}: DetailsCardProps) {
     const t = useTranslations('DeatailsCard');
 
     return (
@@ -51,7 +52,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                             {t('price')}
                         </p>
                         <p className="font-semibold text-[32px] leading-[38px] text-dark">
-                            $0.00
+                            ${details?.price}
                         </p>
                     </div>
                 }
@@ -60,7 +61,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                         {t('location')}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey">
-                        Details_Card_Text
+                        {details?.location}
                     </p>
                 </div>
                 <div className="flex flex-col gap-[7px] py-4 border-b border-stroke">
@@ -68,7 +69,7 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                         {t('travelPoint')}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey">
-                        Details_Card_Text
+                        {details?.travelPoint}
                     </p>
                 </div>
                 <div className="flex flex-col gap-[7px] py-4">
@@ -76,19 +77,37 @@ export default function DeatailsCard({isPaid = false}: DetailsCardProps) {
                         {t('year')}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey">
-                        Details_Card_Text
+                        {details?.year}
                     </p>
                 </div>
             </div>
-            <Button
-                color="dark"
-                size="full"
-                form="round"
-                icon="squareForward"
-                hover="headerPrimary"
-            >
-                {t('shareButton')}
-            </Button>
+            <div className="flex flex-col gap-4">
+                {isPaid && 
+                    <Link
+                        href={'/payment'}
+                        className="w-full sm:w-auto"
+                    >
+                        <Button 
+                            color="dark" 
+                            size="full"
+                            form="round"
+                            icon='cart'
+                            hover="headerPrimary"
+                        >
+                            {t('buyButton')}
+                        </Button>
+                    </Link>
+                }
+                <Button
+                    color="dark"
+                    size="full"
+                    form="round"
+                    icon="squareForward"
+                    hover="headerPrimary"
+                >
+                    {t('shareButton')}
+                </Button>
+            </div>
         </div>
     )
 }

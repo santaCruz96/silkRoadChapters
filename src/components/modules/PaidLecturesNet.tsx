@@ -50,7 +50,7 @@ export default function PaidLecturesNet({page, cardsPerPage}: PaidLecturesNetPro
                         />
                     ))}
                 </div>
-            }
+            } 
             {page !== 'account' && pageCount > 1 && (
                 <Pagination
                     pageCount={pageCount}
