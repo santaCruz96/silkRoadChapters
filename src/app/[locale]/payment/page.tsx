@@ -14,7 +14,7 @@ export default function Payment() {
             <div className="flex flex-col gap-16">
                 <div className="flex flex-col gap-4">
                     <h1 
-                        className="font-bold text-[40px] sm:text-[64px] leading-12 sm:leading-[76px]
+                        className="font-bold text-[40px] sm:text-[64px] leading-12 sm:leading-19
                             tracking-[-0.01em] text-center text-dark"
                     >
                         {t('title')}
@@ -42,8 +42,8 @@ export default function Payment() {
                                 <Icon className="fill-dark w-8 h-8" name="uzcard"/>
                             </Square>
                         </div>
-                        <div className="flex flex-col gap-[7px] mt-16">
-                            <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
+                        <div className="flex flex-col gap-1.75 mt-16">
+                            <h3 className="font-semibold text-[18px] leading-5.25 text-dark">
                                 {t('currencyConversion.title')}
                             </h3>
                             <p className="font-normal text-[14px] leading-[160%] text-grey">
@@ -58,8 +58,8 @@ export default function Payment() {
                         <Square>
                             <Icon className="fill-dark w-8 h-8" name="shieldCheck"/>
                         </Square>
-                        <div className="flex flex-col gap-[7px] mt-16">
-                            <h3 className="font-semibold text-[18px] leading-[21px] text-dark">
+                        <div className="flex flex-col gap-1.75 mt-16">
+                            <h3 className="font-semibold text-[18px] leading-5.25 text-dark">
                                 {t('paymentSecurity.title')}
                             </h3>
                             <p className="font-normal text-[14px] leading-[160%] text-grey">

@@ -78,9 +78,10 @@ export default function Button({
 
     return (
         <button 
-            className={`cursor-pointer ${buttonForm[form]} ${buttonSize[size]} ${buttonColor[color]} font-bold flex items-center justify-center 
-                ${isDisabled && 'opacity-30'} ${shadow && 'shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)]'}
-                ${hover ? hoverOptions[hover] : ''} ${hideOnMobile && 'hidden sm:block'}`} 
+            className={`cursor-pointer ${buttonForm[form]} ${buttonSize[size]} ${buttonColor[color]} 
+                font-bold flex items-center justify-center ${isDisabled && 'opacity-30'} 
+                ${shadow && 'shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)]'}
+                ${hover ? hoverOptions[hover] : ''} ${hideOnMobile && 'hidden sm:block'} disabled:cursor-not-allowed`} 
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             {...props}

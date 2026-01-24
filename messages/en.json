@@ -821,5 +821,10 @@
         "title": "Oops... Lost your way?",
         "text": "Don’t worry — let’s get you back on the right path.",
         "returnButton": "Return"
+    },
+
+    "SuccessfulPayment": {
+        "title": "The lecture is now available in your Library.",
+        "accountButton": "Account"
     }
 }
