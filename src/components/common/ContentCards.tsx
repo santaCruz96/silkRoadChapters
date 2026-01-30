@@ -1,14 +1,19 @@
 import { ContentCardsProps } from "@/types/props/ContentCards.props";
+import { useFullscreenImage } from "@/store/useFullscreenImageStore";
 
 export default function ContentCards({numberOfCards, images}: ContentCardsProps) {
+
+    const { open } = useFullscreenImage();
 
     if (!images) return null;
 
     if (numberOfCards === 1) {
         return (
             <div 
-                className="rounded-[20px] sm:rounded-[30px] w-full h-[185px] sm:h-[505px] bg-cover bg-center bg-no-repeat"
+                className="rounded-[20px] sm:rounded-[30px] w-full h-[185px] sm:h-[505px] 
+                    bg-cover bg-center bg-no-repeat cursor-pointer"
                 style={{ backgroundImage: `url(${images[1]})`}}
+                onClick={() => open(images[1])}
             />
         )
     }
@@ -19,8 +24,10 @@ export default function ContentCards({numberOfCards, images}: ContentCardsProps)
                 {images[2].map((image, index) => (
                     <div 
                         key={index}
-                        className="rounded-[20px] sm:rounded-[30px] w-full h-[185px] sm:h-[505px] bg-cover bg-center bg-no-repeat"
+                        className="rounded-[20px] sm:rounded-[30px] w-full h-[185px] sm:h-[505px] 
+                            bg-cover bg-center bg-no-repeat cursor-pointer"
                         style={{ backgroundImage: `url(${image})`}}
+                        onClick={() => open(image)}
                     />
                 ))}
             </div>

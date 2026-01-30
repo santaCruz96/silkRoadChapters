@@ -29,10 +29,10 @@ export default function Menu() {
                     {t('language')}
                 </Button>
             </div>
-            <div className='sm:hidden w-full border-b border-stroke py-4'>
+            {/* <div className='sm:hidden w-full border-b border-stroke py-4'>
                 <Search menu/>
-            </div>
-            <div className='flex flex-col'>
+            </div> */}
+            <div className='flex flex-col mt-16 sm:mt-auto'>
                 {links.map((link) => (
                     <MenuItem
                         key={link.id}
@@ -41,7 +41,7 @@ export default function Menu() {
                     />
                 ))}
             </div>
-            <div className='flex flex-col gap-2 mt-17'>
+            <div className='flex flex-col gap-2 mt-16 sm:mt-17'>
                 <p className='font-normal text-[14px] leading-[160%] text-grey'>
                     {t('followUs')}
                 </p>

@@ -510,7 +510,7 @@
         "converterTitle": "Exchange rate",
         "purchaseButton": "Purchase",
         "agree": "I agree with the",
-        "privacyPolicy": "Public Offer"
+        "publicOffer": "Public Offer"
     },
 
     "TermsOfUse": {

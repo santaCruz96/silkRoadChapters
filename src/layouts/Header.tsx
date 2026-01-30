@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import Logo from "@/components/common/Logo";
-import Search from "@/components/modules/Search/Search";
+// import Search from "@/components/modules/Search/Search";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 import { useModal } from "@/store/useModalStore";
@@ -19,28 +19,47 @@ export default function Header() {
     const [isExpanded, setIsExpanded] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
 
-    const isOpen = useModal((state) => state.isOpen);
-    const toggle = useModal((state) => state.toggle);
+    const { 
+        isOpen,
+        toggle,
+        close
+    } = useModal();
 
     const toggleLanguage = () => {
         setLocale(locale === 'en' ? 'ru' : 'en');
     };
 
     useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
+        const THRESHOLD = 10;
+        const DEBOUNCE_DELAY = 100;
+        let debounceTimer: ReturnType<typeof setTimeout>;
+        
+        const handleScroll = (): void => {
+            clearTimeout(debounceTimer);
             
-            if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                setIsExpanded(false);
-            } else if (currentScrollY < lastScrollY) {
-                setIsExpanded(true);
-            }
-            
-            setLastScrollY(currentScrollY);
+            debounceTimer = setTimeout(() => {
+                const currentScrollY: number = window.scrollY;
+                const scrollDifference: number = currentScrollY - lastScrollY;
+                
+                if (Math.abs(scrollDifference) < THRESHOLD) {
+                    return;
+                }
+                
+                if (scrollDifference > 0 && currentScrollY > 50) {
+                    setIsExpanded(false);
+                } else if (scrollDifference < 0) {
+                    setIsExpanded(true);
+                }
+                
+                setLastScrollY(currentScrollY);
+            }, DEBOUNCE_DELAY);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            clearTimeout(debounceTimer);
+        };
     }, [lastScrollY]);
 
     useScrollLock(isOpen);
@@ -85,11 +104,12 @@ export default function Header() {
                     >
                         {t('menu')}
                     </Button>
-                    <Search/>
+                    {/* <Search/> */}
                 </motion.div>
                 <Link
                     className="absolute w-7 lg:w-[203px] left-1/2 -translate-x-1/2"
                     href={'/'}
+                    onClick={() => close()}
                 >
                     <Logo color="dark"/>
                 </Link>

@@ -55,13 +55,13 @@ export default function Button({
     }
 
     const hoverOptions: Record<string, string> = {
-        primary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-black hover:scale-102 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,0,0,0.25)]',
-        secondary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F7F7F7] hover:text-black hover:scale-102 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.04)]',
-        headerPrimary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#393939]',
-        headerSecondary: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#CFCFCF]',
-        smallSquare: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
-        delete: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F28B82] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
-        contentButton: 'transition duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#E6E6E6]'
+        primary: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-black hover:scale-102 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,0,0,0.25)]',
+        secondary: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F7F7F7] hover:text-black hover:scale-102 hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.04)]',
+        headerPrimary: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#393939]',
+        headerSecondary: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#CFCFCF]',
+        smallSquare: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
+        delete: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F28B82] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
+        contentButton: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#E6E6E6]'
     }
 
     const iconColor: Record<string, string> = {
@@ -81,7 +81,8 @@ export default function Button({
             className={`cursor-pointer ${buttonForm[form]} ${buttonSize[size]} ${buttonColor[color]} 
                 font-bold flex items-center justify-center ${isDisabled && 'opacity-30'} 
                 ${shadow && 'shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)]'}
-                ${hover ? hoverOptions[hover] : ''} ${hideOnMobile && 'hidden sm:block'} disabled:cursor-not-allowed`} 
+                ${hover ? hoverOptions[hover] : ''} ${hideOnMobile && 'hidden sm:block'} 
+                disabled:cursor-not-allowed disabled:opacity-30 transition`} 
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             {...props}

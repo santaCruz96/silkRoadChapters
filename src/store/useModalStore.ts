@@ -20,14 +20,14 @@ export const useModal = create<IModalState>((set) => ({
 
     toggle: (mode) =>
         set((state) => {
-        if (mode && state.isOpen && state.mode === mode) {
-            return { isOpen: false, mode: 'menu' };
-        }
+            if (mode && state.isOpen && state.mode === mode) {
+                return { isOpen: false, mode: 'menu' };
+            }
 
-        if (mode) {
-            return { isOpen: true, mode };
-        }
+            if (mode) {
+                return { isOpen: true, mode };
+            }
 
-        return { isOpen: !state.isOpen, mode: state.mode };
+            return { isOpen: !state.isOpen, mode: state.mode };
         }),
 }));

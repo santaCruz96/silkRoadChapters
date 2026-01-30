@@ -4,10 +4,11 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { Inter } from "next/font/google";
 import Header from "@/layouts/Header";
-import SearchOverlay from "@/components/modules/Search/SearchOverlay";
+// import SearchOverlay from "@/components/modules/Search/SearchOverlay";
 import Footer from "@/layouts/Footer";
 import Modal from "@/components/common/modal/Modal";
 import Push from "@/components/common/Push";
+import FullscreenImage from "@/components/common/modal/FullscreenImage";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,9 +43,10 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <Header />
-          <SearchOverlay/>
+          {/* <SearchOverlay/> */}
           <Modal/>
           <Push/>
+          <FullscreenImage/>
           {children}
           <Footer/>
         </NextIntlClientProvider>

@@ -8,12 +8,19 @@ import { useCountriesData } from "@/data/countries.data";
 export default function GeographyCarousel() {
     const countriesData = useCountriesData();
     const isMobile = useResponsiveStore(state => state.isMobile);
+    const isTablet = useResponsiveStore(state => state.isTablet);
     const { 
         isHovered, 
         currentId, 
         setHovered, 
         unsetHovered 
     } = useChoseCountry();
+
+    const setActiveCountry = (countryID: number) => {
+        if (isTablet) return
+
+        setHovered(countryID, countriesData)
+    }
 
     return (
         <div className="relative sm:w-440 overflow-hidden">
@@ -34,7 +41,7 @@ export default function GeographyCarousel() {
                     {countriesData.map((country) => (
                         <div 
                             key={country.id} 
-                            onMouseEnter={() => setHovered(country.id, countriesData)}
+                            onMouseEnter={() => setActiveCountry(country.id)}
                             onMouseLeave={() => unsetHovered()}
                             className={`rounded-[30px] px-8 py-4 last:mr-4 shrink-0 transition-colors
                                 ${currentId === country.id ? 'bg-accent-success' : 'bg-light'}`}
@@ -51,7 +58,7 @@ export default function GeographyCarousel() {
                     {countriesData.map((country) => (
                         <div 
                             key={country.id} 
-                            onMouseEnter={() => setHovered(country.id, countriesData)}
+                            onMouseEnter={() => setActiveCountry(country.id)}
                             onMouseLeave={() => unsetHovered()}
                             className={`rounded-[30px] px-8 py-4 last:mr-4 shrink-0 transition-colors
                                 ${currentId === country.id ? 'bg-accent-success' : 'bg-light'}`}

@@ -1,9 +1,17 @@
+import { useState } from "react";
 import Link from "next/link";
 import Button from "../Button"
+import Checkbox from "../Checkbox";
 import {useTranslations} from 'next-intl';
 
 export default function AuthFormRegister() {
     const t = useTranslations('Modal.register');
+
+    const [isAgreed, setIsAgreed] = useState(false);
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsAgreed(e.target.checked);
+    };
 
     return (
         <form action="#" className="flex flex-col gap-4">
@@ -43,14 +51,17 @@ export default function AuthFormRegister() {
                 placeholder={t('repeatPassword')}
             />
             <div className="flex items-center gap-3 mb-4">
-                <input 
-                    id="privacy-checkbox" 
-                    type="checkbox" 
-                    className="cursor-pointer rounded-sm w-5 h-5 bg-light border-none
-                        shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]
-                        checked:bg-accent-success"
+                <Checkbox 
+                    id="privacy-checkbox"
+                    checked={isAgreed}
+                    onChange={handleChange}
+                    use="register"
                 />
-                <label htmlFor="privacy-checkbox" className="italic font-medium text-[12px] leading-[160%] text-grey">
+                <label 
+                    htmlFor="privacy-checkbox" 
+                    className={`italic font-medium text-[12px] leading-[160%] 
+                        ${isAgreed ? 'text-accent-success' : 'text-grey'}`}
+                    >
                     {t('agree')}{' '}
                     <Link 
                         href="/privacy-policy" 

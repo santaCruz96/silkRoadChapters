@@ -510,7 +510,7 @@
         "converterTitle": "Курс валют",
         "purchaseButton": "Оплатить",
         "agree": "Я согласен с",
-        "privacyPolicy": "Публичной офертой"
+        "publicOffer": "Публичной офертой"
     },
 
     "TermsOfUse": {

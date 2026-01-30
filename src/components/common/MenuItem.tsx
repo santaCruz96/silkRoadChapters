@@ -5,9 +5,12 @@ import Link from 'next/link';
 import { useModal } from '@/store/useModalStore';
 import { motion } from 'framer-motion';
 import { MenuItemProps } from '@/types/props/MenuItem.props';
+import { useResponsiveStore } from "@/store/useResponsiveStore";
 
 export default function MenuItem({route, label}: MenuItemProps) {
     const [isHovered, setIsHovered] = useState<boolean>(false);
+
+    const isTablet = useResponsiveStore(state => state.isTablet);
 
     const close = useModal((state) => state.close);
 
@@ -31,13 +34,13 @@ export default function MenuItem({route, label}: MenuItemProps) {
                 className='absolute top-0 left-0 rounded-xl w-full h-full z-20
                     shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] bg-light'
                 initial={{ x: '-110%' }}
-                animate={{ x: isHovered ? 0 : '-110%' }}
+                animate={{ x: isHovered && !isTablet ? 0 : '-110%' }}
                 transition={{ type: 'tween', duration: 0.3 }}
             >
             </motion.div>
             <motion.span 
                 className='absolute font-semibold text-[24px] leading-[29px] text-dark z-21'
-                animate={{ x: isHovered ? 16 : 0 }}
+                animate={{ x: isHovered && !isTablet ? 16 : 0 }}
                 transition={{ type: 'tween', duration: 0.3 }}
             >
                 {label}
