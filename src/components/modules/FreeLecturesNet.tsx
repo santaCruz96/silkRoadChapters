@@ -7,15 +7,17 @@ import FreeLectureCard from '../common/FreeLectureCard';
 import Pagination from '../common/Pagination';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 
-// const MOCK_LECTURES = Array.from({ length: 100 }, (_, i) => ({ id: i }));
 import { useFreeLectures } from "@/data/freeLectures.data";
 
 export default function FreeLecturesNet({page, cardsPerPage}: PaidLecturesNetProps ) {
     const freeLectures = useFreeLectures();
+    
     const isMobile = useResponsiveStore(state => state.isMobile);
     const isTablet = useResponsiveStore(state => state.isTablet);
     const isMiniDesktop = useResponsiveStore(state => state.isMiniDesktop);
+
     const [currentPage, setCurrentPage] = useState<number>(0);
+    
     const targetRef = useRef<HTMLDivElement>(null);
 
     const pageCount = Math.ceil(freeLectures.length / cardsPerPage);

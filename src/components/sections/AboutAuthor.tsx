@@ -4,10 +4,14 @@ import Button from "../common/Button";
 import { usePathname } from 'next/navigation';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import Image from "next/image";
+import { usePush } from "@/store/usePushStore";
 import {useTranslations} from 'next-intl';
 
 export default function AboutAuthor() {
+    const { addPush } = usePush();
+
     const t = useTranslations('AboutAuthor');
+    const tPush = useTranslations('Push');
 
     const isMobile = useResponsiveStore(state => state.isMobile);
 
@@ -16,6 +20,11 @@ export default function AboutAuthor() {
     const isAboutPage = pathname.includes('/about')
 
     const imagePath = isAboutPage ? '/images/about-author.webp' : '/images/main-author.webp'
+
+    const handleEmail = () => {
+        navigator.clipboard.writeText('info@silkroadchapters.uz')
+        addPush('success', tPush('emailCopy'))
+    }
 
     return (
         <section className="flex flex-col-reverse gap-12 sm:flex-row sm:justify-between w-full">
@@ -40,7 +49,7 @@ export default function AboutAuthor() {
                 }
                 <div className="flex flex-col gap-4">
                     <a 
-                        href="https://www.instagram.com/silk_road_chapters/" 
+                        href="https://www.instagram.com/juliavzbes?igsh=MXI1Z3lrYTV5ZjN4cA==" 
                         target="_blank"
                         rel="noopener noreferrer"
                         className="sm:w-fit"
@@ -55,27 +64,22 @@ export default function AboutAuthor() {
                             Instagram
                         </Button>
                     </a>
-                    <a 
-                        href="" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="sm:w-fit"
-                    >
-                        <Button
-                            color="light"
-                            size={isMobile ? "full" : "xxl"}
-                            form="round"
-                            icon="mail"
-                            shadow
-                            hover="secondary"
-                        >   
-                            Email
-                        </Button>
-                    </a>
+                    <Button
+                        color="light"
+                        size={isMobile ? "full" : "xxl"}
+                        form="round"
+                        icon="mail"
+                        shadow
+                        hover="secondary"
+                        onClick={handleEmail}
+                    >   
+                        Email
+                    </Button>
                 </div>
             </div>
             <div className="rounded-[20px] sm:rounded-[30px] w-full h-82 
-                sm:w-82 lg:w-[592px] lg:h-[592px] bg-image overflow-hidden">
+                sm:w-82 lg:w-[592px] lg:h-[592px] bg-image overflow-hidden"
+            >
                 <Image
                     src={imagePath}
                     alt="Author image"

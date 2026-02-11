@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { create } from 'zustand';
 
 type PushType = 'info' | 'success' | 'error' | 'cookie';
@@ -5,12 +6,12 @@ type PushType = 'info' | 'success' | 'error' | 'cookie';
 interface IPush {
     id: string,
     type: PushType,
-    message: string
+    message: string | ReactNode
 }
 
 interface IPushStore {
     pushes: IPush[],
-    addPush: (type: PushType, message: string) => void,
+    addPush: (type: PushType, message: string | ReactNode) => void,
     removePush: (id: string) => void
 }
 

@@ -1,7 +1,7 @@
 import MenuItem from '../MenuItem';
 import SocialLink from '../SocialLink';
 import Button from '../Button';
-import Search from '@/components/modules/Search/Search';
+import { usePush } from "@/store/usePushStore";
 import { useLocaleStore } from '@/store/useLocaleStore';
 import {useTranslations} from 'next-intl';
 
@@ -9,13 +9,22 @@ import { useLinks } from '@/data/links.data';
 import { socialLinks } from '@/data/socialLinks.data';
 
 export default function Menu() {
+    const { addPush } = usePush();
+    
     const links = useLinks();
     const {locale, setLocale} = useLocaleStore();
+    
     const t = useTranslations('Modal.menu');
+    const tPush = useTranslations('Push');
 
     const toggleLanguage = () => {
         setLocale(locale === 'en' ? 'ru' : 'en');
     };
+
+    const handleEmail = () => {
+        navigator.clipboard.writeText('info@silkroadchapters.uz')
+        addPush('success', tPush('emailCopy'))
+    }
 
     return (
         <>  
@@ -54,6 +63,13 @@ export default function Menu() {
                             iconName={link.iconName}
                         />
                     ))}
+                    <Button
+                        color="empty"
+                        size="xs"
+                        form="square"
+                        icon="mail"
+                        onClick={handleEmail}
+                    />
                 </div>
             </div>
         </>

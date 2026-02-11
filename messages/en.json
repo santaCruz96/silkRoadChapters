@@ -54,7 +54,9 @@
 
     "Push": {
         "video": "Complete your purchase to access the paid lecture.",
-        "email": "Please check your inbox and confirm your email.",
+        "emailConfirm": "Please check your inbox and confirm your email.",
+        "emailCopy": "Email copied to clipboard.",
+        "emailInfo": "Profile updates via email only: <guidelines>info@silkroadchapters.uz</guidelines>",
         "success": "The lecture is now available in your Library.",
         "error": "The payment was canceled or couldn’t be processed.",
         "cookie": "We use cookies to improve your experience on the site."
@@ -80,7 +82,7 @@
         "title2": "Welcome to Silk Road Chapters",
         "title3": "",
         "homePage_p1": "Hello, I’m Yuliya! Welcome to Silk Road Chapters",
-        "homePage_p2": "For the past 18 years, I have been guiding travelers through the diverse landscapes and cultures of Central Asia and Silk Road. From the ancient cities of Uzbekistan to the archeological sites of Turkmenistan, each journey has been a story worth sharing. With Silk Road Chapters, I want to open these stories to a wider audience and make the Silk Road more accessible to curious minds.",
+        "homePage_p2": "For almost 20 years I have been guiding travelers through the diverse landscapes and cultures of Central Asia and Silk Road. From the ancient cities of Uzbekistan to the archeological sites of Turkmenistan, each journey has been a story worth sharing. With Silk Road Chapters, I want to open these stories to a wider audience and make the Silk Road more accessible to curious minds.",
         "homePage_p3": "This project is not only about history — it is about discovery, cultural exchange, and deeper understanding. It reminds us that the stories of the past are still alive in the way we learn, travel, and connect today.",
         "aboutPage_p1": "My path into history began almost by accident. At 18, I started working as a guide — a simple job at first, but one that opened a world I never expected. Nearly twenty years later, I’m still on that path, exploring the history, culture, and traditions of Central Asia and Silk Road and sharing them with anyone curious enough to listen.",
         "aboutPage_p2": "Over the years, guiding became more than work; it became my passion. I love telling people about the stories behind the ancient cities, the meaning woven into architecture, the flavors of our food, and the spirit of the Silk Road that still lives in everyday life here. There is nothing more rewarding than watching someone discover this region for the first time — and fall in love with it the way I once did.",
@@ -99,7 +101,7 @@
             "text": "Every post and story come from real journeys, real research, and real voices — told the way they truly are."
         },
         "experience": {
-            "title": "18 Years of Experience",
+            "title": "19 Years of Experience",
             "text": "Nearly two decades of exploring Central Asia — turning lived experience into stories that bring history to life."
         },
         "learning": {
@@ -432,7 +434,7 @@
     "Comments": {
         "title": "What do you think?",
         "text": "Leave a comment, start a discussion, or simply share what inspired you — every story grows through dialogue.",
-        "placeholder": "This lecture was a wonderful blend of storytelling and knowledge — I felt like I was traveling while learning."
+        "placeholder": "What are your thoughts?"
     },
 
     "DeatailsCard": {
@@ -476,7 +478,7 @@
         },
         "8": {
             "title": "Can I contribute to the project?",
-            "text": "We’re always open to collaboration with writers, historians, and travelers. If you’d like to share your knowledge or experience — just reach out via info@silkroadchapters.com."
+            "text": "We’re always open to collaboration with writers, historians, and travelers. If you’d like to share your knowledge or experience — just reach out via info@silkroadchapters.uz"
         },
         "9": {
             "title": "Can I access the lectures after purchase?",
@@ -826,5 +828,11 @@
     "SuccessfulPayment": {
         "title": "The lecture is now available in your Library.",
         "accountButton": "Account"
+    }, 
+
+    "SuccessfulRegister": {
+        "title": "Registration successful!",
+        "text": "Enjoy full access to all our features.",
+        "accountButton": "To account"
     }
 }

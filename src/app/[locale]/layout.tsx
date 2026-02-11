@@ -1,3 +1,4 @@
+import { Providers } from './providers';
 import type { Metadata } from "next";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
@@ -42,13 +43,15 @@ export default async function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <NextIntlClientProvider>
-          <Header />
-          {/* <SearchOverlay/> */}
-          <Modal/>
-          <Push/>
-          <FullscreenImage/>
-          {children}
-          <Footer/>
+          <Providers>
+            <Header />
+            {/* <SearchOverlay/> */}
+            <Modal/>
+            <Push/>
+            <FullscreenImage/>
+            {children}
+            <Footer/>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

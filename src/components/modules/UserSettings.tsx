@@ -2,10 +2,15 @@
 
 import Button from "../common/Button";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import { usePush } from "@/store/usePushStore";
 import {useTranslations} from 'next-intl';
 
 export default function UserSettings() {
+    const { addPush } = usePush();
+    
     const t = useTranslations('UserSettings');
+    const tPush = useTranslations('Push');
+
     const isMobile = useResponsiveStore((state) => state.isMobile);
 
     return (
@@ -26,6 +31,9 @@ export default function UserSettings() {
                         iconSize="big"
                         shadow={!isMobile}
                         hover="smallSquare"
+                        onClick={() => addPush('info', tPush.rich('emailInfo', {
+                            guidelines: (chunks) => <u>{chunks}</u>
+                        }))}
                     />
                     <Button
                         color={isMobile ? "lightGreyDelete" : "red"}

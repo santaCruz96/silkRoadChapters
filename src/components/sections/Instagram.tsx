@@ -51,13 +51,13 @@ export default function Instagram() {
             ) : (
                 <div className="flex gap-4 w-full">
                     <div className="flex flex-col gap-4 w-full">
-                        <a href={instagramData[0].link}>
+                        <a href={instagramData[0].link} target="_blank" rel="noopener noreferrer">
                             <div 
                                 className="w-full h-110 rounded-[20px] bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: `url(${instagramData[0].image})`}}
                             />
                         </a>
-                        <a href={instagramData[3].link}>
+                        <a href={instagramData[3].link} target="_blank" rel="noopener noreferrer">
                             <div 
                                 className="w-full h-72 rounded-[20px] bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: `url(${instagramData[3].image})`}}
@@ -65,13 +65,13 @@ export default function Instagram() {
                         </a>
                     </div>
                     <div className="flex flex-col gap-4 w-full">
-                        <a href={instagramData[1].link}>
+                        <a href={instagramData[1].link} target="_blank" rel="noopener noreferrer">
                             <div
                                 className="w-full h-72 rounded-[20px] bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: `url(${instagramData[1].image})`}}
                             />
                         </a>
-                        <a href={instagramData[4].link}>
+                        <a href={instagramData[4].link} target="_blank" rel="noopener noreferrer">
                             <div 
                                 className="w-full h-[439px] rounded-[20px] bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: `url(${instagramData[4].image})`}}
@@ -79,13 +79,13 @@ export default function Instagram() {
                         </a>
                     </div>
                     <div className="flex flex-col gap-4 w-full">
-                        <a href={instagramData[2].link}>
+                        <a href={instagramData[2].link} target="_blank" rel="noopener noreferrer">
                             <div 
                                 className="w-full h-110 rounded-[20px] bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: `url(${instagramData[2].image})`}}
                             />
                         </a>
-                        <a href={instagramData[5].link}>
+                        <a href={instagramData[5].link} target="_blank" rel="noopener noreferrer">
                             <div 
                                 className="w-full h-72 rounded-[20px] bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: `url(${instagramData[5].image})`}}
