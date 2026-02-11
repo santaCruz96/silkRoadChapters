@@ -31,22 +31,22 @@ export const socialLinks: ISocialLinks = {
     footer: [
         {
             id: 1,
-            route: '#',
+            route: 'https://www.facebook.com/share/17aWoYDUTp/#',
             iconName: 'facebook',
         },
         {
             id: 2,
-            route: '#',
+            route: 'https://t.me/julia_guide_uzbekistan',
             iconName: 'telegram',
         },
         {
             id: 3,
-            route: '#',
+            route: 'https://youtube.com/@silkroadchapters?si=AewiWQohbp9UDqza',
             iconName: 'youtube',
         },
         {
             id: 4,
-            route: '#',
+            route: 'https://www.instagram.com/juliavzbes?igsh=MXI1Z3lrYTV5ZjN4cA==',
             iconName: 'instagram',
         },
     ],
