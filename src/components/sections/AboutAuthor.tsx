@@ -8,7 +8,7 @@ import { usePush } from "@/store/usePushStore";
 import {useTranslations} from 'next-intl';
 
 export default function AboutAuthor() {
-    const { addPush } = usePush();
+    const { addPush, pushes } = usePush();
 
     const t = useTranslations('AboutAuthor');
     const tPush = useTranslations('Push');
@@ -23,7 +23,7 @@ export default function AboutAuthor() {
 
     const handleEmail = () => {
         navigator.clipboard.writeText('info@silkroadchapters.uz')
-        addPush('success', tPush('emailCopy'))
+        if (pushes.length < 1) addPush('success', tPush('emailCopy'))
     }
 
     return (

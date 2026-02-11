@@ -4,15 +4,19 @@ import { usePush } from "@/store/usePushStore";
 import {useTranslations} from 'next-intl';
 
 export default function ContentVideo({image}: ContentVideoProps) {
-    const { addPush } = usePush();
+    const { addPush, pushes } = usePush();
     const t = useTranslations('Push');
+
+    const handlePush = () => {
+        if (pushes.length < 1) addPush('info', t('video'))
+    }
 
     return (
         <div 
             className="relative rounded-[30px] w-full h-82 lg:h-169.25 
                 bg-cover bg-center bg-no-repeat overflow-hidden"
             style={{ backgroundImage: `url(${image})`}}
-            onClick={() => addPush('info', t('video'))}
+            onClick={handlePush}
         >
             <div 
                 className='cursor-pointer absolute flex items-center 

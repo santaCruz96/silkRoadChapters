@@ -25,7 +25,7 @@ export default function AuthFormLogin() {
     }
 
     return (
-        <div className="flex flex-col gap-[55px]">
+        <div className="flex flex-col gap-13.75">
             <form onSubmit={handleSubmit} className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
                     <input
@@ -34,7 +34,7 @@ export default function AuthFormLogin() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         disabled={loginMutation.isPending}
-                        className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                        className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                             shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                             placeholder:font-medium placeholder:text-image focus:outline-none"
                         placeholder={t('email')}
@@ -45,7 +45,7 @@ export default function AuthFormLogin() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         disabled={loginMutation.isPending}
-                        className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                        className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                             shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                             placeholder:font-medium placeholder:text-image focus:outline-none"
                         placeholder={t('password')}

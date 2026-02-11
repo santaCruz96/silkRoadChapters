@@ -24,19 +24,19 @@ export default function AuthFormReset() {
 
     if (isSended) {
         return (
-            <div className="flex flex-col gap-[121px]">
+            <div className="flex flex-col gap-30.25">
                 <form action={goToAccount} className="flex flex-col gap-8">
                     <div className="flex flex-col gap-4">
                         <input
                             type="password"
-                            className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                            className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                                 shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                                 placeholder:font-medium placeholder:text-image focus:outline-none"
                             placeholder={t('newPassword')}
                         />
                         <input
                             type="password"
-                            className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                            className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                                 shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                                 placeholder:font-medium placeholder:text-image focus:outline-none"
                             placeholder={t('repeatPassword')}
@@ -60,11 +60,11 @@ export default function AuthFormReset() {
         )
     } else {
         return (
-            <div className="flex flex-col gap-[197px]">
+            <div className="flex flex-col gap-49.25">
                 <form action="#" className="flex flex-col gap-8" onSubmit={handleSubmit}>
                     <input
                         type="email"
-                        className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                        className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                             shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                             placeholder:font-medium placeholder:text-image focus:outline-none"
                         placeholder={t('email')}

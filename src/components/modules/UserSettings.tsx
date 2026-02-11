@@ -6,12 +6,20 @@ import { usePush } from "@/store/usePushStore";
 import {useTranslations} from 'next-intl';
 
 export default function UserSettings() {
-    const { addPush } = usePush();
+    const { addPush, pushes } = usePush();
     
     const t = useTranslations('UserSettings');
     const tPush = useTranslations('Push');
 
     const isMobile = useResponsiveStore((state) => state.isMobile);
+
+    const handleEmail = () => {
+        if (pushes.length < 1) {
+            addPush('info', tPush.rich('emailInfo', {
+                guidelines: (chunks) => <u>{chunks}</u>
+            }))
+        }
+    }
 
     return (
         <div className="flex flex-col gap-16">
@@ -31,9 +39,7 @@ export default function UserSettings() {
                         iconSize="big"
                         shadow={!isMobile}
                         hover="smallSquare"
-                        onClick={() => addPush('info', tPush.rich('emailInfo', {
-                            guidelines: (chunks) => <u>{chunks}</u>
-                        }))}
+                        onClick={handleEmail}
                     />
                     <Button
                         color={isMobile ? "lightGreyDelete" : "red"}

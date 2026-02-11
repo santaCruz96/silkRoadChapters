@@ -25,11 +25,11 @@ const pushConfig = {
 
 export default function Push() {
 
-    const { pushes, removePush } = usePush();
+    const { pushes } = usePush();
 
     return (
         <div 
-            className="fixed top-32 left-1/2 -translate-x-1/2 max-w-300
+            className="fixed left-1/2 -translate-x-1/2 max-w-300
                 w-full h-full mx-auto z-15 pointer-events-none"
         >
             <AnimatePresence>
@@ -44,12 +44,12 @@ export default function Push() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, x: 100, scale: 0.95 }}
                             transition={{ duration: 0.3, ease: 'easeOut' }}
-                            className={`absolute top-0 right-0 flex gap-3 p-4 rounded-[20px] pointer-events-auto
+                            className={`absolute bottom-4 sm:bottom-8 right-0 flex gap-3 p-4 rounded-[20px] pointer-events-auto
                                 shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] ${config.bgColor}`}
-                            onClick={() => removePush(push.id)}
+                            // onClick={() => removePush(push.id)}
                         >
-                            <Icon className='w-[38px] h-[38px] fill-light' name={icon}/>
-                            <p className='font-medium text-[12px] leading-[160%] text-light w-[206px]'>
+                            <Icon className='w-9.5 h-9.5 fill-light' name={icon}/>
+                            <p className='font-medium text-[12px] leading-[160%] text-light w-51.5'>
                                 {push.message}
                             </p>
                         </motion.div>

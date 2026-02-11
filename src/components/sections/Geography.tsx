@@ -3,29 +3,40 @@
 import GeographyCarousel from "../modules/GeographyCarousel";
 import Image from "next/image";
 import { useChoseCountry } from "@/store/useCountriesStore";
-import { AnimatePresence, motion } from 'framer-motion';
 import {useTranslations} from 'next-intl';
 
+import { useCountriesData } from "@/data/countries.data";
+
 export default function Geography() {
+    const countriesData = useCountriesData();
+    
     const {isHovered, selectedCountry} = useChoseCountry();
     const t = useTranslations('Geography');
 
+    function showMiniPhotos(
+        currentCountry: string, 
+        currentCountryPhoto: string
+    ) {
+        return isHovered && currentCountry === currentCountryPhoto
+    }
+
     return (
         <section className="relative flex flex-col gap-16 items-center w-full">
-            <AnimatePresence>
-                {isHovered && 
-                    <motion.div 
-                        className="absolute w-full h-full top-0"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "linear" }}
-                    >
-                        {selectedCountry?.images.map((image) => (
-                            <div 
-                                key={image.coords} 
-                                className={`absolute ${image.coords} w-[60px] h-[60px]
-                                    rounded-xl overflow-hidden`}
+            <div 
+                className="absolute w-full h-full top-0"
+            >
+                {countriesData.map((country) =>
+                    country.images.map((image) => {
+                        const visible = selectedCountry
+                        ? showMiniPhotos(selectedCountry.country, image.country)
+                        : false
+
+                        return (
+                            <div
+                                key={`${image.coords}`}
+                                className={`absolute ${image.coords} w-15 h-15 rounded-xl overflow-hidden
+                                    transition-opacity duration-400 ease-in-out
+                                    ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
                             >
                                 <Image
                                     src={image.path}
@@ -35,10 +46,10 @@ export default function Geography() {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                        ))}
-                    </motion.div>
-                }
-            </AnimatePresence>
+                        )
+                    })
+                )}
+            </div>
             <div className="flex flex-col gap-4 items-center">
                 <h3 className="font-bold text-[36px] text-center text-dark">
                     {t('title')}

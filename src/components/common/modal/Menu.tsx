@@ -9,7 +9,7 @@ import { useLinks } from '@/data/links.data';
 import { socialLinks } from '@/data/socialLinks.data';
 
 export default function Menu() {
-    const { addPush } = usePush();
+    const { addPush, pushes } = usePush();
     
     const links = useLinks();
     const {locale, setLocale} = useLocaleStore();
@@ -23,7 +23,7 @@ export default function Menu() {
 
     const handleEmail = () => {
         navigator.clipboard.writeText('info@silkroadchapters.uz')
-        addPush('success', tPush('emailCopy'))
+        if (pushes.length < 1) addPush('success', tPush('emailCopy'))
     }
 
     return (

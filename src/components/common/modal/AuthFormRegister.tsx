@@ -17,35 +17,35 @@ export default function AuthFormRegister() {
         <form action="#" className="flex flex-col gap-4">
             <input
                 type="text"
-                className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
                 placeholder={t('name')}
             />
             <input
                 type="text"
-                className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
                 placeholder={t('birthday')}
             />
             <input
                 type="email"
-                className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
                 placeholder={t('email')}
             />
             <input
                 type="password"
-                className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
                 placeholder={t('password')}
             />
             <input
                 type="password"
-                className="rounded-xl px-3 py-[22px] h-[60px] font-medium text-[12px] text-dark
+                className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
                     placeholder:font-medium placeholder:text-image focus:outline-none"
                 placeholder={t('repeatPassword')}

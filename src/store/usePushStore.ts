@@ -34,6 +34,6 @@ export const usePush = create<IPushStore>((set) => ({
     
     removePush: (id) =>
         set((state) => ({
-        pushes: state.pushes.filter((push) => push.id !== id),
+            pushes: state.pushes.filter((push) => push.id !== id),
         })),
 }));
