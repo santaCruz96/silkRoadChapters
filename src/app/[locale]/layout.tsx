@@ -1,6 +1,7 @@
 import { Providers } from './providers';
 import type { Metadata } from "next";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { Inter } from "next/font/google";
@@ -17,10 +18,22 @@ const inter = Inter({
   subsets: ["latin", "cyrillic"],
 });
 
-export const metadata: Metadata = {
-  title: "Silk Road Chapters",
-  description: "",
-};
+export async function generateMetadata(
+  { params }: { params: Promise<{ locale: string }> }
+): Promise<Metadata> {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  const t = await getTranslations({ locale, namespace: "Hero.meta" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 type Props = {
   children: React.ReactNode;

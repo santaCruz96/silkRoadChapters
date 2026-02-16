@@ -71,12 +71,20 @@
     },
 
     "Hero": {
+        "meta": {
+            "title": "Silk Road Chapters | Central Asia History & Silk Road Lectures", 
+            "description": "Discover Central Asia through in-depth lectures, stories, and original research on the Silk Road — from ancient history to modern cultural insights."
+        },
         "title": "Chronicles of the Silk Road — History Made Simple",
         "text": "An educational journey through time — from past to present.",
         "button": "Discover"
     },
 
     "AboutAuthor": {
+        "meta": {
+            "title": "About the Author | Silk Road Chapters", 
+            "description": "Meet the researcher and guide behind Silk Road Chapters — over 20 years exploring Central Asia, its history, and cultures."
+        },
         "greetings": "Author’s Welcome",
         "title1": "Hello, I’m Yuliya!",
         "title2": "Welcome to Silk Road Chapters",
@@ -123,6 +131,10 @@
     },
 
     "FreeLectures": {
+        "meta": {
+            "title": "Free Silk Road Lectures | Silk Road Chapters", 
+            "description": "Explore free lectures on the Silk Road and Central Asia. Discover history, culture, and stories through expert research and storytelling."
+        },
         "homePage_title": "Learn for Free",
         "homePage_text": "Discover the Silk Road through free talks by an experienced guide.",
         "contentPage_title": "More Chapters to Explore",
@@ -158,6 +170,10 @@
     },
 
     "PaidLectures": {
+        "meta": {
+            "title": "Silk Road Lectures & Courses | Silk Road Chapters", 
+            "description": "Access in-depth lectures and courses on Silk Road history and Central Asia. Learn through detailed research, stories, and expert insights."
+        },
         "homePage_title": "Journey Deeper into History",
         "homePage_text": "Go beyond the basics — delve into detailed lectures and specialized courses created for those who want to deepen their knowledge of the Silk Road.",
         "contentPage_title_1": "Next Steps in Your Journey",
@@ -285,6 +301,10 @@
     },
 
     "Blog": {
+        "meta": {
+            "title": "Silk Road Stories & Articles | Silk Road Chapters", 
+            "description": "Read stories, reflections, and research about the Silk Road, Central Asia, and the cultures that shaped its history."
+        },
         "homePage_title": "Stories from the Silk Road",
         "homePage_text": "Explore reflections on the ancient routes — their history, culture, and the connections that bridge past and present.",
         "contentPage_title": "More Stories to Read",
@@ -447,6 +467,10 @@
     },
 
     "FAQ": {
+        "meta": {
+            "title": "FAQ | Silk Road Chapters",
+            "description": "Find answers about lectures, payments, access, and Silk Road Chapters content."
+        },
         "headTitle": "Let’s Clear the Path",
         "1": {
             "title": "How can I pay for the lectures?",
@@ -486,6 +510,13 @@
         }
     },
 
+    "Account": {
+        "meta": {
+            "title": "My Account | Silk Road Chapters",
+            "description": "Access your lectures, saved materials, and personal exploration path."
+        }
+    },
+
     "UserSettings": {
         "title": "Greetings!",
         "birthday": "Date of birth"
@@ -497,6 +528,10 @@
     },
 
     "Payment": {
+        "meta": {
+            "title": "Checkout | Silk Road Chapters",
+            "description": "Complete your purchase and unlock access to your lecture."
+        },
         "title": "Unlock Your Lecture",
         "text": "Complete your purchase safely through our verified payment partner.",
         "currencyConversion": {
@@ -516,6 +551,10 @@
     },
 
     "TermsOfUse": {
+        "meta": {
+            "title": "Terms of Use | Silk Road Chapters",
+            "description": "Review the terms and conditions governing your use of the Silk Road Chapters website and its content."
+        },
         "title": "Terms of Use of the Website",
         "date_bold": "Effective Date:",
         "date": "25 December 2025",
@@ -601,6 +640,10 @@
     },
 
     "UserAgreement": {
+        "meta": {
+            "title": "User Agreement | Silk Road Chapters",
+            "description": "Learn about your rights and responsibilities when using Silk Road Chapters services."
+        },
         "title": "User Agreement",
         "intro": {
             "date": "Tashkent, December 25, 2025",
@@ -701,6 +744,10 @@
     },
     
     "PublicOffer": {
+        "meta": {
+            "title": "Public Offer | Silk Road Chapters",
+            "description": "Read the public offer outlining the terms of purchasing lectures and accessing paid content."
+        },
         "title": "Public offer",
         "date": "Tashkent \"25\" December 2025",
         "section1": {
@@ -820,17 +867,26 @@
     },
 
     "NotFound": {
+        "meta": {
+            "title": "Page Not Found | Silk Road Chapters"
+        },
         "title": "Oops... Lost your way?",
         "text": "Don’t worry — let’s get you back on the right path.",
         "returnButton": "Return"
     },
 
     "SuccessfulPayment": {
+        "meta": {
+            "title": "Payment Successful | Silk Road Chapters"
+        },
         "title": "The lecture is now available in your Library.",
         "accountButton": "Account"
     }, 
 
     "SuccessfulRegister": {
+        "meta": {
+            "title": "Registration Confirmed | Silk Road Chapters"
+        },
         "title": "Registration successful!",
         "text": "Enjoy full access to all our features.",
         "accountButton": "To account"
