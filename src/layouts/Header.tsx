@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import Logo from "@/components/common/Logo";
-// import Search from "@/components/modules/Search/Search";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 import { useModal } from "@/store/useModalStore";
@@ -62,6 +61,15 @@ export default function Header() {
         };
     }, [lastScrollY]);
 
+    useEffect(() => {
+        if (isOpen) {
+            const timer = setTimeout(() => {
+                setIsExpanded(true);
+            }, 0);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
+
     useScrollLock(isOpen);
 
     const handleClick = () => {
@@ -104,7 +112,6 @@ export default function Header() {
                     >
                         {t('menu')}
                     </Button>
-                    {/* <Search/> */}
                 </motion.div>
                 <Link
                     className="absolute w-7 lg:w-[203px] left-1/2 -translate-x-1/2"

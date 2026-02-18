@@ -68,7 +68,7 @@ export default function Modal() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    onClick={close}
+                    onMouseDown={close}
                 >
                     <div className="absolute top-4 sm:top-32 left-1/2 -translate-x-1/2 max-w-300
                         w-full sm:w-[calc(100%-32px)] md:w-[calc(100%-64px)] h-full mx-auto z-15"
@@ -77,7 +77,7 @@ export default function Modal() {
                             className="flex flex-col absolute top-0 right-4 sm:right-0 rounded-[20px] px-4 pt-4 
                                 pb-8 w-[calc(100%-32px)] sm:w-72 bg-background overflow-hidden
                                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
-                            onClick={(e) => e.stopPropagation()}
+                            onMouseDown={(e) => e.stopPropagation()}
                         >
                             <div className='flex justify-between mb-8'>
                                 <h3 className='font-semibold text-[18px] text-dark'>

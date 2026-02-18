@@ -2,8 +2,32 @@
     "Header": {
         "menu": "Меню",
         "search": "Поиск",
-        "joinUs": "Начать",
+        "joinUs": "Войти",
         "language": "Русский"
+    },
+
+    "Validation": {
+        "login": {
+            "emailRequired": "*Email обязателен",
+            "emailValid": "*Введите корректный email",
+            "passwordRequired": "*Пароль обязателен",
+            "clientError": "*Неверные данные",
+            "serverError": "*Что-то пошло не так"
+        },
+        "register": {
+            "nameLength": "*Имя должно содержать не менее 2 символов",
+            "birthdayFormat": "*Введите дату в формате ДД.ММ.ГГГГ", 
+            "birthdayFuture": "*Дата рождения не может быть в будущем",
+            "emailRequired": "*Email обязателен",
+            "emailValid": "*Введите корректный email",
+            "passwordRequired": "*Пароль обязателен",
+            "passwordLength": "*Пароль должен содержать не менее 8 символов",
+            "passwordValid": "*Пароль должен содержать минимум одну букву и одну цифру",
+            "repeatPassword": "*Повторите пароль",
+            "repeatPasswordValid": "*Пароли не совпадают",
+            "agreement": "*Необходимо согласие с политикой конфиденциальности",
+            "error": "*Ошибка регистрации"
+        }
     },
 
     "Modal": {
@@ -18,7 +42,7 @@
             "followUs": "Подписывайтесь на нас:"
         },
         "login": {
-            "headerText": "Личный кабинет",
+            "headerText": "Войти",
             "email": "Email",
             "password": "Пароль",
             "forgotPassword": "Забыли пароль?",

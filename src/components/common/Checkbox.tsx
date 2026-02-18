@@ -2,6 +2,7 @@ interface CheckboxProps {
     use?: "register" | "payment"
     id?: string,
     checked?: boolean,
+    isError?: string,
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -9,6 +10,7 @@ export default function Checkbox({
     use,
     id,
     checked,
+    isError,
     onChange
 }: CheckboxProps) {
 
@@ -19,8 +21,9 @@ export default function Checkbox({
                 checked={checked}
                 onChange={onChange}
                 disabled={false}
-                className={`peer h-5 w-5 rounded-sm cursor-pointer transition-all appearance-none bg-light
-                    hover:shadow-md ${use === 'register' ? 'checked:bg-accent-success' : 'checked:bg-light'} 
+                className={`peer h-5 w-5 rounded-sm cursor-pointer transition-all appearance-none 
+                    ${use === 'register' ? 'checked:bg-accent-success' : 'checked:bg-light'} 
+                    ${isError ? 'bg-accent-alert' : 'bg-light'} hover:shadow-md
                     shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]`}
                 id={id}
             />

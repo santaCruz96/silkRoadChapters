@@ -4,6 +4,16 @@ export interface LoginData {
 }
 
 export interface LoginResponse {
-    accessToken: string,
-    refreshToken: string
+    accessToken: string;
+    refreshToken: string;
+}
+
+export type RefreshResponse = LoginResponse
+
+export interface RegisterData {
+    email: string;
+    password: string;
+    repeatPassword: string;
+    dateOfBirth: string;
+    fullName: string;
 }

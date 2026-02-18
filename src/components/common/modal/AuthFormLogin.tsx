@@ -3,64 +3,103 @@ import { useModal } from '@/store/useModalStore';
 import { useLogin } from '@/hooks/useLogin';
 import Button from '../Button';
 import {useTranslations} from 'next-intl';
+import { validateLoginForm } from '@/schemas/login';
+
+import { FormErrors } from '@/schemas/login';
 
 export default function AuthFormLogin() {
     const t = useTranslations('Modal.login');
-
-    const {open, close} = useModal();
+    const tValid = useTranslations('Validation.login');
+    const { open, close } = useModal();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState<FormErrors>({});
+    const [serverError, setServerError] = useState<string | null>(null);
 
-    const loginMutation = useLogin(close);
+    const loginMutation = useLogin(close, (message) => setServerError(message));
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        loginMutation.mutate({ email, password });
+        setServerError(null); 
+
+        const validationErrors = validateLoginForm(email, password, {
+            emailRequired: tValid('emailRequired'),
+            emailValid: tValid('emailValid'),
+            passwordRequired: tValid('passwordRequired'),
+        });
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+
+        setErrors({});
+        loginMutation.mutateAsync({ email, password });
     };
 
     const handleForgotPassword = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         open('resetPassword');
-    }
+    };
+
+    const inputClass = (field: keyof FormErrors) => `
+        rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] w-full
+        shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)]
+        placeholder:font-medium focus:outline-none
+        ${errors[field] ? 'bg-accent-alert placeholder:text-light text-light' : 
+        'bg-light placeholder:text-image text-dark'}
+    `;
+
+    const spanClass = () => `
+        text-accent-alert text-[12px] px-1 italic leading-[160%]
+    `
 
     return (
         <div className="flex flex-col gap-13.75">
             <form onSubmit={handleSubmit} className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        disabled={loginMutation.isPending}
-                        className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
-                            shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
-                            placeholder:font-medium placeholder:text-image focus:outline-none"
-                        placeholder={t('email')}
-                    />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        disabled={loginMutation.isPending}
-                        className="rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] text-dark
-                            shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 
-                            placeholder:font-medium placeholder:text-image focus:outline-none"
-                        placeholder={t('password')}
-                    />
+                    <div className="flex flex-col gap-1">
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                                setErrors(prev => ({ ...prev, email: undefined }));
+                            }}
+                            disabled={loginMutation.isPending}
+                            className={inputClass('email')}
+                            placeholder={t('email')}
+                        />
+                        {errors.email && (
+                            <span className={spanClass()}>{errors.email}</span>
+                        )}
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                                setErrors(prev => ({ ...prev, password: undefined }));
+                            }}
+                            disabled={loginMutation.isPending}
+                            className={inputClass('password')}
+                            placeholder={t('password')}
+                        />
+                        {errors.password && (
+                            <span className={spanClass()}>{errors.password}</span>
+                        )}
+                    </div>
+                    {serverError && (
+                        <span className={spanClass()}>{serverError}</span>
+                    )}
                 </div>
-                {loginMutation.isError && (
-                    <p className="text-red-500 text-sm">
-                        {loginMutation.error.message}
-                    </p>
-                )}
-                <a  
+                <a
                     href="#"
                     onClick={handleForgotPassword}
                     className="cursor-pointer font-normal text-[14px] leading-[160%] underline 
-                        decoration-grey underline-offset-auto text-grey text-start"
+                        decoration-grey underline-offset-auto text-grey text-start w-fit"
                 >
                     {t('forgotPassword')}
                 </a>
@@ -71,19 +110,19 @@ export default function AuthFormLogin() {
                         size="full"
                         form="round"
                         icon="squareArrowRight"
-                        hover="primary"
+                        hover={loginMutation.isPending ? "" : "primary"}
                         disabled={loginMutation.isPending}
                     >
                         {t('signIn')}
                     </Button>
                     <Button
-                        type="submit"
+                        type="button"
                         color="light"
                         size="full"
                         form="round"
                         shadow
                         icon="google"
-                        hover="secondary"
+                        hover={loginMutation.isPending ? "" : "secondary"}
                         disabled={loginMutation.isPending}
                     >
                         Google

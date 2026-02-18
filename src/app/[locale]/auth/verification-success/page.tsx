@@ -5,11 +5,13 @@ import Button from "@/components/common/Button";
 import GeneralContainer from "@/layouts/GeneralContainer";
 import Lottie from 'react-lottie-player';
 import animationData from '@/animation/silk_road_chapters.json';
-import Link from "next/link";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import {useTranslations} from 'next-intl';
+import { useModal } from '@/store/useModalStore';
 
 export default function SuccessfulRegister() {
+    const {open} = useModal();
+
     const t = useTranslations('SuccessfulRegister');
     const isMobile = useResponsiveStore(state => state.isMobile);
     const [direction, setDirection] = useState<1 | -1>(1);
@@ -38,20 +40,16 @@ export default function SuccessfulRegister() {
                         onComplete={handleComplete}
                         className="w-56.75 md:w-72.75"
                     />
-                    <Link
-                        href={'/account'}
-                        className="w-full sm:w-auto"
+                    <Button
+                        color="dark"
+                        size={isMobile ? "full" : "xl"}
+                        form="round"
+                        icon="user"
+                        hover="primary"
+                        onClick={() => open('login')}
                     >
-                        <Button
-                            color="dark"
-                            size={isMobile ? "full" : "xl"}
-                            form="round"
-                            icon="user"
-                            hover="primary"
-                        >
-                            {t('accountButton')}
-                        </Button>
-                    </Link>
+                        {t('accountButton')}
+                    </Button>
                 </div>
             </GeneralContainer>
         </div>
