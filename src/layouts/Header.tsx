@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import Logo from "@/components/common/Logo";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useModal } from "@/store/useModalStore";
 import useScrollLock from '@/hooks/useScrollLock';
@@ -11,7 +12,10 @@ import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { useLocaleStore } from '@/store/useLocaleStore';
 import {useTranslations} from 'next-intl';
 
-export default function Header() {
+import { HeaderProps } from "@/types/props/Header.props";
+
+export default function Header({isAuthenticated}: HeaderProps) {
+    const router = useRouter();
     const t = useTranslations('Header');
     const isMobile = useResponsiveStore(state => state.isMobile);
     const {locale, setLocale} = useLocaleStore();
@@ -79,6 +83,14 @@ export default function Header() {
         return
     }
 
+    const handleAccount = () => {
+        if (isAuthenticated) {
+            router.push('/account');
+        } else {
+            toggle('login')
+        }
+    }
+
     return (
         <motion.header 
             className="fixed top-4 sm:top-8 left-1/2 w-[calc(100%-32px)] md:w-[calc(100%-64px)] 
@@ -132,9 +144,9 @@ export default function Header() {
                         size={isMobile ? 'mobileHeader' : 'lg'}
                         form="square"
                         hover="headerSecondary"
-                        onClick={() => toggle('login')}
+                        onClick={handleAccount}
                     >
-                        {t('joinUs')}
+                        {isAuthenticated ? t('account') : t('signIn')}
                     </Button>
                     <Button 
                         color="stroke" 

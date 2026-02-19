@@ -2,13 +2,18 @@ import GeneralContainer from "@/layouts/GeneralContainer";
 import UserSettings from "@/components/modules/UserSettings";
 import PaidLecturesNet from "@/components/modules/PaidLecturesNet";
 import SavedLectures from "@/components/modules/SavedLectures";
-import { fetchWithAuth } from '@/lib/api/apiСlient';
+import { fetchWithAuth, refreshTokens } from '@/lib/api/apiСlient';
 import { redirect } from 'next/navigation';
 import { UserProfile } from '@/types/api/user';
+import { getAccessToken } from "@/lib/authCookies";
 
 export default async function Account() {
-
+    let token = await getAccessToken();
     let user: UserProfile | null = null;
+    
+    if (!token) {
+        token = await refreshTokens(); 
+    }
 
     try {
         const res = await fetchWithAuth('/user/profile');

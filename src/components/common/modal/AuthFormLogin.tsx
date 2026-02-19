@@ -4,10 +4,13 @@ import { useLogin } from '@/hooks/useLogin';
 import Button from '../Button';
 import {useTranslations} from 'next-intl';
 import { validateLoginForm } from '@/schemas/login';
+import { useAuthStore } from '@/store/useAuthStore';
 
 import { FormErrors } from '@/schemas/login';
 
 export default function AuthFormLogin() {
+    const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
+
     const t = useTranslations('Modal.login');
     const tValid = useTranslations('Validation.login');
     const { open, close } = useModal();
@@ -19,9 +22,9 @@ export default function AuthFormLogin() {
 
     const loginMutation = useLogin(close, (message) => setServerError(message));
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setServerError(null); 
+        setServerError(null);
 
         const validationErrors = validateLoginForm(email, password, {
             emailRequired: tValid('emailRequired'),
@@ -35,7 +38,19 @@ export default function AuthFormLogin() {
         }
 
         setErrors({});
-        loginMutation.mutateAsync({ email, password });
+
+        try {
+            const result = await loginMutation.mutateAsync({ email, password });
+
+            if (result.success) {
+                setAuthenticated(true);
+            } else {
+                setServerError(tValid('clientError'));
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            setServerError(tValid('serverError'));
+        }
     };
 
     const handleForgotPassword = (e: React.MouseEvent<HTMLAnchorElement>) => {

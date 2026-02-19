@@ -2,6 +2,7 @@ import { Providers } from './providers';
 import type { Metadata } from "next";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {getTranslations} from 'next-intl/server';
+import { cookies } from 'next/headers';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { Inter } from "next/font/google";
@@ -12,6 +13,8 @@ import Modal from "@/components/common/modal/Modal";
 import Push from "@/components/common/Push";
 import FullscreenImage from "@/components/common/modal/FullscreenImage";
 import "./globals.css";
+
+import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -45,6 +48,9 @@ export default async function RootLayout({
   params
 }: Props) {
 
+  const cookieStore = await cookies();
+  const isAuthenticated = !!cookieStore.get(TOKEN_COOKIE_NAME)?.value;
+
   const {locale} = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -57,7 +63,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <Providers>
-            <Header />
+            <Header isAuthenticated={isAuthenticated}/>
             {/* <SearchOverlay/> */}
             <Modal/>
             <Push/>

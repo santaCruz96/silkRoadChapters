@@ -12,7 +12,7 @@ export async function setAuthCookies(accessToken: string, refreshToken: string) 
         secure: isProduction,
         sameSite: 'lax',
         path: '/',
-        maxAge: 60 * 15, 
+        maxAge: 60 * 60, 
     });
 
     cookieStore.set(REFRESH_COOKIE_NAME, refreshToken, {
@@ -20,7 +20,7 @@ export async function setAuthCookies(accessToken: string, refreshToken: string) 
         secure: isProduction,
         sameSite: 'lax',
         path: '/',
-        maxAge: 60 * 60 * 24 * 7, 
+        maxAge: 24 * 60 * 60,
     });
 }
 

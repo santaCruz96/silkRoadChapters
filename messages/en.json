@@ -2,7 +2,8 @@
     "Header": {
         "menu": "Menu",
         "search": "Search",
-        "joinUs": "Sign In",
+        "signIn": "Sign In",
+        "account": "Account",
         "language": "English"
     },
 

@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 import { API_URL } from '@/config/constants';
 import { RefreshResponse } from '@/types/api/auth';
 
-async function refreshTokens(): Promise<string> {
+export async function refreshTokens(): Promise<string> {
     const refreshToken = await getRefreshToken();
 
     if (!refreshToken) {
