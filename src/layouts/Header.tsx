@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Button from "@/components/common/Button";
 import Logo from "@/components/common/Logo";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import useScrollLock from '@/hooks/useScrollLock';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { useLocaleStore } from '@/store/useLocaleStore';
 import {useTranslations} from 'next-intl';
+import { useHeaderScroll } from "@/hooks/useHeaderScroll";
 
 import { HeaderProps } from "@/types/props/Header.props";
 
@@ -19,8 +20,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
     const t = useTranslations('Header');
     const isMobile = useResponsiveStore(state => state.isMobile);
     const {locale, setLocale} = useLocaleStore();
-    const [isExpanded, setIsExpanded] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const { isExpanded, forceExpand } = useHeaderScroll();
 
     const { 
         isOpen,
@@ -33,55 +33,14 @@ export default function Header({isAuthenticated}: HeaderProps) {
     };
 
     useEffect(() => {
-        const THRESHOLD = 10;
-        const DEBOUNCE_DELAY = 100;
-        let debounceTimer: ReturnType<typeof setTimeout>;
-        
-        const handleScroll = (): void => {
-            clearTimeout(debounceTimer);
-            
-            debounceTimer = setTimeout(() => {
-                const currentScrollY: number = window.scrollY;
-                const scrollDifference: number = currentScrollY - lastScrollY;
-                
-                if (Math.abs(scrollDifference) < THRESHOLD) {
-                    return;
-                }
-                
-                if (scrollDifference > 0 && currentScrollY > 50) {
-                    setIsExpanded(false);
-                } else if (scrollDifference < 0) {
-                    setIsExpanded(true);
-                }
-                
-                setLastScrollY(currentScrollY);
-            }, DEBOUNCE_DELAY);
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            clearTimeout(debounceTimer);
-        };
-    }, [lastScrollY]);
-
-    useEffect(() => {
-        if (isOpen) {
-            const timer = setTimeout(() => {
-                setIsExpanded(true);
-            }, 0);
-            return () => clearTimeout(timer);
-        }
-    }, [isOpen]);
+        if (isOpen) forceExpand();
+    }, [forceExpand, isOpen]);
 
     useScrollLock(isOpen);
 
     const handleClick = () => {
-        if (!isExpanded) {
-            setIsExpanded(!isExpanded)
-        } 
-        return
-    }
+        if (!isExpanded) forceExpand();
+    };
 
     const handleAccount = () => {
         if (isAuthenticated) {
@@ -102,7 +61,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
                 { maxWidth: isExpanded ? '1200px' : '288px' } 
             }
             transition={
-                { type: 'spring', damping: 22, stiffness: 200 }
+                { type: 'spring', damping: 22, stiffness: 200, delay: 0.1 }
             }
             onClick={() => handleClick()}
         >
@@ -113,7 +72,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
                         opacity: isExpanded ? 1 : 0,
                         pointerEvents: isExpanded ? 'auto' : 'none'
                     }}
-                    transition={{ duration: 0.2, delay: isExpanded ? 0.1 : 0 }}
+                    transition={{ duration: 0.2, delay: isExpanded ? 0.2 : 0 }}
                 >
                     <Button 
                         color="dark" 
@@ -137,7 +96,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
                         opacity: isExpanded ? 1 : 0,
                         pointerEvents: isExpanded ? 'auto' : 'none'
                     }}
-                    transition={{ duration: 0.2, delay: isExpanded ? 0.1 : 0 }}
+                    transition={{ duration: 0.2, delay: isExpanded ? 0.2 : 0 }}
                 >
                     <Button 
                         color="stroke" 

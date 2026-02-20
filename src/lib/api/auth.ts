@@ -15,7 +15,7 @@ export async function loginUser(data: LoginData): Promise<{ success: boolean; er
 
         if (!res.ok) {
             const errorData = await res.json();
-            return { success: false, error: errorData.message || 'Ошибка входа' };
+            return { success: false, error: errorData.message || 'Error' };
         }
 
         const responseData: LoginResponse = await res.json();
@@ -27,20 +27,12 @@ export async function loginUser(data: LoginData): Promise<{ success: boolean; er
         return { success: true };
     } catch (error) {
         console.error('Login error:', error);
-        return { success: false, error: 'Ошибка сервера' };
+        return { success: false, error: 'Server error' };
     }
 }
 
 export async function registerUser(data: RegisterData): Promise<{ success: boolean; error?: string }> {
     try {
-        if (data.password !== data.repeatPassword) {
-            return { success: false, error: 'Пароли не совпадают' };
-        }
-
-        if (data.password.length < 8) {
-            return { success: false, error: 'Пароль должен быть не менее 8 символов и содеражть минимум одну букву и цифру' };
-        }
-
         const payload = {
             email: data.email,
             password: data.password,

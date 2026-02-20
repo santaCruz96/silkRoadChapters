@@ -55,7 +55,7 @@ export default function AuthFormLogin() {
 
     const handleForgotPassword = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        open('resetPassword');
+        open('forgotPassword');
     };
 
     const inputClass = (field: keyof FormErrors) => `
@@ -72,7 +72,7 @@ export default function AuthFormLogin() {
 
     return (
         <div className="flex flex-col gap-13.75">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+            <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
                         <input

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type ModalMode = 'menu' | 'login' | 'register' | 'resetPassword' | 'newPassword';
+export type ModalMode = 'menu' | 'login' | 'register' | 'forgotPassword' | 'resetPassword';
 
 interface IModalState {
     isOpen: boolean,

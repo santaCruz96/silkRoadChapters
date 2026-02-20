@@ -28,6 +28,12 @@
             "repeatPasswordValid": "*Passwords do not match",
             "agreement": "*Consent to the privacy policy is required",
             "error": "*Registration error"
+        },
+        "forgot": {
+            "emailRequired": "*Email is required",
+            "emailValid": "*Please enter a valid email",
+            "clientError": "*Incorrect data",
+            "serverError": "*Something doesn’t look right"
         }
     },
 
@@ -64,16 +70,18 @@
             "signUp": "Sign Up",
             "error": "*Something doesn’t look right"
         },
-        "reset": {
-            "headerText1": "Reset Password",
-            "headerText2": "New Password",
+        "forgot": {
+            "headerText": "Reset Password",
             "email": "Email",
             "send": "Send",
-            "bottomText1": "We’ll send a recovery link to your email. Check your inbox and follow the instructions to reset your password.",
+            "bottomText": "We’ll send a recovery link to your email. Check your inbox and follow the instructions to reset your password."
+        },
+        "reset": {
+            "headerText": "New Password",
             "newPassword": "New Password",
             "repeatPassword": "Repeat your password",
             "signIn": "Sign In",
-            "bottomText2": "Enter your new password and confirm it below. Once submitted, you’ll be automatically signed in."
+            "bottomText": "Enter your new password and confirm it below. Once submitted, you’ll be automatically signed in."
         }
     },
 
@@ -84,7 +92,9 @@
         "emailInfo": "Profile updates via email only: <guidelines>info@silkroadchapters.uz</guidelines>",
         "success": "The lecture is now available in your Library.",
         "error": "The payment was canceled or couldn’t be processed.",
-        "cookie": "We use cookies to improve your experience on the site."
+        "cookie": "We use cookies to improve your experience on the site.",
+        "passwordForgot": "Check your email to reset your password.",
+        "passwordResetSuccess": "Password updated successfully."
     },
 
     "Footer": {

@@ -1,4 +1,5 @@
 import { Providers } from './providers';
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {getTranslations} from 'next-intl/server';
@@ -9,6 +10,7 @@ import { Inter } from "next/font/google";
 import Header from "@/layouts/Header";
 // import SearchOverlay from "@/components/modules/Search/SearchOverlay";
 import Footer from "@/layouts/Footer";
+import ResetPasswordWatcher from '@/components/ResetPasswordWatcher';
 import Modal from "@/components/common/modal/Modal";
 import Push from "@/components/common/Push";
 import FullscreenImage from "@/components/common/modal/FullscreenImage";
@@ -66,6 +68,9 @@ export default async function RootLayout({
             <Header isAuthenticated={isAuthenticated}/>
             {/* <SearchOverlay/> */}
             <Modal/>
+            <Suspense fallback={null}>
+              <ResetPasswordWatcher />
+            </Suspense>
             <Push/>
             <FullscreenImage/>
             {children}

@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Menu from './Menu';
 import AuthFormLogin from './AuthFormLogin';
 import AuthFormRegister from './AuthFormRegister';
+import AuthFormForgot from './AuthFormForgot';
 import AuthFormReset from './AuthFormReset';
 import {useTranslations} from 'next-intl';
 
@@ -33,14 +34,14 @@ export default function Modal() {
         headerText = t('register.headerText')
     }
 
-    if (mode === 'resetPassword') {
-        content = <AuthFormReset/>;
-        headerText = t('reset.headerText1')
+    if (mode === 'forgotPassword') {
+        content = <AuthFormForgot/>;
+        headerText = t('forgot.headerText')
     }
 
-    if (mode === 'newPassword') {
+    if (mode === 'resetPassword') {
         content = <AuthFormReset/>;
-        headerText = t('reset.headerText2')
+        headerText = t('reset.headerText')
     }
 
     useEffect(() => {
