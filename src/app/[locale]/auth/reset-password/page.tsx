@@ -1,13 +1,15 @@
 import { redirect } from "next/navigation";
 
 interface Props {
-    searchParams: { email?: string; token?: string };
+    searchParams: Promise<{ email?: string; token?: string }>;
 }
 
-export default function ResetPasswordRedirect({ searchParams }: Props) {
+export default async function ResetPasswordRedirect({ searchParams }: Props) {
+    const { email, token } = await searchParams;
+
     const params = new URLSearchParams({
-        ...(searchParams.email && { email: searchParams.email }),
-        ...(searchParams.token && { token: searchParams.token }),
+        ...(email && { email }),
+        ...(token && { token }),
     });
 
     redirect(`/?${params.toString()}`);

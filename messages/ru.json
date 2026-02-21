@@ -34,6 +34,15 @@
             "emailValid": "*Введите корректный email",
             "clientError": "*Неверные данные",
             "serverError": "*Что-то пошло не так"
+        },
+        "reset": {
+            "passwordRequired": "*Пароль обязателен",
+            "passwordLength": "*Пароль должен содержать не менее 8 символов",
+            "passwordValid": "*Пароль должен содержать минимум одну букву и одну цифру",
+            "repeatPassword": "*Повторите пароль",
+            "repeatPasswordValid": "*Пароли не совпадают",
+            "clientError": "*Неверные данные",
+            "serverError": "*Что-то пошло не так"
         }
     },
 
