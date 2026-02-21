@@ -71,8 +71,9 @@ export default function AuthFormLogin() {
         text-accent-alert text-[12px] px-1 italic leading-[160%]
     `
 
-    const handleClickGoogle = () => {
-        window.location.href = `${API_URL}/accounts/login/google`;
+    const handleGoogleLogin  = () => {
+        const returnUrl = encodeURIComponent('/account');
+        window.location.href = `${API_URL}/accounts/login/google?returnUrl=${returnUrl}`;
     };
 
     return (
@@ -144,7 +145,7 @@ export default function AuthFormLogin() {
                         icon="google"
                         hover={loginMutation.isPending ? "" : "secondary"}
                         disabled={loginMutation.isPending}
-                        onClick={handleClickGoogle}
+                        onClick={handleGoogleLogin}
                     >
                         Google
                     </Button>
