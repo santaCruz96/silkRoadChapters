@@ -8,7 +8,6 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { Inter } from "next/font/google";
 import Header from "@/layouts/Header";
-// import SearchOverlay from "@/components/modules/Search/SearchOverlay";
 import Footer from "@/layouts/Footer";
 import ResetPasswordWatcher from '@/components/ResetPasswordWatcher';
 import Modal from "@/components/common/modal/Modal";
@@ -66,7 +65,6 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <Providers>
             <Header isAuthenticated={isAuthenticated}/>
-            {/* <SearchOverlay/> */}
             <Modal/>
             <Suspense fallback={null}>
               <ResetPasswordWatcher />

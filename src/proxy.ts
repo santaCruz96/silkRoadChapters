@@ -6,23 +6,17 @@ import type { NextRequest } from 'next/server';
 const intlMiddleware = createMiddleware(routing);
 
 const protectedRoutes = ['/account'];
-const authRoutes = ['/login', '/register'];
 
 export default function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     const accessToken = request.cookies.get('access_token')?.value;
 
-    if (protectedRoutes.some((route) => pathname.startsWith(route))) {
-        if (!accessToken) {
-        const loginUrl = new URL('/', request.url);
-        return NextResponse.redirect(loginUrl);
-        }
-    }
+    const pathnameWithoutLocale = pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '');
 
-    if (authRoutes.some((route) => pathname.startsWith(route))) {
-        if (accessToken) {
-            return NextResponse.redirect(new URL('/account', request.url));
+    if (protectedRoutes.some((route) => pathnameWithoutLocale.startsWith(route))) {
+        if (!accessToken) {
+            return NextResponse.redirect(new URL('/', request.url));
         }
     }
 

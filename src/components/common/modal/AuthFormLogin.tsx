@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useModal } from '@/store/useModalStore';
 import { useLogin } from '@/hooks/useLogin';
 import Button from '../Button';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { validateLoginForm } from '@/schemas/login';
 import { useAuthStore } from '@/store/useAuthStore';
 import { API_URL } from '@/config/constants';

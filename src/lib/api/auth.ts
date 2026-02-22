@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { setAuthCookies, clearAuthCookies } from '../authCookies';
 import { API_URL } from '@/config/constants';
 import { LoginData, LoginResponse, RegisterData } from '@/types/api/auth';
+import { fetchWithAuth } from './apiСlient';
 
 export async function loginUser(data: LoginData): Promise<{ success: boolean; error?: string }> {
     try {
@@ -48,17 +49,32 @@ export async function registerUser(data: RegisterData): Promise<{ success: boole
 
         if (!res.ok) {
             const errorData = await res.json();
-            return { success: false, error: errorData.message || 'Ошибка регистрации' };
+            return { success: false, error: errorData.message || 'Error' };
         }
 
         return { success: true };
     } catch (error) {
         console.error('Register error:', error);
-        return { success: false, error: 'Ошибка сервера' };
+        return { success: false, error: 'Server error' };
     }
 }
 
-export async function logoutUser() {
-    await clearAuthCookies();
-    redirect('/');
+export async function logoutUser(id:string) { 
+    try {
+        const res = await fetchWithAuth(`/accounts/${id}/refresh-tokens`, { 
+            method: 'DELETE' 
+        });
+
+        console.log(res);
+
+        if (!res.ok) {
+            console.warn('Backend logout failed, but clearing local session anyway');
+        }
+
+    } catch (error) {
+        console.error('Logout error:', error);
+    } finally {
+        await clearAuthCookies();
+        redirect('/');
+    }
 }

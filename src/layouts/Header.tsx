@@ -42,7 +42,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
         if (!isExpanded) forceExpand();
     };
 
-    const handleAccount = () => {
+    const handleAccount = async () => {
         if (isAuthenticated) {
             router.push('/account');
         } else {

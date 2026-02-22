@@ -5,9 +5,13 @@ import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { usePush } from "@/store/usePushStore";
 import {useTranslations} from 'next-intl';
 import { logoutUser } from '@/lib/api/auth';
+import { useAuthStore } from '@/store/useAuthStore';
+
 import { UserSettingsProps } from "@/types/props/UserSettings.props";
 
 export default function UserSettings({ user }: UserSettingsProps) {
+    const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
+
     const { addPush, pushes } = usePush();
     
     const t = useTranslations('UserSettings');
@@ -21,6 +25,11 @@ export default function UserSettings({ user }: UserSettingsProps) {
                 guidelines: (chunks) => <u>{chunks}</u>
             }))
         }
+    }
+
+    const handleLogout = async () => {
+        setAuthenticated(false);
+        await logoutUser(user.id);
     }
 
     return (
@@ -60,7 +69,7 @@ export default function UserSettings({ user }: UserSettingsProps) {
                         iconSize="big"
                         shadow={!isMobile}
                         hover="smallSquare"
-                        onClick={logoutUser}
+                        onClick={handleLogout}
                     />
                 </div>
                 <div className="flex items-center justify-center rounded-xl w-82 h-82 sm:w-72 sm:h-72 

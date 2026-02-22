@@ -1,3 +1,5 @@
+'use server'
+
 import { 
     getAccessToken, 
     getRefreshToken, 
@@ -15,7 +17,7 @@ export async function refreshTokens(): Promise<string> {
         throw new Error('No refresh token');
     }
 
-    const res = await fetch(`${API_URL}/accounts/refresh`, {
+    const res = await fetch(`${API_URL}/accounts/refresh-token`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ refreshToken }),
@@ -23,7 +25,7 @@ export async function refreshTokens(): Promise<string> {
 
     if (!res.ok) {
         await clearAuthCookies();
-        redirect('/');
+        throw new Error('INVALID_REFRESH_TOKEN'); 
     }
 
     const data: RefreshResponse = await res.json();
@@ -52,7 +54,10 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
         try {
             const newAccessToken = await refreshTokens();
             response = await executeRequest(newAccessToken);
-        } catch {
+        } catch (error) {
+            if (error instanceof Error && error.message === 'INVALID_REFRESH_TOKEN') {
+                redirect('/'); 
+            }
             throw new Error('Unauthorized');
         }
     }
