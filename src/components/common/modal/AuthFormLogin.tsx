@@ -1,11 +1,14 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useModal } from '@/store/useModalStore';
-import { useLogin } from '@/hooks/useLogin';
 import Button from '../Button';
 import { useTranslations } from 'next-intl';
 import { validateLoginForm } from '@/schemas/login';
 import { useAuthStore } from '@/store/useAuthStore';
-import { API_URL } from '@/config/constants';
+import { loginUser } from '@/lib/api/auth';
+// import { API_URL } from '@/config/constants';
 
 import { FormErrors } from '@/schemas/login';
 
@@ -15,13 +18,13 @@ export default function AuthFormLogin() {
     const t = useTranslations('Modal.login');
     const tValid = useTranslations('Validation.login');
     const { open, close } = useModal();
+    const router = useRouter();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState<FormErrors>({});
     const [serverError, setServerError] = useState<string | null>(null);
-
-    const loginMutation = useLogin(close, (message) => setServerError(message));
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -40,17 +43,24 @@ export default function AuthFormLogin() {
 
         setErrors({});
 
-        try {
-            const result = await loginMutation.mutateAsync({ email, password });
+        setIsLoading(true);
 
-            if (result.success) {
-                setAuthenticated(true);
-            } else {
+        try {
+            const response = await loginUser({ email, password });
+
+            if (!response.success) {
                 setServerError(tValid('clientError'));
+                return;
             }
+
+            setAuthenticated(true);
+            close();
+            router.push('/account')
         } catch (error) {
             console.error('Login error:', error);
             setServerError(tValid('serverError'));
+        } finally {
+            setIsLoading(false)
         }
     };
 
@@ -71,10 +81,10 @@ export default function AuthFormLogin() {
         text-accent-alert text-[12px] px-1 italic leading-[160%]
     `
 
-    const handleGoogleLogin  = () => {
-        const returnUrl = encodeURIComponent('/account');
-        window.location.href = `${API_URL}/accounts/login/google?returnUrl=${returnUrl}`;
-    };
+    // const handleGoogleLogin  = () => {
+    //     const returnUrl = encodeURIComponent('/account');
+    //     window.location.href = `${API_URL}/accounts/login/google?returnUrl=${returnUrl}`;
+    // };
 
     return (
         <div className="flex flex-col gap-13.75">
@@ -88,7 +98,7 @@ export default function AuthFormLogin() {
                                 setEmail(e.target.value);
                                 setErrors(prev => ({ ...prev, email: undefined }));
                             }}
-                            disabled={loginMutation.isPending}
+                            disabled={isLoading}
                             className={inputClass('email')}
                             placeholder={t('email')}
                         />
@@ -104,7 +114,7 @@ export default function AuthFormLogin() {
                                 setPassword(e.target.value);
                                 setErrors(prev => ({ ...prev, password: undefined }));
                             }}
-                            disabled={loginMutation.isPending}
+                            disabled={isLoading}
                             className={inputClass('password')}
                             placeholder={t('password')}
                         />
@@ -131,8 +141,8 @@ export default function AuthFormLogin() {
                         size="full"
                         form="round"
                         icon="squareArrowRight"
-                        hover={loginMutation.isPending ? "" : "primary"}
-                        disabled={loginMutation.isPending}
+                        hover={isLoading ? "" : "primary"}
+                        disabled={isLoading}
                     >
                         {t('signIn')}
                     </Button>
@@ -143,9 +153,10 @@ export default function AuthFormLogin() {
                         form="round"
                         shadow
                         icon="google"
-                        hover={loginMutation.isPending ? "" : "secondary"}
-                        disabled={loginMutation.isPending}
-                        onClick={handleGoogleLogin}
+                        // hover={isLoading ? "" : "secondary"}
+                        disabled={true}
+                        // disabled={isLoading}
+                        // onClick={handleGoogleLogin}
                     >
                         Google
                     </Button>
@@ -161,7 +172,8 @@ export default function AuthFormLogin() {
                     form="round"
                     shadow
                     icon="user"
-                    hover="secondary"
+                    hover={isLoading ? "" : "secondary"}
+                    disabled={isLoading}
                     onClick={() => open('register')}
                 >
                     {t('signUp')}

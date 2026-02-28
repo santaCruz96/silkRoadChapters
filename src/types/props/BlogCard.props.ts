@@ -1,9 +1,9 @@
 import { DetailedHTMLProps, AnchorHTMLAttributes } from "react";
-import { IBlog } from "../interfaces/Blog.interface";
+import { Blog } from "../interfaces/Blog.interface";
 
 export interface BlogCardProps 
     extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
-        lecture: IBlog,
+        blog: Blog,
         isActive?: boolean,
         isCarousel?: boolean,
         grid?: string

@@ -1,9 +1,12 @@
 import GeneralContainer from "@/layouts/GeneralContainer";
 import PaidLecturesNet from "@/components/modules/PaidLecturesNet";
-import {useTranslations} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
+import { getPaidLectures } from "@/lib/api/paidLectures";
 
-export default function PaidLecturesCatalog() {
-    const t = useTranslations('Catalog.paidLectures');
+export default async function PaidLecturesCatalog() {
+    const t = await getTranslations('Catalog.paidLectures');
+
+    const lectures = await getPaidLectures();
 
     return (
         <GeneralContainer>
@@ -15,6 +18,7 @@ export default function PaidLecturesCatalog() {
                     {t('headTitle')}
                 </h1>
                 <PaidLecturesNet
+                    lectures={lectures}
                     page="paidLectures"
                     cardsPerPage={8}
                 />

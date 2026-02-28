@@ -3,8 +3,13 @@
 import { usePathname } from 'next/navigation';
 import BlogSlider from "../modules/BlogSlider";
 import {useTranslations} from 'next-intl';
+import { Blog } from '@/types/interfaces/Blog.interface';
 
-export default function Blog() {
+export interface BlogProps {
+    blogs: Blog[]
+}
+
+export default function Blogs({blogs}: BlogProps) {
     const t = useTranslations('Blog');
 
     const pathname = usePathname();
@@ -29,7 +34,7 @@ export default function Blog() {
                     )}           
                 </p>
             </div>
-            <BlogSlider/>
+            <BlogSlider blogs={blogs}/>
         </section>
     )
 }

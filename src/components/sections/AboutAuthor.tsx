@@ -22,7 +22,7 @@ export default function AboutAuthor() {
     const imagePath = isAboutPage ? '/images/about-author.webp' : '/images/main-author.webp'
 
     const handleEmail = () => {
-        navigator.clipboard.writeText('info@silkroadchapters.uz')
+        navigator.clipboard.writeText('info@src.education')
         if (pushes.length < 1) addPush('success', tPush('emailCopy'))
     }
 

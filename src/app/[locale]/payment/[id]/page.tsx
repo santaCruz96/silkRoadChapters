@@ -4,10 +4,19 @@ import PaymentLectureCard from "@/components/modules/PaymentLectureCard";
 import FinalCost from "@/components/modules/FinalCost";
 import Square from "@/components/common/Square";
 import Icon from "@/icons/Icon";
-import {useTranslations} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
+import { getSpecificLecture, checkoutPrice } from "@/lib/api/paidLectures";
 
-export default function Payment() {
-    const t = useTranslations('Payment');
+export default async function Payment({ 
+    params 
+}: { 
+    params: Promise<{ id: string }> 
+}) {
+    const t = await getTranslations('Payment');
+
+    const { id } = await params;
+    const priceInfo = await checkoutPrice(id);
+    const specificLecture = await getSpecificLecture(id);
 
     return (
         <GeneralContainer>
@@ -67,9 +76,9 @@ export default function Payment() {
                             </p>
                         </div>
                     </div>
-                    <CurrencyConverter/>
-                    <PaymentLectureCard/>
-                    <FinalCost/>
+                    <CurrencyConverter priceInfo={priceInfo}/>
+                    <PaymentLectureCard specificLecture={specificLecture}/>
+                    <FinalCost priceInfo={priceInfo}/>
                 </div>
             </div>
         </GeneralContainer>

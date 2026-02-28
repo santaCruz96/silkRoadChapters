@@ -96,7 +96,7 @@ export default function TermsOfUse() {
                         <p>{t('section11.company')}</p>
                         <p><span className="font-bold">{t('section11.address_bold')}</span> {t('section11.address')}</p>
                         <p><span className="font-bold">{t('section11.tin_bold')}</span> 42411880270111</p>
-                        <p><span className="font-bold">{t('section11.email_bold')}</span> <a href="mailto:info@silkroadchapters.uz" className="underline underline-offset-2">info@silkroadchapters.uz</a></p>
+                        <p><span className="font-bold">{t('section11.email_bold')}</span> <a href="mailto:info@src.education" className="underline underline-offset-2">info@src.education</a></p>
                         <p><span className="font-bold">{t('section11.phone_bold')}</span> +998971578959</p>
                     </div>
                 </div>

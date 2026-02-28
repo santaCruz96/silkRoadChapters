@@ -8,7 +8,13 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { usePathname } from 'next/navigation';
 import {useTranslations} from 'next-intl';
 
-export default function FreeLectures() {
+import { FreeLecture } from "@/types/interfaces/FreeLecture.interface";
+
+interface FreeLecturesProps {
+    lectures: FreeLecture[]
+}
+
+export default function FreeLectures({lectures}: FreeLecturesProps) {
     const t = useTranslations('FreeLectures');
 
     const pathname = usePathname();
@@ -70,7 +76,7 @@ export default function FreeLectures() {
                     </Button>
                 </div>
             </div>
-            <FreeLectureSlider ref={emblaRef}/>
+            <FreeLectureSlider lectures={lectures} ref={emblaRef}/>
         </section>
     )
 }

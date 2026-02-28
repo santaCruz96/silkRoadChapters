@@ -1,19 +1,26 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useSearchParams } from "next/navigation";
+import { useAuthStore } from '@/store/useAuthStore';
 import { useModal } from '@/store/useModalStore';
 import { usePush } from "@/store/usePushStore";
 import Button from "../Button";
 import {useTranslations} from 'next-intl';
 import { validateResetPasswordForm } from '@/schemas/resetPassword';
 import { resetPassword } from '@/lib/api/resetPassword';
-import { useLogin } from "@/hooks/useLogin";
+import { loginUser } from '@/lib/api/auth';
 
 import { FormErrors } from '@/schemas/resetPassword';
 
 export default function AuthFormReset() {
+    const router = useRouter();
     const searchParams = useSearchParams();
+
     const { addPush } = usePush();
     const { close } = useModal();
+    const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
 
     const email = decodeURIComponent(searchParams.get("email") ?? "");
     const token = searchParams.get("token") ?? "";
@@ -27,14 +34,6 @@ export default function AuthFormReset() {
     const t = useTranslations('Modal.reset');
     const tPush = useTranslations('Push')
     const tValid = useTranslations('Validation.reset');
-
-    const { mutate: login } = useLogin(
-        () => {
-            addPush('success', tPush('passwordResetSuccess'))
-            close();;
-        },
-        (message) => setServerError(message)
-    );
 
     const handleSubmitReset = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -61,15 +60,25 @@ export default function AuthFormReset() {
             
             if (!response.success) {
                 setServerError(tValid('clientError'));
+                return; 
+            }
+            
+            const login = await loginUser({ email, password: newPassword });
+
+            if (!login.success) {
+                setServerError(tValid('clientError'));
+                return; 
             }
 
-            const password = newPassword
-
-            login({email, password})
+            addPush('success', tPush('passwordResetSuccess'));
+            close();
+            setAuthenticated(true);
+            router.push('/account');
         } catch (error) {
-            setIsLoading(false);
             console.error('Reset error:', error);
             setServerError(tValid('serverError'));
+        } finally {
+            setIsLoading(false); 
         }
     }
 

@@ -1,9 +1,11 @@
+'use client';
+
 import { useState } from 'react';
 import Button from "../Button";
 import {useTranslations} from 'next-intl';
 import { useModal } from '@/store/useModalStore';
 import { usePush } from "@/store/usePushStore";
-import { useForgotPassword } from '@/hooks/useForgotPassword';
+import { forgotPassword } from '@/lib/api/forgotPassword';
 import { validateForgotPasswordForm } from '@/schemas/forgotPassword';
 
 import { FormErrors } from '@/schemas/forgotPassword';
@@ -15,12 +17,11 @@ export default function AuthFormForgot() {
     const [email, setEmail] = useState('');
     const [errors, setErrors] = useState<FormErrors>({});
     const [serverError, setServerError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const t = useTranslations('Modal.forgot');
     const tPush = useTranslations('Push')
     const tValid = useTranslations('Validation.forgot');
-
-    const forgotPasswordMutation = useForgotPassword(close, (message) => setServerError(message));
 
     const handleSubmitForgot = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); 
@@ -37,16 +38,23 @@ export default function AuthFormForgot() {
 
         setErrors({});
 
+        setIsLoading(true);
+
         try {
-            const result = await forgotPasswordMutation.mutateAsync({ email });
-            if (result.success) {
-                addPush('info', tPush('passwordForgot'))
-            } else {
+            const response = await forgotPassword({ email });
+
+            if (!response.success) {
                 setServerError(tValid('clientError'));
-            }
+                return;
+            } 
+
+            addPush('info', tPush('passwordForgot'))
+            close();
         } catch (error) {
             console.error('Login error:', error);
             setServerError(tValid('serverError'));
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -59,7 +67,7 @@ export default function AuthFormForgot() {
                     onChange={(e) => {
                         setEmail(e.target.value);
                     }}
-                    disabled={forgotPasswordMutation.isPending}
+                    disabled={isLoading}
                     className={`
                         rounded-xl px-3 py-5.5 h-12 font-medium text-[12px] w-full
                         shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)]
@@ -81,8 +89,8 @@ export default function AuthFormForgot() {
                     size="full"
                     form="round"
                     icon="multipleForward"
-                    hover="primary"    
-                    disabled={forgotPasswordMutation.isPending}
+                    hover={isLoading ? "" : "primary"}   
+                    disabled={isLoading}
                 >
                     {t('send')}
                 </Button>

@@ -103,7 +103,7 @@ export default function UserAgreement() {
                         <p>{t('section12.company')}</p>
                         <p><span className="font-bold">{t('section12.address_bold')}</span> {t('section12.address')}</p>
                         <p><span className="font-bold">{t('section12.tin_bold')}</span> 42411880270111</p>
-                        <p><span className="font-bold">{t('section12.email_bold')}</span> <a href="mailto:info@silkroadchapters.uz" className="underline underline-offset-2">info@silkroadchapters.uz</a></p>
+                        <p><span className="font-bold">{t('section12.email_bold')}</span> <a href="mailto:info@src.education" className="underline underline-offset-2">info@src.education</a></p>
                         <p><span className="font-bold">{t('section12.phone_bold')}</span> +998971578959</p>
                     </div>
                 </div>

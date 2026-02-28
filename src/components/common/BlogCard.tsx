@@ -1,14 +1,18 @@
 import { BlogCardProps } from "@/types/props/BlogCard.props";
 import Icon from "@/icons/Icon";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 
 export default function BlogCard({
-    lecture, 
+    blog, 
     isActive, 
     isCarousel, 
     grid, 
     ...props
 }: BlogCardProps) {
+
+    const locale = useLocale();
+    const title = locale === 'ru' ? blog.titleRu : blog.titleEn;
 
     const size = () => {
         if (isCarousel) {
@@ -28,29 +32,29 @@ export default function BlogCard({
 
     return (
         <Link 
-            href={isActive ? `/blog/${lecture.id}` : `#`}
+            href={isActive ? `/blog/${blog.id}` : ``}
             className={`flex-[0_0_auto] ${grid}`} 
             {...props}
         >
             <div 
-                className={`relative card__selector bg-cover bg-center bg-no-repeat min-h-[333px] ${size()}
+                className={`relative card__selector bg-cover bg-center bg-no-repeat min-h-83.25 ${size()}
                     flex flex-col select-none py-8 px-4 lg:p-8 cursor-pointer overflow-hidden`}
-                style={{ backgroundImage: `url(${lecture.images[0]})`}}
+                style={{ backgroundImage: `url(${blog?.imageLink})`}}
             >   
                 <div className="absolute top-0 left-0 w-full h-full transition 
                     duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[rgba(0,0,0,0.1)]"
                 />
                 {isActive && 
                     <div className="flex flex-col justify-between h-full">
-                        <p className={`font-semibold ${fontSize()} text-light`}>{lecture.title}</p>
+                        <p className={`font-semibold ${fontSize()} text-light`}>{title}</p>
                         <div className="flex flex-col gap-4 lg:flex-row lg:justify-between">
                             <div className="flex items-center gap-2">
                                 <Icon name="mapPoint" className="fill-light"/>
-                                <p className="italic font-normal text-[16px] capitalize text-light">{lecture.location}</p>
+                                <p className="italic font-normal text-[16px] capitalize text-light">{blog.likesCount}</p>
                             </div>
                             <div className="flex items-center gap-2">
                                 <Icon name="eye" className="fill-light"/>
-                                <p className="font-normal text-[16px] uppercase text-light">454</p>
+                                <p className="font-normal text-[16px] uppercase text-light">{blog.viewsCount}</p>
                             </div>
                         </div>
                     </div>

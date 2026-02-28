@@ -85,7 +85,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
                     </Button>
                 </motion.div>
                 <Link
-                    className="absolute w-7 lg:w-[203px] left-1/2 -translate-x-1/2"
+                    className="absolute w-7 lg:w-50.75 left-1/2 -translate-x-1/2"
                     href={'/'}
                     onClick={() => close()}
                 >

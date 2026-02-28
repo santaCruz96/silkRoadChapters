@@ -1,17 +1,13 @@
 "use client";
 
 import { useState, useMemo, useRef, useCallback } from 'react';
-import { PaidLecturesNetProps } from "@/types/props/PaidLecturesNet.props";
+import { FreeLecturesNetProps } from "@/types/props/FreeLecturesNet.props";
 import CatalogHeader from '../common/CatalogHeader';
 import FreeLectureCard from '../common/FreeLectureCard';
 import Pagination from '../common/Pagination';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 
-import { useFreeLectures } from "@/data/freeLectures.data";
-
-export default function FreeLecturesNet({page, cardsPerPage}: PaidLecturesNetProps ) {
-    const freeLectures = useFreeLectures();
-    
+export default function FreeLecturesNet({lectures, page, cardsPerPage}: FreeLecturesNetProps ) {
     const isMobile = useResponsiveStore(state => state.isMobile);
     const isTablet = useResponsiveStore(state => state.isTablet);
     const isMiniDesktop = useResponsiveStore(state => state.isMiniDesktop);
@@ -20,12 +16,12 @@ export default function FreeLecturesNet({page, cardsPerPage}: PaidLecturesNetPro
     
     const targetRef = useRef<HTMLDivElement>(null);
 
-    const pageCount = Math.ceil(freeLectures.length / cardsPerPage);
+    const pageCount = Math.ceil(lectures.length / cardsPerPage);
 
     const currentCards = useMemo(() => {
         const start = currentPage * cardsPerPage;
-        return freeLectures.slice(start, start + cardsPerPage);
-    }, [currentPage, cardsPerPage, freeLectures]); 
+        return lectures.slice(start, start + cardsPerPage);
+    }, [currentPage, cardsPerPage, lectures]); 
 
     const handlePageChange = useCallback((selected: number) => {
         setCurrentPage(selected);

@@ -3,7 +3,7 @@ import { create } from 'zustand';
 interface IFullscreenImage {
     image: string | null,
     isOpen: boolean,
-    open: (image: string) => void,
+    open: (image: string | null) => void,
     close: () => void
 };
 

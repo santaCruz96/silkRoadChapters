@@ -36,6 +36,7 @@ export default function Button({
         empty: 'bg-transparent text-dark',
         lightGrey: 'bg-background text-dark border border-stroke',
         lightGreyDelete: 'bg-background border border-stroke',
+        green: 'bg-accent-success'
     }
 
     const buttonSize: Record<string, string> = {
@@ -61,14 +62,16 @@ export default function Button({
         headerSecondary: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#CFCFCF]',
         smallSquare: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
         delete: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#F28B82] hover:-translate-y-0.5 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_4px_10px_rgba(0,0,0,0.12)]',
-        contentButton: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#E6E6E6]'
+        contentButton: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#E6E6E6]',
+        detailsButton: 'duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[#298D96]'
     }
 
     const iconColor: Record<string, string> = {
         dark: 'fill-light',
         light: `transition ${isHovered ? 'fill-black' : 'fill-dark'}`,
         red: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`,
-        lightGreyDelete: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`
+        lightGreyDelete: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`,
+        green: `transition ${isHovered ? 'fill-stroke' : 'fill-light'}`
     }
 
     const sizeIcon: Record<string, string> = {

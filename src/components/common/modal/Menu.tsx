@@ -3,7 +3,7 @@ import SocialLink from '../SocialLink';
 import Button from '../Button';
 import { usePush } from "@/store/usePushStore";
 import { useLocaleStore } from '@/store/useLocaleStore';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 import { useLinks } from '@/data/links.data';
 import { socialLinks } from '@/data/socialLinks.data';
@@ -22,7 +22,7 @@ export default function Menu() {
     };
 
     const handleEmail = () => {
-        navigator.clipboard.writeText('info@silkroadchapters.uz')
+        navigator.clipboard.writeText('info@src.education')
         if (pushes.length < 1) addPush('success', tPush('emailCopy'))
     }
 

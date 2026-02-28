@@ -1,37 +1,36 @@
-import { useCallback } from "react";
 import Icon from "@/icons/Icon";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { PaidLectureCardProps } from "@/types/props/PaidLectureCard.props";
 import Button from "./Button";
-import {useTranslations} from 'next-intl';
-import useActiveLectureStore from '@/store/useActiveLectureStore';
-import { useRouter } from 'next/navigation';
-
-import { IPaidLecture } from '@/types/interfaces/PaidLecture.interface';
+import {useLocale, useTranslations} from 'next-intl';
 
 export default function PaidLectureCard({
     lecture,
     isActive, 
     isCarousel, 
     isBought, 
-    onClick
+    ...props
 }: PaidLectureCardProps ) {
-
-    const setCurrentLecture = useActiveLectureStore((state) => state.setCurrentLecture);
     const router = useRouter();
+    const locale = useLocale();
+    const title = locale === 'ru' ? lecture.titleRu : lecture.titleEn;
+    const description = locale === 'ru' ? lecture.longDescriptionRu : lecture.longDescriptionEn;
 
     const t = useTranslations('PaidLectureCard');
 
-    const handleLectureClick = useCallback((lecture: IPaidLecture) => {
-        if (!isActive) return; 
-
-        setCurrentLecture(lecture.id, lecture.type);
-        router.push(`/paid/${lecture.id}`);
-    }, [setCurrentLecture, router, isActive]);
+    const toPayment = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation(); 
+        e.preventDefault();   
+        router.push(`/payment/${lecture.id}`); 
+    }
 
     return (
-        <div
+        <Link
+            href={isActive ? `/paid/${lecture.id}` : ``}
+            // href={''}
             className={`${isCarousel ? 'flex-[0_0_auto]' : 'grid-cols-1'}`} 
-            onClick={isActive ? () => handleLectureClick(lecture) : onClick}
+            {...props}
         >
             <div className={`card__selector flex flex-col rounded-[20px] p-4 bg-light 
                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)] cursor-pointer 
@@ -40,8 +39,8 @@ export default function PaidLectureCard({
             >
                 <div 
                     className={`relative mb-4 rounded-xl w-full h-64 ${isCarousel && 'lg:w-140'} 
-                        lg:h-[315px] bg-cover bg-center bg-no-repeat`}
-                    style={{ backgroundImage: `url(${lecture.images[0]})`}}
+                        lg:h-78.75 bg-cover bg-center bg-no-repeat`}
+                    style={{ backgroundImage: `url(${lecture.coverImageUrl})`}}
                 >
                     <span className="absolute left-3 top-3 rounded-xl px-3 py-1 
                         bg-light font-medium text-[12px] text-dark"
@@ -49,12 +48,12 @@ export default function PaidLectureCard({
                         New
                     </span>
                 </div>
-                <div className={`flex flex-col gap-3 mb-8 ${isActive ? 'min-h-[99px]' : 'min-h-[79px]'}`}>
-                    <p className="font-semibold text-[18px] text-dark leading-[22px]">
-                        {lecture.title}
+                <div className={`flex flex-col gap-3 mb-8 ${isActive ? 'min-h-24.75' : 'min-h-19.75'}`}>
+                    <p className="font-semibold text-[18px] text-dark leading-5.5">
+                        {title}
                     </p>
                     <p className="font-normal text-[14px] leading-[160%] text-grey line-clamp-2">
-                        {lecture.texts[0]}
+                        {description?.replace(/<[^>]*>?/gm, ' ')}
                     </p>
                 </div>
                 <div className={`flex w-full justify-between items-center
@@ -77,6 +76,7 @@ export default function PaidLectureCard({
                             form="round"
                             icon='cart'
                             hover="primary"
+                            onClick={toPayment}
                         >
                             {t('buy_button')}
                         </Button>
@@ -85,11 +85,11 @@ export default function PaidLectureCard({
                     <div className="hidden lg:flex gap-2">
                         <Icon className="fill-dark" name="eye"/>
                         <p className="font-normal text-[16px] uppercase text-dark">
-                            454
+                            {lecture.popularityCount}
                         </p>
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }

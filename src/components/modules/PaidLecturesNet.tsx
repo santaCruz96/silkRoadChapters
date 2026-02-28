@@ -8,21 +8,17 @@ import Pagination from '../common/Pagination';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import PaidLecturesSlider from './PaidLecturesSlider';
 
-// const MOCK_LECTURES = Array.from({ length: 100 }, (_, i) => ({ id: i }));
-import { usePaidLectures } from "@/data/paidLectures.data";
-
-export default function PaidLecturesNet({page, cardsPerPage}: PaidLecturesNetProps ) {
-    const paidLectures = usePaidLectures();
+export default function PaidLecturesNet({lectures, page, cardsPerPage}: PaidLecturesNetProps ) {
     const isMobile = useResponsiveStore(state => state.isMobile);
     const [currentPage, setCurrentPage] = useState<number>(0);
     const targetRef = useRef<HTMLDivElement>(null);
 
-    const pageCount = Math.ceil(paidLectures.length / cardsPerPage);
+    const pageCount = Math.ceil(lectures.length / cardsPerPage);
 
     const currentCards = useMemo(() => {
         const start = currentPage * cardsPerPage;
-        return paidLectures.slice(start, start + cardsPerPage);
-    }, [currentPage, cardsPerPage, paidLectures]); 
+        return lectures.slice(start, start + cardsPerPage);
+    }, [currentPage, cardsPerPage, lectures]); 
 
     const handlePageChange = useCallback((selected: number) => {
         setCurrentPage(selected);
@@ -35,7 +31,7 @@ export default function PaidLecturesNet({page, cardsPerPage}: PaidLecturesNetPro
         <section className="flex flex-col gap-16 w-full">
             <CatalogHeader page={page}/>
             {page === 'account' && isMobile ?
-                <PaidLecturesSlider page='account'/>
+                <PaidLecturesSlider lectures={lectures} page='account'/>
             :
                 <div 
                     ref={targetRef} 

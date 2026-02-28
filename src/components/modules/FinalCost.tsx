@@ -1,24 +1,54 @@
 "use client";
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Icon from "@/icons/Icon";
 import Square from "../common/Square";
 import Button from "../common/Button";
 import {useTranslations} from 'next-intl';
+import { usePush } from '@/store/usePushStore';
 import Link from "next/link";
 import Checkbox from '../common/Checkbox';
+import { PriceResponse } from '@/types/interfaces/PaidLecture.interface';
+import { initiatePayment } from '@/lib/api/payment';
 
-export default function FinalCost() {
+export interface FinalCostProps {
+    priceInfo: PriceResponse
+}
+
+export default function FinalCost({priceInfo}: FinalCostProps) {
+    const { addPush } = usePush();
+
     const [isAgreed, setIsAgreed] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const t = useTranslations('Payment');
-
-    const router = useRouter();
+    const tPush = useTranslations('Push')
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setIsAgreed(e.target.checked);
+        console.log(priceInfo.lectureId);
     };
+
+    const handleInitiatePayment = async () => {
+        setIsLoading(true);
+        try {
+            const response = await initiatePayment(priceInfo.lectureId);
+
+            if (response.status < 200 || response.status >= 300) {
+                addPush('error', tPush('somethingWrong'));
+                return;
+            }
+
+            if (response.data?.octoPayUrl) {
+                window.location.href = response.data?.octoPayUrl
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            addPush('error', tPush('somethingWrong'));
+        } finally {
+            setIsLoading(false);
+        }
+    }
 
     return (
         <div className="col-span-1 sm:col-span-8 lg:col-span-3 rounded-[20px] sm:rounded-[30px] p-4 bg-accent-success 
@@ -29,7 +59,7 @@ export default function FinalCost() {
                     <Icon className="fill-dark w-8 h-8" name="octobank"/>
                 </Square>
                 <p className="font-semibold text-[24px] sm:text-[32px] text-light">
-                    121 208.97 UZS
+                    {priceInfo.priceUzsFormatted} UZS
                 </p>
             </div>
             <div className="flex items-center gap-3">
@@ -43,6 +73,7 @@ export default function FinalCost() {
                     {t('agree')}{' '}
                     <Link 
                         href="/public-offer" 
+                        target="_blank"
                         className="underline decoration-underline underline-offset-auto"
                     >
                         {t('publicOffer')}
@@ -54,8 +85,8 @@ export default function FinalCost() {
                 size="full"
                 form="round"
                 icon="card"
-                onClick={() => router.push('/successful-payment')}
-                disabled={!isAgreed}
+                onClick={handleInitiatePayment}
+                disabled={!isAgreed || isLoading}
             >
                 {t('purchaseButton')}
             </Button>

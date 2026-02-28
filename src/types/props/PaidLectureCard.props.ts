@@ -1,11 +1,10 @@
-import { DetailedHTMLProps, HTMLAttributes, MouseEventHandler } from "react";
-import { IPaidLecture } from "../interfaces/PaidLecture.interface";
+import { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
+import { PaidLecture } from "../interfaces/PaidLecture.interface";
 
 export interface PaidLectureCardProps 
-    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-        lecture: IPaidLecture,
+    extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+        lecture: PaidLecture,
         isActive: boolean,
         isCarousel?: boolean,
-        isBought?: boolean,
-        onClick?: MouseEventHandler<HTMLDivElement>
+        isBought?: boolean
 }

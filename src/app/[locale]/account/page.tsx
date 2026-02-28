@@ -3,21 +3,12 @@ import UserSettings from "@/components/modules/UserSettings";
 import PaidLecturesNet from "@/components/modules/PaidLecturesNet";
 import SavedLectures from "@/components/modules/SavedLectures";
 import { redirect } from 'next/navigation';
-import { UserProfile } from '@/types/api/user';
 import { getProfile } from "@/lib/api/userProfile";
+import { getPaidLectures } from "@/lib/api/paidLectures";
 
 export default async function Account() {
-    let user: UserProfile | null = null;
-    
-    try {
-        user = await getProfile();
-        
-        if (!user) {
-            throw new Error('Failed to fetch profile');
-        }
-    } catch (error) {
-        console.error('Profile fetch error:', error);
-    }
+    const user = await getProfile();
+    const lectures = await getPaidLectures();
 
     if (!user) {
         redirect('/');
@@ -27,6 +18,7 @@ export default async function Account() {
         <GeneralContainer>
             <UserSettings user={user}/>
             <PaidLecturesNet 
+                lectures={lectures}
                 page="account"
                 cardsPerPage={4}
             />

@@ -6,22 +6,29 @@ import FreeLectures from "@/components/sections/FreeLectures";
 import Geography from "@/components/sections/Geography";
 import PaidLectures from "@/components/sections/PaidLectures";
 import Interlude from "@/components/sections/Interlude";
-import Blog from "@/components/sections/Blog";
+import Blogs from "@/components/sections/Blog";
 import Reviews from "@/components/sections/Reviews";
 import Instagram from "@/components/sections/Instagram";
+import { getFreeLectures } from "@/lib/api/freeLectures";
+import { getBlogs } from "@/lib/api/blogs";
+import { getPaidLectures } from "@/lib/api/paidLectures";
 
-export default function Home() {
+export default async function Home() {
+  const freeLectures = await getFreeLectures();
+  const paidLectures = await getPaidLectures();
+  const blogs = await getBlogs();
+
   return (
     <>
       <Hero/>
       <HomeLayout>
         <AboutAuthor/>
         <Benefits/>
-        <FreeLectures/>
+        <FreeLectures lectures={freeLectures}/>
         <Geography/>
-        <PaidLectures/>
+        <PaidLectures lectures={paidLectures}/>
         <Interlude/>
-        <Blog/>
+        <Blogs blogs={blogs}/>
         <Reviews/>
         <Instagram/>
       </HomeLayout>

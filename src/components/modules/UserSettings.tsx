@@ -5,19 +5,18 @@ import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { usePush } from "@/store/usePushStore";
 import {useTranslations} from 'next-intl';
 import { logoutUser } from '@/lib/api/auth';
-import { useAuthStore } from '@/store/useAuthStore';
 
 import { UserSettingsProps } from "@/types/props/UserSettings.props";
 
 export default function UserSettings({ user }: UserSettingsProps) {
-    const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
-
     const { addPush, pushes } = usePush();
     
     const t = useTranslations('UserSettings');
     const tPush = useTranslations('Push');
 
     const isMobile = useResponsiveStore((state) => state.isMobile);
+
+    const dateOfBirth = user.dateOfBirth?.split('-').reverse().join('.');
 
     const handleEmail = () => {
         if (pushes.length < 1) {
@@ -28,7 +27,6 @@ export default function UserSettings({ user }: UserSettingsProps) {
     }
 
     const handleLogout = async () => {
-        setAuthenticated(false);
         await logoutUser(user.id);
     }
 
@@ -90,7 +88,7 @@ export default function UserSettings({ user }: UserSettingsProps) {
                             <input
                                 type="text"
                                 id="birthday"
-                                defaultValue={user.dateOfBirth || ' '}
+                                defaultValue={dateOfBirth || ' '}
                                 readOnly
                                 className="rounded-xl px-3 py-5.5 sm:w-[288px] h-15 font-medium text-[12px] text-dark
                                     shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-light 

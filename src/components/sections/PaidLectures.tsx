@@ -6,8 +6,13 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { useTranslations } from 'next-intl';
+import { PaidLecture } from "@/types/interfaces/PaidLecture.interface";
 
-export default function PaidLectures() {
+interface PaidLecturesProps {
+    lectures: PaidLecture[]
+}
+
+export default function PaidLectures({lectures}: PaidLecturesProps) {
     const t = useTranslations('PaidLectures');
 
     const isMobile = useResponsiveStore(state => state.isMobile);
@@ -48,7 +53,7 @@ export default function PaidLectures() {
                     </Link>
                 }
             </div>
-            <PaidLecturesSlider page="home"/>
+            <PaidLecturesSlider lectures={lectures} page="home"/>
         </section>
     )
 }

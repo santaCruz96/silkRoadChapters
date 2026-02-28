@@ -1,4 +1,3 @@
-import { Providers } from './providers';
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
@@ -63,7 +62,6 @@ export default async function RootLayout({
         className={`${inter.variable} antialiased`}
       >
         <NextIntlClientProvider>
-          <Providers>
             <Header isAuthenticated={isAuthenticated}/>
             <Modal/>
             <Suspense fallback={null}>
@@ -73,7 +71,6 @@ export default async function RootLayout({
             <FullscreenImage/>
             {children}
             <Footer/>
-          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

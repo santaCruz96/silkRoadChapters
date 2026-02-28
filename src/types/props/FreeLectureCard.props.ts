@@ -1,9 +1,9 @@
 import { DetailedHTMLProps, AnchorHTMLAttributes } from "react";
-import { IFreeLecture } from "../interfaces/FreeLecture.interface";
+import { FreeLecture } from "../interfaces/FreeLecture.interface";
 
 export interface FreeLectureCardProps 
     extends DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
-        lecture: IFreeLecture,
+        lecture: FreeLecture,
         isCarousel?: boolean,
         grid?: string
 }

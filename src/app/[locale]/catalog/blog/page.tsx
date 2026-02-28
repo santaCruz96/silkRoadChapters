@@ -1,9 +1,11 @@
 import GeneralContainer from "@/layouts/GeneralContainer";
 import BlogNet from "@/components/modules/BlogNet";
-import {useTranslations} from 'next-intl';
+import { getTranslations } from "next-intl/server";
+import { getBlogs } from "@/lib/api/blogs";
 
-export default function BlogCatalog() {
-    const t = useTranslations('Catalog.blog');
+export default async function BlogCatalog() {
+    const t = await getTranslations('Catalog.blog');
+    const blogs = await getBlogs();
 
     return (
         <GeneralContainer>
@@ -12,6 +14,7 @@ export default function BlogCatalog() {
                     {t('headTitle')}
                 </h1>
                 <BlogNet
+                    blogs={blogs}
                     page="blog"
                     cardsPerPage={8}
                 />

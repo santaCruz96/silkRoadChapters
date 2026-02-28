@@ -128,7 +128,7 @@ export default function PublicOffer() {
                         <p><span className="font-bold">{t('section15.tin_bold')}</span> 42411880270111</p>
                         <p><span className="font-bold">{t('section15.address_bold')}</span> {t('section15.address')}</p>
                         <p><span className="font-bold">{t('section15.phone_bold')}</span> +998971578959</p>
-                        <p><span className="font-bold">{t('section15.email_bold')}</span> <a href="mailto:info@silkroadchapters.uz" className="underline underline-offset-2">info@silkroadchapters.uz</a></p>
+                        <p><span className="font-bold">{t('section15.email_bold')}</span> <a href="mailto:info@src.education" className="underline underline-offset-2">info@src.education</a></p>
                     </div>
                 </div>
             </div>

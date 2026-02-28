@@ -98,12 +98,16 @@
         "video": "Complete your purchase to access the paid lecture.",
         "emailConfirm": "Please check your inbox and confirm your email.",
         "emailCopy": "Email copied to clipboard.",
-        "emailInfo": "Profile updates via email only: <guidelines>info@silkroadchapters.uz</guidelines>",
+        "emailInfo": "Profile updates via email only: <guidelines>info@src.education</guidelines>",
         "success": "The lecture is now available in your Library.",
         "error": "The payment was canceled or couldn’t be processed.",
         "cookie": "We use cookies to improve your experience on the site.",
         "passwordForgot": "Check your email to reset your password.",
-        "passwordResetSuccess": "Password updated successfully."
+        "passwordResetSuccess": "Password updated successfully.",
+        "deleteFavorite": "The lecture has been removed from favorites.",
+        "toggleFavoriteAttention": "Log in to add this lecture to your favorites.",
+        "writeComment": "Your comment has been sent for moderation.",
+        "somethingWrong": "Something went wrong."
     },
 
     "Footer": {
@@ -546,7 +550,7 @@
         },
         "8": {
             "title": "Can I contribute to the project?",
-            "text": "We’re always open to collaboration with writers, historians, and travelers. If you’d like to share your knowledge or experience — just reach out via info@silkroadchapters.uz"
+            "text": "We’re always open to collaboration with writers, historians, and travelers. If you’d like to share your knowledge or experience — just reach out via info@src.education"
         },
         "9": {
             "title": "Can I access the lectures after purchase?",

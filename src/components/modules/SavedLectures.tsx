@@ -1,8 +1,12 @@
 import SavedLecturesItem from "../common/SavedLecturesItem";
-import {useTranslations} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
+import { getSavedLectures } from "@/lib/api/userProfile";
+import { UserProfileFavorites } from "@/types/api/user";
 
-export default function SavedLectures(){
-    const t = useTranslations('SavedLectures');
+export default async function SavedLectures(){
+    const t = await getTranslations('SavedLectures');
+
+    const savedLectures = await getSavedLectures();
 
     return (
         <section className="flex flex-col items-center gap-16 w-full">
@@ -15,8 +19,8 @@ export default function SavedLectures(){
                 </p>
             </div>
             <div className="flex flex-col items-center w-full">
-                {Array.from({ length: 4 }).map((_, index) => (
-                    <SavedLecturesItem key={index}/>
+                {savedLectures.map((lecture: UserProfileFavorites, id: string) => (
+                    <SavedLecturesItem savedLecture={lecture} key={id}/>
                 ))}
             </div>
         </section>

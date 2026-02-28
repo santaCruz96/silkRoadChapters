@@ -1,6 +1,9 @@
+'use client';
+
 import { useState } from "react";
 import { useModal } from '@/store/useModalStore';
-import { useRegister } from '@/hooks/useRegister';
+import { registerUser } from "@/lib/api/auth";
+import { usePush } from "@/store/usePushStore";
 import Link from "next/link";
 import Button from "../Button"
 import Checkbox from "../Checkbox";
@@ -14,7 +17,9 @@ import type { FormErrors } from "@/schemas/register";
 export default function AuthFormRegister() {
     const t = useTranslations('Modal.register');
     const tValid = useTranslations('Validation.register');
+    const tPush = useTranslations('Push')
     const { close } = useModal();
+    const { addPush } = usePush();
 
     const [isAgreed, setIsAgreed] = useState(false);
     const [formData, setFormData] = useState<RegisterData>({
@@ -25,8 +30,8 @@ export default function AuthFormRegister() {
         repeatPassword: '',
     });
     const [errors, setErrors] = useState<FormErrors>({});
-
-    const registerMutation = useRegister(close);
+    const [serverError, setServerError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleAgreeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setIsAgreed(e.target.checked);
@@ -73,12 +78,29 @@ export default function AuthFormRegister() {
 
         setErrors({});
 
+        setIsLoading(true);
+
         const payload = { ...formData };
         if (payload.dateOfBirth) {
             payload.dateOfBirth = formatDateToISO(payload.dateOfBirth);
         }
 
-        registerMutation.mutateAsync(payload);
+        try {
+            const response = await registerUser(payload);
+
+            if (!response.success) {
+                setServerError(tValid('clientError'));
+                return; 
+            }
+            
+            addPush('info', tPush('emailConfirm'));
+            close();
+        } catch (error) {
+            console.error('Login error:', error);
+            setServerError(tValid('serverError'));
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const inputClass = (field: keyof FormErrors) => `
@@ -100,7 +122,7 @@ export default function AuthFormRegister() {
                     type="text"
                     value={formData.fullName}
                     onChange={handleInputChange('fullName')}
-                    disabled={registerMutation.isPending}
+                    disabled={isLoading}
                     className={inputClass('fullName')}
                     placeholder={t('name')}
                 />
@@ -113,7 +135,7 @@ export default function AuthFormRegister() {
                     mask={Date}
                     value={formData.dateOfBirth}
                     onChange={handleInputChange('dateOfBirth')}
-                    disabled={registerMutation.isPending}
+                    disabled={isLoading}
                     className={inputClass('dateOfBirth')}
                     placeholder={t('birthday')}
                 />
@@ -126,7 +148,7 @@ export default function AuthFormRegister() {
                     type="email"
                     value={formData.email}
                     onChange={handleInputChange('email')}
-                    disabled={registerMutation.isPending}
+                    disabled={isLoading}
                     className={inputClass('email')}
                     placeholder={t('email')}
                 />
@@ -139,7 +161,7 @@ export default function AuthFormRegister() {
                     type="password"
                     value={formData.password}
                     onChange={handleInputChange('password')}
-                    disabled={registerMutation.isPending}
+                    disabled={isLoading}
                     className={inputClass('password')}
                     placeholder={t('password')}
                 />
@@ -152,7 +174,7 @@ export default function AuthFormRegister() {
                     type="password"
                     value={formData.repeatPassword}
                     onChange={handleInputChange('repeatPassword')}
-                    disabled={registerMutation.isPending}
+                    disabled={isLoading}
                     className={inputClass('repeatPassword')}
                     placeholder={t('repeatPassword')}
                 />
@@ -160,6 +182,9 @@ export default function AuthFormRegister() {
                     <span className={spanClass()}>{errors.repeatPassword}</span>
                 )}
             </div>
+            {serverError && (
+                <span className={spanClass()}>{serverError}</span>
+            )}
             <div className="flex flex-col gap-1 mb-4">
                 <div className="flex items-center gap-3">
                     <Checkbox
@@ -191,7 +216,7 @@ export default function AuthFormRegister() {
                 form="round"
                 icon="user"
                 hover={isAgreed ? "primary" : ""}
-                disabled={registerMutation.isPending}
+                disabled={isLoading}
             >
                 {t('signUp')}
             </Button>

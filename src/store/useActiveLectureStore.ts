@@ -1,21 +1,19 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-
-export interface ActiveLecture {
-    id: number,
-    type: string
-}
+import { FreeLecture } from '@/types/interfaces/FreeLecture.interface';
+import { Blog } from '@/types/interfaces/Blog.interface';
+import { PaidLecture } from '@/types/interfaces/PaidLecture.interface';
 
 interface LectureStore {
-    currentLecture: ActiveLecture | null,
-    setCurrentLecture: (id: number, type: string) => void
+    currentLecture: FreeLecture | PaidLecture | Blog, 
+    setCurrentLecture: (lecture: FreeLecture | PaidLecture | Blog) => void
 }
 
 const useActiveLectureStore = create<LectureStore>()(
     persist(
         (set) => ({
-            currentLecture: null,
-            setCurrentLecture: (id, type) => set({ currentLecture: { id, type } }),
+            currentLecture: {} as FreeLecture | PaidLecture | Blog,
+            setCurrentLecture: (lecture) => set({ currentLecture: lecture }),
         }),
         {
             name: 'active-lecture-storage',

@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { setAuthCookies, clearAuthCookies } from '../authCookies';
 import { API_URL } from '@/config/constants';
 import { LoginData, LoginResponse, RegisterData } from '@/types/api/auth';
-import { fetchWithAuth } from './apiСlient';
+import { fetchWithAuth } from './apiClient';
 
 export async function loginUser(data: LoginData): Promise<{ success: boolean; error?: string }> {
     try {
