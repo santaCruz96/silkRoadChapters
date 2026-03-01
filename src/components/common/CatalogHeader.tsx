@@ -3,13 +3,20 @@ import Button from "./Button";
 import Search from "../modules/Search/Search";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import {useTranslations} from 'next-intl';
+import { useCatalogStore, CatalogFilter } from "@/store/useCatalogStore";
 
 export default function CatalogHeader({
     page,
 }: CatalogHeaderProps) {
     const t = useTranslations('Catalog');
-
     const isMobile = useResponsiveStore(state => state.isMobile);
+
+    const filter = useCatalogStore(state => state.filter);
+    const setFilter = useCatalogStore(state => state.setFilter);
+
+    const handleFilterClick = (clicked: CatalogFilter) => {
+        setFilter(filter === clicked ? 'none' : clicked);
+    };
 
     const title: Record<string, string> = {
         freeLectures: t('freeLectures.title'),
@@ -50,19 +57,22 @@ export default function CatalogHeader({
                 {page !== 'account' &&
                     <div className="flex gap-4 w-full sm:w-auto mt-8 sm:mt-4">
                         <Button
-                            color="dark"
+                            color={filter === 'new' ? 'dark' : 'light'}
                             size={isMobile ? "full" : "lg"}
                             form="round"
-                            hover="primary"
+                            hover={filter === 'new' ? 'primary' : 'secondary'}
+                            shadow={filter !== 'new'}
+                            onClick={() => handleFilterClick('new')}
                         >
                             {t('newButton')}
                         </Button>
                         <Button
-                            color="light"
+                            color={filter === 'popular' ? 'dark' : 'light'}
                             size={isMobile ? "full" : "lg"}
                             form="round"
-                            hover="secondary"
-                            shadow
+                            hover={filter === 'popular' ? 'primary' : 'secondary'}
+                            shadow={filter !== 'popular'}
+                            onClick={() => handleFilterClick('popular')}
                         >
                             {t('popularButton')}
                         </Button>

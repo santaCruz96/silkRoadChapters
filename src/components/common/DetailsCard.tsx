@@ -7,30 +7,40 @@ import Icon from "@/icons/Icon";
 import { DetailsCardProps } from "@/types/props/DetailsCard.props";
 import {useTranslations} from 'next-intl';
 import useActiveLectureStore from '@/store/useActiveLectureStore';
-import { FavoriteItem } from "@/types/api/favorites";
-import { LikesResponse } from "@/types/api/likes";
 import { useModal } from "@/store/useModalStore";
-import { getFavorites, toggleFavorite } from '@/lib/api/favorites';
-import { getLikes, toggleLike } from "@/lib/api/likes";
+import { toggleFavorite } from '@/lib/api/favorites';
+import { toggleLike } from "@/lib/api/likes";
 
-export default function DeatailsCard({entityType, isAuthenticated}: DetailsCardProps) {
+export default function DeatailsCard({
+    entityType, 
+    isAuthenticated, 
+    likeInfo,
+    isFavoriteServer
+}: DetailsCardProps) {
     const router = useRouter();
 
     const isFree = entityType === 0;
     const isPaid = entityType === 1;
     const isBlog = entityType === 2;
 
-    const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
     const [isLoadingFavorite, setIsLoadingFavorite] = useState(false);
     const [isLoadingLike, setIsLoadingLike] = useState(false);
-    const [likes, setLikes] = useState<LikesResponse | null>(null);
-    const [isLiked, setIsLiked] = useState(false);
+    const [likes, setLikes] = useState<number | null>(null);
+    const [isLiked, setIsLiked] = useState<number | null>(null);
+    const [isFavorite, setIsFavorite] = useState(isFavoriteServer)
 
     const { currentLecture } = useActiveLectureStore();
 
     const t = useTranslations('DeatailsCard');
 
     const { open } = useModal();
+
+    useEffect(() => {
+        if (!isAuthenticated || !likeInfo) return;
+        
+        setIsLiked(likeInfo.userReaction)
+
+    }, [currentLecture.id, entityType, isAuthenticated, isFree, likeInfo]);
 
     const viewsCount = useMemo(() => {
         if (!currentLecture) return null;
@@ -48,33 +58,10 @@ export default function DeatailsCard({entityType, isAuthenticated}: DetailsCardP
     }, [isFree, isPaid, isBlog]);
 
     useEffect(() => {
-        const fetchFavorites = async () => {
-            const data = await getFavorites();
-            setFavorites(data);
-        };
-
-        if (isAuthenticated) {
-            fetchFavorites();
+        if ('likesCount' in currentLecture) {
+            setLikes(currentLecture.likesCount);
         }
-    }, [isAuthenticated]);
-
-    // useEffect(() => {
-    //     if (!isAuthenticated || isFree) return;
-
-    //     const fetchLikes = async () => {
-    //         const data = await getLikes(currentLecture.id, entityType);
-    //         setLikes(data);
-    //     };
-        
-    //     fetchLikes();
-    // }, [currentLecture, entityType, isAuthenticated, isFree]);
-
-    useEffect(() => {
-        if (!isAuthenticated) return
-        setIsLiked(likes?.userReaction !== null && likes?.userReaction !== undefined);
-    }, [isAuthenticated, likes?.userReaction]);
-
-    const isFavorite = favorites.some((item) => item.entityId === currentLecture?.id);
+    },[currentLecture])
 
     const handleToggleFavorite = async () => {
         setIsLoadingFavorite(true);
@@ -90,18 +77,7 @@ export default function DeatailsCard({entityType, isAuthenticated}: DetailsCardP
                 return;
             }
 
-            if (isFavorite) {
-                setFavorites((prev) =>
-                    prev.filter((item) => item.entityId !== currentLecture?.id)
-                );
-            } else {
-                if (result.data) {
-                    setFavorites((prev) => [...prev, result.data!]);
-                } else {
-                    const fresh = await getFavorites();
-                    setFavorites(fresh);
-                }
-            }
+            setIsFavorite(!isFavorite)
         } catch (error) {
             console.error('Error:', error);
         } finally {
@@ -122,15 +98,11 @@ export default function DeatailsCard({entityType, isAuthenticated}: DetailsCardP
                 console.error('Error:', result.status);
                 return;
             }
-
-            setIsLiked(prev => !prev);
+            
+            setIsLiked(isLiked ? null : 1);
             setLikes(prev => {
-                if (!prev) return prev;
-                return {
-                    ...prev,
-                    likesCount: isLiked ? prev.likesCount - 1 : prev.likesCount + 1,
-                    userReaction: isLiked ? null : 1,
-                };
+                const current = prev ?? 0;
+                return isLiked ? current - 1 : current + 1;
             });
         } catch (error) {
             console.error('Error:', error);
@@ -154,14 +126,13 @@ export default function DeatailsCard({entityType, isAuthenticated}: DetailsCardP
             <div className="flex w-full justify-between">
                 <div className="flex gap-3">
                     <Button
-                        color={likes?.userReaction ? 'green' : 'lightGrey'}
+                        color={isLiked ? 'green' : 'lightGrey'}
                         size="sm"
                         form="square"
                         icon="like"
                         iconSize="big"
-                        hover={likes?.userReaction ? 'detailsButton' : 'contentButton'}
-                        // disabled={isFree || isLoadingLike}
-                        disabled={true}
+                        hover={isLiked ? 'detailsButton' : 'contentButton'}
+                        disabled={isFree || isLoadingLike}
                         onClick={isAuthenticated ? handleToggleLike : () => open('login')}
                     />
                     <Button
@@ -185,7 +156,7 @@ export default function DeatailsCard({entityType, isAuthenticated}: DetailsCardP
                     <div className="flex gap-2">
                         <Icon className="fill-dark" name="like"/>
                         <p className="font-normal text-[16px] uppercase text-dark">
-                            {'likesCount' in currentLecture && currentLecture.likesCount}
+                            {!isFree && likes}
                         </p>
                     </div>
                 </div>

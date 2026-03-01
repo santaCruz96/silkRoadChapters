@@ -4,11 +4,7 @@ import { fetchWithAuth } from './apiClient';
 import { LikesResponse } from '@/types/api/likes';
 
 export const getLikes = async (id: string, entityType: number): Promise<LikesResponse> => {
-    const res = await fetchWithAuth(`/reactions/summary?entityId=${id}&entityType=${entityType}`, {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    const res = await fetchWithAuth(`/reactions/summary?entityId=${id}&entityType=${entityType}`);
 
     if (!res.ok) {
         throw new Error(`Failed to fetch likes: ${res.status}`);
@@ -22,7 +18,7 @@ export const getLikes = async (id: string, entityType: number): Promise<LikesRes
 export async function toggleLike(
     entityType: string,
     id: string,
-    isLiked: boolean
+    isLiked: number | null
 ): Promise<{ status: number }> {
     const res = await fetchWithAuth(`/${entityType}/${id}/like`, {
         method: isLiked ? 'DELETE' : 'POST',

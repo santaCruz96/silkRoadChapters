@@ -1,31 +1,57 @@
 "use client";
 
-import { useState, useMemo, useRef, useCallback } from 'react';
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react';
 import { BlogsNetProps } from "@/types/props/BlogsNet.props";
 import CatalogHeader from '../common/CatalogHeader';
 import BlogCard from '../common/BlogCard';
 import Pagination from '../common/Pagination';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
+import { CatalogFilter, useCatalogStore } from "@/store/useCatalogStore";
 
 export default function BlogNet({blogs, page, cardsPerPage}: BlogsNetProps ) {
     const isMobile = useResponsiveStore(state => state.isMobile);
     const isTablet = useResponsiveStore(state => state.isTablet);
-    const [currentPage, setCurrentPage] = useState<number>(0);
     const targetRef = useRef<HTMLDivElement>(null);
 
-    const pageCount = Math.ceil(blogs.length / cardsPerPage);
+    const filter = useCatalogStore(state => state.filter);
+    const setAllLectures = useCatalogStore(state => state.setAllLectures);
+
+    useEffect(() => {
+        setAllLectures(blogs);
+    }, [blogs, setAllLectures]);
+
+    const [pageState, setPageState] = useState<{ page: number; filter: CatalogFilter }>({
+        page: 0,
+        filter: filter,
+    });
+
+    const currentPage = pageState.filter === filter ? pageState.page : 0;
+
+    const filteredBlogs = useMemo(() => {
+        if (filter === 'new') {
+            return [...blogs].sort(
+                (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            );
+        }
+        if (filter === 'popular') {
+            return [...blogs].sort((a, b) => b.viewsCount - a.viewsCount);
+        }
+        return blogs;
+    }, [blogs, filter]);
+
+    const pageCount = Math.ceil(filteredBlogs.length / cardsPerPage);
 
     const currentCards = useMemo(() => {
         const start = currentPage * cardsPerPage;
-        return blogs.slice(start, start + cardsPerPage);
-    }, [currentPage, cardsPerPage, blogs]); 
+        return filteredBlogs.slice(start, start + cardsPerPage);
+    }, [currentPage, cardsPerPage, filteredBlogs]); 
 
     const handlePageChange = useCallback((selected: number) => {
-        setCurrentPage(selected);
+        setPageState({ page: selected, filter });
         if (targetRef.current) {
             targetRef.current.scrollIntoView({ behavior: 'smooth' });
         }
-    }, []);
+    }, [filter]);
 
     return (
         <section className="flex flex-col gap-16 w-full">

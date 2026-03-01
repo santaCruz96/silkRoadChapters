@@ -5,25 +5,38 @@ import FreeLectures from "@/components/sections/FreeLectures";
 import Comments from "@/components/sections/Comments";
 import { getFreeLectures, getSpecificLecture } from "@/lib/api/freeLectures";
 import { getComments } from "@/lib/api/comments";
+import { getFavorites } from '@/lib/api/favorites';
+import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
 
 const ENTITY_TYPE = 0;
-import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
 
 export default async function FreeLectureContent({ 
     params 
 }: { 
     params: Promise<{ id: string }> 
 }) {
-    const lectures = await getFreeLectures();
     const { id } = await params;
+
+    const lectures = await getFreeLectures();
     const specificLecture = await getSpecificLecture(id);
     const comments = await getComments(id, ENTITY_TYPE);
+    
     const cookieStore = await cookies();
     const isAuthenticated = !!cookieStore.get(TOKEN_COOKIE_NAME)?.value;
 
+    let isFavorite = false;
+    if (isAuthenticated) {
+        const favorites = await getFavorites();
+        isFavorite = favorites.some((item) => item.entityId === specificLecture.id);
+    }
+
     return (
         <GeneralContainer>
-            <Content specificLecture={specificLecture} isAuthenticated={isAuthenticated}/>
+            <Content 
+                specificLecture={specificLecture} 
+                isAuthenticated={isAuthenticated}
+                isFavoriteServer={isFavorite}
+            />
             <Comments 
                 comments={comments} 
                 id={id} 

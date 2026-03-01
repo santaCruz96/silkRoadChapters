@@ -26,7 +26,6 @@ export default function FinalCost({priceInfo}: FinalCostProps) {
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setIsAgreed(e.target.checked);
-        console.log(priceInfo.lectureId);
     };
 
     const handleInitiatePayment = async () => {

@@ -65,8 +65,6 @@ export async function logoutUser(id:string) {
             method: 'DELETE' 
         });
 
-        console.log(res);
-
         if (!res.ok) {
             console.warn('Backend logout failed, but clearing local session anyway');
         }

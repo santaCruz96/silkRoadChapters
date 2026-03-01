@@ -1,25 +1,62 @@
 "use client"
 
+import { useMemo, useState } from "react";
+import { usePathname } from 'next/navigation';
 import { useSearch } from "@/store/useSearchStore";
+import { useCatalogStore } from "@/store/useCatalogStore";
+import Link from "next/link";
 import Icon from "@/icons/Icon"
 import Input from "../../common/Input"
-// import useScrollLock from '@/hooks/useScrollLock';
 import { SearchProps } from "@/types/props/Search.props";
-import {useTranslations} from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useDebounce } from "@/hooks/useDebounce";
 
 export default function Search({menu}: SearchProps) {
     const { isActive, open, close } = useSearch();
     const t = useTranslations('Header');
+    const locale = useLocale();
+
+    const pathname = usePathname();
+    const category = 
+        pathname.includes('/catalog/free-lectures') ? 'free' :
+        pathname.includes('/catalog/paid-lectures') ? 'paid' :
+        pathname.includes('/catalog/blog') ? 'blog' :
+        null;
+
+    const setSearchQuery = useCatalogStore(state => state.setSearchQuery);
+    const allLectures = useCatalogStore(state => state.allLectures);
+
+    const [inputValue, setInputValue] = useState('');
+    const debouncedQuery = useDebounce(inputValue, 400);
+
+    const searchResults = useMemo(() => {
+        if (!debouncedQuery.trim()) return [];
+
+        const titleField = locale === 'ru' ? 'titleRu' : 'titleEn';
+
+        return allLectures
+            .filter((lecture) =>
+                lecture[titleField].toLowerCase().includes(debouncedQuery.toLowerCase())
+            )
+            .slice(0, 5);
+    }, [debouncedQuery, allLectures, locale]);
 
     const handleFocus = () => {
         open(); 
     };
 
     const handleBlur = () => {
-        close(); 
+        close();
+        setTimeout(() => {
+            setInputValue('');
+            setSearchQuery('');
+        }, 200);
     };
 
-    // useScrollLock(isActive);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
+        setSearchQuery(e.target.value);
+    };
 
     return (
         <div className={`${menu ? 'sm:hidden' : 'block w-full sm:w-auto'} relative`}>
@@ -30,26 +67,34 @@ export default function Search({menu}: SearchProps) {
                 name="input-search"
                 type="search"
                 placeholder={t('search')}
+                value={inputValue}
+                onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                autoComplete="off"
             />
             <Icon 
                 className={`absolute top-3.5 left-3 ${isActive ? 'opacity-0' : 'opacity-100'} 
                     transition-opacity stroke-dark fill-transparent`} 
                 name={"magnifer"}
             />
-            {/* <div 
+            <div 
                 className="absolute w-full sm:w-72 bg-light rounded-[20px] z-20 px-4
                     shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
             >
-                {abstractArray.map((_, index) => (
-                    <div key={index} className="py-4 w-full border-b border-stroke">
-                        <p className="font-normal text-[16px] text-fill-dark leading-4.75">
-                            Как Амир Темур оказался в Самарканде
-                        </p>
-                    </div>
+                {searchResults.map((lecture) => (
+                    <Link key={lecture.id} href={`/${category}/${lecture.id}`}>
+                        <div 
+                            className="py-4 w-full border-b border-stroke 
+                                text-grey hover:text-dark transition"
+                        >
+                            <p className="font-normal text-[16px] leading-4.75">
+                                {locale === 'ru' ? lecture.titleRu : lecture.titleEn}
+                            </p>
+                        </div>
+                    </Link>
                 ))}
-            </div> */}
+            </div>
         </div>
     )
 }

@@ -12,13 +12,21 @@ import ContentBlocksRenderer from '@/utils/ContentBlocksRenderer';
 import { FreeLecture } from '@/types/interfaces/FreeLecture.interface';
 import { PaidLecture } from '@/types/interfaces/PaidLecture.interface';
 import { Blog } from '@/types/interfaces/Blog.interface';
+import { LikesResponse } from '@/types/api/likes';
 
 interface ContentProps {
     specificLecture?: FreeLecture | PaidLecture | Blog;
     isAuthenticated: boolean;
+    likeInfo?: LikesResponse | null;
+    isFavoriteServer: boolean;
 }
 
-export default function Content({specificLecture, isAuthenticated}: ContentProps ) {
+export default function Content({
+    specificLecture, 
+    isAuthenticated, 
+    likeInfo,
+    isFavoriteServer
+}: ContentProps ) {
     const isTablet = useResponsiveStore((state) => state.isTablet);
     const pathname = usePathname();
 
@@ -55,7 +63,12 @@ export default function Content({specificLecture, isAuthenticated}: ContentProps
             <div className="flex gap-4 w-full">
                 <div className="flex flex-col gap-12 sm:gap-16 flex-1">
                     {isTablet && !isBlog && currentLecture && 
-                        <DeatailsCard entityType={getEntityType()} isAuthenticated={isAuthenticated}/>
+                        <DeatailsCard 
+                            entityType={getEntityType()} 
+                            isAuthenticated={isAuthenticated}
+                            likeInfo={likeInfo}
+                            isFavoriteServer={isFavoriteServer}
+                        />
                     }
                     {'imageLink' in currentLecture && isBlog && 
                         <div 
@@ -66,14 +79,24 @@ export default function Content({specificLecture, isAuthenticated}: ContentProps
                         />
                     }
                     {isTablet && isBlog && 
-                        <DeatailsCard entityType={getEntityType()} isAuthenticated={isAuthenticated}/>
+                        <DeatailsCard 
+                            entityType={getEntityType()} 
+                            isAuthenticated={isAuthenticated}
+                            likeInfo={likeInfo}
+                            isFavoriteServer={isFavoriteServer}
+                        />
                     }
                     {currentLecture?.contentBlocks &&
                         <ContentBlocksRenderer blocks={currentLecture?.contentBlocks}/>
                     }
                 </div>
                 {!isTablet && currentLecture && 
-                    <DeatailsCard entityType={getEntityType()} isAuthenticated={isAuthenticated}/>
+                    <DeatailsCard 
+                        entityType={getEntityType()} 
+                        isAuthenticated={isAuthenticated}
+                        likeInfo={likeInfo}
+                        isFavoriteServer={isFavoriteServer}
+                    />
                 }
             </div>
         </section>
