@@ -42,7 +42,7 @@ export default function ContentVideo({lecture, isAuthenticated}: ContentVideoPro
         if ('videoId' in lecture && !isAuthenticated) {
             open('login');
         }
-        if (isAuthenticated && embedUrl) {
+        if (isAuthenticated && embedUrl || 'youtubeId' in lecture) {
             setShowVideo(true);
         }
     };
