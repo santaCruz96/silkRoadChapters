@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Button from "./Button";
 import Icon from "@/icons/Icon";
 import { DetailsCardProps } from "@/types/props/DetailsCard.props";
-import {useTranslations} from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import useActiveLectureStore from '@/store/useActiveLectureStore';
 import { useModal } from "@/store/useModalStore";
 import { toggleFavorite } from '@/lib/api/favorites';
@@ -30,10 +30,19 @@ export default function DeatailsCard({
     const [isFavorite, setIsFavorite] = useState(isFavoriteServer)
 
     const { currentLecture } = useActiveLectureStore();
+    const detailsMap = Object.fromEntries(
+        (currentLecture?.details || []).map(({ key, value }) => [key, value])
+    );
 
     const t = useTranslations('DeatailsCard');
+    const locale = useLocale();
+    const currentLocale = locale === 'ru' ? 'Ru' : 'En';
 
     const { open } = useModal();
+
+    const location = detailsMap[`location${currentLocale}`] || '';
+    const travelPoint = detailsMap[`travelPoint${currentLocale}`] || '';
+    const year = detailsMap.year || '';
 
     useEffect(() => {
         if (!isAuthenticated || !likeInfo) return;
@@ -172,30 +181,36 @@ export default function DeatailsCard({
                         </p>
                     </div>
                 }
-                <div className="flex flex-col gap-1.75 py-4 border-b border-stroke">
-                    <p className="font-semibold text-[18px] leading-5.5 text-dark">
-                        {t('location')}
-                    </p>
-                    <p className="font-normal text-[14px] leading-[160%] text-grey">
-                        {/* {currentLecture?.viewCount} */}{t('location')}
-                    </p>
-                </div>
-                <div className="flex flex-col gap-1.75 py-4 border-b border-stroke">
-                    <p className="font-semibold text-[18px] leading-5.5 text-dark">
-                        {t('travelPoint')}
-                    </p>
-                    <p className="font-normal text-[14px] leading-[160%] text-grey">
-                        {/* {currentLecture?.viewCount} */}{t('travelPoint')}
-                    </p>
-                </div>
-                <div className="flex flex-col gap-1.75 py-4">
-                    <p className="font-semibold text-[18px] leading-5.5 text-dark">
-                        {t('year')}
-                    </p>
-                    <p className="font-normal text-[14px] leading-[160%] text-grey">
-                        {/* {currentLecture?.viewCount} */}{t('year')}
-                    </p>
-                </div>
+                {location && 
+                    <div className={`flex flex-col gap-1.75 py-4 ${!travelPoint && !year ? '' : 'border-b border-stroke'}`}>
+                        <p className="font-semibold text-[18px] leading-5.5 text-dark">
+                            {t('location')}
+                        </p>
+                        <p className="font-normal text-[14px] leading-[160%] text-grey">
+                            {location}
+                        </p>
+                    </div>
+                }
+                {travelPoint && 
+                    <div className={`flex flex-col gap-1.75 py-4 ${year ? 'border-b border-stroke' : ''}`}>
+                        <p className="font-semibold text-[18px] leading-5.5 text-dark">
+                            {t('travelPoint')}
+                        </p>
+                        <p className="font-normal text-[14px] leading-[160%] text-grey">
+                            {travelPoint}
+                        </p>
+                    </div>
+                }
+                {year && 
+                    <div className="flex flex-col gap-1.75 py-4">
+                        <p className="font-semibold text-[18px] leading-5.5 text-dark">
+                            {t('year')}
+                        </p>
+                        <p className="font-normal text-[14px] leading-[160%] text-grey">
+                            {year}
+                        </p>
+                    </div>
+                }
             </div>
             <div className="flex flex-col gap-4">
                 {isPaid && 

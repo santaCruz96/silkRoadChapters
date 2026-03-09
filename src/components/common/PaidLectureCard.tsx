@@ -15,7 +15,7 @@ export default function PaidLectureCard({
     const router = useRouter();
     const locale = useLocale();
     const title = locale === 'ru' ? lecture.titleRu : lecture.titleEn;
-    const description = locale === 'ru' ? lecture.longDescriptionRu : lecture.longDescriptionEn;
+    const description = locale === 'ru' ? lecture.shortDescriptionRu : lecture.shortDescriptionEn;
 
     const t = useTranslations('PaidLectureCard');
 

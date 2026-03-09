@@ -5,7 +5,7 @@ import { API_URL } from "@/config/constants";
 import { fetchWithAuth } from "./apiClient";
 
 export const getPaidLectures = async (): Promise<PaidLecture[]> => {
-    const res = await fetch(`${API_URL}/premium-lectures?includeUnpublished=true`, {
+    const res = await fetch(`${API_URL}/premium-lectures`, {
         headers: {
             'Content-Type': 'application/json',
         },

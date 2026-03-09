@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Icon from "@/icons/Icon";
+// import Icon from "@/icons/Icon";
 import Button from "./Button";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { useLocale, useTranslations } from "next-intl";
@@ -75,7 +75,7 @@ export default function SavedLecturesItem({savedLecture}: SavedLecture) {
                             {description?.replace(/<[^>]*>?/gm, ' ')}
                         </p>
                     </div>
-                    <div className="flex gap-22.25">
+                    {/* <div className="flex gap-22.25">
                         <div className="flex items-center gap-2">
                             <Icon className="fill-dark" name="eye"/>
                             <p className="font-normal text-[16px] uppercase text-dark">
@@ -88,7 +88,7 @@ export default function SavedLecturesItem({savedLecture}: SavedLecture) {
                                 454
                             </p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </Link>
             <div className="absolute top-12 right-4 sm:static">

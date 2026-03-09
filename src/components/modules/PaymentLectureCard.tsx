@@ -1,4 +1,4 @@
-import Icon from "@/icons/Icon";
+// import Icon from "@/icons/Icon";
 import { PaidLecture } from "@/types/interfaces/PaidLecture.interface";
 import { getLocale } from "next-intl/server";
 
@@ -9,7 +9,7 @@ export interface PaymentLectureCardProps {
 export default async function PaymentLectureCard({specificLecture}: PaymentLectureCardProps) {
     const locale = await getLocale();
     const title = locale === 'ru' ? specificLecture.titleRu : specificLecture.titleEn;
-    const description = locale === 'ru' ? specificLecture.longDescriptionRu : specificLecture.longDescriptionEn;
+    const description = locale === 'ru' ? specificLecture.shortDescriptionRu : specificLecture.shortDescriptionEn;
     
     return (
         <div className="col-span-1 sm:col-span-4 lg:col-span-5 rounded-[20px] sm:rounded-[30px] p-4 pt-4 bg-light flex flex-col lg:flex-row gap-4
@@ -32,7 +32,7 @@ export default async function PaymentLectureCard({specificLecture}: PaymentLectu
                         {description?.replace(/<[^>]*>?/gm, ' ')}                 
                     </p>
                 </div>
-                <div className="flex gap-22.25">
+                {/* <div className="flex gap-22.25">
                     <div className="flex items-center gap-2">
                         <Icon className="fill-dark" name="eye"/>
                         <p className="font-normal text-[16px] uppercase text-dark">
@@ -45,7 +45,7 @@ export default async function PaymentLectureCard({specificLecture}: PaymentLectu
                             {specificLecture.likesCount}
                         </p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

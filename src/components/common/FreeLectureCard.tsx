@@ -8,7 +8,7 @@ import { useLocale } from 'next-intl';
 export default function FreeLectureCard({lecture, isCarousel, grid}: FreeLectureCardProps ) {
     const locale = useLocale();
     const title = locale === 'ru' ? lecture.titleRu : lecture.titleEn;
-    const description = locale === 'ru' ? lecture.longDescriptionRu : lecture.longDescriptionEn;
+    const description = locale === 'ru' ? lecture.shortDescriptionRu : lecture.shortDescriptionEn;
 
     const margin = () => {
         if (isCarousel) {

@@ -49,9 +49,8 @@ export interface Category {
 }
 
 export interface Details {
-    location: string;
-    travelPoint: string;
-    year: number;
+    key: string;
+    value: string;
 }
 
 export interface PaidLecture {
