@@ -1,6 +1,7 @@
 'use server'
 
 import { ApiResponse, PaidLecture } from "@/types/interfaces/PaidLecture.interface";
+import { PurchasesLecture } from "@/types/api/purchasesLecture";
 import { API_URL } from "@/config/constants";
 import { fetchWithAuth } from "./apiClient";
 
@@ -44,4 +45,20 @@ export const checkoutPrice = async (id: string) => {
     }
     
     return response.json();
+}
+
+export const getPurchasesLecture = async(): Promise<PurchasesLecture[]> => {
+    const response = await fetchWithAuth(`/user/profile/purchases`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch lectures: ${response.status}`);
+    }
+
+    const data: PurchasesLecture[] = await response.json();
+    
+    return data;
 }

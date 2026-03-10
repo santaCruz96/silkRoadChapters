@@ -4,11 +4,14 @@ import PaidLecturesNet from "@/components/modules/PaidLecturesNet";
 import SavedLectures from "@/components/modules/SavedLectures";
 import { redirect } from 'next/navigation';
 import { getProfile } from "@/lib/api/userProfile";
-import { getPaidLectures } from "@/lib/api/paidLectures";
+import { getPaidLectures, getPurchasesLecture } from "@/lib/api/paidLectures";
+import { mergePurchasesLectures } from "@/utils/mergePurchasesLectures";
 
 export default async function Account() {
     const user = await getProfile();
-    const lectures = await getPaidLectures();
+    const allLectures = await getPaidLectures();
+    const purchasesLecture = await getPurchasesLecture();
+    const specificLectures = mergePurchasesLectures(allLectures, purchasesLecture);
 
     if (!user) {
         redirect('/');
@@ -18,9 +21,10 @@ export default async function Account() {
         <GeneralContainer>
             <UserSettings user={user}/>
             <PaidLecturesNet 
-                lectures={lectures}
+                lectures={specificLectures}
                 page="account"
                 cardsPerPage={4}
+                purchasesLectures={null}
             />
             <SavedLectures/>
         </GeneralContainer>

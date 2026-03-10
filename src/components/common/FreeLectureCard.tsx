@@ -42,7 +42,7 @@ export default function FreeLectureCard({lecture, isCarousel, grid}: FreeLecture
                     {description?.replace(/<[^>]*>?/gm, ' ')}
                 </p>
             </div>
-            <div className="flex w-full justify-end items-center">
+            <div className="flex w-full justify-end items-center mt-auto">
                 <div className="flex gap-2">
                     <Icon className="fill-dark" name="eye"/>
                     <p className="font-normal text-[16px] uppercase text-dark">

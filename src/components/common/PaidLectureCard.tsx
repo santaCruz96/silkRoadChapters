@@ -28,7 +28,6 @@ export default function PaidLectureCard({
     return (
         <Link
             href={isActive ? `/paid/${lecture.id}` : ``}
-            // href={''}
             className={`${isCarousel ? 'flex-[0_0_auto]' : 'grid-cols-1'}`} 
             {...props}
         >

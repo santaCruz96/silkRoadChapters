@@ -1,19 +1,3 @@
-export interface IDetails {
-    price: string,
-    location: string,
-    travelPoint: string,
-    year: string
-}
-
-export interface IPaidLecture {
-    id: number,
-    type: string,
-    title: string,
-    details: IDetails,
-    images: [string, string, [string, string]],
-    texts: string[]
-}
-
 export interface Tag {
     id: string;
     title: string;
@@ -53,6 +37,21 @@ export interface Details {
     value: string;
 }
 
+export interface Video {
+    id: string,
+    key: string,
+    title: string,
+    processingStatus: number,
+    encodingProgress: number,
+    lastWebhookAt: string | null,
+    availableResolutions: string | null,
+    lengthSeconds: number | null,
+    thumbnailFileName: string | null,
+    viewsCount: number,
+    totalWatchTimeSeconds: number,
+    metricsLastSyncedAt: string
+}
+
 export interface PaidLecture {
     id: string;
     titleRu: string;
@@ -72,8 +71,8 @@ export interface PaidLecture {
     categoryId: string;
     category: Category | null;
     videoId: string;
-    video: string | null;
-    tags: [];
+    video: Video | null;
+    tags: Tag[];
     priceUsd: number;
     createdAt: string;
     updatedAt: string;

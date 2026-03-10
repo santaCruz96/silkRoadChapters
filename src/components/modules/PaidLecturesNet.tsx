@@ -9,7 +9,7 @@ import { useResponsiveStore } from "@/store/useResponsiveStore";
 import PaidLecturesSlider from './PaidLecturesSlider';
 import { CatalogFilter, useCatalogStore } from "@/store/useCatalogStore";
 
-export default function PaidLecturesNet({lectures, page, cardsPerPage}: PaidLecturesNetProps ) {
+export default function PaidLecturesNet({lectures, page, cardsPerPage, purchasesLectures}: PaidLecturesNetProps ) {
     const isMobile = useResponsiveStore(state => state.isMobile);
     const targetRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +57,7 @@ export default function PaidLecturesNet({lectures, page, cardsPerPage}: PaidLect
         <section className="flex flex-col gap-16 w-full">
             <CatalogHeader page={page}/>
             {page === 'account' && isMobile ?
-                <PaidLecturesSlider lectures={lectures} page='account'/>
+                <PaidLecturesSlider lectures={lectures} purchasesLectures={purchasesLectures} page='account'/>
             :
                 <div 
                     ref={targetRef} 
@@ -68,7 +68,7 @@ export default function PaidLecturesNet({lectures, page, cardsPerPage}: PaidLect
                             key={lecture.id}
                             lecture={lecture}
                             isActive
-                            isBought={page === 'account'}
+                            isBought={purchasesLectures?.some(ul => ul.lectureId === lecture.id) || page === 'account'}
                         />
                     ))}
                 </div>

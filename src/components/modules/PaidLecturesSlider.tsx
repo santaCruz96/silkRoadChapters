@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { PaidLecturesSliderProps } from "@/types/props/PaidLecturesSlider.props";
 
-export default function PaidLecturesSlider({lectures, page}: PaidLecturesSliderProps) {
+export default function PaidLecturesSlider({lectures, page, purchasesLectures}: PaidLecturesSliderProps) {
     const isTablet = useResponsiveStore(state => state.isTablet);
 
     const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -60,7 +60,7 @@ export default function PaidLecturesSlider({lectures, page}: PaidLecturesSliderP
                             isActive={isActive(index)}
                             onClick={() => scrollToSlide(index)}
                             isCarousel
-                            isBought={page === 'account'}
+                            isBought={purchasesLectures?.some(ul => ul.lectureId === lecture.id) || page === 'account'}
                         />
                     ))}
                 </div>

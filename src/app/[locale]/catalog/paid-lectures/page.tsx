@@ -1,12 +1,23 @@
+import { cookies } from 'next/headers';
 import GeneralContainer from "@/layouts/GeneralContainer";
 import PaidLecturesNet from "@/components/modules/PaidLecturesNet";
 import {getTranslations} from 'next-intl/server';
-import { getPaidLectures } from "@/lib/api/paidLectures";
+import { getPaidLectures, getPurchasesLecture  } from "@/lib/api/paidLectures";
+import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
+import { PurchasesLecture } from '@/types/api/purchasesLecture';
 
 export default async function PaidLecturesCatalog() {
     const t = await getTranslations('Catalog.paidLectures');
 
     const lectures = await getPaidLectures();
+    const cookieStore = await cookies();
+    const isAuthenticated = !!cookieStore.get(TOKEN_COOKIE_NAME)?.value;
+
+    let purchasesLectures: PurchasesLecture[] | null = null;
+
+    if (isAuthenticated) {
+        purchasesLectures = await getPurchasesLecture();
+    }
 
     return (
         <GeneralContainer>
@@ -21,6 +32,7 @@ export default async function PaidLecturesCatalog() {
                     lectures={lectures}
                     page="paidLectures"
                     cardsPerPage={8}
+                    purchasesLectures={purchasesLectures}
                 />
             </div>
         </GeneralContainer>
