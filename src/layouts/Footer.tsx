@@ -25,7 +25,7 @@ export default function Footer() {
                             sm:gap-9.25 font-bold text-[12px] text-light"
                     >
                         <Link href={'/terms-of-use'}>{t('termsOfUse')}</Link>
-                        <Link href={'/user-agreement'}>{t('agreement')}</Link>
+                        <Link href={'/user-agreement-privacy-policy'}>{t('agreement')}</Link>
                         <Link href={'/public-offer'}>{t('publicOffer')}</Link>
                     </div>
                     <Link

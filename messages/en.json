@@ -107,7 +107,8 @@
         "deleteFavorite": "The lecture has been removed from favorites.",
         "toggleFavoriteAttention": "Log in to add this lecture to your favorites.",
         "writeComment": "Your comment has been sent for moderation.",
-        "somethingWrong": "Something went wrong."
+        "somethingWrong": "Something went wrong.",
+        "URLCopy": "You copied the link to the page."
     },
 
     "Footer": {
@@ -689,10 +690,10 @@
 
     "UserAgreement": {
         "meta": {
-            "title": "User Agreement | Silk Road Chapters",
+            "title": "User Agreement & Privacy Policy | Silk Road Chapters",
             "description": "Learn about your rights and responsibilities when using Silk Road Chapters services."
         },
-        "title": "User Agreement",
+        "title": "User Agreement & Privacy Policy",
         "intro": {
             "date": "Tashkent, December 25, 2025",
             "p1_1": "This User Agreement (hereinafter — the “Agreement”) governs the procedure for using the website",
@@ -739,10 +740,52 @@
         },
         "section5": {
             "title": "5. Personal Data",
-            "p1": "5.1. Processing of personal data is carried out in accordance with the Privacy Policy and the Public Offer.",
-            "p2": "5.2. The User consents to the processing of their data necessary for the provision of services.",
-            "p3": "5.3. The Company does not store or process bank card data — such processing is carried out by payment service providers.",
-            "p4": "5.4. The User has the right to withdraw consent to data processing, which may result in restricted access to services."
+            "p1": "5.1. The processing of users’ personal data is carried out in accordance with this User Agreement, the Privacy Policy, and the Public Offer.",
+            "p2": "5.2. By registering on the website and using its services, the User agrees to the processing of their personal data necessary for providing services and ensuring the proper functioning of the website.",
+            "p3": "5.3. The Company does not store or process users’ bank card details. Payment data is processed by payment systems and acquiring services in accordance with their own rules and security standards.",
+            "p4": "5.4. Types of Data Collected",
+            "p5": "The Company may collect and process the following user data:",
+            "li1": "user name;",
+            "li2": "email address;",
+            "li3": "phone number (if provided by the user);",
+            "li4": "information about payments and orders made (excluding bank card details);",
+            "li5": "device and browser technical data;",
+            "li6": "IP address;",
+            "li7": "cookies data;",
+            "li8": "other technical data necessary for the proper functioning of the website.",
+            "p6": "5.5. Purposes of Personal Data Processing",
+            "p7": "Users’ personal data may be processed for the following purposes:",
+            "li9": "providing access to the website services;",
+            "li10": "processing orders and providing purchased content;",
+            "li11": "managing the user’s personal account;",
+            "li12": "communicating with users regarding the use of the service;",
+            "li13": "improving the functionality of the website and user experience;",
+            "li14": "ensuring security and preventing fraud;",
+            "li15": "complying with legal requirements.",
+            "p8": "5.6. Transfer of Data to Third Parties",
+            "p9": "The Company may transfer users’ personal data to third parties only in the following cases:",
+            "li16": "to payment services and acquiring systems for payment processing;",
+            "li17": "to technical service providers and contractors ensuring the operation of the website;",
+            "li18": "to governmental authorities in cases required by law.",
+            "p10": "Only the data necessary to perform the relevant functions will be transferred.",
+            "p11": "5.7. Use of Cookies",
+            "p12": "The website uses cookies and similar technologies for the following purposes:",
+            "li19": "ensuring the proper functioning of the website;",
+            "li20": "saving user preferences;",
+            "li21": "analyzing website usage;",
+            "li22": "improving the user experience.",
+            "p13": "Users may change their cookie settings in their browser. Disabling cookies may affect the proper functioning of certain website features.",
+            "p14": "5.8. Data Retention Period",
+            "p15": "Users’ personal data is stored only for the period necessary to fulfill the purposes of processing or for the period required by applicable law.",
+            "p16": "After the purposes of processing are achieved, or upon the user’s request, the data may be deleted or anonymized.",
+            "p17": "5.9. User Rights",
+            "p18": "The user has the right to:",
+            "li23": "obtain information about their personal data;",
+            "li24": "request correction of inaccurate data;",
+            "li25": "request deletion of their personal data;",
+            "li26": "withdraw consent to the processing of personal data;",
+            "li27": "contact the website administration regarding personal data processing.",
+            "p19": "To exercise these rights, the user may send a request to the following email address:"
         },
         "section6": {
             "title": "6. Paid Services and Subscription",

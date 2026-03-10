@@ -11,8 +11,15 @@ export default function BlogCard({
     ...props
 }: BlogCardProps) {
 
+    const detailsMap = Object.fromEntries(
+        (blog?.details || []).map(({ key, value }) => [key, value])
+    );
+
     const locale = useLocale();
+    const currentLocale = locale === 'ru' ? 'Ru' : 'En';
     const title = locale === 'ru' ? blog.titleRu : blog.titleEn;
+
+    const location = detailsMap[`location${currentLocale}`] || '';
 
     const size = () => {
         if (isCarousel) {
@@ -48,10 +55,14 @@ export default function BlogCard({
                     <div className="flex flex-col justify-between h-full">
                         <p className={`font-semibold ${fontSize()} text-light`}>{title}</p>
                         <div className="flex flex-col gap-4 lg:flex-row lg:justify-between">
-                            <div className="flex items-center gap-2">
-                                <Icon name="mapPoint" className="fill-light"/>
-                                <p className="italic font-normal text-[16px] capitalize text-light">{blog.likesCount}</p>
-                            </div>
+                            {location ? 
+                                <div className="flex items-center gap-2">
+                                    <Icon name="mapPoint" className="fill-light"/>
+                                    <p className="italic font-normal text-[16px] capitalize text-light">{location}</p>
+                                </div>
+                                :
+                                <div className="flex items-center gap-2"/>
+                            }
                             <div className="flex items-center gap-2">
                                 <Icon name="eye" className="fill-light"/>
                                 <p className="font-normal text-[16px] uppercase text-light">{blog.viewsCount}</p>

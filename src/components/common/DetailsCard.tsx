@@ -10,6 +10,7 @@ import useActiveLectureStore from '@/store/useActiveLectureStore';
 import { useModal } from "@/store/useModalStore";
 import { toggleFavorite } from '@/lib/api/favorites';
 import { toggleLike } from "@/lib/api/likes";
+import { usePush } from "@/store/usePushStore";
 
 export default function DeatailsCard({
     entityType, 
@@ -18,6 +19,8 @@ export default function DeatailsCard({
     isFavoriteServer
 }: DetailsCardProps) {
     const router = useRouter();
+
+    const { addPush, pushes } = usePush();
 
     const isFree = entityType === 0;
     const isPaid = entityType === 1;
@@ -35,6 +38,7 @@ export default function DeatailsCard({
     );
 
     const t = useTranslations('DeatailsCard');
+    const tPush = useTranslations('Push');
     const locale = useLocale();
     const currentLocale = locale === 'ru' ? 'Ru' : 'En';
 
@@ -126,6 +130,11 @@ export default function DeatailsCard({
         } else {
             open('login');
         }
+    }
+
+    const handleURL = () => {
+        navigator.clipboard.writeText(window.location.href)
+        if (pushes.length < 1) addPush('success', tPush('URLCopy'))
     }
 
     return (
@@ -231,6 +240,7 @@ export default function DeatailsCard({
                     form="round"
                     icon="squareForward"
                     hover="headerPrimary"
+                    onClick={handleURL}
                 >
                     {t('shareButton')}
                 </Button>

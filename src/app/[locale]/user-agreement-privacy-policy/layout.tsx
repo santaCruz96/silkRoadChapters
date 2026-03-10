@@ -21,7 +21,7 @@ export async function generateMetadata(
     };
 }
 
-export default function UserAgreementLayout({
+export default function UserAgreementPrivacyPolicyLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

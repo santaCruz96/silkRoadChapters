@@ -1,14 +1,14 @@
 import GeneralContainer from "@/layouts/GeneralContainer";
 import {useTranslations} from 'next-intl';
 
-export default function UserAgreement() {
+export default function UserAgreementPrivacyPolicy() {
     const t = useTranslations('UserAgreement');
 
     return (
         <GeneralContainer>
             <div className="flex flex-col items-center gap-16">
                 <h1 className="font-bold text-[40px] sm:text-[64px] tracking-[-0.01em] 
-                        leading-12 sm:leading-[76px] text-center text-dark"
+                        leading-12 sm:leading-19 text-center text-dark"
                 >
                     {t('title')}
                 </h1>
@@ -61,6 +61,49 @@ export default function UserAgreement() {
                         <p>{t('section5.p2')}</p>
                         <p>{t('section5.p3')}</p>
                         <p>{t('section5.p4')}</p>
+                        <p>{t('section5.p5')}</p>
+                        <li>{t('section5.li1')}</li>
+                        <li>{t('section5.li2')}</li>
+                        <li>{t('section5.li3')}</li>
+                        <li>{t('section5.li4')}</li>
+                        <li>{t('section5.li5')}</li>
+                        <li>{t('section5.li6')}</li>
+                        <li>{t('section5.li7')}</li>
+                        <li>{t('section5.li8')}</li>
+                        <p>{t('section5.p6')}</p>
+                        <p>{t('section5.p7')}</p>
+                        <li>{t('section5.li9')}</li>
+                        <li>{t('section5.li10')}</li>
+                        <li>{t('section5.li11')}</li>
+                        <li>{t('section5.li12')}</li>
+                        <li>{t('section5.li13')}</li>
+                        <li>{t('section5.li14')}</li>
+                        <li>{t('section5.li15')}</li>
+                        <p>{t('section5.p8')}</p>
+                        <p>{t('section5.p9')}</p>
+                        <li>{t('section5.li16')}</li>
+                        <li>{t('section5.li17')}</li>
+                        <li>{t('section5.li18')}</li>
+                        <p>{t('section5.p10')}</p>
+                        <p>{t('section5.p11')}</p>
+                        <p>{t('section5.p12')}</p>
+                        <li>{t('section5.li19')}</li>
+                        <li>{t('section5.li20')}</li>
+                        <li>{t('section5.li21')}</li>
+                        <li>{t('section5.li22')}</li>
+                        <p>{t('section5.p13')}</p>
+                        <p>{t('section5.p14')}</p>
+                        <p>{t('section5.p15')}</p>
+                        <p>{t('section5.p16')}</p>
+                        <p>{t('section5.p17')}</p>
+                        <p>{t('section5.p18')}</p>
+                        <li>{t('section5.li23')}</li>
+                        <li>{t('section5.li24')}</li>
+                        <li>{t('section5.li25')}</li>
+                        <li>{t('section5.li26')}</li>
+                        <li>{t('section5.li27')}</li>
+                        <p>{t('section5.p19')}</p>
+                        <p><a href="mailto:info@src.education" className="underline underline-offset-2">info@src.education</a></p>
                     </div>
                     <div>
                         <h3>{t('section6.title')}</h3>

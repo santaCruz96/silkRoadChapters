@@ -13,6 +13,7 @@ import { UserSettingsProps } from "@/types/props/UserSettings.props";
 
 export default function UserSettings({ user }: UserSettingsProps) {
     const [isLoading, setIsLoading] = useState(false);
+    const [isDisable, setIsDisable] = useState(false);
 
     const { addPush, pushes } = usePush();
     const router = useRouter();
@@ -47,6 +48,7 @@ export default function UserSettings({ user }: UserSettingsProps) {
             setIsLoading(true);
             await uploadAvatar(formData);
             router.refresh();
+            setIsDisable(false);
         } catch (error) {
             console.error(error);
         } finally {
@@ -56,12 +58,15 @@ export default function UserSettings({ user }: UserSettingsProps) {
 
     const handleDeleteAvatar = async() => {
         setIsLoading(true);
+        setIsDisable(true);
 
         try {
             await deleteAvatar();
             router.refresh();
         } catch (error) {
             console.error(error);
+            setIsLoading(false);
+        } finally {
             setIsLoading(false);
         }
     }
@@ -93,7 +98,7 @@ export default function UserSettings({ user }: UserSettingsProps) {
                         iconSize="big"
                         shadow={!isMobile}
                         hover={isLoading || !user.profileImageUrl ? "" : "delete"}
-                        disabled={isLoading || !user.profileImageUrl}
+                        disabled={isLoading || !user.profileImageUrl || isDisable}
                         onClick={handleDeleteAvatar}
                     />
                     <Button
@@ -111,14 +116,13 @@ export default function UserSettings({ user }: UserSettingsProps) {
                     className="relative flex items-center justify-center rounded-xl w-82 h-82 sm:w-72 sm:h-72 
                         shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] bg-cover bg-center bg-no-repeat"
                     style={user.profileImageUrl ? 
-                        { backgroundImage: `url(${user.profileImageUrl})`}
+                        { backgroundImage: `url("${encodeURI(user.profileImageUrl)}")`}
                         :
                         { background: '#fff' }
                     }
                 >
-                    <label className="absolute w-full h-full cursor-pointer" htmlFor="image">
+                    <label className={`absolute w-full h-full ${isLoading ? 'cursor-not-allowed' : 'cursor-pointer'}`} htmlFor="image">
                         <input
-                            name=""
                             type="file"
                             id="image"
                             hidden
