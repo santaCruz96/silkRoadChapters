@@ -7,8 +7,8 @@ export default function PublicOffer() {
     return (
         <GeneralContainer>
             <div className="flex flex-col items-center gap-16">
-                <h1 className="font-bold text-[40px] sm:text-[64px] tracking-[-0.01em] 
-                        leading-12 sm:leading-[76px] text-center text-dark"
+                <h1 className="font-bold text-[32px] sm:text-[60px] md:text-[64px] tracking-[-0.01em] 
+                        leading-12 sm:leading-19 text-center text-dark"
                 >
                     {t('title')}
                 </h1>
