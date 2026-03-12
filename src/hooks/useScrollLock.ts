@@ -1,25 +1,25 @@
 import { useEffect } from 'react';
 
-export default function useScrollLock (lock: boolean) {
+export default function useScrollLock(lock: boolean) {
     useEffect(() => {
         if (!lock) return;
 
-        const preventDefault = (e: Event) => e.preventDefault();
-        const preventWheel = (e: WheelEvent) => e.preventDefault();
-        // const preventKey = (e: KeyboardEvent) => {
-        //     if ([32, 37, 38, 39, 40].includes(e.keyCode)) {
-        //         e.preventDefault();
-        //     }
-        // };
+        const preventWheel = (e: WheelEvent) => {
+            if (e.ctrlKey) return;
+            e.preventDefault();
+        };
+
+        const preventTouch = (e: TouchEvent) => {
+            if (e.touches.length > 1) return;
+            e.preventDefault();
+        };
 
         document.body.addEventListener('wheel', preventWheel, { passive: false });
-        document.body.addEventListener('touchmove', preventDefault, { passive: false });
-        // document.body.addEventListener('keydown', preventKey);
+        document.body.addEventListener('touchmove', preventTouch, { passive: false });
 
         return () => {
             document.body.removeEventListener('wheel', preventWheel);
-            document.body.removeEventListener('touchmove', preventDefault);
-            // document.body.removeEventListener('keydown', preventKey);
+            document.body.removeEventListener('touchmove', preventTouch);
         };
     }, [lock]);
-};
+}

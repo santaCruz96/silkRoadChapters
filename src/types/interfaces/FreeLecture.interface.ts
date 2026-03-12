@@ -57,6 +57,8 @@ export interface FreeLecture {
     createdAt: string;
     updatedAt: string;
     details: Details[];
+    likesCount: number;
+    dislikesCount: number;
     contentBlocks: ContentBlock[];
 }
 

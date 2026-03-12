@@ -174,7 +174,7 @@ export default function DeatailsCard({
                     <div className="flex gap-2">
                         <Icon className="fill-dark" name="like"/>
                         <p className="font-normal text-[16px] uppercase text-dark">
-                            {!isFree && likes}
+                            {likes}
                         </p>
                     </div>
                 </div>
