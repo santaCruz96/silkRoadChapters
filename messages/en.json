@@ -108,7 +108,8 @@
         "toggleFavoriteAttention": "Log in to add this lecture to your favorites.",
         "writeComment": "Your comment has been sent for moderation.",
         "somethingWrong": "Something went wrong.",
-        "URLCopy": "You copied the link to the page."
+        "URLCopy": "You copied the link to the page.",
+        "buyVideo": "To watch the video you need to purchase the lecture."
     },
 
     "Footer": {
@@ -512,6 +513,7 @@
         "travelPoint": "Travel Point",
         "year": "Year",
         "buyButton": "Buy",
+        "purchasedButton": "Purchased",
         "shareButton": "Share"
     },
 

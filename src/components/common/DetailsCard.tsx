@@ -16,7 +16,8 @@ export default function DeatailsCard({
     entityType, 
     isAuthenticated, 
     likeInfo,
-    isFavoriteServer
+    isFavoriteServer,
+    isBought
 }: DetailsCardProps) {
     const router = useRouter();
 
@@ -222,7 +223,7 @@ export default function DeatailsCard({
                 }
             </div>
             <div className="flex flex-col gap-4">
-                {isPaid && 
+                {isPaid && !isBought ?
                     <Button 
                         color="dark" 
                         size="full"
@@ -232,6 +233,15 @@ export default function DeatailsCard({
                         onClick={handleClickPay}
                     >
                         {t('buyButton')}
+                    </Button> 
+                    :
+                    <Button 
+                        color="stroke" 
+                        size="full"
+                        form="round"
+                        icon='verifiedCheck'
+                    >
+                        {t('purchasedButton')}
                     </Button>
                 }
                 <Button

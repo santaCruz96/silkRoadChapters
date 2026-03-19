@@ -31,14 +31,21 @@ const getEmbedUrl = (lecture: ContentVideoProps['lecture']): string | null => {
     return null
 };
 
-export default function ContentVideo({lecture, isAuthenticated}: ContentVideoProps) {
+export default function ContentVideo({lecture, isAuthenticated, isBought}: ContentVideoProps) {
+    const { addPush, pushes } = usePush();
     const { open } = useModal();
     const [showVideo, setShowVideo] = useState(false);
+
+    const t = useTranslations('Push')
 
     const embedUrl = useMemo(() => getEmbedUrl(lecture), [lecture]);
 
     const handlePush = (e: React.MouseEvent) => {
         e.stopPropagation(); 
+        if ('videoId' in lecture && !isBought) {
+            if (pushes.length < 1) addPush('info', t('buyVideo'));
+            return;
+        }
         if ('videoId' in lecture && !isAuthenticated) {
             open('login');
         }
@@ -74,7 +81,7 @@ export default function ContentVideo({lecture, isAuthenticated}: ContentVideoPro
                         color="lightGrey"
                         size="sm"
                         form="square"
-                        icon={'videoId' in lecture && !isAuthenticated ? "lock" : "play"}
+                        icon={'videoId' in lecture && !isAuthenticated || 'videoId' in lecture && !isBought ? "lock" : "play"}
                         iconSize="big"
                         hover="contentButton"
                     />

@@ -7,4 +7,5 @@ export interface DetailsCardProps
         isAuthenticated: boolean;
         likeInfo?: LikesResponse | null;
         isFavoriteServer: boolean;
+        isBought?: boolean;
 }

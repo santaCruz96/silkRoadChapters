@@ -7,4 +7,5 @@ export interface ContentVideoProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
         lecture: FreeLecture | PaidLecture | Blog;
         isAuthenticated: boolean;
+        isBought?: boolean;
 }

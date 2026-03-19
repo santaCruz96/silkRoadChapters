@@ -17,7 +17,7 @@ export default async function PaymentLectureCard({specificLecture}: PaymentLectu
         >
             <div 
                 className={`rounded-[20px] w-full h-74 lg:w-106 lg:h-59.75 bg-cover bg-center bg-no-repeat`}
-                style={'coverImageUrll' in specificLecture ? 
+                style={'coverImageUrl' in specificLecture ? 
                     { backgroundImage: `url(${specificLecture.coverImageUrl})`}
                     :
                     { background: '#b3b3b3' }

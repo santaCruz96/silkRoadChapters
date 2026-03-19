@@ -19,13 +19,15 @@ interface ContentProps {
     isAuthenticated: boolean;
     likeInfo?: LikesResponse | null;
     isFavoriteServer: boolean;
+    isBought?: boolean;
 }
 
 export default function Content({
     specificLecture, 
     isAuthenticated, 
     likeInfo,
-    isFavoriteServer
+    isFavoriteServer,
+    isBought
 }: ContentProps ) {
     const isTablet = useResponsiveStore((state) => state.isTablet);
     const pathname = usePathname();
@@ -58,7 +60,7 @@ export default function Content({
                 {title}
             </h1>
             {!isBlog && currentLecture &&
-                <ContentVideo lecture={currentLecture} isAuthenticated={isAuthenticated}/>
+                <ContentVideo lecture={currentLecture} isAuthenticated={isAuthenticated} isBought={isBought}/>
             }
             <div className="flex gap-4 w-full">
                 <div className="flex flex-col gap-12 sm:gap-16 flex-1">
@@ -68,6 +70,7 @@ export default function Content({
                             isAuthenticated={isAuthenticated}
                             likeInfo={likeInfo}
                             isFavoriteServer={isFavoriteServer}
+                            isBought={isBought}
                         />
                     }
                     {'imageLink' in currentLecture && isBlog && 
@@ -84,6 +87,7 @@ export default function Content({
                             isAuthenticated={isAuthenticated}
                             likeInfo={likeInfo}
                             isFavoriteServer={isFavoriteServer}
+                            isBought={isBought}
                         />
                     }
                     {currentLecture?.contentBlocks &&
@@ -96,6 +100,7 @@ export default function Content({
                         isAuthenticated={isAuthenticated}
                         likeInfo={likeInfo}
                         isFavoriteServer={isFavoriteServer}
+                        isBought={isBought}
                     />
                 }
             </div>

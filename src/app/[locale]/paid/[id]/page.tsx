@@ -44,6 +44,7 @@ export default async function PaidLecture({
                 isAuthenticated={isAuthenticated} 
                 likeInfo={likeInfo}
                 isFavoriteServer={isFavorite}
+                isBought={purchasesLectures?.some(ul => ul.lectureId === specificLecture.id)}
             />
             <Comments 
                 comments={comments} 
