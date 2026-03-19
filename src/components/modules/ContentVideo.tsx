@@ -42,12 +42,13 @@ export default function ContentVideo({lecture, isAuthenticated, isBought}: Conte
 
     const handlePush = (e: React.MouseEvent) => {
         e.stopPropagation(); 
+        if ('videoId' in lecture && !isAuthenticated) {
+            open('login');
+            return;
+        }
         if ('videoId' in lecture && !isBought) {
             if (pushes.length < 1) addPush('info', t('buyVideo'));
             return;
-        }
-        if ('videoId' in lecture && !isAuthenticated) {
-            open('login');
         }
         if (isAuthenticated && embedUrl || 'youtubeId' in lecture) {
             setShowVideo(true);
