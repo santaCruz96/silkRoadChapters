@@ -1,14 +1,21 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { setAuthCookies } from '@/lib/authCookies';
+import { loginWithGoogleTokens } from '@/lib/api/auth';
 import { useAuthStore } from '@/store/useAuthStore';
 
-export default function GoogleCallback() {
+const GOOGLE_ERRORS: Record<string, string> = {
+    'User.NotRegistered': 'Пользователь с таким email не зарегистрирован',
+    'User.Blocked': 'Аккаунт заблокирован',
+    'User.ExternalIdentityProviderLoginError': 'Ошибка входа через Google',
+};
+
+    export default function GoogleCallback() {
     const router = useRouter();
-    const setAuthenticated = useAuthStore((s) => s.setAuthenticated);
+    const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
     const didRun = useRef(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     useEffect(() => {
         if (didRun.current) return;
@@ -16,8 +23,11 @@ export default function GoogleCallback() {
 
         const run = async () => {
             const error = new URLSearchParams(window.location.search).get('error');
+
             if (error) {
-                router.replace('/login?googleError=' + encodeURIComponent(error));
+                setErrorMessage(
+                    GOOGLE_ERRORS[error] || 'Не удалось выполнить вход через Google'
+                );
                 return;
             }
 
@@ -28,17 +38,29 @@ export default function GoogleCallback() {
             const refreshToken = params.get('refreshToken');
 
             if (!accessToken || !refreshToken) {
-                router.replace('/login?googleError=TokensMissing');
+                setErrorMessage('Токены не получены');
                 return;
             }
 
-            await setAuthCookies(accessToken, refreshToken);
+            const result = await loginWithGoogleTokens(accessToken, refreshToken);
+
+            if (!result.success) {
+                setErrorMessage(result.error || 'Не удалось создать сессию');
+                return;
+            }
+
             setAuthenticated(true);
             router.replace('/account');
         };
 
-        run();
+        run().catch(() => {
+            setErrorMessage('Ошибка авторизации');
+        });
     }, [router, setAuthenticated]);
+
+    if (errorMessage) {
+        return <div className="p-4 text-red-500">{errorMessage}</div>;
+    }
 
     return null;
 }

@@ -76,3 +76,21 @@ export async function logoutUser(id:string) {
         redirect('/');
     }
 }
+
+export async function loginWithGoogleTokens(
+    accessToken: string,
+    refreshToken: string
+): Promise<{ success: boolean; error?: string }> {
+    try {
+        if (!accessToken || !refreshToken) {
+            return { success: false, error: 'Tokens are required' };
+        }
+
+        await setAuthCookies(accessToken, refreshToken);
+
+        return { success: true };
+    } catch (error) {
+        console.error('Google auth cookie set error:', error);
+        return { success: false, error: 'Server error' };
+    }
+}
