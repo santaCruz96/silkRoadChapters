@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { validateLoginForm } from '@/schemas/login';
 import { useAuthStore } from '@/store/useAuthStore';
 import { loginUser } from '@/lib/api/auth';
-// import { API_URL } from '@/config/constants';
+import { API_URL } from '@/config/constants';
 
 import { FormErrors } from '@/schemas/login';
 
@@ -81,10 +81,9 @@ export default function AuthFormLogin() {
         text-accent-alert text-[12px] px-1 italic leading-[160%]
     `
 
-    // const handleGoogleLogin  = () => {
-    //     const returnUrl = encodeURIComponent('/account');
-    //     window.location.href = `${API_URL}/accounts/login/google?returnUrl=${returnUrl}`;
-    // };
+    const handleGoogleLogin  = () => {
+        window.location.href = `${API_URL}/accounts/login/google`;
+    };
 
     return (
         <div className="flex flex-col gap-13.75">
@@ -153,10 +152,9 @@ export default function AuthFormLogin() {
                         form="round"
                         shadow
                         icon="google"
-                        // hover={isLoading ? "" : "secondary"}
-                        disabled={true}
-                        // disabled={isLoading}
-                        // onClick={handleGoogleLogin}
+                        hover={isLoading ? "" : "secondary"}
+                        disabled={isLoading}
+                        onClick={handleGoogleLogin}
                     >
                         Google
                     </Button>

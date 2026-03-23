@@ -1,23 +1,44 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { setAuthCookies } from '@/lib/authCookies';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export default function GoogleCallback() {
     const router = useRouter();
+    const setAuthenticated = useAuthStore((s) => s.setAuthenticated);
+    const didRun = useRef(false);
 
     useEffect(() => {
-        const hash = window.location.hash.substring(1); 
-        const params = new URLSearchParams(hash);
+        if (didRun.current) return;
+        didRun.current = true;
 
-        const accessToken = params.get('accessToken');
-        const refreshToken = params.get('refreshToken');
+        const run = async () => {
+            const error = new URLSearchParams(window.location.search).get('error');
+            if (error) {
+                router.replace('/login?googleError=' + encodeURIComponent(error));
+                return;
+            }
 
-        if (accessToken) localStorage.setItem('accessToken', accessToken);
-        if (refreshToken) localStorage.setItem('refreshToken', refreshToken);
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
 
-        router.replace('/');
-    }, [router]);
+            const accessToken = params.get('accessToken');
+            const refreshToken = params.get('refreshToken');
 
-    return null; 
+            if (!accessToken || !refreshToken) {
+                router.replace('/login?googleError=TokensMissing');
+                return;
+            }
+
+            await setAuthCookies(accessToken, refreshToken);
+            setAuthenticated(true);
+            router.replace('/account');
+        };
+
+        run();
+    }, [router, setAuthenticated]);
+
+    return null;
 }
