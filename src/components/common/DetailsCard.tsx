@@ -151,7 +151,7 @@ export default function DeatailsCard({
                         icon="like"
                         iconSize="big"
                         hover={isLiked ? 'detailsButton' : 'contentButton'}
-                        disabled={isFree || isLoadingLike}
+                        disabled={isLoadingLike}
                         onClick={isAuthenticated ? handleToggleLike : () => open('login')}
                     />
                     <Button
@@ -223,26 +223,28 @@ export default function DeatailsCard({
                 }
             </div>
             <div className="flex flex-col gap-4">
-                {isPaid && !isBought ?
-                    <Button 
-                        color="dark" 
-                        size="full"
-                        form="round"
-                        icon='cart'
-                        hover="headerPrimary"
-                        onClick={handleClickPay}
-                    >
-                        {t('buyButton')}
-                    </Button> 
-                    :
-                    <Button 
-                        color="stroke" 
-                        size="full"
-                        form="round"
-                        icon='verifiedCheck'
-                    >
-                        {t('purchasedButton')}
-                    </Button>
+                {isPaid && 
+                    (!isBought ?
+                        <Button 
+                            color="dark" 
+                            size="full"
+                            form="round"
+                            icon='cart'
+                            hover="headerPrimary"
+                            onClick={handleClickPay}
+                        >
+                            {t('buyButton')}
+                        </Button> 
+                        :
+                        <Button 
+                            color="stroke" 
+                            size="full"
+                            form="round"
+                            icon='verifiedCheck'
+                        >
+                            {t('purchasedButton')}
+                        </Button>
+                    )
                 }
                 <Button
                     color="dark"
