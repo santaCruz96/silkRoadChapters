@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useFullscreenImage } from '@/store/useFullscreenImageStore';
 import Button from '../Button';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -31,12 +32,15 @@ export default function FullscreenImage() {
                             icon="squareClose"
                         />
                     </div>
-                    <div 
-                        className="w-full sm:w-300 h-46.25 xs:h-69 sm:h-100 
-                            md:h-132 lg:h-169.25 bg-image mx-4 md:mx-8
-                            rounded-[30px] bg-cover bg-center bg-no-repeat" 
-                        style={{ backgroundImage: `url(${image})`}}
+                    <Image
+                        src={image}
+                        alt=""
+                        width={0}
+                        height={0}
+                        sizes="90vw"
+                        className="max-w-[90vw] max-h-[90vh] w-auto h-auto rounded-[30px]"
                         onClick={(e) => e.stopPropagation()}
+                        unoptimized
                     />
                 </motion.div>
             )}

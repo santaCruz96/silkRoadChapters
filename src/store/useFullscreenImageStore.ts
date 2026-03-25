@@ -1,14 +1,14 @@
 import { create } from 'zustand';
 
 interface IFullscreenImage {
-    image: string | null,
+    image: string,
     isOpen: boolean,
-    open: (image: string | null) => void,
+    open: (image: string) => void,
     close: () => void
 };
 
 export const useFullscreenImage = create<IFullscreenImage>((set) => ({
-    image: null,
+    image: '',
     isOpen: false,
 
     open: (image) => set({ isOpen: true, image: image }),

@@ -12,7 +12,7 @@ export default function FreeLectureCard({lecture, isCarousel, grid}: FreeLecture
 
     const margin = () => {
         if (isCarousel) {
-            return 'mr-4 last:mr-0'
+            return 'max-w-72 mr-4 last:mr-0'
         }
     }
 
