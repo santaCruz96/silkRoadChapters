@@ -983,5 +983,20 @@
         "title": "Registration successful!",
         "text": "Enjoy full access to all our features.",
         "accountButton": "To account"
+    },
+
+    "NotRegistered": {
+        "title": "User with this email is not registered.",
+        "returnButton": "Return"
+    },
+
+    "Blocked": {
+        "title": "Account is blocked.",
+        "returnButton": "Return"
+    },
+
+    "LoginError": {
+        "title": "Google sign-in error.",
+        "returnButton": "Return"
     }
 }

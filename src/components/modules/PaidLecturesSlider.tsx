@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import PaidLectureCard from "../common/PaidLectureCard";
 import useEmblaCarousel from "embla-carousel-react";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
@@ -9,10 +9,13 @@ import { PaidLecturesSliderProps } from "@/types/props/PaidLecturesSlider.props"
 export default function PaidLecturesSlider({lectures, page, purchasesLectures}: PaidLecturesSliderProps) {
     const isTablet = useResponsiveStore(state => state.isTablet);
 
+    const shouldLoop = page === 'home' && lectures.length > 4;
+
     const [emblaRef, emblaApi] = useEmblaCarousel({
         align: isTablet ? 'start' : 'center',
-        loop: page === 'home' && true,
-        dragFree: isTablet ? true : false
+        loop: shouldLoop,
+        dragFree: isTablet,
+        containScroll: false, 
     })
 
     const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -24,9 +27,13 @@ export default function PaidLecturesSlider({lectures, page, purchasesLectures}: 
         }
     }, [emblaApi]);
 
-    if (emblaApi) {
+    useEffect(() => {
+        if (!emblaApi) return;
         emblaApi.on('select', onSelect);
-    }
+        return () => {
+            emblaApi.off('select', onSelect);
+        };
+    }, [emblaApi, onSelect]);
 
     const scrollToSlide = useCallback((index: number) => {
         if (emblaApi && !isTablet) {
@@ -35,8 +42,8 @@ export default function PaidLecturesSlider({lectures, page, purchasesLectures}: 
     }, [emblaApi, isTablet]);
 
     const isActive = (index: number) => {
-        if (isTablet) return true
-        return activeCardIndex === index
+        if (isTablet) return true;
+        return activeCardIndex === index;
     }
 
     return (

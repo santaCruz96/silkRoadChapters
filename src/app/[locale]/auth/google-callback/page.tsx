@@ -4,18 +4,21 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { loginWithGoogleTokens } from '@/lib/api/auth';
 import { useAuthStore } from '@/store/useAuthStore';
+import NotRegistered from './NotRegistered';
+import Blocked from './Blocked';
+import LoginError from './LoginError';
 
-const GOOGLE_ERRORS: Record<string, string> = {
-    'User.NotRegistered': 'Пользователь с таким email не зарегистрирован',
-    'User.Blocked': 'Аккаунт заблокирован',
-    'User.ExternalIdentityProviderLoginError': 'Ошибка входа через Google',
+const GOOGLE_ERRORS: Record<string, React.ReactNode | string> = {
+    'User.NotRegistered': <NotRegistered/>,
+    'User.Blocked': <Blocked/>,
+    'User.ExternalIdentityProviderLoginError': <LoginError/>
 };
 
-    export default function GoogleCallback() {
+export default function GoogleCallback() {
     const router = useRouter();
     const setAuthenticated = useAuthStore((state) => state.setAuthenticated);
     const didRun = useRef(false);
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [errorKey, setErrorKey] = useState<string | null>(null);
 
     useEffect(() => {
         if (didRun.current) return;
@@ -25,9 +28,7 @@ const GOOGLE_ERRORS: Record<string, string> = {
             const error = new URLSearchParams(window.location.search).get('error');
 
             if (error) {
-                setErrorMessage(
-                    GOOGLE_ERRORS[error] || 'Не удалось выполнить вход через Google'
-                );
+                setErrorKey(error);
                 return;
             }
 
@@ -38,14 +39,14 @@ const GOOGLE_ERRORS: Record<string, string> = {
             const refreshToken = params.get('refreshToken');
 
             if (!accessToken || !refreshToken) {
-                setErrorMessage('Токены не получены');
+                setErrorKey('Tokens missing');
                 return;
             }
 
             const result = await loginWithGoogleTokens(accessToken, refreshToken);
 
             if (!result.success) {
-                setErrorMessage(result.error || 'Не удалось создать сессию');
+                setErrorKey('Session error');
                 return;
             }
 
@@ -54,12 +55,14 @@ const GOOGLE_ERRORS: Record<string, string> = {
         };
 
         run().catch(() => {
-            setErrorMessage('Ошибка авторизации');
+            setErrorKey('Auth error');
         });
     }, [router, setAuthenticated]);
 
-    if (errorMessage) {
-        return <div className="p-4 text-red-500">{errorMessage}</div>;
+    if (errorKey) {
+        return (
+            GOOGLE_ERRORS[errorKey]
+        );
     }
 
     return null;
