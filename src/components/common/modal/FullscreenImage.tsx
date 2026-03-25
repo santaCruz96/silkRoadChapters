@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from 'react';
 import Image from 'next/image';
 import { useFullscreenImage } from '@/store/useFullscreenImageStore';
 import Button from '../Button';
@@ -11,6 +12,23 @@ export default function FullscreenImage() {
     const { image, isOpen, close } = useFullscreenImage();
 
     useScrollLock(isOpen);
+
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                close();
+            }
+        };
+
+        if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, [isOpen, close]);
 
     return (
         <AnimatePresence>
