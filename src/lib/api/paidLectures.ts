@@ -6,15 +6,23 @@ import { API_URL } from "@/config/constants";
 import { fetchWithAuth } from "./apiClient";
 
 export const getPaidLectures = async (): Promise<PaidLecture[]> => {
-    const res = await fetch(`${API_URL}/premium-lectures`, {
+    const resAllLecutres = await fetch(`${API_URL}/premium-lectures`, {
         headers: {
             'Content-Type': 'application/json',
         },
     });
 
-    if (!res.ok) {
-        throw new Error(`Failed to fetch lectures: ${res.status}`);
+    if (!resAllLecutres.ok) {
+        throw new Error(`Failed to fetch lectures: ${resAllLecutres.status}`);
     }
+
+    const allLectures = await resAllLecutres.json();
+
+    const res = await fetch(`${API_URL}/premium-lectures?pageSize=${allLectures.totalCount}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
     const data: ApiResponse = await res.json();
     

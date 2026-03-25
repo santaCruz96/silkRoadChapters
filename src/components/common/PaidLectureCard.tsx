@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from "react";
 import Icon from "@/icons/Icon";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -18,6 +21,32 @@ export default function PaidLectureCard({
     const description = locale === 'ru' ? lecture.shortDescriptionRu : lecture.shortDescriptionEn;
 
     const t = useTranslations('PaidLectureCard');
+
+    const [isNew, setIsNew] = useState(false);
+
+    useEffect(() => {
+        if (!lecture.createdAt) return;
+
+        const createdAt = new Date(lecture.createdAt).getTime();
+        const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
+        const expiresAt = createdAt + sevenDaysInMs;
+
+        const checkIsNew = () => {
+            setIsNew(Date.now() < expiresAt);
+        };
+
+        checkIsNew();
+
+        const timeLeft = expiresAt - Date.now();
+
+        if (timeLeft <= 0) return;
+
+        const timeout = setTimeout(() => {
+            setIsNew(false);
+        }, timeLeft);
+
+        return () => clearTimeout(timeout);
+    }, [lecture.createdAt]);
 
     const toPayment = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); 
@@ -41,11 +70,14 @@ export default function PaidLectureCard({
                         lg:h-78.75 bg-cover bg-center bg-no-repeat`}
                     style={{ backgroundImage: `url(${lecture.coverImageUrl})`}}
                 >
-                    <span className="absolute left-3 top-3 rounded-xl px-3 py-1 
-                        bg-light font-medium text-[12px] text-dark"
-                    >
-                        New
-                    </span>
+                    {isNew && (
+                        <span
+                            className="absolute left-3 top-3 rounded-xl px-3 py-1 
+                            bg-light font-medium text-[12px] text-dark"
+                        >
+                            New
+                        </span>
+                    )}
                 </div>
                 <div className={`flex flex-col gap-3 mb-8 ${isActive ? 'min-h-24.75' : 'min-h-19.75'}`}>
                     <p className="font-semibold text-[18px] text-dark leading-5.5">

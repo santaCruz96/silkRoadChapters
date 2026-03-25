@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Icon from "@/icons/Icon";
 import { FreeLectureCardProps } from "@/types/props/FreeLectureCard.props";
@@ -9,6 +10,32 @@ export default function FreeLectureCard({lecture, isCarousel, grid}: FreeLecture
     const locale = useLocale();
     const title = locale === 'ru' ? lecture.titleRu : lecture.titleEn;
     const description = locale === 'ru' ? lecture.shortDescriptionRu : lecture.shortDescriptionEn;
+
+    const [isNew, setIsNew] = useState(false);
+
+    useEffect(() => {
+        if (!lecture.createdAt) return;
+
+        const createdAt = new Date(lecture.createdAt).getTime();
+        const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
+        const expiresAt = createdAt + sevenDaysInMs;
+
+        const checkIsNew = () => {
+            setIsNew(Date.now() < expiresAt);
+        };
+
+        checkIsNew();
+
+        const timeLeft = expiresAt - Date.now();
+
+        if (timeLeft <= 0) return;
+
+        const timeout = setTimeout(() => {
+            setIsNew(false);
+        }, timeLeft);
+
+        return () => clearTimeout(timeout);
+    }, [lecture.createdAt]);
 
     const margin = () => {
         if (isCarousel) {
@@ -28,11 +55,14 @@ export default function FreeLectureCard({lecture, isCarousel, grid}: FreeLecture
                 className="relative mb-4 rounded-xl w-full h-64 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${lecture.coverImageUrl})`}}
             >
-                <span className="absolute left-3 top-3 rounded-xl px-3 py-1 
-                    bg-light font-medium text-[12px] text-dark"
-                >
-                    New
-                </span>
+                {isNew && (
+                    <span
+                        className="absolute left-3 top-3 rounded-xl px-3 py-1 
+                        bg-light font-medium text-[12px] text-dark"
+                    >
+                        New
+                    </span>
+                )}
             </div>
             <div className="flex flex-col max-h-24.75 gap-3 mb-8">
                 <p className="font-semibold text-[18px] text-dark leading-5.5">
