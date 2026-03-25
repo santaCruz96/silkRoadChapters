@@ -21,6 +21,9 @@ export default async function BlogContent({
 
     const blogs = await getBlogs();
     const specificLecture = await getSpecificLecture(id);
+    const filteredBlogs = blogs.filter(
+        (blog) => blog.id !== specificLecture.id
+    );
     const comments = await getComments(id, ENTITY_TYPE)
     
     const cookieStore = await cookies();
@@ -48,7 +51,7 @@ export default async function BlogContent({
                 entityType={ENTITY_TYPE}
                 isAuthenticated={isAuthenticated}
             />
-            <Blogs blogs={blogs}/>
+            <Blogs blogs={filteredBlogs}/>
         </GeneralContainer>
     )
 }

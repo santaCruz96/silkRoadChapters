@@ -22,6 +22,9 @@ export default async function PaidLecture({
 
     const lectures = await getPaidLectures();
     const specificLecture = await getSpecificLecture(id);
+    const filteredLectures = lectures.filter(
+        (lecture) => lecture.id !== specificLecture.id
+    );
     const comments = await getComments(id, ENTITY_TYPE);
 
     const cookieStore = await cookies();
@@ -52,7 +55,7 @@ export default async function PaidLecture({
                 entityType={ENTITY_TYPE}
                 isAuthenticated={isAuthenticated}
             />
-            <PaidLectures lectures={lectures} purchasesLectures={purchasesLectures}/>
+            <PaidLectures lectures={filteredLectures} purchasesLectures={purchasesLectures}/>
         </GeneralContainer>
     )
 }

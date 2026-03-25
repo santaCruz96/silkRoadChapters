@@ -19,6 +19,9 @@ export default async function FreeLectureContent({
 
     const lectures = await getFreeLectures();
     const specificLecture = await getSpecificLecture(id);
+    const filteredLectures = lectures.filter(
+        (lecture) => lecture.id !== specificLecture.id
+    );
     const comments = await getComments(id, ENTITY_TYPE);
     
     const cookieStore = await cookies();
@@ -43,7 +46,7 @@ export default async function FreeLectureContent({
                 entityType={ENTITY_TYPE}
                 isAuthenticated={isAuthenticated}
             />
-            <FreeLectures lectures={lectures}/>
+            <FreeLectures lectures={filteredLectures}/>
         </GeneralContainer>
     )
 }
