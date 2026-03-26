@@ -5,6 +5,8 @@ import FreeLectures from "@/components/sections/FreeLectures";
 import Comments from "@/components/sections/Comments";
 import { getFreeLectures, getSpecificLecture } from "@/lib/api/freeLectures";
 import { getComments } from "@/lib/api/comments";
+import { LikesResponse } from '@/types/api/likes';
+import { getLikes } from '@/lib/api/likes';
 import { getFavorites } from '@/lib/api/favorites';
 import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
 
@@ -27,8 +29,10 @@ export default async function FreeLectureContent({
     const cookieStore = await cookies();
     const isAuthenticated = !!cookieStore.get(TOKEN_COOKIE_NAME)?.value;
 
+    let likeInfo: LikesResponse | null = null;
     let isFavorite = false;
     if (isAuthenticated) {
+        likeInfo = await getLikes(id, ENTITY_TYPE);
         const favorites = await getFavorites();
         isFavorite = favorites.some((item) => item.entityId === specificLecture.id);
     }
@@ -38,6 +42,7 @@ export default async function FreeLectureContent({
             <Content 
                 specificLecture={specificLecture} 
                 isAuthenticated={isAuthenticated}
+                likeInfo={likeInfo}
                 isFavoriteServer={isFavorite}
             />
             <Comments 

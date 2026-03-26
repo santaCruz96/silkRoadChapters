@@ -6,7 +6,7 @@ export interface SpecificCommentProps {
 
 export default function ContentReview({specificComment}: SpecificCommentProps) {
     return (
-        <div className="flex flex-col rounded-[20px] p-4 bg-light gap-8 min-w-72 h-90 lg:w-148 lg:h-65
+        <div className="flex flex-col rounded-[20px] p-4 bg-light gap-8 min-w-72 h-90 lg:w-148 lg:h-72
             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
         >
             <div className="flex items-start gap-4">

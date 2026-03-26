@@ -15,15 +15,39 @@ export const getLikes = async (id: string, entityType: number): Promise<LikesRes
     return data;
 };
 
-export async function toggleLike(
-    entityType: string,
-    id: string,
-    isLiked: number | null
+export async function addLike(
+    entityType: number,
+    entityId: string
 ): Promise<{ status: number }> {
-    const res = await fetchWithAuth(`/${entityType}/${id}/like`, {
-        method: isLiked ? 'DELETE' : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-    });
+    const res = await fetchWithAuth(`/reactions`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            reactionType: 1,
+            entityId,
+            entityType
+        })
+    })
+
+    if (!res.ok) {
+        return { status: res.status };
+    }
+
+    return { status: res.status };
+}
+
+export async function deleteLike(
+    entityType: number,
+    entityId: string,
+): Promise<{ status: number }> {
+    const res = await fetchWithAuth(`/reactions/delete?entityId=${entityId}&entityType=${entityType}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
 
     if (!res.ok) {
         return { status: res.status };

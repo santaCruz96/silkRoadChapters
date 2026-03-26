@@ -10,8 +10,9 @@ import { useModal } from "@/store/useModalStore";
 import useScrollLock from '@/hooks/useScrollLock';
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import { useLocaleStore } from '@/store/useLocaleStore';
-import {useTranslations} from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useHeaderScroll } from "@/hooks/useHeaderScroll";
+import { checkAuth } from "@/lib/api/apiClient";
 
 import { HeaderProps } from "@/types/props/Header.props";
 
@@ -44,11 +45,16 @@ export default function Header({isAuthenticated}: HeaderProps) {
 
     const handleAccount = async () => {
         if (isAuthenticated) {
-            router.push('/account');
+            const isValid = await checkAuth(); 
+            if (isValid) {
+                router.push('/account');
+            } else {
+                toggle('login');
+            }
         } else {
-            toggle('login')
+            toggle('login');
         }
-    }
+    };
 
     return (
         <motion.header 

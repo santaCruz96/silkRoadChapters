@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
@@ -16,6 +17,7 @@ import CookiePushTrigger from "@/components/CookiePushTrigger";
 import "./globals.css";
 
 import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
+import { SITE_URL, GA_ID } from "@/config/constants";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,7 +36,7 @@ export async function generateMetadata(
   const t = await getTranslations({ locale, namespace: "Hero.meta" });
 
   return {
-    metadataBase: new URL('https://dev.silkroadchapters.uz'),
+    metadataBase: new URL(SITE_URL ?? ''),
     title: t("title"),
     description: t("description"),
   };
@@ -77,6 +79,7 @@ export default async function RootLayout({
             <Footer/>
         </NextIntlClientProvider>
       </body>
+      <GoogleAnalytics gaId={GA_ID ?? ''} />
     </html>
   );
 }

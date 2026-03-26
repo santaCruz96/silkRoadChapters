@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useModal } from '@/store/useModalStore';
 import Button from '../Button';
@@ -19,6 +19,12 @@ export default function AuthFormLogin() {
     const tValid = useTranslations('Validation.login');
     const { open, close } = useModal();
     const router = useRouter();
+    const pathname = usePathname();
+
+    const variants = ['blog', 'free', 'paid'];
+    const current = pathname.split('/')[1];
+
+    const isAllowed = variants.includes(current);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -55,7 +61,7 @@ export default function AuthFormLogin() {
 
             setAuthenticated(true);
             close();
-            router.push('/account')
+            if (!isAllowed) router.push('/account')
         } catch (error) {
             console.error('Login error:', error);
             setServerError(tValid('serverError'));

@@ -9,7 +9,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import useActiveLectureStore from '@/store/useActiveLectureStore';
 import { useModal } from "@/store/useModalStore";
 import { toggleFavorite } from '@/lib/api/favorites';
-import { toggleLike } from "@/lib/api/likes";
+import { addLike, deleteLike } from "@/lib/api/likes";
 import { usePush } from "@/store/usePushStore";
 
 export default function DeatailsCard({
@@ -23,9 +23,9 @@ export default function DeatailsCard({
 
     const { addPush, pushes } = usePush();
 
-    const isFree = entityType === 0;
+    // const isFree = entityType === 0;
     const isPaid = entityType === 1;
-    const isBlog = entityType === 2;
+    // const isBlog = entityType === 2;
 
     const [isLoadingFavorite, setIsLoadingFavorite] = useState(false);
     const [isLoadingLike, setIsLoadingLike] = useState(false);
@@ -54,7 +54,7 @@ export default function DeatailsCard({
         
         setIsLiked(likeInfo.userReaction)
 
-    }, [currentLecture.id, entityType, isAuthenticated, isFree, likeInfo]);
+    }, [currentLecture.id, entityType, isAuthenticated, likeInfo]);
 
     const viewsCount = useMemo(() => {
         if (!currentLecture) return null;
@@ -64,12 +64,12 @@ export default function DeatailsCard({
         return null;
     }, [currentLecture]);
 
-    const typeString = useMemo(() => {
-        if (isFree) return 'free-lectures';
-        if (isPaid) return 'premium-lectures';
-        if (isBlog) return 'blogs';
-        return '';
-    }, [isFree, isPaid, isBlog]);
+    // const typeString = useMemo(() => {
+    //     if (isFree) return 'free-lectures';
+    //     if (isPaid) return 'premium-lectures';
+    //     if (isBlog) return 'blogs';
+    //     return '';
+    // }, [isFree, isPaid, isBlog]);
 
     useEffect(() => {
         if ('likesCount' in currentLecture) {
@@ -102,10 +102,14 @@ export default function DeatailsCard({
     const handleToggleLike = async () => {
         setIsLoadingLike(true);
         try {
-            const result = await toggleLike(
-                typeString ?? '',
-                currentLecture?.id ?? '',
-                isLiked
+            // const result = await toggleLike(
+            //     entityType,
+            //     currentLecture?.id ?? '',
+            //     isLiked
+            // );
+            const result = await (isLiked
+                ? deleteLike(entityType, currentLecture?.id ?? '')
+                : addLike(entityType, currentLecture?.id ?? '')
             );
 
             if (result.status < 200 || result.status >= 300) {

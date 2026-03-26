@@ -25,7 +25,7 @@ export default function MenuItem({route, label}: MenuItemProps) {
     return (
         <Link 
             href={route}
-            className='relative w-full h-[61px] py-4'
+            className='relative w-full h-15.25 py-4'
             onClick={close}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -39,7 +39,7 @@ export default function MenuItem({route, label}: MenuItemProps) {
             >
             </motion.div>
             <motion.span 
-                className='absolute font-semibold text-[24px] leading-[29px] text-dark z-21'
+                className='absolute font-semibold text-[22px] leading-7.25 text-dark z-21'
                 animate={{ x: isHovered && !isTablet ? 16 : 0 }}
                 transition={{ type: 'tween', duration: 0.3 }}
             >

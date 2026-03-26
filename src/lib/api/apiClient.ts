@@ -64,3 +64,12 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
 
     return response;
 }
+
+export async function checkAuth(): Promise<boolean> {
+    try {
+        const res = await fetchWithAuth('/user/profile'); 
+        return res.ok;
+    } catch {
+        return false;
+    }
+}
