@@ -34,6 +34,7 @@ export async function generateMetadata(
   const t = await getTranslations({ locale, namespace: "Hero.meta" });
 
   return {
+    metadataBase: new URL('https://dev.silkroadchapters.uz'),
     title: t("title"),
     description: t("description"),
   };
