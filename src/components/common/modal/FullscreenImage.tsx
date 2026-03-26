@@ -34,7 +34,7 @@ export default function FullscreenImage() {
         <AnimatePresence>
             {isOpen && (
                 <motion.div 
-                    className="fixed flex items-center justify-center w-full h-screen z-15 bg-[rgba(0,0,0,0.3)]"
+                    className="fixed flex items-center justify-center w-full h-screen z-15 bg-[rgba(0,0,0,0.5)]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

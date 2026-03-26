@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { validateLoginForm } from '@/schemas/login';
 import { useAuthStore } from '@/store/useAuthStore';
 import { loginUser } from '@/lib/api/auth';
-import { API_URL } from '@/config/constants';
+// import { API_URL } from '@/config/constants';
 
 import { FormErrors } from '@/schemas/login';
 
@@ -81,9 +81,9 @@ export default function AuthFormLogin() {
         text-accent-alert text-[12px] px-1 italic leading-[160%]
     `
 
-    const handleGoogleLogin  = () => {
-        window.location.href = `${API_URL}/accounts/login/google`;
-    };
+    // const handleGoogleLogin  = () => {
+    //     window.location.href = `${API_URL}/accounts/login/google`;
+    // };
 
     return (
         <div className="flex flex-col gap-13.75">
@@ -145,7 +145,7 @@ export default function AuthFormLogin() {
                     >
                         {t('signIn')}
                     </Button>
-                    <Button
+                    {/* <Button
                         type="button"
                         color="light"
                         size="full"
@@ -157,7 +157,7 @@ export default function AuthFormLogin() {
                         onClick={handleGoogleLogin}
                     >
                         Google
-                    </Button>
+                    </Button> */}
                 </div>
             </form>
             <div className='flex flex-col gap-4'>
