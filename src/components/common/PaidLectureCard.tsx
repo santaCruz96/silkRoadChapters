@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Icon from "@/icons/Icon";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { PaidLectureCardProps } from "@/types/props/PaidLectureCard.props";
 import Button from "./Button";
@@ -15,7 +15,7 @@ export default function PaidLectureCard({
     isBought, 
     ...props
 }: PaidLectureCardProps ) {
-    const router = useRouter();
+    // const router = useRouter();
     const locale = useLocale();
     const title = locale === 'ru' ? lecture.titleRu : lecture.titleEn;
     const description = locale === 'ru' ? lecture.shortDescriptionRu : lecture.shortDescriptionEn;
@@ -48,11 +48,11 @@ export default function PaidLectureCard({
         return () => clearTimeout(timeout);
     }, [lecture.createdAt]);
 
-    const toPayment = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation(); 
-        e.preventDefault();   
-        router.push(`/payment/${lecture.id}`); 
-    }
+    // const toPayment = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //     e.stopPropagation(); 
+    //     e.preventDefault();   
+    //     router.push(`/payment/${lecture.id}`); 
+    // }
 
     return (
         <Link
@@ -107,7 +107,7 @@ export default function PaidLectureCard({
                             form="round"
                             icon='cart'
                             hover="primary"
-                            onClick={toPayment}
+                            // onClick={toPayment}
                         >
                             {t('buy_button')}
                         </Button>

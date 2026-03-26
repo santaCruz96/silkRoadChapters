@@ -245,6 +245,7 @@ export default function DeatailsCard({
                             size="full"
                             form="round"
                             icon='verifiedCheck'
+                            disabled
                         >
                             {t('purchasedButton')}
                         </Button>
