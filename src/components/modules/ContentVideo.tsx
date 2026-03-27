@@ -69,7 +69,7 @@ export default function ContentVideo({lecture, isAuthenticated, isBought}: Conte
                     title="Lecture video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    sandbox="allow-scripts allow-same-origin allow-presentation"
+                    sandbox="allow-popups allow-scripts allow-same-origin allow-presentation"
                 />
             )}
             {!showVideo && (

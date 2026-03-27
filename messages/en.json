@@ -27,7 +27,9 @@
             "repeatPassword": "*Repeat password",
             "repeatPasswordValid": "*Passwords do not match",
             "agreement": "*Consent to the privacy policy is required",
-            "error": "*Registration error"
+            "error": "*Registration error",
+            "clientError": "*Incorrect data",
+            "serverError": "*Something doesn’t look right"
         },
         "forgot": {
             "emailRequired": "*Email is required",
