@@ -59,8 +59,8 @@ export default function Content({
             <h1 className="font-bold text-[40px] leading-12 sm:text-[64px] sm:leading-19.25 tracking-[-0.01em] text-center text-dark">
                 {title}
             </h1>
-            {!isBlog && currentLecture &&
-                <ContentVideo lecture={currentLecture} isAuthenticated={isAuthenticated} isBought={isBought}/>
+            {!isBlog && specificLecture &&
+                <ContentVideo lecture={specificLecture} isAuthenticated={isAuthenticated} isBought={isBought}/>
             }
             <div className="flex gap-4 w-full">
                 <div className="flex flex-col gap-12 sm:gap-16 flex-1">

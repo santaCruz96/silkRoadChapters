@@ -17,15 +17,20 @@ export async function generateMetadata(
         notFound();
     }
 
-    const lecture = await getSpecificLecture(id);
+    if (!id || id === "false") {
+        notFound();
+    }
 
-    const title =
-        locale === "ru"
-            ? (lecture.titleRu ?? lecture.titleEn ?? "Бесплатная лекция")
-            : (lecture.titleEn ?? lecture.titleRu ?? "Free lecture");
+    try {
+        const lecture = await getSpecificLecture(id);
+        const title =
+            locale === "ru"
+                ? (lecture.titleRu ?? lecture.titleEn ?? "Бесплатная лекция")
+                : (lecture.titleEn ?? lecture.titleRu ?? "Free lecture");
 
-    return {
-        title
+        return { title };
+    } catch {
+        notFound();
     }
 };
 

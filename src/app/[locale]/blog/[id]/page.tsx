@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { cookies } from 'next/headers';
 import GeneralContainer from "@/layouts/GeneralContainer";
 import Content from "@/components/sections/Content";
@@ -9,6 +10,7 @@ import { LikesResponse } from '@/types/api/likes';
 import { getLikes } from '@/lib/api/likes';
 import { getFavorites } from '@/lib/api/favorites';
 import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
+import { Blog } from '@/types/interfaces/Blog.interface';
 
 const ENTITY_TYPE = 2;
 
@@ -19,8 +21,18 @@ export default async function BlogContent({
 }) {
     const { id } = await params;
 
+    if (!id || id === "false") {
+        notFound();
+    }
+
+    let specificLecture: Blog;
+    try {
+        specificLecture = await getSpecificLecture(id);
+    } catch {
+        notFound();
+    }
+
     const blogs = await getBlogs();
-    const specificLecture = await getSpecificLecture(id);
     const filteredBlogs = blogs.filter(
         (blog) => blog.id !== specificLecture.id
     );

@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { cookies } from 'next/headers';
 import GeneralContainer from "@/layouts/GeneralContainer";
 import Content from "@/components/sections/Content";
@@ -10,18 +11,25 @@ import { PurchasesLecture } from '@/types/api/purchasesLecture';
 import { getLikes } from '@/lib/api/likes';
 import { getFavorites } from '@/lib/api/favorites';
 import { TOKEN_COOKIE_NAME } from '@/lib/authCookies';
+import { PaidLecture } from '@/types/interfaces/PaidLecture.interface';
 
 const ENTITY_TYPE = 1;
 
-export default async function PaidLecture({ 
+export default async function PaidLectureContent({ 
     params 
 }: { 
     params: Promise<{ id: string }> 
 }) {
     const { id } = await params;
 
+    let specificLecture: PaidLecture;
+    try {
+        specificLecture = await getSpecificLecture(id);
+    } catch {
+        notFound();
+    }
+
     const lectures = await getPaidLectures();
-    const specificLecture = await getSpecificLecture(id);
     const filteredLectures = lectures.filter(
         (lecture) => lecture.id !== specificLecture.id
     );

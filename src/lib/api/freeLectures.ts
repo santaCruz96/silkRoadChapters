@@ -4,17 +4,17 @@ import { ApiResponse, FreeLecture } from "@/types/interfaces/FreeLecture.interfa
 import { API_URL } from "@/config/constants";
 
 export const getFreeLectures = async (): Promise<FreeLecture[]> => {
-    const resAllLecutres = await fetch(`${API_URL}/free-lectures`, {
+    const resAllLectures = await fetch(`${API_URL}/free-lectures`, {
         headers: {
             'Content-Type': 'application/json',
         },
     });
 
-    if (!resAllLecutres.ok) {
-        throw new Error(`Failed to fetch lectures: ${resAllLecutres.status}`);
+    if (!resAllLectures.ok) {
+        throw new Error(`Failed to fetch lectures: ${resAllLectures.status}`);
     }
 
-    const allLectures = await resAllLecutres.json();
+    const allLectures = await resAllLectures.json();
 
     const res = await fetch(`${API_URL}/free-lectures?pageSize=${allLectures.totalCount}`, {
         headers: {
