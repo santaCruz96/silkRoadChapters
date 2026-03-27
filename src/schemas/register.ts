@@ -49,7 +49,7 @@ export function validateRegisterForm(
         errors.password = messages.passwordRequired;
     } else if (data.password.length < 8) {
         errors.password = messages.passwordLength;
-    } else if (!/[a-zA-Zа-яА-Я]/.test(data.password) || !/\d/.test(data.password)) {
+    } else if (!/[a-z]/.test(data.password) || !/\d/.test(data.password)) {
         errors.password = messages.passwordValid;
     }
 

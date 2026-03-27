@@ -40,7 +40,7 @@
         "reset": {
             "passwordRequired": "*Password is required",
             "passwordLength": "*Password must be at least 8 characters long",
-            "passwordValid": "*Password must contain at least one letter and one number",
+            "passwordValid": "*Password must contain at least one letter lowercase and one number",
             "repeatPassword": "*Repeat password",
             "repeatPasswordValid": "*Passwords do not match",
             "clientError": "*Incorrect data",
