@@ -20,7 +20,7 @@ export function validateResetPasswordForm(
         errors.password = messages.passwordRequired;
     } else if (password.length < 8) {
         errors.password = messages.passwordLength;
-    } else if (!/[a-zA-Zа-яА-Я]/.test(password) || !/\d/.test(password)) {
+    } else if (!/[a-z]/.test(password) || !/\d/.test(password)) {
         errors.password = messages.passwordValid;
     }
 
