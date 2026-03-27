@@ -104,7 +104,7 @@ export default function AuthFormReset() {
                     <div className="flex flex-col gap-1">
                         <div className="relative">
                             <input
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 value={newPassword}
                                 onChange={(e) => {
                                     setNewPassword(e.target.value);
@@ -128,7 +128,7 @@ export default function AuthFormReset() {
                     <div className="flex flex-col gap-1">
                         <div className="relative">
                             <input
-                                type="password"
+                                type={showRepeatPassword ? 'text' : 'password'}
                                 value={repeatPassword}
                                 onChange={(e) => {
                                     setRepeatPassword(e.target.value);
