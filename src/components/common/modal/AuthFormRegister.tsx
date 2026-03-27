@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useModal } from '@/store/useModalStore';
+import Icon from "@/icons/Icon";
 import { registerUser } from "@/lib/api/auth";
 import { usePush } from "@/store/usePushStore";
 import Link from "next/link";
@@ -29,6 +30,8 @@ export default function AuthFormRegister() {
         password: '',
         repeatPassword: '',
     });
+    const [showPassword, setShowPassword] = useState(false);
+    const [showRepeatPassword, setShowRepeatPassword] = useState(false);
     const [errors, setErrors] = useState<FormErrors>({});
     const [serverError, setServerError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -157,27 +160,49 @@ export default function AuthFormRegister() {
                 )}
             </div>
             <div className="flex flex-col gap-1">
-                <input
-                    type="password"
-                    value={formData.password}
-                    onChange={handleInputChange('password')}
-                    disabled={isLoading}
-                    className={inputClass('password')}
-                    placeholder={t('password')}
-                />
+                <div className="relative">
+                    <input
+                        type={showPassword ? 'text' : 'password'}
+                        value={formData.password}
+                        onChange={handleInputChange('password')}
+                        disabled={isLoading}
+                        className={`${inputClass('password')} pr-10`}
+                        placeholder={t('password')}
+                    />
+                    
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword(prev => !prev)}
+                        disabled={isLoading}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                    >
+                        <Icon className='fill-image' name={showPassword ? 'eyeClose' : 'eye'}/>
+                    </button>
+                </div>
                 {errors.password && (
                     <span className={spanClass()}>{errors.password}</span>
                 )}
             </div>
             <div className="flex flex-col gap-1">
-                <input
-                    type="password"
-                    value={formData.repeatPassword}
-                    onChange={handleInputChange('repeatPassword')}
-                    disabled={isLoading}
-                    className={inputClass('repeatPassword')}
-                    placeholder={t('repeatPassword')}
-                />
+                <div className="relative">
+                    <input
+                        type={showRepeatPassword ? 'text' : 'password'}
+                        value={formData.repeatPassword}
+                        onChange={handleInputChange('repeatPassword')}
+                        disabled={isLoading}
+                        className={`${inputClass('repeatPassword')} pr-10`}
+                        placeholder={t('repeatPassword')}
+                    />
+
+                    <button
+                        type="button"
+                        onClick={() => setShowRepeatPassword(prev => !prev)}
+                        disabled={isLoading}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                    >
+                        <Icon className='fill-image' name={showRepeatPassword ? 'eyeClose' : 'eye'}/>
+                    </button>
+                </div>
                 {errors.repeatPassword && (
                     <span className={spanClass()}>{errors.repeatPassword}</span>
                 )}

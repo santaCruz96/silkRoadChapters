@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import Icon from "@/icons/Icon";
 import { useSearchParams } from "next/navigation";
 import { useAuthStore } from '@/store/useAuthStore';
 import { useModal } from '@/store/useModalStore';
@@ -27,6 +28,8 @@ export default function AuthFormReset() {
 
     const [ newPassword, setNewPassword ] = useState('');
     const [ repeatPassword, setRepeatPassword ] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showRepeatPassword, setShowRepeatPassword] = useState(false);
     const [errors, setErrors] = useState<FormErrors>({});
     const [serverError, setServerError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -99,29 +102,49 @@ export default function AuthFormReset() {
             <form action="#" className="flex flex-col gap-8" onSubmit={handleSubmitReset}>
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
-                        <input
-                            type="password"
-                            value={newPassword}
-                            onChange={(e) => {
-                                setNewPassword(e.target.value);
-                            }}
-                            className={inputClass('password')}
-                            placeholder={t('newPassword')}
-                        />
+                        <div className="relative">
+                            <input
+                                type="password"
+                                value={newPassword}
+                                onChange={(e) => {
+                                    setNewPassword(e.target.value);
+                                }}
+                                className={`${inputClass('password')} pr-10`}
+                                placeholder={t('newPassword')}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(prev => !prev)}
+                                disabled={isLoading}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                            >
+                                <Icon className='fill-image' name={showPassword ? 'eyeClose' : 'eye'}/>
+                            </button>
+                        </div>
                         {errors.password && (
                             <span className={spanClass()}>{errors.password}</span>
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
-                        <input
-                            type="password"
-                            value={repeatPassword}
-                            onChange={(e) => {
-                                setRepeatPassword(e.target.value);
-                            }}
-                            className={inputClass('repeatPassword')}
-                            placeholder={t('repeatPassword')}
-                        />
+                        <div className="relative">
+                            <input
+                                type="password"
+                                value={repeatPassword}
+                                onChange={(e) => {
+                                    setRepeatPassword(e.target.value);
+                                }}
+                                className={`${inputClass('repeatPassword')} pr-10`}
+                                placeholder={t('repeatPassword')}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowRepeatPassword(prev => !prev)}
+                                disabled={isLoading}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                            >
+                                <Icon className='fill-image' name={showRepeatPassword ? 'eyeClose' : 'eye'}/>
+                            </button>
+                        </div>
                         {errors.repeatPassword && (
                             <span className={spanClass()}>{errors.repeatPassword}</span>
                         )}

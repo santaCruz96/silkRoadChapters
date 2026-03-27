@@ -2,6 +2,7 @@
 
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
+import Icon from "@/icons/Icon";
 import { useModal } from '@/store/useModalStore';
 import Button from '../Button';
 import { useTranslations } from 'next-intl';
@@ -28,6 +29,7 @@ export default function AuthFormLogin() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState<FormErrors>({});
     const [serverError, setServerError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -112,17 +114,27 @@ export default function AuthFormLogin() {
                         )}
                     </div>
                     <div className="flex flex-col gap-1">
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => {
-                                setPassword(e.target.value);
-                                setErrors(prev => ({ ...prev, password: undefined }));
-                            }}
-                            disabled={isLoading}
-                            className={inputClass('password')}
-                            placeholder={t('password')}
-                        />
+                        <div className="relative">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    setErrors(prev => ({ ...prev, password: undefined }));
+                                }}
+                                disabled={isLoading}
+                                className={`${inputClass('password')} pr-10`}
+                                placeholder={t('password')}
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(prev => !prev)}
+                                disabled={isLoading}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+                            >
+                                <Icon className='fill-image' name={showPassword ? 'eyeClose' : 'eye'}/>
+                            </button>
+                        </div>
                         {errors.password && (
                             <span className={spanClass()}>{errors.password}</span>
                         )}
