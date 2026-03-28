@@ -49,7 +49,7 @@ export default function AboutAuthor() {
                 }
                 <div className="flex flex-col gap-4">
                     <a 
-                        href="https://www.instagram.com/juliavzbes?igsh=MXI1Z3lrYTV5ZjN4cA==" 
+                        href="https://www.instagram.com/yuliya_travel_expert" 
                         target="_blank"
                         rel="noopener noreferrer"
                         className="sm:w-fit"
@@ -78,7 +78,7 @@ export default function AboutAuthor() {
                 </div>
             </div>
             <div className="rounded-[20px] sm:rounded-[30px] w-full h-82 
-                sm:w-82 lg:w-[592px] lg:h-[592px] bg-image overflow-hidden"
+                sm:w-82 lg:w-148 lg:h-148 bg-image overflow-hidden"
             >
                 <Image
                     src={imagePath}
