@@ -111,7 +111,10 @@
         "writeComment": "Your comment has been sent for moderation.",
         "somethingWrong": "Something went wrong.",
         "URLCopy": "You copied the link to the page.",
-        "buyVideo": "To watch the video you need to purchase the lecture."
+        "buyVideo": "To watch the video you need to purchase the lecture.",
+        "avatarSuccess": "The avatar has been successfully changed.",
+        "avatarError": "The file size must not exceed 1 MB.",
+        "avatarDelete": "The avatar has been successfully deleted."
     },
 
     "Footer": {

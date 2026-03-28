@@ -4,12 +4,12 @@ export const socialLinks: ISocialLinks = {
     menu: [
         {
             id: 1,
-            route: 'https://www.facebook.com/share/17aWoYDUTp/',
+            route: 'https://www.facebook.com/YuliaTravelExpert',
             iconName: 'facebook',
         },
         {
             id: 2,
-            route: 'https://t.me/julia_guide_uzbekistan',
+            route: 'https://t.me/Yuliya_Travel_Expert',
             iconName: 'telegram',
         },
         {
@@ -19,7 +19,7 @@ export const socialLinks: ISocialLinks = {
         },
         {
             id: 4,
-            route: 'https://www.instagram.com/juliavzbes?igsh=MXI1Z3lrYTV5ZjN4cA==',
+            route: 'https://www.instagram.com/yuliya_travel_expert',
             iconName: 'instagram',
         },
         {
@@ -31,12 +31,12 @@ export const socialLinks: ISocialLinks = {
     footer: [
         {
             id: 1,
-            route: 'https://www.facebook.com/share/17aWoYDUTp/#',
+            route: 'https://www.facebook.com/YuliaTravelExpert',
             iconName: 'facebook',
         },
         {
             id: 2,
-            route: 'https://t.me/julia_guide_uzbekistan',
+            route: 'https://t.me/Yuliya_Travel_Expert',
             iconName: 'telegram',
         },
         {
@@ -46,7 +46,7 @@ export const socialLinks: ISocialLinks = {
         },
         {
             id: 4,
-            route: 'https://www.instagram.com/juliavzbes?igsh=MXI1Z3lrYTV5ZjN4cA==',
+            route: 'https://www.instagram.com/yuliya_travel_expert',
             iconName: 'instagram',
         },
     ],

@@ -41,6 +41,14 @@ export default function UserSettings({ user }: UserSettingsProps) {
         const file = e.target.files?.[0]
         if (!file) return
 
+        const MAX_SIZE_MB = 1;
+        const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
+
+        if (file.size > MAX_SIZE_BYTES) {
+            addPush('error', tPush('avatarError'))
+            return;
+        }
+
         const formData = new FormData();
         formData.append('file', file);
 
@@ -48,6 +56,7 @@ export default function UserSettings({ user }: UserSettingsProps) {
             setIsLoading(true);
             await uploadAvatar(formData);
             router.refresh();
+            addPush('success', tPush('avatarSuccess'));
             setIsDisable(false);
         } catch (error) {
             console.error(error);
@@ -63,6 +72,7 @@ export default function UserSettings({ user }: UserSettingsProps) {
         try {
             await deleteAvatar();
             router.refresh();
+            addPush('success', tPush('avatarDelete'));
         } catch (error) {
             console.error(error);
             setIsLoading(false);

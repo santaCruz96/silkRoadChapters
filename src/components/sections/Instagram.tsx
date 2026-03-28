@@ -22,10 +22,10 @@ export default function Instagram() {
                 <p className="font-medium text-[16px] leading-[160%] text-center text-grey">
                     {t('text')}
                     <a 
-                        href="https://www.instagram.com/silk_road_chapters/"
+                        href="https://www.instagram.com/yuliya_travel_expert"
                         target="_blank"
                         rel="noopener noreferrer"
-                    > @silk_road_chapters 
+                    > @yuliya_travel_expert
                     </a>             
                 </p>
             </div>

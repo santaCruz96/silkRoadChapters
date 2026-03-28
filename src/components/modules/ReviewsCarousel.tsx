@@ -1,8 +1,6 @@
 "use client";
 
 import ReviewCard from "../common/ReviewCard";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import useEmblaCarousel from "embla-carousel-react";
 
@@ -30,37 +28,47 @@ function ReviewsCarouselMobile() {
 }
 
 function ReviewsCarouselDesktop() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const reviewsData = useReviewsData();
-
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"],
-    });
-
-    const upperX = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
-    const lowerX = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+    const reviewsData = useReviewsData()
 
     return (
-        <div ref={containerRef} className="flex flex-col gap-4">
-            <motion.div className="flex gap-4" style={{ x: upperX }}>
-                {reviewsData[0].map((review) => (
-                    <ReviewCard 
-                        key={review.id}
-                        review={review}
-                    />
-                ))}
-            </motion.div>
-            <motion.div className="flex gap-4" style={{ x: lowerX }}>
-                {reviewsData[1].map((review) => (
-                    <ReviewCard 
-                        key={review.id}
-                        review={review}
-                    />
-                ))}
-            </motion.div>
-        </div>
-    );
+        <>
+            <style>{`
+                .reviews-track:hover .reviews-row { animation-play-state: paused; }
+                .reviews-row { display: flex; gap: 1rem; width: max-content; }
+                .reviews-row-forward  { animation: reviewsScrollForward  30s linear infinite; }
+                .reviews-row-backward { animation: reviewsScrollBackward 30s linear infinite; }
+                @keyframes reviewsScrollForward  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+                @keyframes reviewsScrollBackward { from { transform: translateX(-50%); } to { transform: translateX(0); }    }
+            `}</style>
+
+            <div className="relative w-480 flex flex-col gap-4 overflow-hidden pb-6">
+                <div className="absolute inset-y-0 left-0 w-30 bg-linear-to-r 
+                    from-[#f2f2f2] to-transparent z-10 pointer-events-none"
+                />
+                <div className="absolute inset-y-0 right-0 w-30 bg-linear-to-l 
+                    from-[#f2f2f2] to-transparent z-10 pointer-events-none"
+                />
+                <div className="reviews-track">
+                    <div className="reviews-row reviews-row-forward">
+                        {[...reviewsData[0], ...reviewsData[0]].map((review, i) => (
+                            <div key={i} className="reviews-item">
+                                <ReviewCard review={review} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="reviews-track">
+                    <div className="reviews-row reviews-row-backward">
+                        {[...reviewsData[1], ...reviewsData[1]].map((review, i) => (
+                            <div key={i} className="reviews-item">
+                                <ReviewCard review={review} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }
 
 export default function ReviewsCarousel() {

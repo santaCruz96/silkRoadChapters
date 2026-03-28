@@ -44,8 +44,8 @@ export default function Push() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, x: 100, scale: 0.95 }}
                             transition={{ duration: 0.3, ease: 'easeOut' }}
-                            className={`absolute bottom-4 sm:bottom-8 right-0 flex gap-3 p-4 rounded-[20px] pointer-events-auto
-                                shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] ${config.bgColor}`}
+                            className={`absolute bottom-4 sm:bottom-8 right-3.75 md:right-7.5 lg:right-0 flex gap-3 p-4 rounded-[20px] 
+                                pointer-events-auto shadow-[0_4px_10px_0_rgba(0,0,0,0.04),0_1px_2px_0_rgba(0,0,0,0.06)] ${config.bgColor}`}
                             // onClick={() => removePush(push.id)}
                         >
                             <Icon className='w-9.5 h-9.5 fill-light' name={icon}/>
