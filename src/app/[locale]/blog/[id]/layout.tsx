@@ -23,12 +23,12 @@ export async function generateMetadata(
 
     try {
         const lecture = await getSpecificLecture(id);
-        const title =
+        const titleText =
             locale === "ru"
                 ? (lecture.titleRu ?? lecture.titleEn ?? "Бесплатная лекция")
                 : (lecture.titleEn ?? lecture.titleRu ?? "Free lecture");
 
-        return { title };
+        return { title: titleText + ' | Silk Road Chapters' };
     } catch {
         notFound();
     }
