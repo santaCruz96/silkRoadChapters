@@ -26,6 +26,7 @@ export default function CatalogPaidLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    notFound();
     return (
         <div className="flex justify-center bg-background">
             {children}
