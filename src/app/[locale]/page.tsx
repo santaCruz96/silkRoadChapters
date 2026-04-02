@@ -38,7 +38,7 @@ export default async function Home() {
         <Benefits/>
         <FreeLectures lectures={freeLectures}/>
         <Geography/>
-        {/* <PaidLectures lectures={paidLectures} purchasesLectures={purchasesLectures}/> */}
+        <PaidLectures lectures={paidLectures} purchasesLectures={purchasesLectures}/>
         <Interlude/>
         <Blogs blogs={blogs}/>
         <Reviews/>

@@ -20,12 +20,12 @@ export default async function Account() {
     return (
         <GeneralContainer>
             <UserSettings user={user}/>
-            {/* <PaidLecturesNet 
+            <PaidLecturesNet 
                 lectures={specificLectures}
                 page="account"
                 cardsPerPage={4}
                 purchasesLectures={null}
-            /> */}
+            />
             <SavedLectures/>
         </GeneralContainer>
     )
