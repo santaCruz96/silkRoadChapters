@@ -89,7 +89,7 @@ export default function UserSettings({ user }: UserSettingsProps) {
                 {t('title')}
             </h1>
             <div className="relative flex flex-col sm:flex-row gap-12 sm:gap-4">
-                <div className="absolute left-4 top-4 sm:static flex flex-col gap-3">
+                <div className="absolute left-4 top-4 sm:static flex flex-col gap-3 z-10 sm:z-auto">
                     <Button
                         color={isMobile ? "lightGrey" : "light"}
                         size="sm"
