@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ReviewProps } from "@/types/props/Review.props";
 
 export default function ReviewCard({review}: ReviewProps) {
@@ -13,10 +14,11 @@ export default function ReviewCard({review}: ReviewProps) {
                     {review.name}
                 </p>
                 <div 
-                    className="flex items-center justify-center rounded-xl 
-                        w-[60px] h-[60px] bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: `url(${review.avatar})`}}
-                />
+                    className="relative flex items-center justify-center rounded-xl 
+                        w-15 h-15 overflow-hidden"
+                >
+                    <Image src={review.avatar} alt="" fill className="object-cover" />
+                </div>
             </div>
         </div>
     )

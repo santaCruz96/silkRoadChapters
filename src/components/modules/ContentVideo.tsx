@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useMemo, useState } from "react";
 import { ContentVideoProps } from "@/types/props/ContentVideo.props";
 import Button from "../common/Button";
@@ -57,9 +58,7 @@ export default function ContentVideo({lecture, isAuthenticated, isBought}: Conte
 
     return (
         <div 
-            className="relative rounded-[30px] w-full h-82 lg:h-169.25 
-                bg-cover bg-center bg-no-repeat overflow-hidden"
-            style={{backgroundImage: `url(${'coverImageUrl' in lecture && lecture?.coverImageUrl})`}}
+            className="relative rounded-[30px] w-full h-82 lg:h-169.25 overflow-hidden"
             onClick={handlePush}
         >
             {showVideo && embedUrl && (
@@ -71,21 +70,24 @@ export default function ContentVideo({lecture, isAuthenticated, isBought}: Conte
                     allowFullScreen
                 />
             )}
-            {!showVideo && (
-                <div 
-                    className='cursor-pointer absolute flex items-center 
-                        justify-center w-full h-full bg-black/20'
-                    onClick={handlePush}
-                >
-                    <Button
-                        color="lightGrey"
-                        size="sm"
-                        form="square"
-                        icon={'videoId' in lecture && !isAuthenticated || 'videoId' in lecture && !isBought ? "lock" : "play"}
-                        iconSize="big"
-                        hover="contentButton"
-                    />
-                </div>
+            {!showVideo && 'coverImageUrl' in lecture && lecture.coverImageUrl && (
+                <>
+                    <Image src={lecture.coverImageUrl} alt="" fill priority className="object-cover" />
+                    <div 
+                        className='cursor-pointer absolute flex items-center 
+                            justify-center w-full h-full bg-black/20 z-10'
+                        onClick={handlePush}
+                    >
+                        <Button
+                            color="lightGrey"
+                            size="sm"
+                            form="square"
+                            icon={'videoId' in lecture && !isAuthenticated || 'videoId' in lecture && !isBought ? "lock" : "play"}
+                            iconSize="big"
+                            hover="contentButton"
+                        />
+                    </div>
+                </>
             )}
         </div>
     )

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 import Link from "next/link";
 import Icon from "@/icons/Icon";
 import { FreeLectureCardProps } from "@/types/props/FreeLectureCard.props";
@@ -52,9 +53,11 @@ export default function FreeLectureCard({lecture, isCarousel, grid}: FreeLecture
                 hover:bg-[#F7F7F7] hover:shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]`}
         >
             <div 
-                className="relative mb-4 rounded-xl w-full h-64 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${lecture.coverImageUrl})`}}
-            >
+                className="relative mb-4 rounded-xl w-full h-64 overflow-hidden"
+            >   
+                {lecture.coverImageUrl && (
+                    <Image src={lecture.coverImageUrl} alt="" fill priority className="object-cover" />
+                )}
                 {isNew && (
                     <span
                         className="absolute left-3 top-3 rounded-xl px-3 py-1 

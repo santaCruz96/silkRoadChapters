@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 // import Icon from "@/icons/Icon";
@@ -62,10 +63,10 @@ export default function SavedLecturesItem({savedLecture}: SavedLecture) {
                 className="flex w-full sm:w-auto sm:h-full flex-col sm:flex-row gap-4 cursor-pointer"
             >
                 <div 
-                    className="w-full h-46.25 sm:w-72 sm:h-40.5 rounded-xl 
-                        bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: `url(${savedLecture?.imageUrl})`}}
-                />
+                    className="relative w-full h-46.25 sm:w-72 sm:h-40.5 rounded-xl overflow-hidden"
+                >
+                    <Image src={savedLecture?.imageUrl} alt="" fill className="object-cover" />
+                </div>
                 <div className="flex sm:h-full flex-col-reverse sm:flex-col gap-4 sm:gap-0 justify-between">
                     <div className="flex flex-col gap-2.5">
                         <p className="font-semibold text-[18px] leading-5.25 text-dark">

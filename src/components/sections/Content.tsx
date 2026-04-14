@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useEffect } from 'react'; 
 import { usePathname } from 'next/navigation';
 import DeatailsCard from "../common/DetailsCard";
@@ -75,11 +76,12 @@ export default function Content({
                     }
                     {'imageLink' in currentLecture && isBlog && 
                         <div 
-                            className="rounded-[20px] sm:rounded-[30px] w-full h-46.25 sm:h-126.25 
-                                bg-cover bg-center bg-no-repeat cursor-pointer"
-                            style={{ backgroundImage: `url(${currentLecture?.imageLink})`}}
+                            className="relative rounded-[20px] sm:rounded-[30px] w-full h-46.25 sm:h-126.25 
+                                overflow-hidden cursor-pointer"
                             onClick={() => open(currentLecture.imageLink)}
-                        />
+                        >
+                            <Image src={currentLecture.imageLink} alt="" fill priority className="object-cover" />
+                        </div>
                     }
                     {isTablet && isBlog && 
                         <DeatailsCard 

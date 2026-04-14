@@ -1,4 +1,5 @@
 // import Icon from "@/icons/Icon";
+import Image from "next/image";
 import { PaidLecture } from "@/types/interfaces/PaidLecture.interface";
 import { getLocale } from "next-intl/server";
 
@@ -16,13 +17,12 @@ export default async function PaymentLectureCard({specificLecture}: PaymentLectu
             shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
         >
             <div 
-                className={`rounded-[20px] w-full h-74 lg:w-106 lg:h-59.75 bg-cover bg-center bg-no-repeat`}
-                style={'coverImageUrl' in specificLecture ? 
-                    { backgroundImage: `url(${specificLecture.coverImageUrl})`}
-                    :
-                    { background: '#b3b3b3' }
-                }
-            />
+                className='relative rounded-[20px] w-full h-74 lg:w-106 lg:h-59.75 overflow-hidden'
+            >
+                {'coverImageUrl' in specificLecture && specificLecture.coverImageUrl && (
+                    <Image src={specificLecture.coverImageUrl} alt="" fill className="object-cover" />
+                )}
+            </div>
             <div className="flex flex-col gap-8 lg:gap-0 sm:justify-between lg:max-w-68">
                 <div className="flex flex-col gap-1.75 h-22.5">
                     <h3 className="font-semibold text-[18px] leading-5.25 text-dark">

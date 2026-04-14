@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Icon from "@/icons/Icon";
+import Image from 'next/image';
 // import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { PaidLectureCardProps } from "@/types/props/PaidLectureCard.props";
@@ -67,9 +68,11 @@ export default function PaidLectureCard({
             >
                 <div 
                     className={`relative mb-4 rounded-xl w-full h-64 ${isCarousel && 'lg:w-140'} 
-                        lg:h-78.75 bg-cover bg-center bg-no-repeat`}
-                    style={{ backgroundImage: `url(${lecture.coverImageUrl})`}}
+                        lg:h-78.75 overflow-hidden`}
                 >
+                    {lecture.coverImageUrl && (
+                        <Image src={lecture.coverImageUrl} alt="" fill priority className="object-cover" />
+                    )}
                     {isNew && (
                         <span
                             className="absolute left-3 top-3 rounded-xl px-3 py-1 
