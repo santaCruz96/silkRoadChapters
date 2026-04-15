@@ -48,12 +48,12 @@ export default function BlogCard({
                 className={`relative card__selector min-h-83.25 ${size()} overflow-hidden
                     flex flex-col select-none py-8 px-4 lg:p-8 cursor-pointer`}
             >   
-                <Image src={blog.imageLink} alt="" fill priority className="object-cover" />
-                <div className="absolute top-0 left-0 w-full h-full transition 
+                <div className="absolute top-0 left-0 w-full h-full transition z-10
                     duration-180 ease-out-[0.2,0.8,0.2,1] hover:bg-[rgba(0,0,0,0.1)]"
                 />
+                <Image src={blog.imageLink} alt="" fill priority className="object-cover" />
                 {isActive && 
-                    <div className="flex flex-col justify-between h-full z-10">
+                    <div className="flex flex-col justify-between h-full z-10 pointer-events-none">
                         <p className={`font-semibold ${fontSize()} text-light`}>{title}</p>
                         <div className="flex flex-col gap-4 lg:flex-row lg:justify-between">
                             {location ? 
