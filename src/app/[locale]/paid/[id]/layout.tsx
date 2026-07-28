@@ -39,7 +39,7 @@ export default function PaidLectureLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    notFound();
+    // notFound();
     return (
         <div className="flex justify-center bg-background overflow-x-clip">
             {children}

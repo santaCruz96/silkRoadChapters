@@ -4,12 +4,17 @@ import Search from "../modules/Search/Search";
 import { useResponsiveStore } from "@/store/useResponsiveStore";
 import {useTranslations} from 'next-intl';
 import { useCatalogStore, CatalogFilter } from "@/store/useCatalogStore";
+import { useSearchParams } from 'next/navigation';
 
 export default function CatalogHeader({
     page,
 }: CatalogHeaderProps) {
     const t = useTranslations('Catalog');
     const isMobile = useResponsiveStore(state => state.isMobile);
+    const searchParams = useSearchParams();
+
+    const activeTab = searchParams.get('tab') || 'articles';
+    const playlistIsOpen = searchParams.get('playlist')
 
     const filter = useCatalogStore(state => state.filter);
     const setFilter = useCatalogStore(state => state.setFilter);
@@ -66,16 +71,18 @@ export default function CatalogHeader({
                         >
                             {t('newButton')}
                         </Button>
-                        <Button
-                            color={filter === 'popular' ? 'dark' : 'light'}
-                            size={isMobile ? "full" : "lg"}
-                            form="round"
-                            hover={filter === 'popular' ? 'primary' : 'secondary'}
-                            shadow={filter !== 'popular'}
-                            onClick={() => handleFilterClick('popular')}
-                        >
-                            {t('popularButton')}
-                        </Button>
+                        {(activeTab !== 'playlists' || playlistIsOpen) &&
+                            <Button
+                                color={filter === 'popular' ? 'dark' : 'light'}
+                                size={isMobile ? "full" : "lg"}
+                                form="round"
+                                hover={filter === 'popular' ? 'primary' : 'secondary'}
+                                shadow={filter !== 'popular'}
+                                onClick={() => handleFilterClick('popular')}
+                            >
+                                {t('popularButton')}
+                            </Button>
+                        }
                     </div>
                 }
             </div>

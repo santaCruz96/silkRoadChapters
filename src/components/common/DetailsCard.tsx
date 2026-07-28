@@ -27,6 +27,12 @@ export default function DeatailsCard({
     const isPaid = entityType === 1;
     // const isBlog = entityType === 2;
 
+    const routes: Record<number, string> = {
+        0: 'free-lectures',
+        1: 'paid-lectures',
+        2: 'blog',
+    };
+
     const [isLoadingFavorite, setIsLoadingFavorite] = useState(false);
     const [isLoadingLike, setIsLoadingLike] = useState(false);
     const [likes, setLikes] = useState<number | null>(null);
@@ -48,6 +54,7 @@ export default function DeatailsCard({
     const location = detailsMap[`location${currentLocale}`] || '';
     const travelPoint = detailsMap[`travelPoint${currentLocale}`] || '';
     const year = detailsMap.year || '';
+    const playlists = currentLecture.playlists
 
     useEffect(() => {
         if (!isAuthenticated || !likeInfo) return;
@@ -216,13 +223,31 @@ export default function DeatailsCard({
                     </div>
                 }
                 {year && 
-                    <div className="flex flex-col gap-1.75 py-4">
+                    <div className={`flex flex-col gap-1.75 py-4 ${playlists?.length > 0 ? 'border-b border-stroke' : ''}`}>
                         <p className="font-semibold text-[18px] leading-5.5 text-dark">
                             {t('year')}
                         </p>
                         <p className="font-normal text-[14px] leading-[160%] text-grey">
                             {year}
                         </p>
+                    </div>
+                }
+                {playlists?.length > 0 &&
+                    <div className="flex flex-col gap-1.75 py-4">
+                        <p className="font-semibold text-[18px] leading-5.5 text-dark">
+                            {t('playlists')}
+                        </p>
+                        <ul className="list-disc underline underline-offset-2 font-normal 
+                            text-[14px] leading-[160%] text-grey ml-5"
+                        >
+                            {playlists.map(playlist => (
+                                <li key={playlist.id}>
+                                    <a href={`/catalog/${routes[entityType]}?tab=playlists&playlist=${playlist.id}`}>
+                                        {playlist[`title${currentLocale}`]}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 }
             </div>

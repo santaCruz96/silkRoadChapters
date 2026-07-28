@@ -1,20 +1,43 @@
 import GeneralContainer from "@/layouts/GeneralContainer";
 import BlogNet from "@/components/modules/BlogNet";
 import { getTranslations } from "next-intl/server";
-import { getBlogs } from "@/lib/api/blogs";
+import { getBlogs, getBlogsPlaylist } from "@/lib/api/blogs";
+import { getPlaylists } from "@/lib/api/playlists";
+import { Playlist } from "@/types/interfaces/Playlist.interface";
 
-export default async function BlogCatalog() {
+type Props = {
+    searchParams: Promise<{ tab?: string; playlist?: string }>;
+};
+
+export default async function BlogCatalog({ searchParams }: Props) {
     const t = await getTranslations('Catalog.blog');
-    const blogs = await getBlogs();
+    const { tab, playlist } = await searchParams;
+    const isPlaylists = tab === 'playlists';
+
+    const [data, playlists] = await Promise.all([
+        playlist
+            ? getBlogsPlaylist(playlist)
+            : isPlaylists
+                ? getPlaylists(2)
+                : getBlogs(),
+        !playlist && !isPlaylists ? getPlaylists(2) : Promise.resolve(null),
+    ]);
+
+    const playlistIsEmpty = playlist
+        ? false 
+        : isPlaylists
+            ? (data as Playlist[]).length === 0
+            : (playlists ?? []).length === 0;
 
     return (
         <GeneralContainer>
             <div className="flex flex-col items-center gap-16 w-full">
-                <h1 className="leading-12 sm:leading-[77px] font-bold text-[40px] sm:text-[64px] tracking-[-0.01em] text-center text-dark">
+                <h1 className="leading-12 sm:leading-19.25 font-bold text-[40px] sm:text-[64px] tracking-[-0.01em] text-center text-dark">
                     {t('headTitle')}
                 </h1>
                 <BlogNet
-                    blogs={blogs}
+                    blogs={data}
+                    playlistIsEmpty={playlistIsEmpty}
                     page="blog"
                     cardsPerPage={8}
                 />

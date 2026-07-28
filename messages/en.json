@@ -503,7 +503,15 @@
         "account": {
             "title": "Your Exploration Path",
             "text": "All lectures you’ve unlocked — ready to revisit anytime, from any device."
+        },
+        "tabs": {
+            "articles": "Articles",
+            "playlists": "Playlists"
         }
+    },
+
+    "PlaylistCard": {
+        "materials": "Materials:"
     },
 
     "Comments": {
@@ -517,6 +525,7 @@
         "location": "Location",
         "travelPoint": "Travel Point",
         "year": "Year",
+        "playlists": "Playlists",
         "buyButton": "Buy",
         "purchasedButton": "Purchased",
         "shareButton": "Share"

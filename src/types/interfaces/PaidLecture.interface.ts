@@ -52,6 +52,14 @@ export interface Video {
     metricsLastSyncedAt: string
 }
 
+export interface Playlist {
+    id: string,
+    titleRu: string,
+    titleEn: string,
+    isPublishedRu: boolean,
+    isPublishedEn: boolean
+}
+
 export interface PaidLecture {
     id: string;
     titleRu: string;
@@ -80,6 +88,7 @@ export interface PaidLecture {
     dislikesCount: number;
     details: Details[];
     contentBlocks: ContentBlock[];
+    playlists: Playlist[];
 }
 
 export interface ApiResponse {

@@ -44,6 +44,14 @@ export interface Details {
     value: string;
 }
 
+export interface Playlist {
+    id: string,
+    titleRu: string,
+    titleEn: string,
+    isPublishedRu: boolean,
+    isPublishedEn: boolean
+}
+
 export interface Blog {
     id: string;
     titleRu: string;
@@ -66,6 +74,7 @@ export interface Blog {
     dislikesCount: number;
     details: Details[];
     contentBlocks: ContentBlock[];
+    playlists: Playlist[];
 }
 
 export interface ApiResponse {

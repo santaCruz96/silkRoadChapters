@@ -4,6 +4,7 @@ import { ApiResponse, PaidLecture } from "@/types/interfaces/PaidLecture.interfa
 import { PurchasesLecture } from "@/types/api/purchasesLecture";
 import { API_URL } from "@/config/constants";
 import { fetchWithAuth } from "./apiClient";
+import { notFound } from "next/navigation";
 
 export const getPaidLectures = async (): Promise<PaidLecture[]> => {
     const resAllLectures = await fetch(`${API_URL}/premium-lectures`, {
@@ -70,3 +71,28 @@ export const getPurchasesLecture = async(): Promise<PurchasesLecture[]> => {
     
     return data;
 }
+
+export const getPaidLecturesPlaylist = async (id: string): Promise<PaidLecture[]> => {
+    const resAllLectures = await fetch(`${API_URL}/playlists/${id}/items`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!resAllLectures.ok) {
+        console.log(`Failed to fetch lectures: ${resAllLectures.status}`)
+        notFound();
+    }
+
+    const allLectures = await resAllLectures.json();
+
+    const res = await fetch(`${API_URL}/playlists/${id}/items?pageSize=${allLectures.totalCount}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const data: ApiResponse = await res.json();
+    
+    return data.items;
+};

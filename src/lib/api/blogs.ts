@@ -2,6 +2,7 @@
 
 import { ApiResponse, Blog } from "@/types/interfaces/Blog.interface";
 import { API_URL } from "@/config/constants";
+import { notFound } from 'next/navigation';
 
 export const getBlogs = async (): Promise<Blog[]> => {
     const resAllBlogs = await fetch(`${API_URL}/blogs`, {
@@ -41,4 +42,29 @@ export const getSpecificLecture = async (id: string): Promise<Blog> => {
     const data: Blog = await res.json();
 
     return data;
+};
+
+export const getBlogsPlaylist = async (id: string): Promise<Blog[]> => {
+    const resAllLectures = await fetch(`${API_URL}/playlists/${id}/items`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!resAllLectures.ok) {
+        console.log(`Failed to fetch lectures: ${resAllLectures.status}`)
+        notFound();
+    }
+
+    const allLectures = await resAllLectures.json();
+
+    const res = await fetch(`${API_URL}/playlists/${id}/items?pageSize=${allLectures.totalCount}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const data: ApiResponse = await res.json();
+    
+    return data.items;
 };
