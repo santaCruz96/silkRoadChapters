@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export function useHeaderScroll() {
     const [isExpanded, setIsExpanded] = useState(true);
+    const [isInstant, setIsInstant] = useState(false);
 
-    const forceExpand = () => setIsExpanded(true);
+    const forceExpand = useCallback((instant: boolean = false) => {
+        setIsInstant(instant);
+        setIsExpanded(true);
+    }, []);
 
     useEffect(() => {
         const THRESHOLD = 300;
@@ -26,10 +30,12 @@ export function useHeaderScroll() {
 
             if (newTotalDelta > THRESHOLD && currentScrollY > 50 && currentExpanded) {
                 currentExpanded = false;
+                setIsInstant(false);
                 setIsExpanded(false);
                 anchorY = currentScrollY;
             } else if (newTotalDelta < -THRESHOLD && !currentExpanded) {
                 currentExpanded = true;
+                setIsInstant(false);
                 setIsExpanded(true);
                 anchorY = currentScrollY;
             }
@@ -39,5 +45,5 @@ export function useHeaderScroll() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    return { isExpanded, forceExpand };
+    return { isExpanded, isInstant, forceExpand };
 }

@@ -65,10 +65,15 @@ export default function Modal() {
         <AnimatePresence>
             {isOpen && (
                 <motion.div 
-                    className={`fixed flex w-full h-screen z-15 sm:z-14 bg-[rgba(0,0,0,0.3)]`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-15 sm:z-14"
+                    style={{
+                        willChange: 'background-color',
+                        transform: 'translateZ(0)',
+                        backfaceVisibility: 'hidden'
+                    }}
+                    initial={{ backgroundColor: 'rgba(0,0,0,0)' }}
+                    animate={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
+                    exit={{ backgroundColor: 'rgba(0,0,0,0)' }}
                     onMouseDown={close}
                 >
                     <div className="absolute top-4 sm:top-32 left-1/2 -translate-x-1/2 max-w-300
@@ -78,6 +83,14 @@ export default function Modal() {
                             className="flex flex-col absolute top-0 right-4 sm:right-0 rounded-[20px] px-4 pt-4 
                                 pb-8 w-[calc(100%-32px)] sm:w-72 bg-background overflow-hidden
                                 shadow-[0_8px_20px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.08)]"
+                            style={{
+                                willChange: 'opacity',
+                                transform: 'translateZ(0)',
+                                backfaceVisibility: 'hidden'
+                            }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
                             onMouseDown={(e) => e.stopPropagation()}
                         >
                             <div className='flex justify-between mb-8'>

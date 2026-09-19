@@ -21,7 +21,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
     const t = useTranslations('Header');
     const isMobile = useResponsiveStore(state => state.isMobile);
     const {locale, setLocale} = useLocaleStore();
-    const { isExpanded, forceExpand } = useHeaderScroll();
+    const { isExpanded, isInstant, forceExpand } = useHeaderScroll();
 
     const { 
         isOpen,
@@ -34,7 +34,7 @@ export default function Header({isAuthenticated}: HeaderProps) {
     };
 
     useEffect(() => {
-        if (isOpen) forceExpand();
+        if (isOpen) forceExpand(true);
     }, [forceExpand, isOpen]);
 
     useScrollLock(isOpen);
@@ -66,7 +66,9 @@ export default function Header({isAuthenticated}: HeaderProps) {
             :
                 { maxWidth: isExpanded ? '1200px' : '288px' } 
             }
-            transition={
+            transition={isInstant ?
+                { duration: 0 }
+            :
                 { type: 'spring', damping: 22, stiffness: 200, delay: 0.1 }
             }
             onClick={() => handleClick()}
