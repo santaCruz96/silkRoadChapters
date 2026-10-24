@@ -80,7 +80,7 @@ export interface PaidLecture {
     coverImageUrl: string | null;
     categoryId: string;
     category: Category | null;
-    videoId: string;
+    videoId: string | null;
     video: Video | null;
     tags: Tag[];
     priceUsd: number;
@@ -91,6 +91,7 @@ export interface PaidLecture {
     details: Details[];
     contentBlocks: ContentBlock[];
     playlists: Playlist[];
+    hasAccess?: boolean;
     availability?: LectureAvailability;
     availableAt?: string | null;
     serverTime?: string;

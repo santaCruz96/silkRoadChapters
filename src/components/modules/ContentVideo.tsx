@@ -4,7 +4,10 @@ import { ContentVideoProps } from "@/types/props/ContentVideo.props";
 import Button from "../common/Button";
 import { usePush } from "@/store/usePushStore";
 import { useModal } from "@/store/useModalStore";
+import { getPlayback } from "@/lib/api/paidLectures";
 import {useTranslations} from 'next-intl';
+
+const BUNNY_PLAYER_PARAMS = 'autoplay=true&loop=false&muted=false&preload=true&responsive=true';
 
 function getYouTubeVideoId(url: string): string {
     const patterns = [
@@ -20,14 +23,10 @@ function getYouTubeVideoId(url: string): string {
     return '';
 }
 
-const getEmbedUrl = (lecture: ContentVideoProps['lecture']): string | null => {
+const getYouTubeEmbedUrl = (lecture: ContentVideoProps['lecture']): string | null => {
     if ('youtubeId' in lecture) {
         const videoId = getYouTubeVideoId(lecture.youtubeId);
         return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` : null;
-    }
-    if ('videoId' in lecture) {
-        const videoId = lecture.videoId;
-        return videoId ? `https://iframe.mediadelivery.net/embed/476172/${videoId}?autoplay=true&loop=false&muted=false&preload=true&responsive=true` : null;
     }
     return null
 };
@@ -36,22 +35,63 @@ export default function ContentVideo({lecture, isAuthenticated, isBought}: Conte
     const { addPush, pushes } = usePush();
     const { open } = useModal();
     const [showVideo, setShowVideo] = useState(false);
+    const [paidEmbedUrl, setPaidEmbedUrl] = useState<string | null>(null);
+    const [isLoadingVideo, setIsLoadingVideo] = useState(false);
 
     const t = useTranslations('Push')
 
-    const embedUrl = useMemo(() => getEmbedUrl(lecture), [lecture]);
+    const isPaid = 'videoId' in lecture;
+    const hasAccess = !!isBought || ('hasAccess' in lecture && !!lecture.hasAccess);
+    const isLocked = isPaid && (!isAuthenticated || !hasAccess);
 
-    const handlePush = (e: React.MouseEvent) => {
-        e.stopPropagation(); 
-        if ('videoId' in lecture && !isAuthenticated) {
+    const youTubeEmbedUrl = useMemo(() => getYouTubeEmbedUrl(lecture), [lecture]);
+    const embedUrl = isPaid ? paidEmbedUrl : youTubeEmbedUrl;
+
+    const showBuyPush = () => {
+        if (pushes.length < 1) addPush('info', t('buyVideo'));
+    };
+
+    const showPaidVideo = async () => {
+        setIsLoadingVideo(true);
+
+        const playback = await getPlayback(lecture.id);
+
+        setIsLoadingVideo(false);
+
+        if (playback.status === 'ok') {
+            setPaidEmbedUrl(`${playback.embedUrl}&${BUNNY_PLAYER_PARAMS}`);
+            setShowVideo(true);
+            return;
+        }
+
+        if (playback.status === 'unauthorized') {
             open('login');
             return;
         }
-        if ('videoId' in lecture && !isBought) {
-            if (pushes.length < 1) addPush('info', t('buyVideo'));
+
+        if (playback.status === 'noAccess') {
+            showBuyPush();
             return;
         }
-        if (isAuthenticated && embedUrl || 'youtubeId' in lecture) {
+
+        addPush('error', t('videoError'));
+    };
+
+    const handlePush = (e: React.MouseEvent) => {
+        e.stopPropagation(); 
+        if (isPaid && !isAuthenticated) {
+            open('login');
+            return;
+        }
+        if (isPaid && !hasAccess) {
+            showBuyPush();
+            return;
+        }
+        if (isPaid) {
+            if (!isLoadingVideo) showPaidVideo();
+            return;
+        }
+        if (youTubeEmbedUrl) {
             setShowVideo(true);
         }
     };
@@ -82,7 +122,7 @@ export default function ContentVideo({lecture, isAuthenticated, isBought}: Conte
                             color="lightGrey"
                             size="sm"
                             form="square"
-                            icon={'videoId' in lecture && !isAuthenticated || 'videoId' in lecture && !isBought ? "lock" : "play"}
+                            icon={isLocked ? "lock" : "play"}
                             iconSize="big"
                             hover="contentButton"
                         />
