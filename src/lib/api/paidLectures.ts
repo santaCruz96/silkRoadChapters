@@ -2,12 +2,14 @@
 
 import { ApiResponse, PaidLecture } from "@/types/interfaces/PaidLecture.interface";
 import { PurchasesLecture } from "@/types/api/purchasesLecture";
+import { NotifySubscriptionInfo } from "@/types/api/notifySubscriptions";
+import { UserProfile } from "@/types/api/user";
 import { API_URL } from "@/config/constants";
 import { fetchWithAuth } from "./apiClient";
 import { notFound } from "next/navigation";
 
 export const getPaidLectures = async (): Promise<PaidLecture[]> => {
-    const resAllLectures = await fetch(`${API_URL}/premium-lectures`, {
+    const resAllLectures = await fetch(`${API_URL}/premium-lectures?includeAnnouncements=true`, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -19,7 +21,7 @@ export const getPaidLectures = async (): Promise<PaidLecture[]> => {
 
     const allLectures = await resAllLectures.json();
 
-    const res = await fetch(`${API_URL}/premium-lectures?pageSize=${allLectures.totalCount}`, {
+    const res = await fetch(`${API_URL}/premium-lectures?includeAnnouncements=true&pageSize=${allLectures.totalCount}`, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -27,11 +29,16 @@ export const getPaidLectures = async (): Promise<PaidLecture[]> => {
 
     const data: ApiResponse = await res.json();
     
-    return data.items;
+    return data.items.map((lecture) => ({
+        ...lecture,
+        serverTime: lecture.serverTime ?? data.serverTime,
+    }));
 };
 
-export const getSpecificLecture = async (id: string): Promise<PaidLecture> => {
-    const res = await fetch(`${API_URL}/premium-lectures/${id}`, {
+export const getSpecificLecture = async (id: string, includeAnnouncements = false): Promise<PaidLecture> => {
+    const query = includeAnnouncements ? '?includeAnnouncements=true' : '';
+
+    const res = await fetch(`${API_URL}/premium-lectures/${id}${query}`, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -44,6 +51,29 @@ export const getSpecificLecture = async (id: string): Promise<PaidLecture> => {
     const data: PaidLecture = await res.json();
 
     return data;
+};
+
+export const getNotifySubscription = async (id: string): Promise<NotifySubscriptionInfo> => {
+    try {
+        const subscriptionRes = await fetchWithAuth(`/premium-lectures/${id}/notify-subscriptions/me`);
+
+        if (!subscriptionRes.ok) {
+            return { subscribed: false, email: null };
+        }
+
+        const { subscribed }: { subscribed: boolean } = await subscriptionRes.json();
+
+        if (subscribed) {
+            return { subscribed, email: null };
+        }
+
+        const profileRes = await fetchWithAuth('/user/profile');
+        const profile: UserProfile | null = profileRes.ok ? await profileRes.json() : null;
+
+        return { subscribed, email: profile?.email ?? null };
+    } catch {
+        return { subscribed: false, email: null };
+    }
 };
 
 export const checkoutPrice = async (id: string) => {

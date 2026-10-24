@@ -60,6 +60,8 @@ export interface Playlist {
     isPublishedEn: boolean
 }
 
+export type LectureAvailability = 'Available' | 'Announced';
+
 export interface PaidLecture {
     id: string;
     titleRu: string;
@@ -89,6 +91,9 @@ export interface PaidLecture {
     details: Details[];
     contentBlocks: ContentBlock[];
     playlists: Playlist[];
+    availability?: LectureAvailability;
+    availableAt?: string | null;
+    serverTime?: string;
 }
 
 export interface ApiResponse {
@@ -99,6 +104,7 @@ export interface ApiResponse {
     totalPages: number;
     hasNext: boolean;
     hasPrevious: boolean;
+    serverTime?: string;
 }
 
 export interface PriceResponse {

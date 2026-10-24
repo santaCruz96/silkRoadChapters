@@ -11,6 +11,7 @@ import Header from "@/layouts/Header";
 import Footer from "@/layouts/Footer";
 import ResetPasswordWatcher from '@/components/ResetPasswordWatcher';
 import Modal from "@/components/common/modal/Modal";
+import NotifyModal from "@/components/common/modal/NotifyModal";
 import Push from "@/components/common/Push";
 import FullscreenImage from "@/components/common/modal/FullscreenImage";
 import CookiePushTrigger from "@/components/CookiePushTrigger";
@@ -70,6 +71,7 @@ export default async function RootLayout({
             {!hasCookieNotice && <CookiePushTrigger />}
             <Header isAuthenticated={isAuthenticated}/>
             <Modal/>
+            <NotifyModal/>
             <Suspense fallback={null}>
               <ResetPasswordWatcher />
             </Suspense>

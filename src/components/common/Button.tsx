@@ -36,7 +36,8 @@ export default function Button({
         empty: 'bg-transparent text-dark',
         lightGrey: 'bg-background text-dark border border-stroke',
         lightGreyDelete: 'bg-background border border-stroke',
-        green: 'bg-accent-success'
+        green: 'bg-accent-success',
+        background: 'bg-background text-dark'
     }
 
     const buttonSize: Record<string, string> = {
@@ -71,7 +72,8 @@ export default function Button({
         light: `transition ${isHovered ? 'fill-black' : 'fill-dark'}`,
         red: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`,
         lightGreyDelete: `transition ${isHovered ? 'fill-light' : 'fill-accent-alert'}`,
-        green: `transition ${isHovered ? 'fill-stroke' : 'fill-light'}`
+        green: `transition ${isHovered ? 'fill-stroke' : 'fill-light'}`,
+        background: 'fill-dark'
     }
 
     const sizeIcon: Record<string, string> = {

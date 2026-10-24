@@ -45,6 +45,13 @@
             "repeatPasswordValid": "*Passwords do not match",
             "clientError": "*Incorrect data",
             "serverError": "*Something doesn’t look right"
+        },
+        "notify": {
+            "emailRequired": "*Email is required",
+            "emailValid": "*Please enter a valid email",
+            "notFound": "*Notifications are not available for this lecture",
+            "tooManyRequests": "*Too many attempts, please try again later",
+            "serverError": "*Something doesn’t look right"
         }
     },
 
@@ -93,11 +100,21 @@
             "repeatPassword": "Repeat your password",
             "signIn": "Sign In",
             "bottomText": "Enter your new password and confirm it below. Once submitted, you’ll be automatically signed in."
+        },
+        "notify": {
+            "headerText": "Get notified",
+            "successHeaderText": "You’re subscribed!",
+            "text": "We’ll email you when the lecture becomes available.",
+            "email": "Email",
+            "subscribe": "Subscribe",
+            "ok": "Got it",
+            "agreement": "By clicking “Subscribe,” you agree to receive notifications about new lectures."
         }
     },
 
     "Push": {
         "video": "Complete your purchase to access the paid lecture.",
+        "lectureAvailable": "The lecture is already available!",
         "emailConfirm": "Please check your inbox and confirm your email.",
         "emailCopy": "Email copied to clipboard.",
         "emailInfo": "Profile updates via email only: <guidelines>info@src.education</guidelines>",
@@ -352,7 +369,16 @@
 
     "PaidLectureCard": {
         "buy_button": "Buy",
-        "purchased_button": "Purchased"
+        "purchased_button": "Purchased",
+        "coming_soon_button": "Coming soon",
+        "coming_soon_badge": "Coming soon",
+        "available_from": "Available from {month} {day}, {year}, at {time}.",
+        "timer": {
+            "days": "Days",
+            "hours": "Hours",
+            "minutes": "Min.",
+            "seconds": "Sec."
+        }
     },
 
     "Blog": {

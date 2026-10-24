@@ -45,6 +45,13 @@
             "repeatPasswordValid": "*Пароли не совпадают",
             "clientError": "*Неверные данные",
             "serverError": "*Что-то пошло не так"
+        },
+        "notify": {
+            "emailRequired": "*Email обязателен",
+            "emailValid": "*Введите корректный email",
+            "notFound": "*Подписка на эту лекцию недоступна",
+            "tooManyRequests": "*Слишком много попыток, попробуйте позже",
+            "serverError": "*Что-то пошло не так"
         }
     },
 
@@ -93,11 +100,21 @@
             "repeatPassword": "Повторите новый пароль",
             "signIn": "Войти",
             "bottomText": "Введите новый пароль и подтвердите его ниже. После отправки вы будете автоматически авторизованы."
+        },
+        "notify": {
+            "headerText": "Получать уведомления",
+            "successHeaderText": "Вы подписались!",
+            "text": "Мы напишем вам на Email, когда лекция станет доступна.",
+            "email": "Email",
+            "subscribe": "Подписаться",
+            "ok": "Хорошо",
+            "agreement": "Нажимая “Подписаться”, вы соглашаетесь на получение уведомлений о новых лекциях."
         }
     },
 
     "Push": {
         "video": "Оформите покупку, чтобы посмотреть лекцию",
+        "lectureAvailable": "Лекция уже доступна!",
         "emailConfirm": "Пожалуйста, проверьте почту и подтвердите email.",
         "emailCopy": "Адрес почты скопирован в ваш буфер обмена.",
         "emailInfo": "Изменение данных — только по почте: <guidelines>info@src.education</guidelines>",
@@ -352,7 +369,16 @@
 
     "PaidLectureCard": {
         "buy_button": "Купить",
-        "purchased_button": "Куплено"
+        "purchased_button": "Куплено",
+        "coming_soon_button": "Скоро доступна",
+        "coming_soon_badge": "Coming soon",
+        "available_from": "Доступна с {day} {month} {year} года, {time}",
+        "timer": {
+            "days": "Дней",
+            "hours": "Часов",
+            "minutes": "Мин.",
+            "seconds": "Сек."
+        }
     },
 
     "Blog": {

@@ -42,7 +42,9 @@ export default function PaidLecturesNet({lectures, page, cardsPerPage, purchases
 
     useEffect(() => {
         if (!showPlaylists) {
-            setAllLectures(lectures as PaidLecture[]);
+            setAllLectures(
+                (lectures as PaidLecture[]).filter((lecture) => lecture.availability !== 'Announced')
+            );
         }
     }, [showPlaylists, lectures, setAllLectures]);
 
