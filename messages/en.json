@@ -372,7 +372,8 @@
         "purchased_button": "Purchased",
         "coming_soon_button": "Coming soon",
         "coming_soon_badge": "Coming soon",
-        "available_from": "Available from {month} {day}, {year}, at {time}.",
+        "available_from": "Available from",
+        "available_date": "{month} {day}, {year}, at {time}.",
         "timer": {
             "days": "Days",
             "hours": "Hours",

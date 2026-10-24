@@ -3,8 +3,6 @@ const localeMap: Record<string, string> = {
     ru: 'ru-RU',
 };
 
-const TASHKENT_OFFSET_MS = 5 * 60 * 60 * 1000;
-
 export function formatDate(dateString: string, locale: string): string {
     if (!dateString) return '';
 
@@ -21,8 +19,8 @@ export function formatDate(dateString: string, locale: string): string {
     return `${formatted}`;
 }
 
-export function getTashkentDateParts(dateString: string, locale: string) {
-    const date = new Date(new Date(dateString).getTime() + TASHKENT_OFFSET_MS);
+export function getLocalDateParts(dateString: string, locale: string) {
+    const date = new Date(dateString);
 
     if (isNaN(date.getTime())) return null;
 
@@ -30,14 +28,13 @@ export function getTashkentDateParts(dateString: string, locale: string) {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        timeZone: 'UTC',
     }).formatToParts(date);
 
     const getPart = (type: Intl.DateTimeFormatPartTypes) =>
         parts.find((part) => part.type === type)?.value ?? '';
 
-    const hours = date.getUTCHours();
-    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const hours = date.getHours();
+    const minutes = String(date.getMinutes()).padStart(2, '0');
 
     const time = locale === 'ru'
         ? `${String(hours).padStart(2, '0')}:${minutes}`

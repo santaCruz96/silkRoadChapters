@@ -10,8 +10,9 @@ import Button from "./Button";
 import Countdown from "./Countdown";
 import {useLocale, useTranslations} from 'next-intl';
 import useAnnouncement from "@/hooks/useAnnouncement";
+import useHydrated from "@/hooks/useHydrated";
 import { useNotifyModal } from "@/store/useNotifyModalStore";
-import { getTashkentDateParts } from "@/utils/date";
+import { getLocalDateParts } from "@/utils/date";
 
 export default function PaidLectureCard({
     lecture: initialLecture,
@@ -24,14 +25,15 @@ export default function PaidLectureCard({
     // const router = useRouter();
     const { lecture, timeLeft, isAnnounced, updateLecture } = useAnnouncement(initialLecture);
     const openNotifyModal = useNotifyModal(state => state.open);
+    const isHydrated = useHydrated();
     const locale = useLocale();
     const title = locale === 'ru' ? lecture.titleRu : lecture.titleEn;
     const description = locale === 'ru' ? lecture.shortDescriptionRu : lecture.shortDescriptionEn;
 
     const t = useTranslations('PaidLectureCard');
 
-    const availableAt = isAnnounced && lecture.availableAt
-        ? getTashkentDateParts(lecture.availableAt, locale)
+    const availableAt = isHydrated && isAnnounced && lecture.availableAt
+        ? getLocalDateParts(lecture.availableAt, locale)
         : null;
 
     const [isNew, setIsNew] = useState(false);
@@ -110,8 +112,10 @@ export default function PaidLectureCard({
                                 />
                             )}
                             {availableAt && (
-                                <p className="absolute left-3 bottom-3 max-w-48 font-medium text-[12px] leading-[125%] text-light">
-                                    {t('available_from', availableAt)}
+                                <p className="absolute left-3 right-3 bottom-3 font-medium text-[12px] leading-[125%] text-light">
+                                    {t('available_from')}
+                                    <br />
+                                    {t('available_date', availableAt)}
                                 </p>
                             )}
                         </div>
