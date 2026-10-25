@@ -15,11 +15,11 @@ export const useLinks = (): ILinks[] => {
             route: '/catalog/free-lectures',
             label: t('freeLectures'),
         },
-        // {
-        //     id: 3,
-        //     route: '/catalog/paid-lectures',
-        //     label: t('paidLectures'),
-        // },
+        {
+            id: 3,
+            route: '/catalog/paid-lectures',
+            label: t('paidLectures'),
+        },
         {
             id: 4,
             route: '/catalog/blog',
