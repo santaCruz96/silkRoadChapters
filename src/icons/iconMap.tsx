@@ -381,6 +381,13 @@ export const IconMaterials = ({className, ...props}: IconProps) => (
     </svg>
 )
 
+export const IconBell = ({className, ...props}: IconProps) => (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <path d="M8.35156 20.2422C9.19265 21.3114 10.514 22.0004 11.9998 22.0004C13.4856 22.0004 14.8069 21.3114 15.648 20.2422C13.2262 20.5704 10.7734 20.5704 8.35156 20.2422Z" fill="" />
+        <path d="M18.7491 9V9.7041C18.7491 10.5491 18.9903 11.3752 19.4422 12.0782L20.5496 13.8012C21.5612 15.3749 20.789 17.5139 19.0296 18.0116C14.4273 19.3134 9.57274 19.3134 4.97036 18.0116C3.21105 17.5139 2.43882 15.3749 3.45036 13.8012L4.5578 12.0782C5.00972 11.3752 5.25087 10.5491 5.25087 9.7041V9C5.25087 5.13401 8.27256 2 12 2C15.7274 2 18.7491 5.13401 18.7491 9Z" fill="" />    
+    </svg>
+)
+
 export const iconComponentMap = {
     magnifer: IconMagnifier,
     fallingStar: IconFallingStar,
@@ -439,7 +446,8 @@ export const iconComponentMap = {
     play: IconPlay,
     lock: IconLock,
     exit: IconExit,
-    materials: IconMaterials
+    materials: IconMaterials,
+    bell: IconBell
 };
 
 export type IconName = keyof typeof iconComponentMap;

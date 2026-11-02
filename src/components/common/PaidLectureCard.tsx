@@ -145,7 +145,7 @@ export default function PaidLectureCard({
                             color="background" 
                             size="xl"
                             form="round"
-                            icon="lock"
+                            icon="bell"
                             type="button"
                             tabIndex={-1}
                             aria-disabled
