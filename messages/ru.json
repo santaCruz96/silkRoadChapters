@@ -371,7 +371,7 @@
     "PaidLectureCard": {
         "buy_button": "Купить",
         "purchased_button": "Куплено",
-        "coming_soon_button": "Скоро доступна",
+        "coming_soon_button": "Уведомить меня",
         "coming_soon_badge": "Coming soon",
         "available_from": "Доступна с",
         "available_date": "{day} {month} {year} года, {time}",

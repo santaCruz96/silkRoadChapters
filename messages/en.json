@@ -371,7 +371,7 @@
     "PaidLectureCard": {
         "buy_button": "Buy",
         "purchased_button": "Purchased",
-        "coming_soon_button": "Coming soon",
+        "coming_soon_button": "Notify me",
         "coming_soon_badge": "Coming soon",
         "available_from": "Available from",
         "available_date": "{month} {day}, {year}, at {time}.",
