@@ -5,6 +5,7 @@ export const subscribeToLecture = async (id: string, email: string): Promise<Not
     try {
         const response = await fetch(`${API_URL}/premium-lectures/${id}/notify-subscriptions`, {
             method: 'POST',
+            credentials: 'omit',
             headers: {
                 'Content-Type': 'application/json',
             },

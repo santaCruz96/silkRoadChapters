@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Button from '../Button';
-import { useAuthStore } from '@/store/useAuthStore';
 import { usePush } from '@/store/usePushStore';
-import { getNotifySubscription, getSpecificLecture } from '@/lib/api/paidLectures';
+import { getSpecificLecture } from '@/lib/api/paidLectures';
 import { subscribeToLecture } from '@/lib/api/notifySubscriptions';
 import { validateNotifyForm, NotifyFormErrors } from '@/schemas/notify';
 import { NotifyFormProps } from '@/types/props/NotifyForm.props';
@@ -15,38 +14,13 @@ export default function NotifyForm({ lectureId, onAvailable, onClose }: NotifyFo
     const tValid = useTranslations('Validation.notify');
     const tPush = useTranslations('Push');
 
-    const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
     const addPush = usePush((state) => state.addPush);
 
     const [email, setEmail] = useState('');
     const [errors, setErrors] = useState<NotifyFormErrors>({});
     const [serverError, setServerError] = useState<string | null>(null);
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [isLoading, setIsLoading] = useState(isAuthenticated);
-
-    useEffect(() => {
-        if (!isAuthenticated) return;
-
-        let isCancelled = false;
-
-        getNotifySubscription(lectureId)
-            .then(({ subscribed, email: accountEmail }) => {
-                if (isCancelled) return;
-
-                if (subscribed) setIsSubscribed(true);
-                if (accountEmail) setEmail((prev) => prev || accountEmail);
-            })
-            .catch((error) => {
-                console.error('Failed to check subscription:', error);
-            })
-            .finally(() => {
-                if (!isCancelled) setIsLoading(false);
-            });
-
-        return () => {
-            isCancelled = true;
-        };
-    }, [isAuthenticated, lectureId]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleAlreadyAvailable = async () => {
         try {
@@ -182,7 +156,7 @@ export default function NotifyForm({ lectureId, onAvailable, onClose }: NotifyFo
                         disabled={isLoading}
                         className={inputClass}
                         placeholder={t('email')}
-                        autoComplete="email"
+                        autoComplete="off"
                     />
                     {errors.email && (
                         <span className={spanClass}>{errors.email}</span>

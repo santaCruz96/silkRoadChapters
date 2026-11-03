@@ -2,9 +2,7 @@
 
 import { ApiResponse, PaidLecture } from "@/types/interfaces/PaidLecture.interface";
 import { PurchasesLecture } from "@/types/api/purchasesLecture";
-import { NotifySubscriptionInfo } from "@/types/api/notifySubscriptions";
 import { PlaybackResponse, PlaybackResult } from "@/types/api/playback";
-import { UserProfile } from "@/types/api/user";
 import { API_URL } from "@/config/constants";
 import { fetchWithAuth } from "./apiClient";
 import { notFound } from "next/navigation";
@@ -77,29 +75,6 @@ export const getPlayback = async (id: string): Promise<PlaybackResult> => {
         return { status: 'error' };
     } catch {
         return { status: 'unauthorized' };
-    }
-};
-
-export const getNotifySubscription = async (id: string): Promise<NotifySubscriptionInfo> => {
-    try {
-        const subscriptionRes = await fetchWithAuth(`/premium-lectures/${id}/notify-subscriptions/me`);
-
-        if (!subscriptionRes.ok) {
-            return { subscribed: false, email: null };
-        }
-
-        const { subscribed }: { subscribed: boolean } = await subscriptionRes.json();
-
-        if (subscribed) {
-            return { subscribed, email: null };
-        }
-
-        const profileRes = await fetchWithAuth('/user/profile');
-        const profile: UserProfile | null = profileRes.ok ? await profileRes.json() : null;
-
-        return { subscribed, email: profile?.email ?? null };
-    } catch {
-        return { subscribed: false, email: null };
     }
 };
 

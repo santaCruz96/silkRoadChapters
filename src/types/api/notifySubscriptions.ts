@@ -5,8 +5,3 @@ export type NotifySubscribeStatus =
     | 'notFound'
     | 'tooManyRequests'
     | 'error';
-
-export interface NotifySubscriptionInfo {
-    subscribed: boolean,
-    email: string | null
-}
