@@ -98,6 +98,13 @@ export default function NotifyForm({ lectureId, onAvailable, onClose }: NotifyFo
         text-accent-alert text-[12px] px-1 italic leading-[160%]
     `;
 
+    const handleAddEmail = () => {
+        setEmail('');
+        setErrors({});
+        setServerError(null);
+        setIsSubscribed(false);
+    };
+
     if (isSubscribed) {
         return (
             <div className="flex flex-col gap-8">
@@ -118,17 +125,31 @@ export default function NotifyForm({ lectureId, onAvailable, onClose }: NotifyFo
                         aria-label={t('email')}
                     />
                 )}
-                <Button
-                    type="button"
-                    color="dark"
-                    size="full"
-                    form="round"
-                    icon="like"
-                    hover="primary"
-                    onClick={onClose}
-                >
-                    {t('ok')}
-                </Button>
+                <div className="flex flex-col gap-4">
+                    <Button
+                        type="button"
+                        color="dark"
+                        size="full"
+                        form="round"
+                        icon="like"
+                        hover="primary"
+                        onClick={onClose}
+                    >
+                        {t('ok')}
+                    </Button>
+                    <Button
+                        type="button"
+                        color="light"
+                        size="full"
+                        form="round"
+                        shadow
+                        icon="mail"
+                        hover="secondary"
+                        onClick={handleAddEmail}
+                    >
+                        {t('addEmail')}
+                    </Button>
+                </div>
             </div>
         )
     }

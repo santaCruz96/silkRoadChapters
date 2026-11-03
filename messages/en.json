@@ -108,6 +108,7 @@
             "email": "Email",
             "subscribe": "Subscribe",
             "ok": "Got it",
+            "addEmail": "Add email",
             "agreement": "By clicking “Subscribe”, you agree to receive an email when this lecture becomes available."
         }
     },
